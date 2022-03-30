@@ -17,7 +17,8 @@ class AllProductCategories extends StatelessWidget {
       body: StandardCustomContainer(
         child: VerticalListOfCategories(
           shrinkwrap: false,
-          uri: '${dotenv.env['CATEGORY_URL']}/filter?categoryType=produits',
+          uri:
+              '${dotenv.env['CATEGORY_URL']}/filterCategoriesByType?categoryType=624037f8292cdadb3ad45b7a&limit=0',
         ),
       ),
     );

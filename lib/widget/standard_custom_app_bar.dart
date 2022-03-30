@@ -24,7 +24,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       actions: [
         CustomButtonContainer(
           icon: const FaIcon(FontAwesomeIcons.search),
-          onPressed: () => print("hello World!"),
+          onPressed: () => Navigator.of(context).pushNamed("/search"),
         ),
         // CustomButtonContainer(
         //   icon: const FaIcon(FontAwesomeIcons.newspaper),

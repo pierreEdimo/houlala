@@ -13,29 +13,34 @@ class ColumnOfShopBox extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        categoryName!.isNotEmpty? Text(
-          categoryName!,
-          style: detailTitleStyle,
-        ) : Container(),
-         SizedBox(
-          height: categoryName!.isNotEmpty? 20.0: 0.0,
+        categoryName!.isNotEmpty
+            ? Text(
+                categoryName!,
+                style: detailTitleStyle,
+              )
+            : Container(),
+        SizedBox(
+          height: categoryName!.isNotEmpty ? 20.0 : 0.0,
         ),
         ShopContainerBox(
-          shopUrl: '${dotenv.env['PAGE_URL']}/filter?category_id=6233b38345bff7f776f0d30e&page_specialisation=Electronique',
+          shopUrl:
+              '${dotenv.env['PAGE_URL']}/filterPageByCategoryIdAndSpecialisation?categoryId=6233b38345bff7f776f0d30e&specialisation=Electronique',
           title: 'Electronique Grand public',
         ),
         const SizedBox(
           height: 10.0,
         ),
         ShopContainerBox(
-          shopUrl: '${dotenv.env['PAGE_URL']}/filter?category_id=6233b38345bff7f776f0d30e&page_specialisation=Agriculture',
+          shopUrl:
+              '${dotenv.env['PAGE_URL']}/filterPageByCategoryIdAndSpecialisation?categoryId=6233b38345bff7f776f0d30e&specialisation=Agriculture',
           title: 'Aliments',
         ),
         const SizedBox(
           height: 10.0,
         ),
         ShopContainerBox(
-          shopUrl: '${dotenv.env['PAGE_URL']}/filter?category_id=6233b38345bff7f776f0d30e&page_specialisation=Fashion',
+          shopUrl:
+              '${dotenv.env['PAGE_URL']}/filterPageByCategoryIdAndSpecialisation?categoryId=6233b38345bff7f776f0d30e&specialisation=Fashion',
           title: 'Habits & Chaussures',
         )
       ],

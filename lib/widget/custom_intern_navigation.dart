@@ -35,7 +35,7 @@ class _CustomInternNavigationState extends State<CustomInternNavigation> {
             elevation: widget.elevationValue!,
             color: const Color(0xffffffff),
             child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.08,
+              height: 60,
               child: Padding(
                 padding:  EdgeInsets.symmetric(horizontal: widget.horizontalPadding!),
                 child: Container(

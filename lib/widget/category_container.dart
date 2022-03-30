@@ -23,7 +23,7 @@ class CategoryContainer extends StatelessWidget {
               arguments: PageScreenArguments(
                 categoryId: categoryModel!.id!,
                 categoryName: categoryModel!.name!,
-                categoryType: categoryModel!.categoryTyoe!,
+                categoryType: categoryModel!.categoryType!.label!,
                 imageUrl: categoryModel!.imageUrl!,
               )),
       child: Card(

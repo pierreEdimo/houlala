@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:houlala/screens/all_post_screen.dart';
 import 'package:houlala/screens/all_product_categories_screen.dart';
 import 'package:houlala/screens/all_fruits_and_lettuces_screen.dart';
 import 'package:houlala/screens/all_pages_screen.dart';
 import 'package:houlala/screens/category_detail_screen.dart';
 import 'package:houlala/screens/jobs_detail_screen.dart';
 import 'package:houlala/screens/page_detail_screen.dart';
+import 'package:houlala/screens/post_detail_screen.dart';
 import 'package:houlala/screens/product_detail_screen.dart';
+import 'package:houlala/screens/search_screen.dart';
 import 'package:houlala/service/category_service.dart';
 import 'package:houlala/service/job_service.dart';
 import 'package:houlala/service/page_service.dart';
+import 'package:houlala/service/post_service.dart';
 import 'package:houlala/service/product_service.dart';
+import 'package:houlala/service/word_service.dart';
 import 'package:houlala/widget/bottom_navigation.dart';
 import 'package:provider/provider.dart';
 
@@ -40,6 +45,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ProductService()),
         ChangeNotifierProvider(create: (context) => PageService()),
         ChangeNotifierProvider(create: (context) => JobService()),
+        ChangeNotifierProvider(create: (context) => PostService()),
+        ChangeNotifierProvider(create: (context) => WordService())
       ],
       builder: (context, child) {
         return MaterialApp(
@@ -70,6 +77,9 @@ class MyApp extends StatelessWidget {
                 const CategoryDetailScreen(),
             PageDetailScreen.screenName: (context) => const PageDetailScreen(),
             JobsDetailScreen.routeName: (context) => const JobsDetailScreen(),
+            '/all_posts': (context) => const AllPostsScreen(),
+            PostDetailScreen.routeName: (context) =>  PostDetailScreen(),
+            '/search':(context) => const SearchScreen()
           },
         );
       },

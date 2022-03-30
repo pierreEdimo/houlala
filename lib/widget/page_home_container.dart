@@ -34,7 +34,7 @@ class PageHomeContainer extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.30,
           child: GridOfProducts(
             child: Container(
-              margin:const  EdgeInsets.only(bottom: 5.0),
+              margin: const EdgeInsets.only(bottom: 5.0),
               child: const Text(
                 "Produits",
                 style: TextStyle(
@@ -46,7 +46,7 @@ class PageHomeContainer extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             crossAxisCount: 1,
             uri:
-                '${dotenv.env['PRODUCT_URL']}/filter/with_limit?&page_id=${pageModel!.id!}&limit=10',
+                '${dotenv.env['PRODUCT_URL']}/filterProductsByPageId?pageId=${pageModel!.id!}&limit=10',
             heightRatio: 1,
             widthRatio: 1.5,
           ),

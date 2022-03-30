@@ -36,16 +36,22 @@ class JobContainer extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
-                    height: 5.0,
+                    height: 2.0,
                   ),
-                  Text(job!.page!.name!),
-                  const SizedBox(
-                    height: 5.0,
-                  ),
+                  Text(job!.page!.name!, style: const TextStyle(
+                    fontSize: 12.0,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'PoppinsBold'
+                  ),),
                   Text(
                     '${job!.jobLocationCity!} . ${job!.jobLocationCountry!}(${job!.jobType!})',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 12.0,
+                      color: Colors.grey
+                    ),
                   ),
                 ],
               ),

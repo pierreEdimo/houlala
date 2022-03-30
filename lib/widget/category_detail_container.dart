@@ -29,11 +29,11 @@ class _CategoryDetailContainerState extends State<CategoryDetailContainer> {
           categoryName: widget.categoryName,
           imageUrl: widget.imageUrl!,
           fruitUri:
-              '${dotenv.env['PRODUCT_URL']}/filter?category_Id=${widget.categoryId}&productType=fruits',
+              '${dotenv.env['PRODUCT_URL']}/filterProductsByCategoryAndProductType?categoryId=${widget.categoryId}&productType=fruits',
           lettuceUri:
-              '${dotenv.env['PRODUCT_URL']}/filter?category_Id=${widget.categoryId}&productType=legumes',
+              '${dotenv.env['PRODUCT_URL']}/filterProductsByCategoryAndProductType?categoryId=${widget.categoryId}&productType=legumes',
           tuberCulesUri:
-              '${dotenv.env['PRODUCT_URL']}/filter?category_Id=${widget.categoryId}&productType=tubercules',
+              '${dotenv.env['PRODUCT_URL']}/filterProductsByCategoryAndProductType?categoryId=${widget.categoryId}&productType=tubercules',
         );
       case 'Magasins':
         return ShopContainer(

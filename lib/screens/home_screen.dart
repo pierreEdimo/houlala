@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/widget/grid_pages.dart';
+import 'package:houlala/widget/list_of_posts.dart';
 import 'package:houlala/widget/standard_custom_app_bar.dart';
 import 'package:houlala/widget/custom_box_container.dart';
 import 'package:houlala/widget/flexible_row.dart';
@@ -22,8 +23,8 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             CustomBoxContainer(
-              child:  SizedBox(
-                height: MediaQuery.of(context).size.height * 0.30,
+              child: SizedBox(
+                height: 170,
                 child: ListOfCategories(
                   child: Container(
                     margin: const EdgeInsets.only(bottom: 5.0),
@@ -33,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   uri:
-                  '${dotenv.env['CATEGORY_URL']}/filter/with_limit?categoryType=produits&limit=10',
+                      '${dotenv.env['CATEGORY_URL']}/filterCategoriesByType?categoryType=624037f8292cdadb3ad45b7a&limit=10',
                   direction: Axis.horizontal,
                   shrinkWrap: true,
                 ),
@@ -50,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 uri:
-                '${dotenv.env['PRODUCT_URL']}/filter/with_limit?productType=fruits&limit=4',
+                    '${dotenv.env['PRODUCT_URL']}/filterProductByType?productType=fruits&limit=4',
                 scrollDirection: Axis.vertical,
                 crossAxisCount: 2,
                 widthRatio: 1,
@@ -63,18 +64,28 @@ class HomeScreen extends StatelessWidget {
                 height: 130,
                 child: GridPages(
                   child: Container(
-                    margin: const  EdgeInsets.only(bottom: 5.0),
+                    margin: const EdgeInsets.only(bottom: 5.0),
                     child: const FlexibleRow(
                       title: 'Nos Partenaires',
                       urlValue: "/all_pages",
                     ),
                   ),
-                  uri: '${dotenv.env['PAGE_URL']}/filter?limit=10',
+                  uri: '${dotenv.env['PAGE_URL']}/filterWithLimit?limit=10',
                   direction: Axis.horizontal,
                   ratio: 0.5,
                 ),
               ),
             ),
+            standardSizedBox,
+            CustomBoxContainer(
+              child: ListOfPosts(
+                child: const FlexibleRow(
+                  title: "Quelques posts recents",
+                  urlValue: "/all_posts",
+                ),
+                uri: '${dotenv.env['POST_URL']}/filterPostWithLimit?limit=10',
+              ),
+            )
           ],
         ),
       ),

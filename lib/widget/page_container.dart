@@ -69,7 +69,7 @@ class PageContainer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const FaIcon(
-                        FontAwesomeIcons.briefcase,
+                        FontAwesomeIcons.building,
                         size: 15,
                       ),
                       const SizedBox(

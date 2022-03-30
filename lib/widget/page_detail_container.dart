@@ -8,6 +8,7 @@ import 'package:houlala/widget/custom_intern_navigation.dart';
 import 'package:houlala/widget/page_home_container.dart';
 import 'package:houlala/widget/page_info_container.dart';
 import 'package:houlala/widget/page_jobs_container.dart';
+import 'package:houlala/widget/page_post_container.dart';
 import 'package:houlala/widget/page_product_container.dart';
 import 'package:houlala/widget/transformed_container.dart';
 import 'package:provider/provider.dart';
@@ -20,11 +21,11 @@ class PageDetailContainer extends StatelessWidget {
   PageDetailContainer({Key? key, this.uri}) : super(key: key);
 
   final List<String> _menuItems = [
-    "Accueil",
-    "A propos",
-    "Produits",
-    "Annonces",
-    "Jobs",
+    "accueil",
+    "a propos",
+    "produits",
+    "posts",
+    "jobs",
   ];
 
   @override
@@ -44,11 +45,16 @@ class PageDetailContainer extends StatelessWidget {
                 page: page,
               ),
               PageProductContainer(
-                uri: '${dotenv.env['PRODUCT_URL']}/filter?page_id=${page.id!}',
+                uri:
+                    '${dotenv.env['PRODUCT_URL']}/filterProductsByPageId?pageId=${page.id!}&limit=0',
               ),
-              const Text("Hello Annonces"),
+              PagePostContainer(
+                url:
+                    '${dotenv.env['POST_URL']}/filterPostByPageId?pageId=${page.id!}',
+              ),
               PageJobsContainer(
-                uri: '${dotenv.env['JOB_URL']}/filter?page_id=${page.id!}',
+                uri:
+                    '${dotenv.env['JOB_URL']}/filterJobByPageId?pageId=${page.id!}',
                 pageName: page.name!,
                 height: 0.25,
               ),
