@@ -16,6 +16,7 @@ class AllPostsScreen extends StatelessWidget {
       body: CustomBoxContainer(
         child: SingleChildScrollView(
           child: ListOfPosts(
+            scrollDirection: Axis.vertical,
             uri: dotenv.env['POST_URL'],
           ),
         ),

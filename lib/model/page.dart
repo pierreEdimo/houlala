@@ -1,3 +1,5 @@
+import 'package:houlala/model/page_specialisation.dart';
+
 class PageModel {
   final String? id;
   final String? name;
@@ -8,7 +10,7 @@ class PageModel {
   final int? companySize;
   final String? headQuartersCountry;
   final String? headQuartersCity;
-  final String? pageSpecialisation;
+  final Specialisation? pageSpecialisation;
   final String? description;
 
   PageModel(
@@ -31,7 +33,7 @@ class PageModel {
       email: json['email'] as String,
       headQuartersCountry: json['headQuarters_country'] as String,
       headQuartersCity: json['headQuarters_city'] as String,
-      pageSpecialisation: json['page_specialisation'] as String,
+      pageSpecialisation: Specialisation.fromJson(json['page_specialisation']),
       isVerified: json['isVerifed'] as bool,
       companySize: json['companySize'] as int,
       description: json['description'] as String,

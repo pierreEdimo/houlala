@@ -32,14 +32,14 @@ class PostBodyContainer extends StatelessWidget {
                     InkWell(
                       onTap: () => Navigator.of(context).pushNamed(
                           PageDetailScreen.screenName,
-                          arguments: post.pageModel!.id),
+                          arguments: post.page!.id),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CircleAvatar(
                             radius: 30,
                             backgroundImage: NetworkImage(
-                              post.pageModel!.imageUrl!,
+                              post.page!.imageUrl!,
                             ),
                           ),
                           const SizedBox(
@@ -49,7 +49,7 @@ class PostBodyContainer extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                post.pageModel!.name!,
+                                post.page!.name!,
                                 style: const TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
@@ -58,13 +58,13 @@ class PostBodyContainer extends StatelessWidget {
                               ),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                children:  [
                                   const FaIcon(
                                     FontAwesomeIcons.building,
                                     size: 14,
                                   ),
                                   Text(
-                                    '${post.pageModel!.headQuartersCity!}, ${post.pageModel!.headQuartersCountry!}',
+                                    '${post.page!.headQuarterCity!}, ${post.page!.headQuarterCountry!}',
                                     style: const TextStyle(
                                         fontSize: 12.0,
                                         fontWeight: FontWeight.bold,
@@ -83,9 +83,10 @@ class PostBodyContainer extends StatelessWidget {
                     Text(
                       post.title!,
                       style: const TextStyle(
-                          fontFamily: 'PoppinsBold',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22),
+                        fontFamily: 'PoppinsBold',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                      ),
                     ),
                     Markdown(
                       data: post.content!,

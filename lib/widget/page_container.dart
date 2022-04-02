@@ -13,8 +13,10 @@ class PageContainer extends StatelessWidget {
     return InkWell(
       onTap: () => Navigator.of(context)
           .pushNamed(PageDetailScreen.screenName, arguments: page!.id!),
-      child: SizedBox(
-        width: 300,
+      child: Container(
+        margin:const  EdgeInsets.only(bottom: 8.0),
+        width: MediaQuery.of(context).size.width * 0.8,
+        height: 90,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -59,7 +61,7 @@ class PageContainer extends StatelessWidget {
                       const SizedBox(
                         width: 3.0,
                       ),
-                      Text(page!.pageSpecialisation!)
+                      Text(page!.pageSpecialisation!.label!)
                     ],
                   ),
                   const SizedBox(
@@ -75,12 +77,10 @@ class PageContainer extends StatelessWidget {
                       const SizedBox(
                         width: 3.0,
                       ),
-                      Flexible(
-                        child: Text(
-                          '${page!.headQuartersCity!} . ${page!.headQuartersCountry}',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                      Text(
+                        '${page!.headQuartersCity!} . ${page!.headQuartersCountry}',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),

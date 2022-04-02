@@ -8,13 +8,11 @@ class ListOfPosts extends StatelessWidget {
   final String? uri;
   final Widget? child;
   final double? height;
+  final Axis? scrollDirection;
 
-  const ListOfPosts({
-    Key? key,
-    this.uri,
-    this.child,
-    this.height,
-  }) : super(key: key);
+  const ListOfPosts(
+      {Key? key, this.uri, this.child, this.height, this.scrollDirection})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,18 +47,30 @@ class ListOfPosts extends StatelessWidget {
                         ),
                       ),
                     )
-                  : ListView(
-                      shrinkWrap: true,
-                      physics: const ClampingScrollPhysics(),
-                      padding: EdgeInsets.zero,
-                      children: posts
-                          .map(
-                            (Post post) => PostContainer(
-                              post: post,
-                            ),
-                          )
-                          .toList(),
-                    ),
+                  : scrollDirection == Axis.horizontal
+                      ? Expanded(
+                          child: ListView(
+                            scrollDirection: scrollDirection!,
+                            padding: EdgeInsets.zero,
+                            children: posts
+                                .map(
+                                  (Post post) => PostContainer(
+                                    post: post,
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        )
+                      : ListView(
+                          shrinkWrap: true,
+                          physics: const ClampingScrollPhysics(),
+                          padding: EdgeInsets.zero,
+                          children: posts
+                              .map((Post post) => PostContainer(
+                                    post: post,
+                                  ))
+                              .toList(),
+                        )
             ],
           );
         }

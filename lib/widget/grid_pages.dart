@@ -6,11 +6,10 @@ import '../service/page_service.dart';
 
 class GridPages extends StatelessWidget {
   final String? uri;
-  final double? ratio;
   final Axis? direction;
   final Widget? child;
 
-  const GridPages({Key? key, this.uri, this.direction, this.ratio, this.child})
+  const GridPages({Key? key, this.uri, this.direction, this.child})
       : super(key: key);
 
   @override
@@ -25,21 +24,31 @@ class GridPages extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               child != null ? child! : Container(),
-              Expanded(
-                child: ListView(
-                  padding: const EdgeInsets.all(0),
-                  scrollDirection: direction!,
-                  shrinkWrap: true,
-                  physics: const ClampingScrollPhysics(),
-                  children: pages
-                      .map(
-                        (PageModel page) => PageContainer(
-                          page: page,
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
+              direction == Axis.horizontal
+                  ? Expanded(
+                      child: ListView(
+                        padding: const EdgeInsets.all(0),
+                        scrollDirection: direction!,
+                        shrinkWrap: true,
+                        physics: const ClampingScrollPhysics(),
+                        children: pages
+                            .map(
+                              (PageModel page) => PageContainer(
+                                page: page,
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    )
+                  : ListView(
+                     shrinkWrap: true,
+                      physics: const ClampingScrollPhysics(),
+                      children: pages
+                          .map((PageModel page) => PageContainer(
+                                page: page,
+                              ))
+                          .toList(),
+                    )
             ],
           );
         }

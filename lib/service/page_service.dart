@@ -32,4 +32,3 @@ class PageService extends ChangeNotifier {
     }
   }
 }
-

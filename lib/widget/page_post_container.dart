@@ -9,6 +9,7 @@ class PagePostContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListOfPosts(
+      scrollDirection: Axis.vertical,
       height: 0.25,
       uri: url!,
     );

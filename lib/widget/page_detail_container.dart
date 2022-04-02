@@ -46,7 +46,7 @@ class PageDetailContainer extends StatelessWidget {
               ),
               PageProductContainer(
                 uri:
-                    '${dotenv.env['PRODUCT_URL']}/filterProductsByPageId?pageId=${page.id!}&limit=0',
+                    '${dotenv.env['PRODUCT_URL']}/filterProductByPageId?pageId=${page.id!}',
               ),
               PagePostContainer(
                 url:

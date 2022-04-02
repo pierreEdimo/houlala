@@ -24,7 +24,6 @@ class ShopContainerBox extends StatelessWidget {
         ),
         direction: Axis.horizontal,
         uri: shopUrl!,
-        ratio: 0.5,
       ),
     );
   }

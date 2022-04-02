@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   uri:
-                      '${dotenv.env['CATEGORY_URL']}/filterCategoriesByType?categoryType=624037f8292cdadb3ad45b7a&limit=10',
+                      '${dotenv.env['CATEGORY_URL']}/getRandomCategories?size=6&categoryType=624037f8292cdadb3ad45b7a',
                   direction: Axis.horizontal,
                   shrinkWrap: true,
                 ),
@@ -51,11 +51,11 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 uri:
-                    '${dotenv.env['PRODUCT_URL']}/filterProductByType?productType=fruits&limit=4',
+                    '${dotenv.env['PRODUCT_URL']}/getRandomProducts?size=4&categoryId=621a245eaf69ff81e170c5f6',
                 scrollDirection: Axis.vertical,
                 crossAxisCount: 2,
                 widthRatio: 1,
-                heightRatio: 1.35,
+                heightRatio: 1.5,
               ),
             ),
             standardSizedBox,
@@ -70,20 +70,24 @@ class HomeScreen extends StatelessWidget {
                       urlValue: "/all_pages",
                     ),
                   ),
-                  uri: '${dotenv.env['PAGE_URL']}/filterWithLimit?limit=10',
+                  uri: '${dotenv.env['PAGE_URL']}/getRandomPages?size=4',
                   direction: Axis.horizontal,
-                  ratio: 0.5,
                 ),
               ),
             ),
             standardSizedBox,
             CustomBoxContainer(
-              child: ListOfPosts(
-                child: const FlexibleRow(
-                  title: "Quelques posts recents",
-                  urlValue: "/all_posts",
+              child: SizedBox(
+                height: 350,
+                child: ListOfPosts(
+                  scrollDirection: Axis.horizontal,
+                  height: 0.5,
+                  child: const FlexibleRow(
+                    title: "Quelques posts recents",
+                    urlValue: "/all_posts",
+                  ),
+                  uri: '${dotenv.env['POST_URL']}/getRandomPosts?size=10',
                 ),
-                uri: '${dotenv.env['POST_URL']}/filterPostWithLimit?limit=10',
               ),
             )
           ],

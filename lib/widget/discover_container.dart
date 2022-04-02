@@ -35,6 +35,7 @@ class DiscoverContainer extends StatelessWidget {
     Padding(
       padding: const EdgeInsets.all(10.0),
       child: ListOfPosts(
+        scrollDirection: Axis.vertical,
         uri: dotenv.env['POST_URL'],
       ),
     ),

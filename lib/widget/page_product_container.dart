@@ -10,7 +10,6 @@ class PageProductContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridOfProducts(
       scrollDirection: Axis.vertical,
-      crossAxisCount: 2,
       uri: uri!,
       heightRatio: 1.35,
       widthRatio: 1,
