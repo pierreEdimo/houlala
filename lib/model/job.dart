@@ -1,4 +1,4 @@
-import 'package:houlala/model/page.dart';
+import 'package:houlala/model/populated_page.dart';
 
 class Job {
   Job({
@@ -15,7 +15,7 @@ class Job {
   });
 
   final String? id;
-  final PageModel? page;
+  final PopulatedPage? page;
   final String? jobTitel;
   final String? jobDescription;
   final String? jobLocationCity;
@@ -27,7 +27,7 @@ class Job {
 
   factory Job.fromJson(Map<String, dynamic> json) => Job(
     id: json["_id"],
-    page: PageModel.fromJson(json["page"]),
+    page: PopulatedPage.fromJson(json["page"]),
     jobTitel: json["jobTitel"],
     jobDescription: json["jobDescription"],
     jobLocationCity: json["jobLocation_city"],
