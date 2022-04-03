@@ -18,6 +18,7 @@ class AllPostsScreen extends StatelessWidget {
           child: ListOfPosts(
             scrollDirection: Axis.vertical,
             uri: dotenv.env['POST_URL'],
+            textError: "Aucun Posts n'a encore ete cree",
           ),
         ),
       ),
