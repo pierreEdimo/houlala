@@ -12,16 +12,20 @@ class GridOfProducts extends StatelessWidget {
   final double? widthRatio;
   final double? heightRatio;
   final Widget? child;
+  final String? textError;
+  final double? height;
 
-  const GridOfProducts({
-    Key? key,
-    this.uri,
-    this.scrollDirection,
-    this.crossAxisCount,
-    this.widthRatio,
-    this.heightRatio,
-    this.child,
-  }) : super(key: key);
+  const GridOfProducts(
+      {Key? key,
+      this.uri,
+      this.scrollDirection,
+      this.crossAxisCount,
+      this.widthRatio,
+      this.heightRatio,
+      this.child,
+      this.textError,
+      this.height})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +47,8 @@ class GridOfProducts extends StatelessWidget {
                         widthRatio: widthRatio,
                         scrollDirection: scrollDirection,
                         crossAxisCount: crossAxisCount,
+                        height: height,
+                        textError: textError,
                       ))
                     : GridList(
                         products: products,
@@ -50,6 +56,8 @@ class GridOfProducts extends StatelessWidget {
                         widthRatio: widthRatio,
                         scrollDirection: scrollDirection,
                         crossAxisCount: crossAxisCount,
+                        height: height,
+                        textError: textError,
                       )
               ],
             );
@@ -68,6 +76,8 @@ class GridList extends StatelessWidget {
   final int? crossAxisCount;
   final double? widthRatio;
   final double? heightRatio;
+  final String? textError;
+  final double? height;
 
   const GridList({
     Key? key,
@@ -76,17 +86,18 @@ class GridList extends StatelessWidget {
     this.widthRatio,
     this.crossAxisCount,
     this.scrollDirection,
+    this.textError,
+    this.height,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return products!.isEmpty
         ? SizedBox(
-            height: MediaQuery.of(context).size.height * 0.25,
-            child: const Center(
+            height: height,
+            child: Center(
               child: Text(
-                "il n'y a pas encore de produits \n "
-                "svp reessayez plutard",
+                textError!,
                 textAlign: TextAlign.center,
               ),
             ),
