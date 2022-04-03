@@ -31,8 +31,11 @@ class ProductContainer extends StatelessWidget {
             ),
             Text(
               product!.name!,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                  fontWeight: FontWeight.bold, fontFamily: 'PoppinsBold'),
+                  fontWeight: FontWeight.bold, fontFamily: 'PoppinsBold',
+              ),
             ),
             Text(
               '${product!.initialPrice!.toString()} FCFA',
