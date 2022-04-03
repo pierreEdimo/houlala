@@ -11,7 +11,7 @@ class GridOfJobs extends StatelessWidget {
   final Axis? scrollDirection;
   final double? ratio;
   final double? height;
-  final String? pageName;
+  final String? textError;
 
   const GridOfJobs({
     Key? key,
@@ -20,7 +20,7 @@ class GridOfJobs extends StatelessWidget {
     this.scrollDirection,
     this.ratio,
     this.height,
-    this.pageName,
+    this.textError,
   }) : super(key: key);
 
   @override
@@ -39,6 +39,7 @@ class GridOfJobs extends StatelessWidget {
           List<Job> jobs = snapshot.data!;
 
           return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               child != null ? child! : Container(),
               jobs.isEmpty
@@ -46,8 +47,7 @@ class GridOfJobs extends StatelessWidget {
                       height: MediaQuery.of(context).size.height * height!,
                       child: Center(
                         child:
-                            Text("$pageName! n'a pas encore insere de Job\n"
-                                "veuillez reessayer plutard", textAlign: TextAlign.center,),
+                            Text( textError!, textAlign: TextAlign.center,),
                       ),
                     )
                   :
