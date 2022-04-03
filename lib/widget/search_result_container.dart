@@ -27,6 +27,9 @@ class SearchResultContainer extends StatelessWidget {
     final List<Widget> _widgetOptions = [
       StandardCustomContainer(
         child: GridOfProducts(
+          height: MediaQuery.of(context).size.height * 0.8,
+          textError: "Aucuns produits appelle ${searchWorld} n'a ete trouve\n"
+              "svp verifiez plutard",
           uri: '${dotenv.env['PRODUCT_URL']}/search?searchword=$searchWorld',
           crossAxisCount: 2,
           scrollDirection: Axis.vertical,
@@ -39,11 +42,15 @@ class SearchResultContainer extends StatelessWidget {
           uri: '${dotenv.env['CATEGORY_URL']}/search?searchword=$searchWorld',
           shrinkwrap: true,
           height: 0.8,
-          error: "Aucunes categories n'ont ete trouvee",
+          error: "Aucunes categories appeles $searchWorld n'a ete trouvee\n"
+              "veuillez reessayer plutard",
         ),
       ),
       StandardCustomContainer(
         child: GridPages(
+          height: MediaQuery.of(context).size.height * 0.8,
+          textError: "Aucuns magasins appele $searchWorld n'a ete trouve\n"
+              "svp veuillez reessayer plutard",
           uri: '${dotenv.env['PAGE_URL']}/search?searchword=$searchWorld',
           direction: Axis.vertical,
         ),
@@ -52,15 +59,18 @@ class SearchResultContainer extends StatelessWidget {
         child: ListOfPosts(
           scrollDirection: Axis.vertical,
           uri: '${dotenv.env['POST_URL']}/search?searchWord=$searchWorld',
-          height: 0.7,
+          height: MediaQuery.of(context).size.height * 0.8 ,
+          textError: "Aucuns Posts titre $searchWorld n'a ete trouve\n"
+              "veuillez reessayer plutard",
         ),
       ),
       StandardCustomContainer(
         child: GridOfJobs(
           uri: '${dotenv.env['JOB_URL']}/search?searchword=$searchWorld',
           scrollDirection: Axis.vertical,
-          pageName: "",
-          height: 0.7,
+         textError: "Aucuns jobs titre $searchWorld n'a ete trouve\n "
+             "veuillez reessayer plutard",
+          height: 0.8,
         ),
       )
     ];
