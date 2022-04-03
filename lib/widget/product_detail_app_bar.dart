@@ -25,8 +25,8 @@ class ProductDetailAppBar extends StatelessWidget with PreferredSizeWidget {
       ),
       actions: [
         CustomButtonContainer(
-          icon: const FaIcon(FontAwesomeIcons.solidHeart),
-          onPressed: () => print("Hello shopping"),
+          icon: const FaIcon(FontAwesomeIcons.heart),
+          onPressed: () {},
         ),
       ],
       automaticallyImplyLeading: false,
