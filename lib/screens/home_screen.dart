@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:houlala/widget/grid_of_jobs.dart';
 import 'package:houlala/widget/grid_pages.dart';
 import 'package:houlala/widget/list_of_posts.dart';
 import 'package:houlala/widget/standard_custom_app_bar.dart';
@@ -24,7 +25,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             CustomBoxContainer(
               child: SizedBox(
-                height: 170,
+                height: MediaQuery.of(context).size.height * 0.3,
                 child: ListOfCategories(
                   child: Container(
                     margin: const EdgeInsets.only(bottom: 5.0),
@@ -43,6 +44,8 @@ class HomeScreen extends StatelessWidget {
             standardSizedBox,
             CustomBoxContainer(
               child: GridOfProducts(
+                height: MediaQuery.of(context).size.height * 0.25,
+                textError: "Aucuns Produits",
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 5.0),
                   child: const FlexibleRow(
@@ -63,6 +66,8 @@ class HomeScreen extends StatelessWidget {
               child: SizedBox(
                 height: 130,
                 child: GridPages(
+                  height: 115,
+                  textError: "Aucunes Pages",
                   child: Container(
                     margin: const EdgeInsets.only(bottom: 5.0),
                     child: const FlexibleRow(
@@ -78,16 +83,34 @@ class HomeScreen extends StatelessWidget {
             standardSizedBox,
             CustomBoxContainer(
               child: SizedBox(
-                height: 350,
+                height: MediaQuery.of(context).size.height * 0.5,
                 child: ListOfPosts(
+                  textError: "Aucuns posts",
                   scrollDirection: Axis.horizontal,
-                  height: 0.5,
+                  height: MediaQuery.of(context).size.height * 0.45,
                   child: const FlexibleRow(
                     title: "Quelques posts recents",
                     urlValue: "/all_posts",
                   ),
                   uri: '${dotenv.env['POST_URL']}/getRandomPosts?size=10',
                 ),
+              ),
+            ),
+            standardSizedBox,
+            CustomBoxContainer(
+              child: GridOfJobs(
+                child: const Text(
+                  "Quelques offres de Jobs",
+                  style: TextStyle(
+                    fontFamily: "PoppinsBold",
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                  ),
+                ),
+                scrollDirection: Axis.vertical,
+                ratio: 2.5,
+                uri: '${dotenv.env['JOB_URL']}/getRandomJobs?size=5',
+                height: 0.25,
               ),
             )
           ],
