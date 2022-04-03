@@ -11,8 +11,10 @@ class FruitsLettucesBoxContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.35,
+      height: MediaQuery.of(context).size.height * 0.4,
       child: GridOfProducts(
+        height: MediaQuery.of(context).size.height * 0.25,
+        textError: "Aucun fruits et legumes",
         child: Container(
           margin: const EdgeInsets.only(bottom: 5.0),
           child: Text(
