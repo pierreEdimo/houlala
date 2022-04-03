@@ -9,9 +9,15 @@ class ListOfPosts extends StatelessWidget {
   final Widget? child;
   final double? height;
   final Axis? scrollDirection;
+  final String? textError;
 
   const ListOfPosts(
-      {Key? key, this.uri, this.child, this.height, this.scrollDirection})
+      {Key? key,
+      this.uri,
+      this.child,
+      this.height,
+      this.scrollDirection,
+      this.textError})
       : super(key: key);
 
   @override
@@ -23,7 +29,7 @@ class ListOfPosts extends StatelessWidget {
           return SizedBox(
             height: height == null
                 ? MediaQuery.of(context).size.height * 1
-                : MediaQuery.of(context).size.height * height!,
+                : height!,
             child: Center(
               child: Text(snapshot.error.toString()),
             ),
@@ -33,16 +39,17 @@ class ListOfPosts extends StatelessWidget {
           List<Post> posts = snapshot.data!;
 
           return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               child != null ? child! : Container(),
               posts.isEmpty
                   ? SizedBox(
                       height: height == null
                           ? MediaQuery.of(context).size.height * 1
-                          : MediaQuery.of(context).size.height * height!,
-                      child: const Center(
+                          : height!,
+                      child: Center(
                         child: Text(
-                          "aucuns Posts n'a encore ete fait",
+                          textError!,
                           textAlign: TextAlign.center,
                         ),
                       ),
