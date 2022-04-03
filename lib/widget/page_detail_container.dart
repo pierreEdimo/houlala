@@ -45,10 +45,14 @@ class PageDetailContainer extends StatelessWidget {
                 page: page,
               ),
               PageProductContainer(
+                textError: "${page.name} n'a pas encore insere de produits\n"
+                    "vvp verifiez plutard",
                 uri:
                     '${dotenv.env['PRODUCT_URL']}/filterProductByPageId?pageId=${page.id!}',
               ),
               PagePostContainer(
+                textError: "${page.name} n'a pas encore insere de posts\n"
+                    "svp venez verifier plutard",
                 url:
                     '${dotenv.env['POST_URL']}/filterPostByPageId?pageId=${page.id!}',
               ),
