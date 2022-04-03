@@ -8,9 +8,17 @@ class GridPages extends StatelessWidget {
   final String? uri;
   final Axis? direction;
   final Widget? child;
+  final String? textError;
+  final double? height;
 
-  const GridPages({Key? key, this.uri, this.direction, this.child})
-      : super(key: key);
+  const GridPages({
+    Key? key,
+    this.uri,
+    this.direction,
+    this.child,
+    this.textError,
+    this.height
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,31 +32,41 @@ class GridPages extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               child != null ? child! : Container(),
-              direction == Axis.horizontal
-                  ? Expanded(
-                      child: ListView(
-                        padding: const EdgeInsets.all(0),
-                        scrollDirection: direction!,
-                        shrinkWrap: true,
-                        physics: const ClampingScrollPhysics(),
-                        children: pages
-                            .map(
-                              (PageModel page) => PageContainer(
-                                page: page,
-                              ),
-                            )
-                            .toList(),
+              pages.isEmpty
+                  ? SizedBox(
+                      height: height!,
+                      child: Center(
+                        child: Text(
+                          textError!,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     )
-                  : ListView(
-                     shrinkWrap: true,
-                      physics: const ClampingScrollPhysics(),
-                      children: pages
-                          .map((PageModel page) => PageContainer(
-                                page: page,
-                              ))
-                          .toList(),
-                    )
+                  : direction == Axis.horizontal
+                      ? Expanded(
+                          child: ListView(
+                            padding: const EdgeInsets.all(0),
+                            scrollDirection: direction!,
+                            shrinkWrap: true,
+                            physics: const ClampingScrollPhysics(),
+                            children: pages
+                                .map(
+                                  (PageModel page) => PageContainer(
+                                    page: page,
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        )
+                      : ListView(
+                          shrinkWrap: true,
+                          physics: const ClampingScrollPhysics(),
+                          children: pages
+                              .map((PageModel page) => PageContainer(
+                                    page: page,
+                                  ))
+                              .toList(),
+                        )
             ],
           );
         }
