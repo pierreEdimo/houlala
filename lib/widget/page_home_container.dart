@@ -36,6 +36,9 @@ class PageHomeContainer extends StatelessWidget {
         SizedBox(
           height: 280,
           child: GridOfProducts(
+            height: MediaQuery.of(context).size.height * 0.25,
+            textError: "${pageModel!.name} n'a pas encore insere de produits\n"
+                "svp veuillez verifier plutard",
             child: Container(
               margin: const EdgeInsets.only(bottom: 5.0),
               child: const Text(
@@ -56,15 +59,22 @@ class PageHomeContainer extends StatelessWidget {
         ),
         standardSizedBox,
         SizedBox(
-          height: 350,
+          height: MediaQuery.of(context).size.height * 0.5,
           child: ListOfPosts(
+            textError: "${pageModel!.name!} n'a pas encore insere de posts\n"
+                "svp venez verifier plutard",
             scrollDirection: Axis.horizontal,
-            height: 0.5,
-            child:  FlexibleRow(
-              title: "Quelques posts par ${pageModel!.name}",
-              urlValue: "/all_posts",
+            height: MediaQuery.of(context).size.height * 0.45,
+            child: Text(
+              "Quelques posts par ${pageModel!.name}",
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 17,
+                fontFamily: "PoppinsBold"
+              ),
             ),
-            uri: '${dotenv.env['POST_URL']}/getRandomPostsByPageId?size=10&pageId=${pageModel!.id}',
+            uri:
+                '${dotenv.env['POST_URL']}/getRandomPostsByPageId?size=10&pageId=${pageModel!.id}',
           ),
         )
       ],
