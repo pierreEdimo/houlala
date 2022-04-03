@@ -14,7 +14,8 @@ class PageJobsContainer extends StatelessWidget {
       height: height!,
       ratio: 2.5,
       uri: uri!,
-      pageName: pageName!,
+       textError: "$pageName! n'a insire aucuns Jobs pour le moment\n"
+           "svp verifiez plutard",
     );
   }
 }
