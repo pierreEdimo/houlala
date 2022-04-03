@@ -24,7 +24,7 @@ class _SearchScreenState extends State<SearchScreen> {
         controller: _controller!,
       ),
       body: searchWord!.isEmpty
-          ? const Center(child:  Text("Hello"))
+          ? Container()
           : SearchResultContainer(
               searchWorld: searchWord,
             ),
