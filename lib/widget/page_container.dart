@@ -15,7 +15,7 @@ class PageContainer extends StatelessWidget {
           .pushNamed(PageDetailScreen.screenName, arguments: page!.id!),
       child: Container(
         margin:const  EdgeInsets.only(bottom: 8.0),
-        width: MediaQuery.of(context).size.width * 0.8,
+        width: MediaQuery.of(context).size.width * 0.85,
         height: 90,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,10 +77,12 @@ class PageContainer extends StatelessWidget {
                       const SizedBox(
                         width: 3.0,
                       ),
-                      Text(
-                        '${page!.headQuartersCity!} . ${page!.headQuartersCountry}',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      Flexible(
+                        child: Text(
+                          '${page!.headQuartersCity!} . ${page!.headQuartersCountry}',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ],
                   ),
