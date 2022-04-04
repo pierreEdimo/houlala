@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 
 class FlexibleRow extends StatelessWidget {
   final String? title;
@@ -15,18 +16,17 @@ class FlexibleRow extends StatelessWidget {
         Flexible(
           child: Text(
             title!,
-            style: const TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'PoppinsBold',
-            ),
+            style: standardStyle,
           ),
         ),
         InkWell(
           onTap: () => Navigator.of(context).pushNamed(urlValue!),
           child: const Text(
             "voire tout",
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontFamily: 'PoppinsBold'
+            ),
           ),
         )
       ],

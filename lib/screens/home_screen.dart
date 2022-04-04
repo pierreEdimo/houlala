@@ -99,13 +99,9 @@ class HomeScreen extends StatelessWidget {
             standardSizedBox,
             CustomBoxContainer(
               child: GridOfJobs(
-                child: const Text(
+                child:  Text(
                   "Quelques offres de Jobs",
-                  style: TextStyle(
-                    fontFamily: "PoppinsBold",
-                    fontWeight: FontWeight.bold,
-                    fontSize: 17,
-                  ),
+                  style: standardStyle,
                 ),
                 scrollDirection: Axis.vertical,
                 ratio: 2.5,

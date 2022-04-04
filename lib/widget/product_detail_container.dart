@@ -172,12 +172,9 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                       ),
                       CustomElevatedButton(
                         onPressed: () => {},
-                        child: const Text(
+                        child: Text(
                           "Ajouter au Panier",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'PoppinsBold',
-                              fontSize: 18.0),
+                          style: standardStyle,
                         ),
                       ),
                     ],

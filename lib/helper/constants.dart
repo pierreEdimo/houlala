@@ -9,3 +9,9 @@ TextStyle detailTitleStyle = const TextStyle(
   fontFamily: 'PoppinsBold',
   fontSize: 28.0,
 );
+
+TextStyle standardStyle = const TextStyle(
+  fontWeight: FontWeight.bold,
+  fontFamily: 'PoppinsBold',
+  fontSize: 17.0,
+);

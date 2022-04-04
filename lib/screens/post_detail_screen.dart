@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
+import 'package:houlala/widget/comment_input.dart';
 import 'package:houlala/widget/post_detail_container.dart';
 
 class PostDetailScreen extends StatelessWidget {
@@ -44,15 +45,10 @@ class PostDetailScreen extends StatelessWidget {
                     Expanded(
                       child: Container(
                         color: const Color(0xf2f2f2f2),
-                        child: TextFormField(
+                        child: CommentInput(
                           controller: _controller,
                           minLines: 1,
                           maxLines: 3,
-                          decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 5.0, vertical: 10.0),
-                              hintText: "ajouter un commentaire"),
                         ),
                       ),
                     ),

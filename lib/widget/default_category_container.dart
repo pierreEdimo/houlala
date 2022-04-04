@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/transformed_container.dart';
 
 import 'app_bar_with_return.dart';
@@ -36,10 +37,7 @@ class DefaultCategoryContainer extends StatelessWidget {
             children: [
               Text(
                 categoryName!,
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'PoppinsBold',
-                    fontSize: 28.0),
+                style: detailTitleStyle,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.4,

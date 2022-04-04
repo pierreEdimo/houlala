@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 
 class StandardCustomContainer extends StatelessWidget {
   final Widget? child;
@@ -8,7 +8,10 @@ class StandardCustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 10.0),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 5.0,
+        vertical: 10.0,
+      ),
       child: child!,
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/grid_pages.dart';
 
 class ShopContainerBox extends StatelessWidget {
@@ -16,10 +17,7 @@ class ShopContainerBox extends StatelessWidget {
           margin: const EdgeInsets.only(bottom: 5.0),
           child: Text(
             title!,
-            style: const TextStyle(
-                fontSize: 17.0,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'PoppinsBold'),
+            style: standardStyle,
           ),
         ),
         direction: Axis.horizontal,

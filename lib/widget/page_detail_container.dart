@@ -46,7 +46,7 @@ class PageDetailContainer extends StatelessWidget {
               ),
               PageProductContainer(
                 textError: "${page.name} n'a pas encore insere de produits\n"
-                    "vvp verifiez plutard",
+                    "svp verifiez plutard",
                 uri:
                     '${dotenv.env['PRODUCT_URL']}/filterProductByPageId?pageId=${page.id!}',
               ),
