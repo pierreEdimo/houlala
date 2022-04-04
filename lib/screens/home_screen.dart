@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                   child: Container(
                     margin: const EdgeInsets.only(bottom: 5.0),
                     child: const FlexibleRow(
-                      title: 'Nos Partenaires',
+                      title: 'Quelques Magasins',
                       urlValue: "/all_pages",
                     ),
                   ),
@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 scrollDirection: Axis.vertical,
                 ratio: 2.5,
-                uri: '${dotenv.env['JOB_URL']}/getRandomJobs?size=5',
+                uri: '${dotenv.env['JOB_URL']}/getRandomJobs?size=4',
                 height: 0.25,
               ),
             )
