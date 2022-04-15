@@ -14,9 +14,10 @@ class PagePostContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListOfPosts(
+      width: MediaQuery.of(context).size.width * 1,
       textError: textError,
       scrollDirection: Axis.vertical,
-      height: MediaQuery.of(context).size.height * 0.25,
+      errorHeight: MediaQuery.of(context).size.height * 0.25,
       uri: url!,
     );
   }

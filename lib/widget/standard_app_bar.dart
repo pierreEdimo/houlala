@@ -6,12 +6,12 @@ import 'custom_button_container.dart';
 class StandardAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   final Size preferredSize;
-  final FaIcon? icon;
+  final CustomButtonContainer? button;
   final String? title;
 
   StandardAppBar({
     this.title,
-    this.icon,
+    this.button,
     Key? key,
   })  : preferredSize = const Size.fromHeight(60.0),
         super(key: key);
@@ -24,11 +24,8 @@ class StandardAppBar extends StatelessWidget with PreferredSizeWidget {
         title!,
       ),
       actions: [
-        icon != null
-            ? CustomButtonContainer(
-                icon: icon!,
-                onPressed: () {},
-              )
+        button != null
+            ? button!
             : Container()
       ],
       automaticallyImplyLeading: false,

@@ -23,7 +23,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       ),
       actions: [
         CustomButtonContainer(
-          icon: const FaIcon(FontAwesomeIcons.search),
+          icon: const FaIcon(FontAwesomeIcons.magnifyingGlass),
           onPressed: () => Navigator.of(context).pushNamed("/search"),
         ),
         // CustomButtonContainer(
@@ -31,7 +31,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         //   onPressed: () => print("news"),
         // ),
         CustomButtonContainer(
-          icon: const FaIcon(FontAwesomeIcons.shoppingBag),
+          icon: const FaIcon(FontAwesomeIcons.cartShopping),
           onPressed: () => print("Hello shopping"),
         ),
       ],

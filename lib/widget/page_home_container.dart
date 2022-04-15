@@ -6,9 +6,8 @@ import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/page.dart';
 import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/grid_of_products.dart';
-
-import 'flexible_row.dart';
 import 'list_of_posts.dart';
+import 'package:sizer/sizer.dart';
 
 class PageHomeContainer extends StatelessWidget {
   final PageModel? pageModel;
@@ -17,6 +16,7 @@ class PageHomeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -37,7 +37,7 @@ class PageHomeContainer extends StatelessWidget {
           height: 280,
           child: GridOfProducts(
             height: MediaQuery.of(context).size.height * 0.25,
-            textError: "${pageModel!.name} n'a pas encore insere de produits\n"
+            textError: "${pageModel!.name} n'a pas encore insere de produits"
                 "svp veuillez verifier plutard",
             child: Container(
               margin: const EdgeInsets.only(bottom: 5.0),
@@ -59,14 +59,15 @@ class PageHomeContainer extends StatelessWidget {
         ),
         standardSizedBox,
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.5,
+          height:  285,
           child: ListOfPosts(
-            textError: "${pageModel!.name!} n'a pas encore insere de posts\n"
+            width: 286,
+            textError: "${pageModel!.name!} n'a pas encore insere de posts"
                 "svp venez verifier plutard",
             scrollDirection: Axis.horizontal,
-            height: MediaQuery.of(context).size.height * 0.45,
+            errorHeight: 255,
             child: Text(
-              "Quelques posts par ${pageModel!.name}",
+              "posts par ${pageModel!.name}",
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 17,

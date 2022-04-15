@@ -6,6 +6,7 @@ class Post {
   final String? content;
   final PopulatedPage? page;
   final String? id;
+  final DateTime? createdAt;
 
   Post({
     this.page,
@@ -13,6 +14,7 @@ class Post {
     this.content,
     this.id,
     this.title,
+    this.createdAt,
   });
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
@@ -20,6 +22,7 @@ class Post {
       title: json['title'] as String,
       id: json['_id'] as String,
       content: json['content'] as String,
+      createdAt: DateTime.parse(json['createdAt']),
       page: PopulatedPage.fromJson(json['page']));
 }
 

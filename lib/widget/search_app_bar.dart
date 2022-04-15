@@ -24,7 +24,6 @@ class SearchAppBar extends StatelessWidget with PreferredSizeWidget {
       leading: CustomButtonContainer(
         icon: const FaIcon(
           FontAwesomeIcons.angleLeft,
-          size: 24,
         ),
         onPressed: () {
           Navigator.of(context).pop();

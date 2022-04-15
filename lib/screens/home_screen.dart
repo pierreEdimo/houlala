@@ -83,11 +83,12 @@ class HomeScreen extends StatelessWidget {
             standardSizedBox,
             CustomBoxContainer(
               child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.5,
+                height: 285,
                 child: ListOfPosts(
                   textError: "Aucuns posts",
+                  width: 286,
                   scrollDirection: Axis.horizontal,
-                  height: MediaQuery.of(context).size.height * 0.45,
+                  errorHeight: 255,
                   child: const FlexibleRow(
                     title: "Quelques posts recents",
                     urlValue: "/all_posts",

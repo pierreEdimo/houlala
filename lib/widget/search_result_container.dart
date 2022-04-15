@@ -59,7 +59,7 @@ class SearchResultContainer extends StatelessWidget {
         child: ListOfPosts(
           scrollDirection: Axis.vertical,
           uri: '${dotenv.env['POST_URL']}/search?searchWord=$searchWorld',
-          height: MediaQuery.of(context).size.height * 0.8 ,
+          errorHeight: MediaQuery.of(context).size.height * 0.8 ,
           textError: "Aucuns Posts titre $searchWorld n'a ete trouve\n"
               "veuillez reessayer plutard",
         ),

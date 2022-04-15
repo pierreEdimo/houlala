@@ -8,8 +8,6 @@ class PostAdditionalInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
-      decoration:
-          BoxDecoration(border: Border.all(color: Colors.grey, width: 0.2)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

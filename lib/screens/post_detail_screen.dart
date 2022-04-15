@@ -2,9 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:houlala/widget/app_bar_with_return.dart';
 import 'package:houlala/widget/comment_input.dart';
-import 'package:houlala/widget/post_detail_container.dart';
+import 'package:houlala/widget/post_body_container.dart';
 
 class PostDetailScreen extends StatelessWidget {
   static const routeName = "/post_detail";
@@ -16,16 +15,12 @@ class PostDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
-      appBar: AppBarWithReturn(
-        elevation: 1,
-        title: "",
-      ),
       body: Column(
         children: [
           Expanded(
             child: SingleChildScrollView(
               child: SizedBox(
-                child: PostDetailContainer(
+                child: PostBodyContainer(
                   uri: '${dotenv.env['POST_URL']}/$id',
                 ),
               ),

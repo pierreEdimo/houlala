@@ -7,16 +7,20 @@ import '../model/post.dart';
 class ListOfPosts extends StatelessWidget {
   final String? uri;
   final Widget? child;
-  final double? height;
+  final double? errorHeight;
   final Axis? scrollDirection;
   final String? textError;
+  final double? width;
+  final double? postHeight;
 
   const ListOfPosts(
       {Key? key,
       this.uri,
       this.child,
-      this.height,
+      this.errorHeight,
       this.scrollDirection,
+      this.width,
+      this.postHeight,
       this.textError})
       : super(key: key);
 
@@ -27,9 +31,9 @@ class ListOfPosts extends StatelessWidget {
       builder: (context, AsyncSnapshot<List<Post>> snapshot) {
         if (snapshot.hasError) {
           return SizedBox(
-            height: height == null
+            height: errorHeight == null
                 ? MediaQuery.of(context).size.height * 1
-                : height!,
+                : errorHeight!,
             child: Center(
               child: Text(snapshot.error.toString()),
             ),
@@ -44,9 +48,9 @@ class ListOfPosts extends StatelessWidget {
               child != null ? child! : Container(),
               posts.isEmpty
                   ? SizedBox(
-                      height: height == null
+                      height: errorHeight == null
                           ? MediaQuery.of(context).size.height * 1
-                          : height!,
+                          : errorHeight!,
                       child: Center(
                         child: Text(
                           textError!,
@@ -62,6 +66,8 @@ class ListOfPosts extends StatelessWidget {
                             children: posts
                                 .map(
                                   (Post post) => PostContainer(
+                                    scrollDirection: scrollDirection,
+                                    width: width!,
                                     post: post,
                                   ),
                                 )
@@ -74,6 +80,8 @@ class ListOfPosts extends StatelessWidget {
                           padding: EdgeInsets.zero,
                           children: posts
                               .map((Post post) => PostContainer(
+                                    scrollDirection: Axis.vertical,
+                                    height: postHeight,
                                     post: post,
                                   ))
                               .toList(),
