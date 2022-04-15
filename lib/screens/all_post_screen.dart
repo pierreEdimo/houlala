@@ -16,6 +16,8 @@ class AllPostsScreen extends StatelessWidget {
       body: CustomBoxContainer(
         child: SingleChildScrollView(
           child: ListOfPosts(
+            width: MediaQuery.of(context).size.width * 1,
+            postHeight: 270,
             scrollDirection: Axis.vertical,
             uri: dotenv.env['POST_URL'],
             textError: "Aucun Posts n'a encore ete cree",
