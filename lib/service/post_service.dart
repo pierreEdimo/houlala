@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:houlala/model/found_post.dart';
 import 'package:houlala/model/post.dart';
 import 'package:http/http.dart';
 
@@ -21,13 +22,13 @@ class PostService extends ChangeNotifier{
     }
   }
 
-  Future<Post> fetchSinglePost(String uri) async {
+  Future<FoundPost> fetchSinglePost(String uri) async {
     var url = Uri.parse(uri);
 
     Response response = await get(url);
 
     if (response.statusCode == 200) {
-      return Post.fromJson(jsonDecode(response.body));
+      return FoundPost.fromJson(jsonDecode(response.body));
     } else {
       throw "No Post found";
     }
