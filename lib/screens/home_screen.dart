@@ -8,7 +8,7 @@ import 'package:houlala/widget/custom_box_container.dart';
 import 'package:houlala/widget/flexible_row.dart';
 import 'package:houlala/widget/grid_of_products.dart';
 import 'package:houlala/widget/list_of_categories.dart';
-
+import 'package:sizer/sizer.dart';
 import '../helper/constants.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -83,12 +83,12 @@ class HomeScreen extends StatelessWidget {
             standardSizedBox,
             CustomBoxContainer(
               child: SizedBox(
-                height: 285,
+                height: 40.h,
                 child: ListOfPosts(
                   textError: "Aucuns posts",
                   width: 286,
                   scrollDirection: Axis.horizontal,
-                  errorHeight: 255,
+                  errorHeight: 35.h,
                   child: const FlexibleRow(
                     title: "Quelques posts recents",
                     urlValue: "/all_posts",
