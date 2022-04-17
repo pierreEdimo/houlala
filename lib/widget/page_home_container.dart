@@ -59,13 +59,13 @@ class PageHomeContainer extends StatelessWidget {
         ),
         standardSizedBox,
         SizedBox(
-          height:  285,
+          height:  40.h,
           child: ListOfPosts(
             width: 286,
             textError: "${pageModel!.name!} n'a pas encore insere de posts"
                 "svp venez verifier plutard",
             scrollDirection: Axis.horizontal,
-            errorHeight: 255,
+            errorHeight: 35.h,
             child: Text(
               "posts par ${pageModel!.name}",
               style: const TextStyle(
