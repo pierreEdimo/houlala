@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:houlala/screens/all_post_screen.dart';
 import 'package:houlala/screens/all_product_categories_screen.dart';
 import 'package:houlala/screens/all_fruits_and_lettuces_screen.dart';
@@ -11,6 +12,7 @@ import 'package:houlala/screens/page_detail_screen.dart';
 import 'package:houlala/screens/post_detail_screen.dart';
 import 'package:houlala/screens/product_detail_screen.dart';
 import 'package:houlala/screens/search_screen.dart';
+import 'package:houlala/screens/sign_up_screen.dart';
 import 'package:houlala/service/auth_service.dart';
 import 'package:houlala/service/category_service.dart';
 import 'package:houlala/service/job_service.dart';
@@ -25,6 +27,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 var box = Hive.box('loggedState');
+const storage = FlutterSecureStorage();
 
 Future main() async {
   await Hive.initFlutter();
@@ -94,7 +97,8 @@ class MyApp extends StatelessWidget {
               JobsDetailScreen.routeName: (context) => const JobsDetailScreen(),
               '/all_posts': (context) => const AllPostsScreen(),
               PostDetailScreen.routeName: (context) => PostDetailScreen(),
-              '/search': (context) => const SearchScreen()
+              '/search': (context) => const SearchScreen(),
+              '/signUp': (context) => const SignUpScreen(),
             },
           );
         });
