@@ -4,6 +4,8 @@ import 'package:houlala/widget/sign_in_container.dart';
 import 'package:houlala/widget/standard_app_bar.dart';
 import 'package:provider/provider.dart';
 
+import '../widget/user_screen_container.dart';
+
 class UserScreen extends StatelessWidget {
   const UserScreen({Key? key}) : super(key: key);
 
@@ -18,12 +20,7 @@ class UserScreen extends StatelessWidget {
       ),
       body: logInState != 'loggedIn'
           ? const SignInContainer()
-          : Center(
-              child: ElevatedButton(
-                  onPressed: () =>
-                      Provider.of<AuthService>(context, listen: false).logOut(),
-                  child: const Text("Log Out")),
-            ),
+          : const UserScreenContainer(),
     );
   }
 }
