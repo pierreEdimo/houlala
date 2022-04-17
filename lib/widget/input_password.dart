@@ -21,10 +21,10 @@ class PasswordInput extends StatelessWidget {
       validator: (value) {
         value = controller!.text;
         if (value.isEmpty) {
-          return 'password is required';
+          return 'Inserer un Mot de passe';
         }
         if (!passWordRex.hasMatch(value)) {
-          return 'invalid password';
+          return 'Mot de passe invalide';
         }
         return null;
       },
