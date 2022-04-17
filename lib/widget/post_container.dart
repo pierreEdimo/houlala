@@ -51,17 +51,27 @@ class PostContainer extends StatelessWidget {
                             PostTitle(
                               post: post,
                             ),
-                            PostContent(
-                              post: post,
-                            ),
-                            const SizedBox(
-                              height: 5.0,
-                            ),
-                            Expanded(
-                              child: PostImage(
-                                post: post,
-                              ),
-                            ),
+                            post!.imageUrl!.isEmpty
+                                ? Flexible(
+                                  child: PostContent(
+                                    post: post,
+                                  ),
+                                )
+                                : PostContent(
+                                    post: post,
+                                  ),
+                            post!.imageUrl!.isEmpty
+                                ? Container()
+                                : const SizedBox(
+                                    height: 5.0,
+                                  ),
+                            post!.imageUrl!.isEmpty
+                                ? Container()
+                                : Expanded(
+                                    child: PostImage(
+                                      post: post,
+                                    ),
+                                  ),
                           ],
                         ),
                       )
@@ -211,9 +221,9 @@ class PostContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       post!.content!,
-      maxLines: post!.imageUrl!.isEmpty ? 7 : 1,
+      maxLines: post!.imageUrl!.isEmpty ? 10 : 1,
       overflow: TextOverflow.ellipsis,
-      style: const TextStyle(fontSize: 13),
+      style: const TextStyle(fontSize: 14),
     );
   }
 }
