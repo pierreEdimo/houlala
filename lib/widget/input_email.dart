@@ -17,9 +17,9 @@ class EmailInput extends StatelessWidget {
       validator: (value) {
         value = controller!.text;
         if (value.isEmpty) {
-          return 'email is required';
+          return 'Inserer une adresse E-mail';
         } else if (!value.contains('@')) {
-          return 'please enter a valid email';
+          return 'Svp entrer une E-mail valide';
         }
         return null;
       },
