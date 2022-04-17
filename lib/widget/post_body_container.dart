@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/model/found_post.dart';
 import 'package:houlala/widget/post_detail_app_bar.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../helper/constants.dart';
-import '../model/post.dart';
 import '../screens/page_detail_screen.dart';
 import '../service/post_service.dart';
 
@@ -20,9 +20,9 @@ class PostBodyContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: Provider.of<PostService>(context).fetchSinglePost(uri!),
-      builder: (context, AsyncSnapshot<Post> snapshot) {
+      builder: (context, AsyncSnapshot<FoundPost> snapshot) {
         if (snapshot.hasData) {
-          Post post = snapshot.data!;
+          FoundPost foundPost = snapshot.data!;
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: Column(
@@ -35,14 +35,14 @@ class PostBodyContainer extends StatelessWidget {
                       InkWell(
                         onTap: () => Navigator.of(context).pushNamed(
                             PageDetailScreen.screenName,
-                            arguments: post.page!.id),
+                            arguments: foundPost.foundPost!.page!.id),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CircleAvatar(
                               radius: 30,
                               backgroundImage: NetworkImage(
-                                post.page!.imageUrl!,
+                                foundPost.foundPost!.page!.imageUrl!,
                               ),
                             ),
                             const SizedBox(
@@ -54,7 +54,7 @@ class PostBodyContainer extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      post.page!.name!,
+                                      foundPost.foundPost!.page!.name!,
                                       style: const TextStyle(
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold,
@@ -65,7 +65,7 @@ class PostBodyContainer extends StatelessWidget {
                                       width: 10.0,
                                     ),
                                     Text(
-                                      'le ${DateFormat.yMMMMEEEEd('fr').format(post.createdAt!)}',
+                                      'le ${DateFormat.yMMMMEEEEd('fr').format(foundPost.foundPost!.createdAt!)}',
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 12,
@@ -85,7 +85,7 @@ class PostBodyContainer extends StatelessWidget {
                                       width: 10,
                                     ),
                                     Text(
-                                      '${post.page!.headQuarterCity!}, ${post.page!.headQuarterCountry!}',
+                                      '${foundPost.foundPost!.page!.headQuarterCity!}, ${foundPost.foundPost!.page!.headQuarterCountry!}',
                                       style: const TextStyle(
                                           fontSize: 12.0,
                                           fontWeight: FontWeight.bold,
@@ -102,7 +102,7 @@ class PostBodyContainer extends StatelessWidget {
                         height: 5.0,
                       ),
                       Text(
-                        post.title!,
+                        foundPost.foundPost!.title!,
                         style: const TextStyle(
                           fontFamily: 'PoppinsBold',
                           fontWeight: FontWeight.bold,
@@ -110,13 +110,13 @@ class PostBodyContainer extends StatelessWidget {
                         ),
                       ),
                       Markdown(
-                        data: post.content!,
+                        data: foundPost.foundPost!.content!,
                         shrinkWrap: true,
                         physics: const ClampingScrollPhysics(),
                         padding: EdgeInsets.zero,
                       ),
                       standardSizedBox,
-                      post.imageUrl!.isEmpty
+                      foundPost.foundPost!.imageUrl!.isEmpty
                           ? Container()
                           : Container(
                               constraints: const BoxConstraints(
@@ -126,23 +126,24 @@ class PostBodyContainer extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20.0),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: NetworkImage(post.imageUrl!),
+                                  image: NetworkImage(
+                                      foundPost.foundPost!.imageUrl!),
                                 ),
                               ),
                             ),
                       standardSizedBox,
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
-                        children: const [
+                        children: [
                           Text(
-                            "123",
-                            style: TextStyle(
+                            foundPost.likesCount!.toString(),
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16.0,
                                 fontFamily: 'PoppinsBold'),
                           ),
-                          SizedBox(width: 3.0),
-                          Text("personnes ont aime ce post")
+                          const SizedBox(width: 3.0),
+                          const Text("personnes ont aime ce post")
                         ],
                       ),
                     ],
