@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:houlala/model/register.dart';
 import 'package:houlala/service/auth_service.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
+import 'package:houlala/widget/display_dialog.dart';
 import 'package:houlala/widget/input_name.dart';
 import 'package:houlala/widget/input_number.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import '../helper/constants.dart';
 import '../widget/custom_elevated_button.dart';
@@ -52,7 +56,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const Text(
                   "Bienvenu sur Houlala",
-                  style: TextStyle(fontSize: 24.0),
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'PoppinsBold'),
                 ),
                 const SizedBox(
                   height: 30.0,
@@ -181,17 +188,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           streetName: _streetController!.text);
 
                       Register register = Register(
-                        email: _emailController!.text,
-                        firstName: _firstNameController!.text,
-                        lastName: _nameController!.text,
-                        telephoneNumber: _numberController!.text,
-                        password: _passwordController!.text,
-                        address: address
-                      );
+                          email: _emailController!.text,
+                          firstName: _firstNameController!.text,
+                          lastName: _nameController!.text,
+                          telephoneNumber: _numberController!.text,
+                          password: _passwordController!.text,
+                          address: address);
 
-                      await Provider.of<AuthService>(context, listen: false).register(register);
+                      Response response =
+                          await Provider.of<AuthService>(context, listen: false)
+                              .register(register);
 
-                      Navigator.of(context).pop();
+                      if (response.statusCode != 201) {
+                        final responseJson = json.decode(response.body);
+                        showErrorDialog(
+                            context, "Erreur", responseJson['message']);
+                      } else {
+                        Navigator.of(context).pop();
+                      }
                     }
                   },
                   child: Text(

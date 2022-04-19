@@ -1,8 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:houlala/model/found_product.dart';
+import 'package:houlala/model/parameter_favorite.dart';
 import 'package:houlala/model/product.dart';
 import 'package:http/http.dart';
+
+import '../main.dart';
 
 class ProductService extends ChangeNotifier {
   late int _totalPrice = 0;
@@ -22,13 +27,16 @@ class ProductService extends ChangeNotifier {
     }
   }
 
-  Future<Product> fetchSingleProduct(String uri) async {
-    var url = Uri.parse(uri);
+  Future<FoundProduct> fetchSingleProduct(String id) async {
+    String? userId = await storage.read(key: "userId");
+
+    var url =
+        Uri.parse('${dotenv.env['PRODUCT_URL']}/productId/$id?userId=$userId');
 
     Response response = await get(url);
 
     if (response.statusCode == 200) {
-      return Product.fromJson(jsonDecode(response.body));
+      return FoundProduct.fromJson(jsonDecode(response.body));
     } else {
       throw "No Product found";
     }
@@ -43,5 +51,18 @@ class ProductService extends ChangeNotifier {
       _totalPrice = productPrice * quantity;
       notifyListeners();
     }
+  }
+
+  Future<void> bookMarkProduct(String id) async {
+    Map<String, String> headers = {'Content-Type': 'application/json'};
+    String? userId = await storage.read(key: "userId");
+
+    var url = Uri.parse(
+        "${dotenv.env['PRODUCT_URL']}/addFavorite/$id?userId=$userId");
+    await patch(
+      url,
+      headers: headers,
+    );
+    notifyListeners();
   }
 }

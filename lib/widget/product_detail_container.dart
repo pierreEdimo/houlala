@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/model/product.dart';
+import 'package:houlala/model/found_product.dart';
 import 'package:houlala/service/product_service.dart';
 import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
@@ -11,10 +11,9 @@ import 'package:houlala/widget/transformed_container.dart';
 import 'package:provider/provider.dart';
 
 class ProductDetailContainer extends StatefulWidget {
-  final String? uri;
   final String? id;
 
-  const ProductDetailContainer({Key? key, this.uri, this.id}) : super(key: key);
+  const ProductDetailContainer({Key? key,this.id}) : super(key: key);
 
   @override
   State<ProductDetailContainer> createState() => _ProductDetailContainerState();
@@ -28,13 +27,13 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
     return Scaffold(
       body: FutureBuilder(
         future: Provider.of<ProductService>(context)
-            .fetchSingleProduct(widget.uri!),
+            .fetchSingleProduct(widget.id!),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
-            Product product = snapshot.data!;
+            FoundProduct foundProduct = snapshot.data!;
             int price = quantity > 1
                 ? Provider.of<ProductService>(context).getTotalPrice()
-                : product.initialPrice!;
+                : foundProduct.product!.initialPrice!;
             return Column(
               children: [
                 Expanded(
@@ -46,10 +45,12 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.5,
                               child: BackgroundImage(
-                                imageUrl: product.imageUrl!,
+                                imageUrl: foundProduct.product!.imageUrl!,
                               ),
                             ),
-                            ProductDetailAppBar(),
+                            ProductDetailAppBar(
+                              product: foundProduct,
+                            ),
                           ],
                         ),
                         TransformedContainer(
@@ -63,7 +64,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      product.name!,
+                                      foundProduct.product!.name!,
                                       style: detailTitleStyle,
                                     ),
                                     Container(
@@ -81,7 +82,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                                                       context,
                                                       listen: false)
                                                   .calculatePrice(
-                                                      product.initialPrice!,
+                                                      foundProduct.product!.initialPrice!,
                                                       quantity);
                                             },
                                             child: const Text(
@@ -112,7 +113,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                                                       context,
                                                       listen: false)
                                                   .calculatePrice(
-                                                      product.initialPrice!,
+                                                      foundProduct.product!.initialPrice!,
                                                       quantity);
                                             },
                                             child: const Text(
@@ -135,7 +136,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                                   shrinkWrap: true,
                                   padding: EdgeInsets.zero,
                                   physics: const ClampingScrollPhysics(),
-                                  data: product.description!,
+                                  data: foundProduct.product!.description!,
                                 )
                               ],
                             ),

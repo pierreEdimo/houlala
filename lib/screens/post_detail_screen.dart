@@ -2,8 +2,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/main.dart';
+import 'package:houlala/service/comment_service.dart';
 import 'package:houlala/widget/comment_input.dart';
+import 'package:houlala/widget/list_of_comment.dart';
 import 'package:houlala/widget/post_body_container.dart';
+import 'package:provider/provider.dart';
+
+import '../model/add_comment.dart';
 
 class PostDetailScreen extends StatelessWidget {
   static const routeName = "/post_detail";
@@ -19,10 +25,16 @@ class PostDetailScreen extends StatelessWidget {
         children: [
           Expanded(
             child: SingleChildScrollView(
-              child: SizedBox(
-                child: PostBodyContainer(
-                  uri: '${dotenv.env['POST_URL']}/$id',
-                ),
+              child: Column(
+                children: [
+                  PostBodyContainer(
+                    id: id,
+                  ),
+                  ListOfComments(
+                    uri:
+                        '${dotenv.env['POST_URL']}/getCommentFromPost?postId=$id',
+                  )
+                ],
               ),
             ),
           ),
@@ -48,10 +60,18 @@ class PostDetailScreen extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                        onPressed: () {
-                          if (kDebugMode) {
-                            print(_controller.text);
-                            print(id);
+                        onPressed: () async {
+                          if (_controller.text.isEmpty) {
+                            DoNothingAction();
+                          } else {
+                            var userId = await storage.read(key: "userId");
+                            AddComment newComment = AddComment(
+                                userId: userId,
+                                content: _controller.text,
+                                postId: id);
+                            await Provider.of<CommentService>(context,
+                                    listen: false)
+                                .addComment(newComment);
                           }
                         },
                         icon: const FaIcon(FontAwesomeIcons.paperPlane))

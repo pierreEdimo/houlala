@@ -12,14 +12,14 @@ import '../screens/page_detail_screen.dart';
 import '../service/post_service.dart';
 
 class PostBodyContainer extends StatelessWidget {
-  final String? uri;
+  final String? id;
 
-  const PostBodyContainer({Key? key, this.uri}) : super(key: key);
+  const PostBodyContainer({Key? key, this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Provider.of<PostService>(context).fetchSinglePost(uri!),
+      future: Provider.of<PostService>(context).fetchSinglePost(id!),
       builder: (context, AsyncSnapshot<FoundPost> snapshot) {
         if (snapshot.hasData) {
           FoundPost foundPost = snapshot.data!;
@@ -27,7 +27,9 @@ class PostBodyContainer extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: Column(
               children: [
-                PostDetailAppBar(),
+                PostDetailAppBar(
+                  foundPost: foundPost,
+                ),
                 StandardCustomContainer(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

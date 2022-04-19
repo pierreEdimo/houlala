@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/widget/product_detail_container.dart';
 
 class ProductDetailScreen extends StatelessWidget {
@@ -12,7 +11,6 @@ class ProductDetailScreen extends StatelessWidget {
     final id = ModalRoute.of(context)!.settings.arguments as String;
     return  Scaffold(
       body: ProductDetailContainer(
-        uri: '${dotenv.env['PRODUCT_URL']}/$id',
         id: id,
       ),
     );

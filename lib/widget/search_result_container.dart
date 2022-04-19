@@ -28,7 +28,7 @@ class SearchResultContainer extends StatelessWidget {
       StandardCustomContainer(
         child: GridOfProducts(
           height: MediaQuery.of(context).size.height * 0.8,
-          textError: "Aucuns produits appelle ${searchWorld} n'a ete trouve\n"
+          textError: "Aucuns produits appelle $searchWorld n'a ete trouve\n"
               "svp verifiez plutard",
           uri: '${dotenv.env['PRODUCT_URL']}/search?searchword=$searchWorld',
           crossAxisCount: 2,

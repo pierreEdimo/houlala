@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/widget/book_Marker.dart';
+import 'package:houlala/model/found_product.dart';
 import 'custom_button_container.dart';
 
 class ProductDetailAppBar extends StatelessWidget with PreferredSizeWidget {
+  final FoundProduct? product;
   @override
   final Size preferredSize;
 
-  ProductDetailAppBar({
-    Key? key,
-  })  : preferredSize = const Size.fromHeight(60.0),
+  ProductDetailAppBar({Key? key, this.product})
+      : preferredSize = const Size.fromHeight(60.0),
         super(key: key);
 
   @override
@@ -23,9 +25,8 @@ class ProductDetailAppBar extends StatelessWidget with PreferredSizeWidget {
         onPressed: () => Navigator.of(context).pop(),
       ),
       actions: [
-        CustomButtonContainer(
-          icon: const FaIcon(FontAwesomeIcons.heart),
-          onPressed: () {},
+        BookMarker(
+          foundProduct: product,
         ),
       ],
       automaticallyImplyLeading: false,

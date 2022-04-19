@@ -7,6 +7,7 @@ import 'package:houlala/screens/all_product_categories_screen.dart';
 import 'package:houlala/screens/all_fruits_and_lettuces_screen.dart';
 import 'package:houlala/screens/all_pages_screen.dart';
 import 'package:houlala/screens/category_detail_screen.dart';
+import 'package:houlala/screens/favorite_screen.dart';
 import 'package:houlala/screens/jobs_detail_screen.dart';
 import 'package:houlala/screens/page_detail_screen.dart';
 import 'package:houlala/screens/post_detail_screen.dart';
@@ -15,6 +16,7 @@ import 'package:houlala/screens/search_screen.dart';
 import 'package:houlala/screens/sign_up_screen.dart';
 import 'package:houlala/service/auth_service.dart';
 import 'package:houlala/service/category_service.dart';
+import 'package:houlala/service/comment_service.dart';
 import 'package:houlala/service/job_service.dart';
 import 'package:houlala/service/page_service.dart';
 import 'package:houlala/service/post_service.dart';
@@ -63,6 +65,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => PostService()),
         ChangeNotifierProvider(create: (context) => WordService()),
         ChangeNotifierProvider(create: (context) => AuthService()),
+        ChangeNotifierProvider(create: (context) => CommentService())
       ],
       builder: (context, child) {
         return Sizer(builder: (context, orientation, deviceType) {
@@ -99,6 +102,7 @@ class MyApp extends StatelessWidget {
               PostDetailScreen.routeName: (context) => PostDetailScreen(),
               '/search': (context) => const SearchScreen(),
               '/signUp': (context) => const SignUpScreen(),
+              FavoriteScreen.routeName:(context) => const FavoriteScreen()
             },
           );
         });
