@@ -14,6 +14,7 @@ class GridOfProducts extends StatelessWidget {
   final Widget? child;
   final String? textError;
   final double? height;
+  final String? displayType;
 
   const GridOfProducts(
       {Key? key,
@@ -24,6 +25,7 @@ class GridOfProducts extends StatelessWidget {
       this.heightRatio,
       this.child,
       this.textError,
+      this.displayType,
       this.height})
       : super(key: key);
 
@@ -52,6 +54,7 @@ class GridOfProducts extends StatelessWidget {
                       ))
                     : GridList(
                         products: products,
+                        displayType: displayType,
                         heightRatio: heightRatio,
                         widthRatio: widthRatio,
                         scrollDirection: scrollDirection,
@@ -78,6 +81,7 @@ class GridList extends StatelessWidget {
   final double? heightRatio;
   final String? textError;
   final double? height;
+  final String? displayType;
 
   const GridList({
     Key? key,
@@ -88,6 +92,7 @@ class GridList extends StatelessWidget {
     this.scrollDirection,
     this.textError,
     this.height,
+    this.displayType,
   }) : super(key: key);
 
   @override
@@ -113,6 +118,7 @@ class GridList extends StatelessWidget {
                 .map(
                   (Product product) => ProductContainer(
                     product: product,
+                    displayType: displayType,
                   ),
                 )
                 .toList(),
