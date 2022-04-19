@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 class CustomElevatedButton extends StatelessWidget {
   final Widget? child;
   final VoidCallback? onPressed;
+  final double? borderRadius;
 
-  const CustomElevatedButton({Key? key, this.child, this.onPressed})
-      : super(key: key);
+  const CustomElevatedButton({
+    Key? key,
+    this.child,
+    this.onPressed,
+    this.borderRadius,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +19,15 @@ class CustomElevatedButton extends StatelessWidget {
         elevation: MaterialStateProperty.all<double>(0.0),
         side: MaterialStateProperty.all<BorderSide>(
           const BorderSide(
-            color:  Color(0xFF000000),
+            color: Color(0xFF000000),
           ),
         ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0))),
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+                borderRadius == null ? 18.0 : borderRadius!),
+          ),
+        ),
         backgroundColor: MaterialStateProperty.all<Color>(
           const Color(0xffffffff),
         ),
