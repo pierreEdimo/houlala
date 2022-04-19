@@ -10,7 +10,7 @@ import '../model/login.dart';
 class AuthService extends ChangeNotifier {
   late String loggedState = "loggedOut";
 
-  Future<void> logIn(Login loginModel) async {
+  Future<Response> logIn(Login loginModel) async {
     Map<String, String> headers = {'Content-Type': 'application/json'};
     String jsEncode;
     jsEncode = jsonEncode(loginModel);
@@ -30,9 +30,8 @@ class AuthService extends ChangeNotifier {
       box.put('logged', 'loggedIn');
       loggedState = box.get('logged');
       notifyListeners();
-    } else {
-      throw Exception('could not login');
     }
+    return response;
   }
 
   Future<Response> register(Register newUser) async {
@@ -53,13 +52,12 @@ class AuthService extends ChangeNotifier {
       box.put('logged', 'loggedIn');
       loggedState = box.get('logged');
       notifyListeners();
-      return response;
-    } else {
-      throw Exception('new Exception');
     }
+    return response;
+
   }
 
-  Future<String>  getUserID() async {
+  Future<String> getUserID() async {
     String? userId = await storage.read(key: "userId");
     if (userId!.isEmpty) {
       return "";
@@ -67,9 +65,11 @@ class AuthService extends ChangeNotifier {
     return userId;
   }
 
-  logOut() {
+  logOut() async {
     box.put('logged', 'loggedOut');
     loggedState = box.get('logged');
+    await storage.delete(key: 'userId');
+    await storage.delete(key: 'token');
     notifyListeners();
   }
 
