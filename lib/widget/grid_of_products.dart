@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/screens/product_detail_screen.dart';
 import 'package:houlala/service/product_service.dart';
 import 'package:houlala/widget/product_container.dart';
 import 'package:provider/provider.dart';
@@ -116,9 +117,15 @@ class GridList extends StatelessWidget {
             childAspectRatio: (widthRatio! / heightRatio!),
             children: products!
                 .map(
-                  (Product product) => ProductContainer(
-                    product: product,
-                    displayType: displayType,
+                  (Product product) => InkWell(
+                    onTap: () => Navigator.of(context).pushNamed(
+                      ProductDetailScreen.routeName,
+                      arguments: product.id!,
+                    ),
+                    child: ProductContainer(
+                      product: product,
+                      displayType: displayType,
+                    ),
                   ),
                 )
                 .toList(),
