@@ -1,6 +1,5 @@
 import 'package:houlala/model/populated_page.dart';
 
-import 'comment.dart';
 
 class Post {
   final String? imageUrl;

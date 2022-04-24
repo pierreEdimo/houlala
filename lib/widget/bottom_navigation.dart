@@ -54,7 +54,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),
           BottomNavigationBarItem(
             icon: Badge(
-              badgeContent: const ElementOfCartItem(),
+              badgeContent: const Text("12"),
               child: const ImageIcon(
                 AssetImage("images/cart.png"),
                 size: 27,

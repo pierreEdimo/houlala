@@ -18,81 +18,86 @@ class CommentContainer extends StatelessWidget {
     return InkWell(
       onTap: () => print(comment!.id!),
       child: Card(
-        elevation: 4,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
+          elevation: 0,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleAvatar(
-                radius: 25,
-                child: Center(
-                  child: Text(
-                    userName,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 22),
-                  ),
-                ),
+                child: Text(userName),
               ),
               const SizedBox(
-                width: 20.0,
+                width: 5.0,
               ),
-              Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade100,
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Row(
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                comment!.author!.firstName! +
-                                    " " +
-                                    comment!.author!.lastName!,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'PoppinsBold',
-                                    fontSize: 18.0),
-                              ),
-                              Text(
-                                DateFormat.yMMMMEEEEd('fr')
-                                    .format(comment!.createdAt!),
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12,
-                                  color: Colors.grey,
+                          Flexible(
+                            child: Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    comment!.author!.lastName! +
+                                        " " +
+                                        comment!.author!.firstName!,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'PoppinsBold'),
+                                  ),
                                 ),
-                              )
-                            ],
+                                const SizedBox(
+                                  width: 10.0,
+                                ),
+                                Flexible(
+                                  child: Text(
+                                    DateFormat.yMMMMEEEEd('fr').format(
+                                      comment!.createdAt!,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                      fontSize: 12.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                          InkWell(
-                            onTap: () => print("Hello option"),
-                            child: const FaIcon(FontAwesomeIcons.ellipsis),
+                          const InkWell(
+                            child: FaIcon(
+                              FontAwesomeIcons.ellipsisVertical,
+                              size: 13.0,
+                            ),
                           )
                         ],
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      comment!.content!,
-                      maxLines: 7,
-                      overflow: TextOverflow.ellipsis,
-                    )
-                  ],
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      Text(
+                        comment!.content!,
+                          style: const TextStyle(
+                            fontSize: 14.0
+                          )
+                      )
+                    ],
+                  ),
                 ),
               )
             ],
-          ),
-        ),
-      ),
+          )),
     );
   }
 }

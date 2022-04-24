@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
             standardSizedBox,
             CustomBoxContainer(
               child: GridOfProducts(
-                height: MediaQuery.of(context).size.height * 0.25,
+                height: 25.h,
                 textError: "Aucuns Produits",
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 5.0),
