@@ -47,6 +47,8 @@ dependencies:
   hive: ^2.1.0
   hive_flutter: ^1.1.0
   flutter_secure_storage: ^5.0.2
+  mongo_dart: ^0.7.4+1
+  badges: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +80,9 @@ flutter:
          - asset: fonts/Poppins-Bold.ttf
 
   assets:
+    - images/no-notification.png
+    - images/cart.png
+    - images/house.png
     - .env
 
 
