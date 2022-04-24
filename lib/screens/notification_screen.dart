@@ -10,8 +10,20 @@ class NotificationScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: "Notifications",
       ),
-      body: const Center(
-        child: Text("Hello Notification"),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            ImageIcon(
+              AssetImage("images/no-notification.png"),
+              size: 140,
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            Text("Il n'y'a aucunes notifications")
+          ],
+        ),
       ),
     );
   }
