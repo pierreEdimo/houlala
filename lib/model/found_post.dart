@@ -16,7 +16,7 @@ class FoundPost {
   factory FoundPost.fromJson(Map<String, dynamic> json) => FoundPost(
         foundPost: Post.fromJson(json["foundPost"]),
         commentCount: json["commentCount"] as int,
-        likesCount: json["likesCount"] as int,
+        likesCount: json["likeCount"] as int,
         isLiked: json['isLiked'] as bool,
       );
 }
