@@ -30,10 +30,6 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         //   icon: const FaIcon(FontAwesomeIcons.newspaper),
         //   onPressed: () => print("news"),
         // ),
-        CustomButtonContainer(
-          icon: const FaIcon(FontAwesomeIcons.cartShopping),
-          onPressed: () => print("Hello shopping"),
-        ),
       ],
       automaticallyImplyLeading: false,
     );
