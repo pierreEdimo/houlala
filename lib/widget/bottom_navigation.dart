@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/screens/cart_item_screen.dart';
 import 'package:houlala/screens/discover_screen.dart';
 import 'package:houlala/screens/home_screen.dart';
 import 'package:houlala/screens/notification_screen.dart';
 import 'package:houlala/screens/user_screen.dart';
+import 'package:badges/badges.dart';
+
+import 'element_of_cart_items.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({Key? key}) : super(key: key);
@@ -18,6 +22,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     DiscoverScreen(),
+    CartItemScreen(),
     NotificationScreen(),
     UserScreen(),
   ];
@@ -35,21 +40,34 @@ class _BottomNavigationState extends State<BottomNavigation> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.home),
+        items: <BottomNavigationBarItem>[
+          const BottomNavigationBarItem(
+            icon: ImageIcon(
+              AssetImage("images/house.png"),
+              size: 30,
+            ),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.solidCompass),
+          const BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.compass),
             label: 'Business',
           ),
           BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.solidBell),
-            label: 'School',
+            icon: Badge(
+              badgeContent: const ElementOfCartItem(),
+              child: const ImageIcon(
+                AssetImage("images/cart.png"),
+                size: 27,
+              ),
+            ),
+            label: "Stories",
           ),
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.solidUser),
+          const BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.bell),
+            label: 'Notifications',
+          ),
+          const BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.user),
             label: 'Settings',
           ),
         ],
