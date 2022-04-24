@@ -28,7 +28,7 @@ class FavoriteScreen extends StatelessWidget {
           scrollDirection: Axis.vertical,
           widthRatio: 1,
           heightRatio: 0.5,
-          displayType: "favorite",
+          displayType: "favories",
         ),
       ),
     );

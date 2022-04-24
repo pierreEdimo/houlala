@@ -16,7 +16,7 @@ class CustomButtonContainer extends StatelessWidget {
       ),
       child: Center(
         child: IconButton(
-          iconSize: 15.0,
+          iconSize: 20.0,
           icon: icon!,
           onPressed: onPressed,
         ),
