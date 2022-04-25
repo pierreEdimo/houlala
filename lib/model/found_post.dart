@@ -3,20 +3,20 @@ import 'package:houlala/model/post.dart';
 class FoundPost {
   FoundPost({
     this.foundPost,
-    this.commentCount,
-    this.likesCount,
     this.isLiked,
+    this.commentCount,
+    this.likeCount,
   });
 
   final Post? foundPost;
-  final int? commentCount;
-  final int? likesCount;
   bool? isLiked;
+  final int? commentCount;
+  final int? likeCount;
 
   factory FoundPost.fromJson(Map<String, dynamic> json) => FoundPost(
         foundPost: Post.fromJson(json["foundPost"]),
-        commentCount: json["commentCount"] as int,
-        likesCount: json["likeCount"] as int,
         isLiked: json['isLiked'] as bool,
+        commentCount: json['commentCount'] as int,
+        likeCount: json['likeCount'] as int,
       );
 }
