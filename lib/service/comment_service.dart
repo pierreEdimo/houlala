@@ -28,11 +28,23 @@ class CommentService extends ChangeNotifier {
     jsEncode = jsonEncode(comment);
     var url =
         Uri.parse('${dotenv.env['POST_URL']}/addComment/${comment.postId}');
-    Response response =await patch(
+    await patch(
       url,
       headers: headers,
       body: jsEncode,
     );
     notifyListeners();
+  }
+
+  Future<int> getCommentCount(String? postId) async {
+    var url = Uri.parse('${dotenv.env['POST_URL']}/getCommentCount/$postId');
+
+    Response response = await get(url);
+
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      throw "No Product found";
+    }
   }
 }
