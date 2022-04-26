@@ -82,25 +82,21 @@ class HomeScreen extends StatelessWidget {
             ),
             standardSizedBox,
             CustomBoxContainer(
-              child: SizedBox(
-                height: 40.h,
-                child: ListOfPosts(
-                  textError: "Aucuns posts",
-                  width: 286,
-                  scrollDirection: Axis.horizontal,
-                  errorHeight: 35.h,
-                  child: const FlexibleRow(
-                    title: "Quelques posts recents",
-                    urlValue: "/all_posts",
-                  ),
-                  uri: '${dotenv.env['POST_URL']}/getRandomPosts?size=10',
+              child: ListOfPosts(
+                textError: "Aucuns posts",
+                scrollDirection: Axis.horizontal,
+                errorHeight: 35.h,
+                child: const FlexibleRow(
+                  title: "Quelques posts recents",
+                  urlValue: "/all_posts",
                 ),
+                uri: '${dotenv.env['POST_URL']}//getRandomPosts?size=10',
               ),
             ),
             standardSizedBox,
             CustomBoxContainer(
               child: GridOfJobs(
-                child:  Text(
+                child: Text(
                   "Quelques offres de Jobs",
                   style: standardStyle,
                 ),
