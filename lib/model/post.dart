@@ -1,6 +1,5 @@
 import 'package:houlala/model/populated_page.dart';
 
-
 class Post {
   final String? imageUrl;
   final String? title;
@@ -26,5 +25,3 @@ class Post {
       createdAt: DateTime.parse(json['createdAt']),
       page: PopulatedPage.fromJson(json['page']));
 }
-
-

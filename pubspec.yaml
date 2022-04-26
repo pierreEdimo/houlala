@@ -49,6 +49,7 @@ dependencies:
   flutter_secure_storage: ^5.0.2
   mongo_dart: ^0.7.4+1
   badges: ^2.0.2
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,7 @@ flutter:
          - asset: fonts/Poppins-Bold.ttf
 
   assets:
+    - images/comment.png
     - images/no-notification.png
     - images/cart.png
     - images/house.png

@@ -75,8 +75,9 @@ class CommentContainer extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const InkWell(
-                            child: FaIcon(
+                           InkWell(
+                            onTap: () => print("Hello World!"),
+                            child: const FaIcon(
                               FontAwesomeIcons.ellipsisVertical,
                               size: 13.0,
                             ),

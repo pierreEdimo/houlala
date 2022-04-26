@@ -90,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                   title: "Quelques posts recents",
                   urlValue: "/all_posts",
                 ),
-                uri: '${dotenv.env['POST_URL']}//getRandomPosts?size=10',
+                uri: '${dotenv.env['POST_URL']}/getRandomPosts?size=10',
               ),
             ),
             standardSizedBox,
