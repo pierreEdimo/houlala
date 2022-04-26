@@ -5,7 +5,6 @@ import 'package:houlala/screens/discover_screen.dart';
 import 'package:houlala/screens/home_screen.dart';
 import 'package:houlala/screens/notification_screen.dart';
 import 'package:houlala/screens/user_screen.dart';
-import 'package:badges/badges.dart';
 
 import 'element_of_cart_items.dart';
 
@@ -53,12 +52,14 @@ class _BottomNavigationState extends State<BottomNavigation> {
             label: 'Business',
           ),
           BottomNavigationBarItem(
-            icon: Badge(
-              badgeContent: const Text("12"),
-              child: const ImageIcon(
-                AssetImage("images/cart.png"),
-                size: 27,
-              ),
+            icon: Stack(
+              children: const [
+                ImageIcon(
+                  AssetImage("images/cart.png"),
+                  size: 27,
+                ),
+                ElementOfCartItem()
+              ],
             ),
             label: "Stories",
           ),
