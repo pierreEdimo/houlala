@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/screens/post_detail_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/model/additional_info.dart';
+import 'package:houlala/service/post_service.dart';
+import 'package:houlala/widget/created_at_container.dart';
+import 'package:houlala/widget/home_like_button.dart';
+import 'package:provider/provider.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:sizer/sizer.dart';
 
 import '../model/post.dart';
 
@@ -19,108 +26,173 @@ class PostContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => Navigator.of(context)
-          .pushNamed(PostDetailScreen.routeName, arguments: post!.id!),
-      child: scrollDirection == Axis.horizontal
-          ? SizedBox(
-              width: width == null
-                  ? MediaQuery.of(context).size.width * 1
-                  : width!,
-              child: SizedBox(
-                height: height == null
-                    ? MediaQuery.of(context).size.height * 0.5
-                    : height!,
-                child: CustomCard(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      PostAvatar(
-                        post: post,
-                      ),
-                      const SizedBox(
-                        width: 10.0,
-                      ),
-                      Flexible(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            PostAuthor(
+    switch (scrollDirection) {
+      case Axis.vertical:
+        return CustomCard(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              PostAvatar(
+                post: post,
+              ),
+              const SizedBox(
+                width: 10.0,
+              ),
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Flexible(
+                          child: Row(
+                            children: [
+                              Flexible(
+                                child: PostAuthor(
+                                  post: post,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10.0,
+                              ),
+                              Flexible(
+                                child: CreatedAtContainer(
+                                  createdAt: post!.createdAt!,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        OnTapIcon(
+                          post: post,
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    PostTitle(
+                      post: post,
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    PostContent(
+                      post: post,
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    post!.imageUrl!.isEmpty
+                        ? Container()
+                        : Container(
+                            constraints: const BoxConstraints(
+                              minHeight: 150,
+                              maxHeight: 340,
+                            ),
+                            child: PostImage(
                               post: post,
                             ),
-                            PostTitle(
-                              post: post,
-                            ),
-                            post!.imageUrl!.isEmpty
-                                ? Flexible(
-                                  child: PostContent(
-                                    post: post,
-                                  ),
-                                )
-                                : PostContent(
-                                    post: post,
-                                  ),
-                            post!.imageUrl!.isEmpty
-                                ? Container()
-                                : const SizedBox(
-                                    height: 5.0,
-                                  ),
-                            post!.imageUrl!.isEmpty
-                                ? Container()
-                                : Expanded(
+                          ),
+                    AdditionalInformation(
+                      post: post,
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        );
+      case Axis.horizontal:
+        return SizedBox(
+          width: 90.w,
+          child: Container(
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                border: Border.all(width: 1, color: Colors.grey.shade300)),
+            child: Stack(
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    PostAvatar(
+                      post: post,
+                    ),
+                    const SizedBox(
+                      width: 10.0,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Flexible(
+                                child: Row(
+                                  children: [
+                                    Flexible(
+                                      child: PostAuthor(
+                                        post: post,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10.0,
+                                    ),
+                                    Flexible(
+                                      child: CreatedAtContainer(
+                                        createdAt: post!.createdAt!,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              OnTapIcon(
+                                post: post,
+                              )
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10.0,
+                          ),
+                          PostContent(
+                            post: post,
+                          ),
+                          const SizedBox(
+                            height: 10.0,
+                          ),
+                          post!.imageUrl!.isEmpty
+                              ? Container()
+                              : Expanded(
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.only(bottom: 50.0),
                                     child: PostImage(
                                       post: post,
                                     ),
                                   ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                                )
+                        ],
+                      ),
+                    )
+                  ],
                 ),
-              ),
-            )
-          : CustomCard(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  PostAvatar(
-                    post: post!,
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: AdditionalInformation(
+                    post: post,
                   ),
-                  const SizedBox(
-                    width: 10.0,
-                  ),
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        PostAuthor(
-                          post: post,
-                        ),
-                        PostTitle(
-                          post: post,
-                        ),
-                        PostContent(
-                          post: post,
-                        ),
-                        const SizedBox(
-                          height: 5.0,
-                        ),
-                        post!.imageUrl!.isEmpty
-                            ? Container()
-                            : SizedBox(
-                                height: 180,
-                                child: PostImage(
-                                  post: post,
-                                ),
-                              )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                )
+              ],
             ),
-    );
+            margin: const EdgeInsets.only(right: 10.0),
+          ),
+        );
+      default:
+        return Container();
+    }
   }
 }
 
@@ -139,7 +211,7 @@ class PostImage extends StatelessWidget {
         : Container(
             width: MediaQuery.of(context).size.width * 1,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.0),
+              borderRadius: BorderRadius.circular(10.0),
               image: DecorationImage(
                 image: NetworkImage(
                   post!.imageUrl!,
@@ -166,9 +238,9 @@ class PostTitle extends StatelessWidget {
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
       style: const TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 16.0,
-      ),
+          fontWeight: FontWeight.bold,
+          fontSize: 18.0,
+          fontFamily: 'PoppinsBold'),
     );
   }
 }
@@ -185,9 +257,11 @@ class PostAuthor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       post!.page!.name!,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
       style: const TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 18.0,
+          fontSize: 20.0,
           fontFamily: "PoppinsBold"),
     );
   }
@@ -219,11 +293,11 @@ class PostContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return AutoSizeText(
       post!.content!,
-      maxLines: post!.imageUrl!.isEmpty ? 10 : 1,
+      maxLines: post!.imageUrl!.isEmpty ? 16 : 3,
       overflow: TextOverflow.ellipsis,
-      style: const TextStyle(fontSize: 14),
+      style: const TextStyle(fontSize: 14.0),
     );
   }
 }
@@ -239,12 +313,76 @@ class CustomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color(0xfefefefe),
-      elevation: 5,
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: child!,
-      ),
+      color: Colors.transparent,
+      elevation: 0,
+      child: child!,
+    );
+  }
+}
+
+class OnTapIcon extends StatelessWidget {
+  final Post? post;
+
+  const OnTapIcon({
+    Key? key,
+    this.post,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      child: const FaIcon(FontAwesomeIcons.ellipsisVertical),
+    );
+  }
+}
+
+class AdditionalInformation extends StatelessWidget {
+  final Post? post;
+
+  const AdditionalInformation({Key? key, this.post}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: Provider.of<PostService>(context).getAdditionalInfo(post!.id!),
+      builder:
+          (BuildContext context, AsyncSnapshot<AdditionalPostInfo> snapshot) {
+        if (snapshot.hasData) {
+          AdditionalPostInfo info = snapshot.data!;
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 15.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                HomeLikeButton(
+                  postId: post!.id!,
+                  info: info,
+                ),
+                const SizedBox(
+                  width: 20.0,
+                ),
+                Row(
+                  children: [
+                    const ImageIcon(
+                      AssetImage("images/comment.png"),
+                      size: 22.0,
+                    ),
+                    const SizedBox(
+                      width: 3.0,
+                    ),
+                    Text(
+                      info.commentCount.toString(),
+                    )
+                  ],
+                )
+              ],
+            ),
+          );
+        }
+        return Container();
+      },
     );
   }
 }
