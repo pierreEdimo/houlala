@@ -58,25 +58,21 @@ class PageHomeContainer extends StatelessWidget {
           ),
         ),
         standardSizedBox,
-        SizedBox(
-          height:  40.h,
-          child: ListOfPosts(
-            width: 286,
-            textError: "${pageModel!.name!} n'a pas encore insere de posts"
-                "svp venez verifier plutard",
-            scrollDirection: Axis.horizontal,
-            errorHeight: 35.h,
-            child: Text(
-              "posts par ${pageModel!.name}",
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 17,
-                fontFamily: "PoppinsBold"
-              ),
+        ListOfPosts(
+          textError: "${pageModel!.name!} n'a pas encore insere de posts"
+              "svp venez verifier plutard",
+          scrollDirection: Axis.horizontal,
+          errorHeight: 35.h,
+          child: Text(
+            "posts par ${pageModel!.name}",
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 17,
+              fontFamily: "PoppinsBold"
             ),
-            uri:
-                '${dotenv.env['POST_URL']}/getRandomPostsByPageId?size=10&pageId=${pageModel!.id}',
           ),
+          uri:
+              '${dotenv.env['POST_URL']}/getRandomPostsByPageId?size=10&pageId=${pageModel!.id}',
         )
       ],
     );
