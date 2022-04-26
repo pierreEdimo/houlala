@@ -15,8 +15,13 @@ class CreatedAtContainer extends StatelessWidget {
       DateFormat.yMMMMEEEEd('fr').format(
         createdAt!,
       ),
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
       style: const TextStyle(
-          fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 12.0),
+        fontWeight: FontWeight.bold,
+        color: Colors.grey,
+        fontSize: 12.0,
+      ),
     );
   }
 }
