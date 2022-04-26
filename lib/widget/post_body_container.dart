@@ -138,7 +138,7 @@ class PostBodyContainer extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            foundPost.likesCount!.toString(),
+                            foundPost.likeCount!.toString(),
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16.0,
