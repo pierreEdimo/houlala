@@ -72,6 +72,8 @@ class PostDetailScreen extends StatelessWidget {
                             await Provider.of<CommentService>(context,
                                     listen: false)
                                 .addComment(newComment);
+
+                            _controller.clear();
                           }
                         },
                         icon: const FaIcon(FontAwesomeIcons.paperPlane))
