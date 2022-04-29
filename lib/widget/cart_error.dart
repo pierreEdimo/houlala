@@ -17,7 +17,7 @@ class CartError extends StatelessWidget {
               size: 140,
             ),
             standardSizedBox,
-            Text("Il n'y'a aucuns Articles dans le Panier.",
+            Text("Votre panier houlala est vide",
             textAlign: TextAlign.center,)
           ],
         ),

@@ -51,7 +51,9 @@ dependencies:
   badges: ^2.0.2
   auto_size_text: ^3.0.0
   modal_bottom_sheet: ^2.0.1
-  objectbox: ^1.4.1
+  hive_generator: ^1.1.2
+  path_provider: ^2.0.9
+  connectivity_plus: ^2.3.0
 
 dev_dependencies:
   flutter_test:

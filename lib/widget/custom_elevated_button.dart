@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 class CustomElevatedButton extends StatelessWidget {
   final Widget? child;
   final VoidCallback? onPressed;
-  final double? borderRadius;
 
   const CustomElevatedButton({
     Key? key,
     this.child,
     this.onPressed,
-    this.borderRadius,
   }) : super(key: key);
 
   @override
@@ -24,15 +22,14 @@ class CustomElevatedButton extends StatelessWidget {
         ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-                borderRadius == null ? 18.0 : borderRadius!),
+            borderRadius: BorderRadius.circular(5.0),
           ),
         ),
         backgroundColor: MaterialStateProperty.all<Color>(
           const Color(0xffffffff),
         ),
         padding: MaterialStateProperty.all<EdgeInsets>(
-          const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+          const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
         ),
       ),
       onPressed: onPressed,

@@ -8,6 +8,7 @@ import 'package:houlala/widget/input_email.dart';
 import 'package:houlala/widget/input_password.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:http/http.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import '../helper/constants.dart';
@@ -89,6 +90,8 @@ class _SignInContainerState extends State<SignInContainer> {
                           context);
                     }
                   }
+                  print("The statement 'this machine is connected to the Internet' is: ");
+                  print(await InternetConnectionChecker().hasConnection);
                 },
                 child: Text(
                   "Se Connecter",

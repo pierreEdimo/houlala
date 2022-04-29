@@ -63,7 +63,6 @@ class ProductContainer extends StatelessWidget {
                       height: 10.0,
                     ),
                     CustomElevatedButton(
-                      borderRadius: 2,
                       child: const Text("Ajouter au Panier"),
                       onPressed: () async {
                         var userId = await storage.read(key: "userId");
