@@ -110,7 +110,8 @@ class CartItemService extends ChangeNotifier {
 
   Future<CountAndPrice> getCountAndPrice() async {
     var userId = await storage.read(key: "userId");
-    var url = Uri.parse('${dotenv.env['CART_URL']}/getTotalCountAndTotalPrice/$userId');
+    var url = Uri.parse(
+        '${dotenv.env['CART_URL']}/getTotalCountAndTotalPrice/$userId');
 
     Response response = await get(url);
 

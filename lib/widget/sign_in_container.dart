@@ -6,7 +6,9 @@ import 'package:houlala/service/auth_service.dart';
 import 'package:houlala/widget/display_dialog.dart';
 import 'package:houlala/widget/input_email.dart';
 import 'package:houlala/widget/input_password.dart';
+import 'package:houlala/widget/show_nack.dart';
 import 'package:http/http.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import '../helper/constants.dart';
 import 'custom_elevated_button.dart';
@@ -25,9 +27,10 @@ class _SignInContainerState extends State<SignInContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      child: SingleChildScrollView(
+    return SingleChildScrollView(
+      controller: ModalScrollController.of(context),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -36,27 +39,32 @@ class _SignInContainerState extends State<SignInContainer> {
               const SizedBox(
                 height: 50.0,
               ),
-              const Text(
+              Text(
                 "Bienvenu sur Houlala",
-                style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'PoppinsBold'),
+                style: standardStyle,
               ),
-              const SizedBox(
-                height: 30.0,
-              ),
+              standardSizedBox,
               EmailInput(
                 controller: _emailController,
               ),
-              const SizedBox(
-                height: 20.0,
-              ),
+              standardSizedBox,
               PasswordInput(
                 controller: _passwordController!,
               ),
               const SizedBox(
-                height: 30.0,
+                height: 40.0,
+              ),
+              InkWell(
+                onTap: () {},
+                child: const Text(
+                  "Mot de Passe oublie? / Probleme de connexion?",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 40.0,
               ),
               CustomElevatedButton(
                 onPressed: () async {
@@ -73,6 +81,12 @@ class _SignInContainerState extends State<SignInContainer> {
                       final responseJson = json.decode(response.body);
                       showErrorDialog(context, "Erreur",
                           "${responseJson['message']}, svp reessayez plutard, si le probleme persiste, contectez nous");
+                    } else {
+                      Navigator.of(context).pop();
+                      showSnack(
+                          const Text(
+                              "felicitations, vous etes connecte sur houlala."),
+                          context);
                     }
                   }
                 },
@@ -81,36 +95,7 @@ class _SignInContainerState extends State<SignInContainer> {
                   style: standardStyle,
                 ),
               ),
-              const SizedBox(
-                height: 25.0,
-              ),
-              Row(
-                children: [
-                  const Text(
-                    "Nouveau sur houlala?",
-                  ),
-                  const SizedBox(
-                    width: 5.0,
-                  ),
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).pushNamed("/signUp"),
-                    child: const Text(
-                      "S'enregistrer",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: const Text(
-                  "Mot de passe oublier? / Problèmes de connexion",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              )
+              standardSizedBox
             ],
           ),
         ),
@@ -118,3 +103,4 @@ class _SignInContainerState extends State<SignInContainer> {
     );
   }
 }
+

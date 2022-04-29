@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/additional_info.dart';
-import 'package:houlala/service/post_service.dart';
+import 'package:houlala/service/comment_service.dart';
 import 'package:houlala/widget/created_at_container.dart';
 import 'package:houlala/widget/home_like_button.dart';
+import 'package:houlala/widget/report_tile.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:sizer/sizer.dart';
@@ -110,8 +113,9 @@ class PostContainer extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                border: Border.all(width: 1, color: Colors.grey.shade300)),
+              borderRadius: BorderRadius.circular(10.0),
+              border: Border.all(width: 1, color: Colors.grey.shade300),
+            ),
             child: Stack(
               children: [
                 Row(
@@ -120,9 +124,7 @@ class PostContainer extends StatelessWidget {
                     PostAvatar(
                       post: post,
                     ),
-                    const SizedBox(
-                      width: 10.0,
-                    ),
+                    horizontalSpacing,
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -138,9 +140,7 @@ class PostContainer extends StatelessWidget {
                                         post: post,
                                       ),
                                     ),
-                                    const SizedBox(
-                                      width: 10.0,
-                                    ),
+                                    horizontalSpacing,
                                     Flexible(
                                       child: CreatedAtContainer(
                                         createdAt: post!.createdAt!,
@@ -154,15 +154,11 @@ class PostContainer extends StatelessWidget {
                               )
                             ],
                           ),
-                          const SizedBox(
-                            height: 10.0,
-                          ),
+                          verticalSpacing,
                           PostContent(
                             post: post,
                           ),
-                          const SizedBox(
-                            height: 10.0,
-                          ),
+                          verticalSpacing,
                           post!.imageUrl!.isEmpty
                               ? Container()
                               : Expanded(
@@ -331,7 +327,12 @@ class OnTapIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        showMaterialModalBottomSheet(
+          context: context,
+          builder: (context) => const ReportTile(),
+        );
+      },
       child: const FaIcon(FontAwesomeIcons.ellipsisVertical),
     );
   }
@@ -345,7 +346,7 @@ class AdditionalInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Provider.of<PostService>(context).getAdditionalInfo(post!.id!),
+      future: Provider.of<CommentService>(context).getAdditionalInfo(post!.id!),
       builder:
           (BuildContext context, AsyncSnapshot<AdditionalPostInfo> snapshot) {
         if (snapshot.hasData) {

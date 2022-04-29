@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/main.dart';
+import 'package:houlala/model/add_cart_item.dart';
 import 'package:houlala/model/product.dart';
+import 'package:houlala/service/cart_item_service.dart';
+import 'package:houlala/service/product_service.dart';
 import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
+import 'package:houlala/widget/show_nack.dart';
+import 'package:provider/provider.dart';
 
 class ProductContainer extends StatelessWidget {
   final Product? product;
@@ -15,6 +21,10 @@ class ProductContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late int quantity = 1;
+    int price = quantity > 1
+        ? Provider.of<ProductService>(context).getTotalPrice()
+        : product!.initialPrice!;
     switch (displayType) {
       case 'favories':
         return Card(
@@ -47,7 +57,7 @@ class ProductContainer extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${product!.initialPrice!.toString()} FCFA',
+                      '${price.toString()} FCFA',
                     ),
                     const SizedBox(
                       height: 10.0,
@@ -55,7 +65,20 @@ class ProductContainer extends StatelessWidget {
                     CustomElevatedButton(
                       borderRadius: 2,
                       child: const Text("Ajouter au Panier"),
-                      onPressed: () {},
+                      onPressed: () async {
+                        var userId = await storage.read(key: "userId");
+                        AddCartItem newItem = AddCartItem(
+                            quantity: product!.quantity,
+                            productId: product!.id,
+                            userId: userId,
+                            totalPrice: product!.initialPrice);
+                        await Provider.of<CartItemService>(context,
+                                listen: false)
+                            .addToCart(newItem);
+                        showSnack(
+                            const Text("Produit a ete ajoute dans le panier "),
+                            context);
+                      },
                     )
                   ],
                 ),

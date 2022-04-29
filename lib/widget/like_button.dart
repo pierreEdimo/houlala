@@ -4,7 +4,7 @@ import 'package:houlala/main.dart';
 import 'package:houlala/model/found_post.dart';
 import 'package:houlala/service/post_service.dart';
 import 'package:houlala/widget/custom_button_container.dart';
-import 'package:houlala/widget/display_dialog.dart';
+import 'package:houlala/widget/open_login_modal.dart';
 import 'package:provider/provider.dart';
 
 class LikeButton extends StatefulWidget {
@@ -22,24 +22,23 @@ class _LikeButtonState extends State<LikeButton> {
     return CustomButtonContainer(
       icon: widget.foundPost!.isLiked!
           ? const FaIcon(
-        FontAwesomeIcons.solidHeart,
-        color: Colors.red,
-      )
+              FontAwesomeIcons.solidHeart,
+              color: Colors.red,
+            )
           : const FaIcon(FontAwesomeIcons.heart),
       onPressed: () async {
         String? userId = await storage.read(key: "userId");
 
         if (userId == null) {
-          showErrorDialog(context, "Erreur",
-              "Desole, vous devez etre connecte pour pouvoir aimer un produit");
+          openModal(context);
         } else {
           var oldStatus = widget.foundPost!.isLiked!;
           setState(() {
             widget.foundPost!.isLiked = !(widget.foundPost!.isLiked!);
           });
           try {
-            await Provider.of<PostService>(context, listen: false).likePost(
-                widget.foundPost!.foundPost!.id!); 
+            await Provider.of<PostService>(context, listen: false)
+                .likePost(widget.foundPost!.foundPost!.id!);
           } catch (error) {
             setState(() {
               widget.foundPost!.isLiked = oldStatus;

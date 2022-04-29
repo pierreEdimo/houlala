@@ -9,7 +9,6 @@ class PostDetailAppBar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
   final FoundPost? foundPost;
 
-
   PostDetailAppBar({
     Key? key,
     this.foundPost,
@@ -25,11 +24,13 @@ class PostDetailAppBar extends StatelessWidget with PreferredSizeWidget {
         onPressed: () => Navigator.of(context).pop(),
       ),
       actions: [
-        LikeButton(foundPost: foundPost ,),
-        CustomButtonContainer(
-          icon: const FaIcon(FontAwesomeIcons.share),
-          onPressed: () {},
+        LikeButton(
+          foundPost: foundPost,
         ),
+        // CustomButtonContainer(
+        //   icon: const FaIcon(FontAwesomeIcons.share),
+        //   onPressed: () {},
+        // ),
       ],
       automaticallyImplyLeading: false,
     );

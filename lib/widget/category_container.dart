@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:houlala/model/page_screen_arguments.dart';
 import 'package:houlala/screens/category_detail_screen.dart';
 import 'package:houlala/widget/background_image.dart';
+import 'package:houlala/widget/transparent_card_container.dart';
 
 import '../model/category.dart';
 
@@ -26,9 +27,7 @@ class CategoryContainer extends StatelessWidget {
                 categoryType: categoryModel!.categoryType!.label!,
                 imageUrl: categoryModel!.imageUrl!,
               )),
-      child: Card(
-        elevation: 0,
-        color: Colors.transparent,
+      child: TransparentCardContainer(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [

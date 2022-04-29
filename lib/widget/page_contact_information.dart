@@ -4,6 +4,8 @@ import 'package:houlala/model/page.dart';
 import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/page_contact_row.dart';
 
+import '../helper/constants.dart';
+
 class PageContactInformation extends StatelessWidget {
   final PageModel? page;
 
@@ -25,9 +27,7 @@ class PageContactInformation extends StatelessWidget {
              info: page!.email!  ,
            ),
          ),
-          const SizedBox(
-            height: 10.0,
-          ),
+          verticalSpacing,
           GestureDetector(
             onTap: () => print(page!.telephoneNumber),
             child: PageContactRow(
@@ -35,16 +35,12 @@ class PageContactInformation extends StatelessWidget {
               info: page!.telephoneNumber!,
             ),
           ),
-          const SizedBox(
-            height: 10.0,
-          ),
+          verticalSpacing,
           const PageContactRow(
             icon: FontAwesomeIcons.briefcase,
             info: "Assurances",
           ),
-          const SizedBox(
-            height: 10.0,
-          ),
+          verticalSpacing,
           PageContactRow(
             icon: FontAwesomeIcons.building,
             info: "Bayreuth, ${page!.headQuartersCountry!}",

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
+import 'package:sizer/sizer.dart';
 import 'grid_of_products.dart';
 
 class FruitsLettucesBoxContainer extends StatelessWidget {
@@ -11,18 +13,15 @@ class FruitsLettucesBoxContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.4,
+      height: 40.h,
       child: GridOfProducts(
-        height: MediaQuery.of(context).size.height * 0.25,
+        height: 25.h,
         textError: "Aucun fruits et legumes",
         child: Container(
           margin: const EdgeInsets.only(bottom: 5.0),
           child: Text(
             title!,
-            style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontFamily: 'PoppinsBold',
-                fontSize: 17),
+            style: titleStyle,
           ),
         ),
         uri: uri,

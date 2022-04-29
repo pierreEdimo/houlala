@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/widget/grid_of_products.dart';
+import 'package:sizer/sizer.dart';
 
 class PageProductContainer extends StatelessWidget {
   final String? uri;
@@ -14,7 +15,7 @@ class PageProductContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridOfProducts(
-      height: MediaQuery.of(context).size.height * 0.25,
+      height: 25.h,
       textError: textError,
       scrollDirection: Axis.vertical,
       uri: uri!,

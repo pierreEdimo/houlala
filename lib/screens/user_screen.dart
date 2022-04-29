@@ -11,16 +11,11 @@ class UserScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String? logInState =
-        Provider.of<AuthService>(context).getLoggedState();
-
     return Scaffold(
       appBar: StandardAppBar(
         title: "houlala",
       ),
-      body: logInState != 'loggedIn'
-          ? const SignInContainer()
-          : const UserScreenContainer(),
+      body: const UserScreenContainer(),
     );
   }
 }

@@ -50,22 +50,24 @@ class SearchAppBar extends StatelessWidget with PreferredSizeWidget {
                   .setSearchWord(controller!.text);
             },
             decoration: InputDecoration(
-                hintText: "Rechercher",
-                border: InputBorder.none,
-                hintStyle: const TextStyle(
-                  color: Color(0xff000000),
-                ),
-                prefixIcon: const Icon(
-                  Icons.search,
-                  color: Color(0xff000000),
-                ),
-                suffixIcon: IconButton(
-                    onPressed: () {
-                      controller!.clear();
-                      Provider.of<WordService>(context, listen: false)
-                          .setSearchWord(controller!.text);
-                    },
-                    icon: const Icon(Icons.close))),
+              hintText: "Rechercher",
+              border: InputBorder.none,
+              hintStyle: const TextStyle(
+                color: Color(0xff000000),
+              ),
+              prefixIcon: const Icon(
+                Icons.search,
+                color: Color(0xff000000),
+              ),
+              suffixIcon: IconButton(
+                onPressed: () {
+                  controller!.clear();
+                  Provider.of<WordService>(context, listen: false)
+                      .setSearchWord(controller!.text);
+                },
+                icon: const Icon(Icons.close),
+              ),
+            ),
           ),
         ),
       ),

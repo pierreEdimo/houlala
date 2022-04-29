@@ -4,6 +4,7 @@ import 'package:houlala/main.dart';
 import 'package:houlala/model/additional_info.dart';
 import 'package:houlala/service/post_service.dart';
 import 'package:houlala/widget/display_dialog.dart';
+import 'package:houlala/widget/open_login_modal.dart';
 import 'package:provider/provider.dart';
 
 class HomeLikeButton extends StatefulWidget {
@@ -41,8 +42,7 @@ class _HomeLikeButtonState extends State<HomeLikeButton> {
             });
           }
         } else {
-          showErrorDialog(context, "Erreur",
-              "Desole, vous devez etre connecte pour pouvoir aimer un post sur Houlala");
+          openModal(context);
         }
       },
       child: Row(

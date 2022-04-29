@@ -4,9 +4,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class CustomListTile extends StatelessWidget {
   final IconData? leadingIcon;
   final String? title;
+  final Widget? icon;
 
-  const CustomListTile({Key? key, this.leadingIcon, this.title})
-      : super(key: key);
+  const CustomListTile({
+    Key? key,
+    this.leadingIcon,
+    this.title,
+    this.icon,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +30,15 @@ class CustomListTile extends StatelessWidget {
                 title!,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
                 ),
               )
             ],
           ),
-          const FaIcon(
-            FontAwesomeIcons.angleRight,
-          )
+          icon == null
+              ? const FaIcon(
+                  FontAwesomeIcons.angleRight,
+                )
+              : icon!
         ],
       ),
     );

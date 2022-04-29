@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/transformed_container.dart';
+import 'package:sizer/sizer.dart';
 
 import 'app_bar_with_return.dart';
 import 'background_image.dart';
@@ -22,7 +23,7 @@ class DefaultCategoryContainer extends StatelessWidget {
               child: BackgroundImage(
                 imageUrl: imageUrl!,
               ),
-              height: MediaQuery.of(context).size.height * 0.5,
+              height: 59.h,
             ),
             AppBarWithReturn(
               elevation: 0,
@@ -40,7 +41,7 @@ class DefaultCategoryContainer extends StatelessWidget {
                 style: detailTitleStyle,
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.4,
+                height: 40.h,
                 child: Center(
                   child: Text(
                     "Desole nous n'avons pac encore des produits de categorie ${categoryName!} "

@@ -51,19 +51,6 @@ class PostService extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<AdditionalPostInfo> getAdditionalInfo(String id) async {
 
-    var userId = await storage.read(key: "userId");
-
-    var url = Uri.parse('${dotenv.env['POST_URL']}/additionalInfo/$id?userId=$userId');
-
-    Response response = await get(url);
-
-    if (response.statusCode == 200) {
-      return AdditionalPostInfo.fromJson(jsonDecode(response.body));
-    } else {
-      throw "Error";
-    }
-  }
 
 }

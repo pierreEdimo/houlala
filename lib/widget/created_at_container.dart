@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:intl/intl.dart';
 
 class CreatedAtContainer extends StatelessWidget {
@@ -17,11 +18,7 @@ class CreatedAtContainer extends StatelessWidget {
       ),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
-      style: const TextStyle(
-        fontWeight: FontWeight.bold,
-        color: Colors.grey,
-        fontSize: 12.0,
-      ),
+      style: subtitle,
     );
   }
 }

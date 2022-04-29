@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
 import 'package:houlala/widget/background_image.dart';
+import 'package:sizer/sizer.dart';
 
 class ShopContainer extends StatelessWidget {
   final String? imageUrl;
@@ -16,7 +17,7 @@ class ShopContainer extends StatelessWidget {
           Stack(
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.5,
+                height: 50.h,
                 child: BackgroundImage(
                   imageUrl: imageUrl,
                 ),

@@ -7,6 +7,7 @@ import 'package:http/http.dart';
 import '../main.dart';
 import '../model/login.dart';
 
+
 class AuthService extends ChangeNotifier {
   late String loggedState = "loggedOut";
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/widget/list_of_posts.dart';
+import 'package:sizer/sizer.dart';
 
 class PagePostContainer extends StatelessWidget {
   final String? url;
@@ -16,7 +17,7 @@ class PagePostContainer extends StatelessWidget {
     return ListOfPosts(
       textError: textError,
       scrollDirection: Axis.vertical,
-      errorHeight: MediaQuery.of(context).size.height * 0.25,
+      errorHeight: 25.h,
       uri: url!,
     );
   }

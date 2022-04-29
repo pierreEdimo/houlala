@@ -13,7 +13,6 @@ import 'package:houlala/screens/page_detail_screen.dart';
 import 'package:houlala/screens/post_detail_screen.dart';
 import 'package:houlala/screens/product_detail_screen.dart';
 import 'package:houlala/screens/search_screen.dart';
-import 'package:houlala/screens/sign_up_screen.dart';
 import 'package:houlala/service/auth_service.dart';
 import 'package:houlala/service/cart_item_service.dart';
 import 'package:houlala/service/category_service.dart';
@@ -103,7 +102,6 @@ class MyApp extends StatelessWidget {
               '/all_posts': (context) => const AllPostsScreen(),
               PostDetailScreen.routeName: (context) => PostDetailScreen(),
               '/search': (context) => const SearchScreen(),
-              '/signUp': (context) => const SignUpScreen(),
               FavoriteScreen.routeName: (context) => const FavoriteScreen(),
             },
           );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/cart-item.dart';
 import 'package:houlala/service/cart_item_service.dart';
 import 'package:houlala/widget/checkout_button.dart';
@@ -38,10 +39,7 @@ class CartItemBottom extends StatelessWidget {
                       ),
                       Text(
                         '${total.totalPrice} FCFA',
-                        style: const TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'PoppinsBold'),
+                        style: standardStyle,
                       )
                     ],
                   ),

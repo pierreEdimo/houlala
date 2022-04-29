@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/model/found_post.dart';
+import 'package:houlala/widget/created_at_container.dart';
+import 'package:houlala/widget/markdown_container.dart';
 import 'package:houlala/widget/post_detail_app_bar.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
 import '../helper/constants.dart';
 import '../screens/page_detail_screen.dart';
 import '../service/post_service.dart';
@@ -47,9 +47,7 @@ class PostBodyContainer extends StatelessWidget {
                                 foundPost.foundPost!.page!.imageUrl!,
                               ),
                             ),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
+                            horizontalSpacing,
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -57,22 +55,12 @@ class PostBodyContainer extends StatelessWidget {
                                   children: [
                                     Text(
                                       foundPost.foundPost!.page!.name!,
-                                      style: const TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: "PoppinsBold",
-                                      ),
+                                      style: nameTitleStyle,
                                     ),
-                                    const SizedBox(
-                                      width: 10.0,
-                                    ),
-                                    Text(
-                                      'le ${DateFormat.yMMMMEEEEd('fr').format(foundPost.foundPost!.createdAt!)}',
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12,
-                                        color: Colors.grey,
-                                      ),
+                                    horizontalSpacing,
+                                    CreatedAtContainer(
+                                      createdAt:
+                                          foundPost.foundPost!.createdAt!,
                                     )
                                   ],
                                 ),
@@ -83,15 +71,10 @@ class PostBodyContainer extends StatelessWidget {
                                       FontAwesomeIcons.building,
                                       size: 14,
                                     ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
+                                    horizontalSpacing,
                                     Text(
                                       '${foundPost.foundPost!.page!.headQuarterCity!}, ${foundPost.foundPost!.page!.headQuarterCountry!}',
-                                      style: const TextStyle(
-                                          fontSize: 12.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.grey),
+                                      style: subtitle,
                                     ),
                                   ],
                                 )
@@ -105,17 +88,10 @@ class PostBodyContainer extends StatelessWidget {
                       ),
                       Text(
                         foundPost.foundPost!.title!,
-                        style: const TextStyle(
-                          fontFamily: 'PoppinsBold',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
-                        ),
+                        style: titleStyle,
                       ),
-                      Markdown(
+                      MarkdownContainer(
                         data: foundPost.foundPost!.content!,
-                        shrinkWrap: true,
-                        physics: const ClampingScrollPhysics(),
-                        padding: EdgeInsets.zero,
                       ),
                       standardSizedBox,
                       foundPost.foundPost!.imageUrl!.isEmpty
@@ -139,13 +115,10 @@ class PostBodyContainer extends StatelessWidget {
                         children: [
                           Text(
                             foundPost.likeCount!.toString(),
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16.0,
-                                fontFamily: 'PoppinsBold'),
+                            style: standardStyle,
                           ),
                           const SizedBox(width: 3.0),
-                          const Text("personnes ont aime ce post")
+                          const Text("personne(s) ont aime ce post")
                         ],
                       ),
                     ],

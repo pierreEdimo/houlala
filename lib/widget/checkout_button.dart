@@ -4,7 +4,6 @@ import 'package:houlala/widget/custom_elevated_button.dart';
 import '../model/CountAndPrice.dart';
 
 class CheckoutButton extends StatelessWidget {
-  //final List<CartItem>? items;
   final CountAndPrice? total;
 
   const CheckoutButton({

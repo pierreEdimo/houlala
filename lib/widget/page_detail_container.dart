@@ -12,6 +12,7 @@ import 'package:houlala/widget/page_post_container.dart';
 import 'package:houlala/widget/page_product_container.dart';
 import 'package:houlala/widget/transformed_container.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 
 import '../model/page.dart';
 
@@ -70,7 +71,7 @@ class PageDetailContainer extends StatelessWidget {
                   Stack(
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.5,
+                        height: 50.h,
                         child: BackgroundImage(
                           imageUrl: page.imageUrl!,
                         ),

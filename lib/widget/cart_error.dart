@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 
 class CartError extends StatelessWidget {
@@ -15,9 +16,7 @@ class CartError extends StatelessWidget {
               AssetImage('images/cart.png'),
               size: 140,
             ),
-            SizedBox(
-              height: 30.0,
-            ),
+            standardSizedBox,
             Text("Il n'y'a aucuns Articles dans le Panier.",
             textAlign: TextAlign.center,)
           ],

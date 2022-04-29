@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/service/cart_item_service.dart';
 import 'package:houlala/widget/cart_item_delete_button.dart';
+import 'package:houlala/widget/decrease_quantity_text.dart';
+import 'package:houlala/widget/increase_quantity_text.dart';
 import 'package:houlala/widget/product_container.dart';
+import 'package:houlala/widget/quantity_container.dart';
+import 'package:houlala/widget/transparent_card_container.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import '../model/cart-item.dart';
@@ -21,9 +26,7 @@ class CartItemContainer extends StatelessWidget {
       onTap: () => Navigator.of(context).pushNamed(
           ProductDetailScreen.routeName,
           arguments: cartItem!.product!.id),
-      child: Card(
-        color: Colors.transparent,
-        elevation: 0,
+      child: TransparentCardContainer(
         child: Stack(
           children: [
             ProductContainer(
@@ -33,9 +36,7 @@ class CartItemContainer extends StatelessWidget {
             SizedBox(
               width: 100.w,
               height: 205,
-              child: Card(
-                color: Colors.transparent,
-                elevation: 0,
+              child: TransparentCardContainer(
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -43,25 +44,19 @@ class CartItemContainer extends StatelessWidget {
                       flex: 1,
                       child: Container(),
                     ),
-                    const SizedBox(
-                      width: 11.0,
-                    ),
+                    horizontalSpacing,
                     Flexible(
                       child: Container(
                         padding: const EdgeInsets.only(top: 30.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SizedBox(
-                              height: 20.0,
-                            ),
+                            standardSizedBox,
                             Text(
                               '${cartItem!.totalPrice!.toString()} FCFA',
                               style: const TextStyle(fontSize: 18.0),
                             ),
-                            const SizedBox(
-                              height: 20.0,
-                            ),
+                            standardSizedBox,
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -76,38 +71,19 @@ class CartItemContainer extends StatelessWidget {
                                           ? CartItemDeleteButton(
                                               id: cartItem!.id,
                                             )
-                                          : const Text(
-                                              "-",
-                                              style: TextStyle(
-                                                  fontSize: 28.0,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
+                                          : const DecreaseQuantityText(),
                                     ),
-                                    const SizedBox(
-                                      width: 10.0,
+                                    horizontalSpacing,
+                                    QuantityContainer(
+                                      quantity: cartItem!.quantity,
                                     ),
-                                    Text(
-                                      cartItem!.quantity.toString(),
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18.0,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 10.0,
-                                    ),
+                                    horizontalSpacing,
                                     InkWell(
                                       onTap: () => Provider.of<CartItemService>(
                                               context,
                                               listen: false)
                                           .increaseCartItem(cartItem!),
-                                      child: const Text(
-                                        "+",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 28.0,
-                                        ),
-                                      ),
+                                      child: const InCreaseQuantityText(),
                                     )
                                   ],
                                 ),

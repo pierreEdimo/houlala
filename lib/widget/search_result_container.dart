@@ -6,6 +6,7 @@ import 'package:houlala/widget/grid_pages.dart';
 import 'package:houlala/widget/list_of_posts.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:houlala/widget/vertical_grid_of_categories.dart';
+import 'package:sizer/sizer.dart';
 
 import 'custom_intern_navigation.dart';
 
@@ -27,7 +28,7 @@ class SearchResultContainer extends StatelessWidget {
     final List<Widget> _widgetOptions = [
       StandardCustomContainer(
         child: GridOfProducts(
-          height: MediaQuery.of(context).size.height * 0.8,
+          height: 80.h,
           textError: "Aucuns produits appelle $searchWorld n'a ete trouve\n"
               "svp verifiez plutard",
           uri: '${dotenv.env['PRODUCT_URL']}/search?searchword=$searchWorld',

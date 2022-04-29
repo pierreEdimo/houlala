@@ -5,6 +5,7 @@ import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/fruits_lettuces_box_container.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:houlala/widget/transformed_container.dart';
+import 'package:sizer/sizer.dart';
 
 //Color(0xe2e2e2e2);
 
@@ -32,7 +33,7 @@ class FruitsLettucesContainer extends StatelessWidget {
           Stack(
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.5,
+                height: 50.h,
                 child: BackgroundImage(
                   imageUrl: imageUrl!,
                 ),
@@ -51,25 +52,19 @@ class FruitsLettucesContainer extends StatelessWidget {
                 children: [
                   Text(
                     categoryName!,
-                    style:detailTitleStyle,
+                    style: detailTitleStyle,
                   ),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
+                  verticalSpacing,
                   FruitsLettucesBoxContainer(
                     uri: fruitUri!,
                     title: "fruits",
                   ),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
+                  verticalSpacing,
                   FruitsLettucesBoxContainer(
                     uri: lettuceUri!,
                     title: "legumes",
                   ),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
+                  verticalSpacing,
                   FruitsLettucesBoxContainer(
                     uri: tuberCulesUri,
                     title: "tubercules",

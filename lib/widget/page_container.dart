@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/page.dart';
 import '../screens/page_detail_screen.dart';
 
@@ -14,26 +15,29 @@ class PageContainer extends StatelessWidget {
       onTap: () => Navigator.of(context)
           .pushNamed(PageDetailScreen.screenName, arguments: page!.id!),
       child: Container(
-        margin:const  EdgeInsets.only(bottom: 8.0),
+        padding: const EdgeInsets.all(5.0),
+        margin: const EdgeInsets.symmetric(
+          horizontal: 5.0,
+          vertical: 8.0,
+        ),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(
+              10.0,
+            ),
+            border: Border.all(
+              width: 1.0,
+              color: Colors.grey.shade300,
+            )),
         width: MediaQuery.of(context).size.width * 0.85,
         height: 90,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 90,
-              height: 90,
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                image: DecorationImage(
-                  image: NetworkImage(page!.imageUrl!),
-                  fit: BoxFit.cover,
-                ),
-              ),
+            CircleAvatar(
+              radius: 38,
+              backgroundImage: NetworkImage(page!.imageUrl!),
             ),
-            const SizedBox(
-              width: 5.0,
-            ),
+            horizontalSpacing, 
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,11 +50,11 @@ class PageContainer extends StatelessWidget {
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'PoppinsBold',
-                          fontSize: 17),
+                          fontSize: 16),
                     ),
                   ),
                   const SizedBox(
-                    height: 5.0,
+                    height: 3.0,
                   ),
                   Row(
                     children: [
@@ -61,7 +65,14 @@ class PageContainer extends StatelessWidget {
                       const SizedBox(
                         width: 3.0,
                       ),
-                      Text(page!.pageSpecialisation!.label!)
+                      Flexible(
+                        child: Text(
+                          page!.pageSpecialisation!.label!,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: subtitle,
+                        ),
+                      )
                     ],
                   ),
                   const SizedBox(
@@ -82,6 +93,7 @@ class PageContainer extends StatelessWidget {
                           '${page!.headQuartersCity!} . ${page!.headQuartersCountry}',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
+                          style: subtitle,
                         ),
                       ),
                     ],

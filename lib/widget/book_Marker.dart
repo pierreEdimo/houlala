@@ -5,6 +5,7 @@ import 'package:houlala/model/found_product.dart';
 import 'package:houlala/service/product_service.dart';
 import 'package:houlala/widget/custom_button_container.dart';
 import 'package:houlala/widget/display_dialog.dart';
+import 'package:houlala/widget/show_nack.dart';
 import 'package:provider/provider.dart';
 
 class BookMarker extends StatefulWidget {
@@ -41,6 +42,17 @@ class _BookMarkerState extends State<BookMarker> {
             await Provider.of<ProductService>(context, listen: false)
                 .bookMarkProduct(
                     widget.foundProduct!.product!.id!);
+
+            if(widget.foundProduct!.isFavorite!){
+              showSnack(
+                  const Text("Article a ete enregiste dans vos favoris"),
+                  context);
+            } else {
+              showSnack(
+                  const Text("Article a ete supprime de vos favoris"),
+                  context);
+            }
+
           } catch (error) {
             setState(() {
               widget.foundProduct!.isFavorite = oldStatus;

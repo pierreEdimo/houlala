@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -6,7 +5,9 @@ import 'package:houlala/main.dart';
 import 'package:houlala/service/comment_service.dart';
 import 'package:houlala/widget/comment_input.dart';
 import 'package:houlala/widget/list_of_comment.dart';
+import 'package:houlala/widget/open_login_modal.dart';
 import 'package:houlala/widget/post_body_container.dart';
+import 'package:houlala/widget/show_nack.dart';
 import 'package:provider/provider.dart';
 
 import '../model/add_comment.dart';
@@ -65,15 +66,27 @@ class PostDetailScreen extends StatelessWidget {
                             DoNothingAction();
                           } else {
                             var userId = await storage.read(key: "userId");
-                            AddComment newComment = AddComment(
-                                userId: userId,
-                                content: _controller.text,
-                                postId: id);
-                            await Provider.of<CommentService>(context,
-                                    listen: false)
-                                .addComment(newComment);
+                            if (userId != null) {
+                              AddComment newComment = AddComment(
+                                  userId: userId,
+                                  content: _controller.text,
+                                  postId: id);
+                              await Provider.of<CommentService>(context,
+                                      listen: false)
+                                  .addComment(newComment);
 
-                            _controller.clear();
+                              showSnack(
+                                  const Text(
+                                      "Votre Commentaire a ete ajoute avec succes "),
+                                  context);
+
+                              _controller.clear();
+                            } else {
+                              _controller.clear();
+                              openModal(context);
+                            }
+
+                            FocusScope.of(context).unfocus();
                           }
                         },
                         icon: const FaIcon(FontAwesomeIcons.paperPlane))

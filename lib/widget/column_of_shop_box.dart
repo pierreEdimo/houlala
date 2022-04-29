@@ -27,17 +27,13 @@ class ColumnOfShopBox extends StatelessWidget {
               '${dotenv.env['PAGE_URL']}/filterPageByCategoryIdAndSpecialisation?categoryId=6233b38345bff7f776f0d30e&specialisation=6245a243dd701819d970a0be',
           title: 'Electronique Grand public',
         ),
-        const SizedBox(
-          height: 10.0,
-        ),
+        verticalSpacing,
         ShopContainerBox(
           shopUrl:
               '${dotenv.env['PAGE_URL']}/filterPageByCategoryIdAndSpecialisation?categoryId=6233b38345bff7f776f0d30e&specialisation=6245a221dd701819d970a0bc',
           title: 'Aliments',
         ),
-        const SizedBox(
-          height: 10.0,
-        ),
+        verticalSpacing,
         ShopContainerBox(
           shopUrl:
               '${dotenv.env['PAGE_URL']}/filterPageByCategoryIdAndSpecialisation?categoryId=6233b38345bff7f776f0d30e&specialisation=6245a273dd701819d970a0c0',

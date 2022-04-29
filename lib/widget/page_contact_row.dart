@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/helper/constants.dart';
 
 class PageContactRow extends StatelessWidget {
   final IconData? icon;
@@ -15,7 +16,7 @@ class PageContactRow extends StatelessWidget {
           icon!,
           size: 16,
         ),
-        const SizedBox(width: 20.0,),
+        horizontalSpacing,
         Text(info!)
       ],
     );

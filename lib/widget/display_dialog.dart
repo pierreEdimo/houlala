@@ -17,7 +17,6 @@ Future<void> showErrorDialog(
                 Text(
                   msg,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 14.0 ),
                 ),
               ],
             ),

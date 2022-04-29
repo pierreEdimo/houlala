@@ -6,8 +6,13 @@ import 'package:houlala/service/product_service.dart';
 import 'package:houlala/widget/add_cart_item.dart';
 import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
+import 'package:houlala/widget/decrease_quantity_text.dart';
 import 'package:houlala/widget/display_dialog.dart';
+import 'package:houlala/widget/increase_quantity_text.dart';
+import 'package:houlala/widget/markdown_container.dart';
 import 'package:houlala/widget/product_detail_app_bar.dart';
+import 'package:houlala/widget/quantity_container.dart';
+import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:houlala/widget/transformed_container.dart';
 import 'package:provider/provider.dart';
@@ -93,21 +98,13 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                                                           .initialPrice!,
                                                       quantity);
                                             },
-                                            child: const Text(
-                                              "-",
-                                              style: TextStyle(
-                                                  fontSize: 28.0,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
+                                            child: const DecreaseQuantityText(),
                                           ),
                                           const SizedBox(
                                             width: 25.0,
                                           ),
-                                          Text(
-                                            quantity.toString(),
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18.0),
+                                          QuantityContainer(
+                                            quantity: quantity,
                                           ),
                                           const SizedBox(
                                             width: 25.0,
@@ -125,26 +122,15 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                                                           .initialPrice!,
                                                       quantity);
                                             },
-                                            child: const Text(
-                                              "+",
-                                              style: TextStyle(
-                                                fontSize: 28.0,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
+                                            child: const InCreaseQuantityText(),
                                           )
                                         ],
                                       ),
                                     )
                                   ],
                                 ),
-                                const SizedBox(
-                                  height: 10.0,
-                                ),
-                                Markdown(
-                                  shrinkWrap: true,
-                                  padding: EdgeInsets.zero,
-                                  physics: const ClampingScrollPhysics(),
+                                verticalSpacing,
+                                MarkdownContainer(
                                   data: foundProduct.product!.description!,
                                 )
                               ],
@@ -173,10 +159,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                           ),
                           Text(
                             price.toString() + "FCFA",
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.0,
-                                fontFamily: 'PoppinsBold'),
+                            style: standardStyle,
                           ),
                         ],
                       ),
@@ -192,6 +175,10 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                               foundProduct.product!.id!,
                               price,
                             );
+
+                            showSnack(
+                                const Text("Article a ete ajoute au Panier"),
+                                context);
                           } else {
                             showErrorDialog(context, "Erreur",
                                 "Desole vous devez etre connecte pour achter des produits sur Houlala");

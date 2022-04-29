@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/widget/show_nack.dart';
 import 'package:provider/provider.dart';
 import '../service/cart_item_service.dart';
-
 
 class CartItemDeleteButton extends StatelessWidget {
   final String? id;
@@ -11,15 +11,15 @@ class CartItemDeleteButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  InkWell(
+    return InkWell(
       child: const FaIcon(
         FontAwesomeIcons.trashCan,
         color: Colors.red,
       ),
-      onTap: () => Provider.of<CartItemService>(
-          context,
-          listen: false)
-          .deleteCart(id!),
+      onTap: () => Provider.of<CartItemService>(context, listen: false)
+          .deleteCart(id!)
+          .then((_) => showSnack(
+              const Text("Produit a ete supprime du Panier"), context)),
     );
   }
 }

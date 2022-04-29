@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:houlala/service/category_service.dart';
 import 'package:houlala/widget/category_container.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 
 import '../model/category.dart';
 
@@ -52,7 +53,7 @@ class VerticalListOfCategories extends StatelessWidget {
                   children: categories
                       .map((CategoryModel categoryModel) => CategoryContainer(
                             categoryModel: categoryModel,
-                            weight: MediaQuery.of(context).size.width * 1,
+                            weight: 100.w,
                           ))
                       .toList(),
                 );

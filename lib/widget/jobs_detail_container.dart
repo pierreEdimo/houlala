@@ -6,6 +6,7 @@ import 'package:houlala/service/job_service.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
 import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
+import 'package:houlala/widget/markdown_container.dart';
 import 'package:houlala/widget/transformed_container.dart';
 import 'package:provider/provider.dart';
 
@@ -62,29 +63,30 @@ class JobsDetailContainer extends StatelessWidget {
                             FontAwesomeIcons.briefcase,
                             size: 16,
                           ),
-                          const SizedBox(
-                            width: 10.0,
-                          ),
-                          Text('${job.jobType} . ${job.experienceLevel}')
+                          horizontalSpacing,
+                          Flexible(
+                            child: Text(
+                              '${job.jobType} . ${job.experienceLevel}',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          )
                         ],
                       ),
                       standardSizedBox,
-                     CustomElevatedButton(
-                       child: const Text(
-                         "Postuler",
-                         style: TextStyle(
-                           fontFamily: 'PoppinsBold',
-                           fontWeight: FontWeight.bold,
-                         ),
-                       ),
-                       onPressed: () => print("Hello World"),
-                     ),
+                      CustomElevatedButton(
+                        child: const Text(
+                          "Postuler",
+                          style: TextStyle(
+                            fontFamily: 'PoppinsBold',
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: () => print("Hello World"),
+                      ),
                       standardSizedBox,
-                      Markdown(
+                      MarkdownContainer(
                         data: job.jobDescription!,
-                        shrinkWrap: true,
-                        physics: const ClampingScrollPhysics(),
-                        padding: EdgeInsets.zero,
                       )
                     ],
                   ),

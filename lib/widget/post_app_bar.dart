@@ -20,7 +20,6 @@ class AllPostAppBar extends StatelessWidget with PreferredSizeWidget {
       leading: CustomButtonContainer(
         icon: const FaIcon(
           FontAwesomeIcons.angleLeft,
-          size: 24,
           color: Colors.black,
         ),
         onPressed: () => Navigator.of(context).pop(),

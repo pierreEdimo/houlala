@@ -6,6 +6,7 @@ import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/page.dart';
 import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/grid_of_products.dart';
+import 'package:houlala/widget/markdown_container.dart';
 import 'list_of_posts.dart';
 import 'package:sizer/sizer.dart';
 
@@ -16,19 +17,15 @@ class PageHomeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomColumnContainer(
-          child: const Text(
+          child: Text(
             "A Propos",
-            style: TextStyle(fontSize: 17),
+            style: standardStyle,
           ),
-          gridList: Markdown(
-            physics: const ClampingScrollPhysics(),
-            shrinkWrap: true,
-            padding: EdgeInsets.zero,
+          gridList: MarkdownContainer(
             data: pageModel!.description!,
           ),
         ),
@@ -36,17 +33,14 @@ class PageHomeContainer extends StatelessWidget {
         SizedBox(
           height: 280,
           child: GridOfProducts(
-            height: MediaQuery.of(context).size.height * 0.25,
+            height: 25.h,
             textError: "${pageModel!.name} n'a pas encore insere de produits"
                 "svp veuillez verifier plutard",
             child: Container(
               margin: const EdgeInsets.only(bottom: 5.0),
-              child: const Text(
+              child: Text(
                 "Produits",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'PoppinsBold',
-                    fontSize: 17),
+                style: standardStyle,
               ),
             ),
             scrollDirection: Axis.horizontal,
@@ -66,10 +60,9 @@ class PageHomeContainer extends StatelessWidget {
           child: Text(
             "posts par ${pageModel!.name}",
             style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 17,
-              fontFamily: "PoppinsBold"
-            ),
+                fontWeight: FontWeight.bold,
+                fontSize: 17,
+                fontFamily: "PoppinsBold"),
           ),
           uri:
               '${dotenv.env['POST_URL']}/getRandomPostsByPageId?size=10&pageId=${pageModel!.id}',
