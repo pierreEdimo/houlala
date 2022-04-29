@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/model/found_post.dart';
 import 'package:houlala/widget/created_at_container.dart';
@@ -23,14 +22,14 @@ class PostBodyContainer extends StatelessWidget {
       builder: (context, AsyncSnapshot<FoundPost> snapshot) {
         if (snapshot.hasData) {
           FoundPost foundPost = snapshot.data!;
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10.0),
-            child: Column(
-              children: [
-                PostDetailAppBar(
-                  foundPost: foundPost,
-                ),
-                StandardCustomContainer(
+          return Column(
+            children: [
+              PostDetailAppBar(
+                foundPost: foundPost,
+              ),
+              StandardCustomContainer(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -124,8 +123,8 @@ class PostBodyContainer extends StatelessWidget {
                     ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           );
         }
         return const Center(

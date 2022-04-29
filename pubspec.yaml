@@ -85,6 +85,7 @@ flutter:
          - asset: fonts/Poppins-Bold.ttf
 
   assets:
+    - images/wifi-x.png
     - images/comment.png
     - images/no-notification.png
     - images/cart.png

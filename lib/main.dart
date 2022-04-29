@@ -17,6 +17,7 @@ import 'package:houlala/service/auth_service.dart';
 import 'package:houlala/service/cart_item_service.dart';
 import 'package:houlala/service/category_service.dart';
 import 'package:houlala/service/comment_service.dart';
+import 'package:houlala/service/connectivity_service.dart';
 import 'package:houlala/service/job_service.dart';
 import 'package:houlala/service/page_service.dart';
 import 'package:houlala/service/post_service.dart';
@@ -66,7 +67,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => WordService()),
         ChangeNotifierProvider(create: (context) => AuthService()),
         ChangeNotifierProvider(create: (context) => CommentService()),
-        ChangeNotifierProvider(create: (context) => CartItemService())
+        ChangeNotifierProvider(create: (context) => CartItemService()), 
+        ChangeNotifierProvider(create: (context) => ConnectivityService())
       ],
       builder: (context, child) {
         return Sizer(builder: (context, orientation, deviceType) {

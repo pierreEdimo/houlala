@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/widget/container_wirth_connectivity_checker.dart';
 import 'package:houlala/widget/discover_container.dart';
 import 'package:houlala/widget/standard_custom_app_bar.dart';
 
@@ -11,7 +12,9 @@ class DiscoverScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: "Decouvrez",
       ),
-      body: DiscoverContainer(),
+      body: ContainerWithConnectivityChecker(
+        child: DiscoverContainer(),
+      ),
     );
   }
 }

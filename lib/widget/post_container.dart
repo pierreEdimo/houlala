@@ -38,9 +38,7 @@ class PostContainer extends StatelessWidget {
               PostAvatar(
                 post: post,
               ),
-              const SizedBox(
-                width: 10.0,
-              ),
+              horizontalSpacing,
               Flexible(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -56,9 +54,7 @@ class PostContainer extends StatelessWidget {
                                   post: post,
                                 ),
                               ),
-                              const SizedBox(
-                                width: 10.0,
-                              ),
+                              horizontalSpacing,
                               Flexible(
                                 child: CreatedAtContainer(
                                   createdAt: post!.createdAt!,
@@ -72,21 +68,11 @@ class PostContainer extends StatelessWidget {
                         )
                       ],
                     ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    PostTitle(
-                      post: post,
-                    ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
+                    verticalSpacing,
                     PostContent(
                       post: post,
                     ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
+                    verticalSpacing,
                     post!.imageUrl!.isEmpty
                         ? Container()
                         : Container(
@@ -361,9 +347,7 @@ class AdditionalInformation extends StatelessWidget {
                   postId: post!.id!,
                   info: info,
                 ),
-                const SizedBox(
-                  width: 20.0,
-                ),
+                horizontalSpacing,
                 Row(
                   children: [
                     const ImageIcon(
