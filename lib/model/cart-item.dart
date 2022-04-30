@@ -1,10 +1,23 @@
 import 'package:houlala/model/product.dart';
+import 'package:hive/hive.dart';
 
-class CartItem {
+part 'cart-item.g.dart';
+
+@HiveType(typeId: 1)
+class CartItem extends HiveObject{
+  @HiveField(0)
   final String? id;
+
+  @HiveField(1)
   final String? userId;
+
+  @HiveField(2)
   int? quantity;
+
+  @HiveField(3)
   int? totalPrice;
+
+  @HiveField(4)
   final Product? product;
 
   CartItem({

@@ -1,10 +1,21 @@
+import 'package:hive/hive.dart';
+
+part 'product.g.dart';
+
+@HiveType(typeId: 0)
 class Product {
   final String? id;
+  @HiveField(0)
   final String? name;
+  @HiveField(1)
   final String? description;
+  @HiveField(2)
   final int? weight;
+  @HiveField(3)
   final int? initialPrice;
+  @HiveField(4)
   final String? imageUrl;
+  @HiveField(5)
   late int quantity = 1;
 
   Product(
