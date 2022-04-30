@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/page.dart';
 import 'package:houlala/widget/custom_column_container.dart';

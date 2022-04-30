@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'custom_button_container.dart';
 
 class StandardAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -23,11 +21,7 @@ class StandardAppBar extends StatelessWidget with PreferredSizeWidget {
       title: Text(
         title!,
       ),
-      actions: [
-        button != null
-            ? button!
-            : Container()
-      ],
+      actions: [button != null ? button! : Container()],
       automaticallyImplyLeading: false,
     );
   }

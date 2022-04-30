@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/created_at_container.dart';
 import 'package:houlala/widget/transparent_card_container.dart';
-import 'package:intl/intl.dart';
 import '../model/comment.dart';
 import 'comment_modal_body.dart';
 

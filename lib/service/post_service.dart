@@ -1,9 +1,7 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/main.dart';
-import 'package:houlala/model/additional_info.dart';
 import 'package:houlala/model/found_post.dart';
 import 'package:houlala/model/post.dart';
 import 'package:http/http.dart';
@@ -50,7 +48,4 @@ class PostService extends ChangeNotifier {
     );
     notifyListeners();
   }
-
-
-
 }

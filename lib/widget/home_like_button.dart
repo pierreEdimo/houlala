@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/main.dart';
 import 'package:houlala/model/additional_info.dart';
 import 'package:houlala/service/post_service.dart';
-import 'package:houlala/widget/display_dialog.dart';
 import 'package:houlala/widget/open_login_modal.dart';
 import 'package:provider/provider.dart';
 
