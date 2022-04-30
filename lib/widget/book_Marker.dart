@@ -4,7 +4,7 @@ import 'package:houlala/main.dart';
 import 'package:houlala/model/found_product.dart';
 import 'package:houlala/service/product_service.dart';
 import 'package:houlala/widget/custom_button_container.dart';
-import 'package:houlala/widget/display_dialog.dart';
+import 'package:houlala/widget/open_login_modal.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:provider/provider.dart';
 
@@ -40,27 +40,22 @@ class _BookMarkerState extends State<BookMarker> {
           });
           try {
             await Provider.of<ProductService>(context, listen: false)
-                .bookMarkProduct(
-                    widget.foundProduct!.product!.id!);
+                .bookMarkProduct(widget.foundProduct!.product!.id!);
 
-            if(widget.foundProduct!.isFavorite!){
-              showSnack(
-                  const Text("Article a ete enregiste dans vos favoris"),
+            if (widget.foundProduct!.isFavorite!) {
+              showSnack(const Text("Article a ete enregiste dans vos favoris"),
                   context);
             } else {
               showSnack(
-                  const Text("Article a ete supprime de vos favoris"),
-                  context);
+                  const Text("Article a ete supprime de vos favoris"), context);
             }
-
           } catch (error) {
             setState(() {
               widget.foundProduct!.isFavorite = oldStatus;
             });
           }
         } else {
-          showErrorDialog(context, "Erreur",
-              "desolez, vous devez etre connecte pour enregistrer un produit dans les favoris");
+          openModal(context);
         }
       },
     );
