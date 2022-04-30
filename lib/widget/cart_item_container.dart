@@ -69,7 +69,7 @@ class CartItemContainer extends StatelessWidget {
                                           .decreaseCartItem(cartItem!),
                                       child: cartItem!.quantity! <= 1
                                           ? CartItemDeleteButton(
-                                              id: cartItem!.id,
+                                              item: cartItem!,
                                             )
                                           : const DecreaseQuantityText(),
                                     ),
@@ -88,7 +88,7 @@ class CartItemContainer extends StatelessWidget {
                                   ],
                                 ),
                                 CartItemDeleteButton(
-                                  id: cartItem!.id!,
+                                  item: cartItem!,
                                 )
                               ],
                             )

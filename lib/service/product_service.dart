@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/model/found_product.dart';
-import 'package:houlala/model/parameter_favorite.dart';
 import 'package:houlala/model/product.dart';
 import 'package:http/http.dart';
 

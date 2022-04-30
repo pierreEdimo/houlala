@@ -34,7 +34,7 @@ class GridOfProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: Provider.of<ProductService>(context).fetchProducts(uri!),
-        builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             List<Product> products = snapshot.data!;
 

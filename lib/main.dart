@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:houlala/model/cart-item.dart';
+import 'package:houlala/model/product.dart';
 import 'package:houlala/screens/all_post_screen.dart';
 import 'package:houlala/screens/all_product_categories_screen.dart';
 import 'package:houlala/screens/all_fruits_and_lettuces_screen.dart';
@@ -29,13 +31,18 @@ import 'package:sizer/sizer.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+
 var box = Hive.box('loggedState');
 const storage = FlutterSecureStorage();
 
 Future main() async {
   await Hive.initFlutter();
 
+  Hive.registerAdapter(CartItemAdapter());
+  Hive.registerAdapter(ProductAdapter());
+
   await Hive.openBox('loggedState');
+  await Hive.openBox<CartItem>('cart-items');
 
   await dotenv.load(fileName: '.env');
 

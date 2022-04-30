@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:houlala/helper/constants.dart';
+import 'package:houlala/model/cart-item.dart';
 import 'package:houlala/model/found_product.dart';
+import 'package:houlala/service/cart_item_service.dart';
 import 'package:houlala/service/product_service.dart';
 import 'package:houlala/widget/add_cart_item.dart';
 import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
 import 'package:houlala/widget/decrease_quantity_text.dart';
-import 'package:houlala/widget/display_dialog.dart';
 import 'package:houlala/widget/increase_quantity_text.dart';
 import 'package:houlala/widget/markdown_container.dart';
 import 'package:houlala/widget/product_detail_app_bar.dart';
@@ -180,8 +180,19 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                                 const Text("Article a ete ajoute au Panier"),
                                 context);
                           } else {
-                            showErrorDialog(context, "Erreur",
-                                "Desole vous devez etre connecte pour achter des produits sur Houlala");
+                            CartItem item = CartItem(
+                                quantity: quantity,
+                                totalPrice: price,
+                                product: foundProduct.product,
+                                id: "",
+                                userId: "");
+
+                            Provider.of<CartItemService>(context, listen: false)
+                                .addToCartOffline(item);
+
+                            showSnack(
+                                const Text("Article a ete ajoute au Panier"),
+                                context);
                           }
                         },
                         child: Text(

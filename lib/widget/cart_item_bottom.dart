@@ -15,7 +15,7 @@ class CartItemBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Provider.of<CartItemService>(context).getCountAndPrice(),
+      future: Provider.of<CartItemService>(context).getTotalResult(items!),
       builder: (BuildContext context, AsyncSnapshot<CountAndPrice> snapshot) {
         if (snapshot.hasData) {
           CountAndPrice total = snapshot.data!;
@@ -44,7 +44,7 @@ class CartItemBottom extends StatelessWidget {
                     ],
                   ),
                   CheckoutButton(
-                    total: total,
+                    totalQuantity: total.totalQuantity,
                   )
                 ],
               ),

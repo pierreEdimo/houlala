@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
-import '../model/CountAndPrice.dart';
 
 class CheckoutButton extends StatelessWidget {
-  final CountAndPrice? total;
+  final int? totalQuantity;
 
   const CheckoutButton({
     Key? key,
-    this.total,
+    this.totalQuantity,
   }) : super(key: key);
 
   @override
@@ -18,7 +17,7 @@ class CheckoutButton extends StatelessWidget {
 
     return CustomElevatedButton(
       child: Text(
-        "Caisse (${total!.totalQuantity.toString()})",
+        "Caisse (${totalQuantity.toString()})",
         style: standardStyle,
       ),
       onPressed: () => print("suivant"),

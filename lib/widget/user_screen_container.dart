@@ -158,20 +158,25 @@ class UserScreenContainer extends StatelessWidget {
                 child: Column(
                   children: [
                     InkWell(
-                      onTap: () => Navigator.of(context)
-                          .pushNamed(FavoriteScreen.routeName, arguments: ""),
+                      onTap: () => openModal(context),
                       child: const CustomListTile(
                         leadingIcon: FontAwesomeIcons.solidHeart,
                         title: "Mes Favories",
                       ),
                     ),
-                    const CustomListTile(
-                      leadingIcon: FontAwesomeIcons.bagShopping,
-                      title: "Mes Commandes",
+                    InkWell(
+                      onTap: () => openModal(context),
+                      child: const CustomListTile(
+                        leadingIcon: FontAwesomeIcons.bagShopping,
+                        title: "Mes Commandes",
+                      ),
                     ),
-                    const CustomListTile(
-                      leadingIcon: FontAwesomeIcons.moneyBill,
-                      title: "Mes Factures",
+                    InkWell(
+                      onTap: () => openModal(context),
+                      child: const CustomListTile(
+                        leadingIcon: FontAwesomeIcons.moneyBill,
+                        title: "Mes Factures",
+                      ),
                     )
                   ],
                 ),

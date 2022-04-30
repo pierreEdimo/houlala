@@ -8,9 +8,9 @@ class CountAndPrice {
     this.totalQuantity
   });
 
-  factory CountAndPrice.fromJson(Map<String, dynamic> json) =>
-      CountAndPrice(
-        totalPrice: json['totalPrice'] as int,
-        totalQuantity: json['totalQuantity'] as int,
-      );
+  // factory CountAndPrice.fromJson(Map<String, dynamic> json) =>
+  //     CountAndPrice(
+  //       totalPrice: json['totalPrice'] as int,
+  //       totalQuantity: json['totalQuantity'] as int,
+  //     );
 }
