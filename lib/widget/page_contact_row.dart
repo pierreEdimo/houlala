@@ -14,10 +14,12 @@ class PageContactRow extends StatelessWidget {
       children: [
         FaIcon(
           icon!,
-          size: 16,
+          size: 18,
         ),
         horizontalSpacing,
-        Text(info!)
+        Text(info!, style: const TextStyle(
+          fontWeight: FontWeight.bold
+        ),)
       ],
     );
   }

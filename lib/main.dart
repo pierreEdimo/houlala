@@ -43,6 +43,7 @@ Future main() async {
 
   await Hive.openBox('loggedState');
   await Hive.openBox<CartItem>('cart-items');
+  await Hive.openBox<Product>('products');
 
   await dotenv.load(fileName: '.env');
 

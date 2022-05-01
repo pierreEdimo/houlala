@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/screens/favorite_screen.dart';
 import 'package:houlala/service/auth_service.dart';
 import 'package:houlala/widget/custom_list_tile.dart';
+import 'package:houlala/widget/launch_url.dart';
 import 'package:houlala/widget/open_login_modal.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
@@ -92,10 +93,7 @@ class UserScreenContainer extends StatelessWidget {
                             leadingIcon: FontAwesomeIcons.circleInfo,
                             title: "A Propos",
                           ),
-                          const CustomListTile(
-                            leadingIcon: FontAwesomeIcons.envelope,
-                            title: "Contactez nous",
-                          ),
+                          const ContactButton(),
                           const CustomListTile(
                             leadingIcon: FontAwesomeIcons.lock,
                             title: "Conditions d'utilisation",
@@ -205,10 +203,7 @@ class UserScreenContainer extends StatelessWidget {
                       leadingIcon: FontAwesomeIcons.circleInfo,
                       title: "A Propos",
                     ),
-                    const CustomListTile(
-                      leadingIcon: FontAwesomeIcons.envelope,
-                      title: "Contactez nous",
-                    ),
+                    const ContactButton(),
                     const CustomListTile(
                       leadingIcon: FontAwesomeIcons.lock,
                       title: "Conditions d'utilisation",
@@ -234,5 +229,20 @@ class UserScreenContainer extends StatelessWidget {
           ),
         );
     }
+  }
+}
+
+class ContactButton extends StatelessWidget {
+  const ContactButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () async => openContact('mailto', 'pierredimo@live.com'),
+      child: const CustomListTile(
+        leadingIcon: FontAwesomeIcons.envelope,
+        title: "Contactez nous",
+      ),
+    );
   }
 }
