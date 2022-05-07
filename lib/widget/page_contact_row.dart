@@ -4,9 +4,9 @@ import 'package:houlala/helper/constants.dart';
 
 class PageContactRow extends StatelessWidget {
   final IconData? icon;
-  final String? info;
+  final Widget? child;
 
-  const PageContactRow({Key? key, this.icon, this.info}) : super(key: key);
+  const PageContactRow({Key? key, this.icon, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +17,7 @@ class PageContactRow extends StatelessWidget {
           size: 18,
         ),
         horizontalSpacing,
-        Text(info!, style: const TextStyle(
-          fontWeight: FontWeight.bold
-        ),)
+       child!,
       ],
     );
   }

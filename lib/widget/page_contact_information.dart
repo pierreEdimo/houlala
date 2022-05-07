@@ -25,7 +25,12 @@ class PageContactInformation extends StatelessWidget {
             onTap: () => openContact('mailto', page!.email!),
             child: PageContactRow(
               icon: FontAwesomeIcons.envelope,
-              info: page!.email!,
+              child: Text(
+                page!.email!,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
           verticalSpacing,
@@ -33,18 +38,21 @@ class PageContactInformation extends StatelessWidget {
             onTap: () => openContact('tel', page!.telephoneNumber!),
             child: PageContactRow(
               icon: FontAwesomeIcons.phone,
-              info: page!.telephoneNumber!,
+              child: Text(
+                page!.telephoneNumber!,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           verticalSpacing,
           const PageContactRow(
             icon: FontAwesomeIcons.briefcase,
-            info: "Assurances",
+            child: Text("Assurances"),
           ),
           verticalSpacing,
           PageContactRow(
             icon: FontAwesomeIcons.building,
-            info: "Bayreuth, ${page!.headQuartersCountry!}",
+            child: Text("Bayreuth, ${page!.headQuartersCountry!}"),
           )
         ],
       ),

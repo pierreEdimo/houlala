@@ -60,7 +60,7 @@ class PositionedContainer extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(4.0),
             decoration:
-                const BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+                const BoxDecoration(shape: BoxShape.circle, color: Color(0xffdf972f)),
             child: Text(
               value!,
               style: const TextStyle(

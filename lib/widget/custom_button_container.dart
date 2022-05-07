@@ -3,8 +3,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomButtonContainer extends StatelessWidget {
   final FaIcon? icon;
-  final VoidCallback? onPressed; 
-  const CustomButtonContainer({Key? key, this.icon, this.onPressed}) : super(key: key);
+  final VoidCallback? onPressed;
+
+  const CustomButtonContainer({
+    Key? key,
+    this.icon,
+    this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +21,7 @@ class CustomButtonContainer extends StatelessWidget {
       ),
       child: Center(
         child: IconButton(
-          iconSize: 20.0,
+          iconSize: 18.0,
           icon: icon!,
           onPressed: onPressed,
         ),

@@ -16,6 +16,11 @@ class CommentEdit extends StatelessWidget {
 
   final TextEditingController? _controller = TextEditingController();
 
+  void dispose() {
+    // TODO: implement dispose
+    _controller!.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     _controller!.text = comment!.content!;

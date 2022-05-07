@@ -54,6 +54,8 @@ dependencies:
   connectivity_plus: ^2.3.0
   responsive_builder: ^0.4.2
   url_launcher: ^6.1.0
+  flutter_launch: ^0.3.0
+  launch_review: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +68,16 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
   hive_generator: ^1.1.2
+  flutter_launcher_icons: ^0.9.2
+
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "images/houlala.png"
+  adaptive_icon_background: "#e19a30"
+  adaptive_icon_foreground: "images/houlala_foreground.png"
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -86,6 +98,14 @@ flutter:
          - asset: fonts/Poppins-Bold.ttf
 
   assets:
+    - images/houlala.png
+    - texts/security.md
+    - texts/condition.md
+    - texts/about.md
+    - images/whatsapp.png
+    - images/youtube.png
+    - images/facebook.png
+    - images/instagram.png
     - images/wifi-x.png
     - images/comment.png
     - images/no-notification.png

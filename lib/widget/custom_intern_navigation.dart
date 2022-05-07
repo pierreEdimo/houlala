@@ -35,13 +35,14 @@ class _CustomInternNavigationState extends State<CustomInternNavigation> {
             elevation: widget.elevationValue!,
             color: const Color(0xffffffff),
             child: SizedBox(
-              height: 60,
+              height: 70,
               child: Padding(
                 padding:  EdgeInsets.symmetric(horizontal: widget.horizontalPadding!),
                 child: Container(
                   alignment: Alignment.centerLeft,
                   child: ListView.builder(
                     shrinkWrap: true,
+                    padding: EdgeInsets.zero,
                     scrollDirection: Axis.horizontal,
                     itemCount: widget.menuItems!.length,
                     itemBuilder: (BuildContext context, int index) {
@@ -61,8 +62,8 @@ class _CustomInternNavigationState extends State<CustomInternNavigation> {
                               menu,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: _isSelected ? 18 : 15,
-                                color: _isSelected ? Colors.red : Colors.black,
+                                fontSize: _isSelected ? 20 : 15,
+                                color: _isSelected ? const Color(0xffdf972f) : Colors.black,
                               ),
                             ),
                           ),

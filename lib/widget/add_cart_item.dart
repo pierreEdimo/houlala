@@ -9,11 +9,13 @@ addToCart(
   String? userId,
   String? productId,
   int totalPrice,
+    String? pageId,
 ) async {
   AddCartItem newCart = AddCartItem(
       userId: userId,
       productId: productId,
       quantity: quantity,
+      pageId: pageId,
       totalPrice: totalPrice);
 
   await Provider.of<CartItemService>(context, listen: false).addToCart(newCart);

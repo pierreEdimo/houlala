@@ -13,7 +13,10 @@ class EmailInput extends StatelessWidget {
     return TextFormField(
       controller: controller,
       keyboardType: TextInputType.emailAddress,
-      decoration: const InputDecoration(hintText: "Email"),
+      decoration: const InputDecoration(
+        labelText: "Email",
+        border: OutlineInputBorder()
+      ),
       validator: (value) {
         value = controller!.text;
         if (value.isEmpty) {

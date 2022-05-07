@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class PasswordInput extends StatelessWidget {
   final TextEditingController? controller;
 
-  final  passWordRex =
-  RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!?@#\$&*~]).{6,}$');
+  final passWordRex =
+      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!?@#\$&*~]).{6,}$');
 
   PasswordInput({
     Key? key,
@@ -17,7 +17,10 @@ class PasswordInput extends StatelessWidget {
       controller: controller,
       obscureText: true,
       keyboardType: TextInputType.visiblePassword,
-      decoration: const InputDecoration(hintText: "Mot De Passe"),
+      decoration: const InputDecoration(
+        labelText: "Mot De Passe",
+        border: OutlineInputBorder()
+      ),
       validator: (value) {
         value = controller!.text;
         if (value.isEmpty) {

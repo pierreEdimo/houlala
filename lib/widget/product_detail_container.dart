@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/model/cart-item.dart';
+import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/model/found_product.dart';
 import 'package:houlala/service/cart_item_service.dart';
 import 'package:houlala/service/product_service.dart';
@@ -20,9 +20,9 @@ import 'package:provider/provider.dart';
 import '../main.dart';
 
 class ProductDetailContainer extends StatefulWidget {
-  final String? id;
+  final String? name;
 
-  const ProductDetailContainer({Key? key, this.id}) : super(key: key);
+  const ProductDetailContainer({Key? key, this.name}) : super(key: key);
 
   @override
   State<ProductDetailContainer> createState() => _ProductDetailContainerState();
@@ -36,7 +36,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
     return Scaffold(
       body: FutureBuilder(
         future:
-            Provider.of<ProductService>(context).fetchSingleProduct(widget.id!),
+            Provider.of<ProductService>(context).fetchSingleProduct(widget.name!),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             FoundProduct foundProduct = snapshot.data!;
@@ -174,6 +174,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                               userId,
                               foundProduct.product!.id!,
                               price,
+                              foundProduct.product!.page!.id!
                             );
 
                             showSnack(

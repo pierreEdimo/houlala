@@ -20,15 +20,17 @@ class FavoriteScreen extends StatelessWidget {
         elevation: 1,
       ),
       body: StandardCustomContainer(
-        child: GridOfProducts(
-          height: 80.h,
-          textError: "Aucuns produits enregistrees dans les Favories",
-          uri: '${dotenv.env['PRODUCT_URL']}/favorites?userId=$userId',
-          crossAxisCount: 1,
-          scrollDirection: Axis.vertical,
-          widthRatio: 1,
-          heightRatio: 0.5,
-          displayType: "favories",
+        child: SingleChildScrollView(
+          child: GridOfProducts(
+            height: 80.h,
+            textError: "Aucuns produits enregistrees dans les Favories",
+            uri: '${dotenv.env['PRODUCT_URL']}/favorites?userId=$userId',
+            crossAxisCount: 1,
+            scrollDirection: Axis.vertical,
+            widthRatio: 1,
+            heightRatio: 0.5,
+            displayType: "favories",
+          ),
         ),
       ),
     );

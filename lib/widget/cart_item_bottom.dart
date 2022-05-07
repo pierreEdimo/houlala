@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/model/cart-item.dart';
+import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/service/cart_item_service.dart';
 import 'package:houlala/widget/checkout_button.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
@@ -26,10 +26,11 @@ class CartItemBottom extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "Prix Totat: ",
+                        "Totat: ",
                         style: TextStyle(
                           fontSize: 16.0,
                         ),
@@ -44,7 +45,8 @@ class CartItemBottom extends StatelessWidget {
                     ],
                   ),
                   CheckoutButton(
-                    totalQuantity: total.totalQuantity,
+                    items: items!,
+                    total: total,
                   )
                 ],
               ),

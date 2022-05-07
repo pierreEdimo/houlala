@@ -120,7 +120,7 @@ class GridList extends StatelessWidget {
                   (Product product) => InkWell(
                     onTap: () => Navigator.of(context).pushNamed(
                       ProductDetailScreen.routeName,
-                      arguments: product.id!,
+                      arguments: product.name!,
                     ),
                     child: ProductContainer(
                       product: product,

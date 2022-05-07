@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-showSnack(Widget? content, BuildContext context) {
+showSnack(Widget? content, BuildContext context, {int? second}) {
   final snackBar = SnackBar(
-    duration: const Duration(seconds: 1),
+    duration:Duration(seconds: second ?? 1),
     content: content!,
   );
 

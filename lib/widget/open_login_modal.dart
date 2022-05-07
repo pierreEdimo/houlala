@@ -55,6 +55,7 @@ openModal(BuildContext context) {
                   ],
                 ),
               ),
+              standardSizedBox
             ],
           ),
         ),

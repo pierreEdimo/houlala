@@ -14,10 +14,14 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
+
+        foregroundColor: MaterialStateProperty.all<Color>(
+          const Color(0xff000000),
+        ),
         elevation: MaterialStateProperty.all<double>(0.0),
         side: MaterialStateProperty.all<BorderSide>(
           const BorderSide(
-            color: Color(0xFF000000),
+            color: Color(0xff000000),
           ),
         ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(

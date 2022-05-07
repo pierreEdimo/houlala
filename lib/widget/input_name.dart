@@ -21,7 +21,9 @@ class NameInput extends StatelessWidget {
       controller: controller,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        hintText: hintText!,
+        labelText: hintText!,
+        border: const OutlineInputBorder()
+
       ),
       validator: (value) {
         value = controller!.text;

@@ -10,6 +10,7 @@ import 'package:houlala/widget/show_nack.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import '../helper/constants.dart';
+import '../model/address.dart';
 import 'custom_elevated_button.dart';
 import 'input_email.dart';
 import 'input_password.dart';
@@ -35,6 +36,22 @@ class _SignUpContainerState extends State<SignUpContainer> {
   final TextEditingController? _cityController =
       TextEditingController(text: 'Yaounde');
   final TextEditingController? _poBoxController = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _emailController!.dispose();
+    _passwordController!.dispose();
+    _numberController!.dispose();
+    _nameController!.dispose();
+    _firstNameController!.dispose();
+    _streetController!.dispose();
+    _cityController!.dispose();
+    _countryController!.dispose();
+    _poBoxController!.dispose();
+    _houseNbrController!.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,11 +90,13 @@ class _SignUpContainerState extends State<SignUpContainer> {
                   child: TextFormField(
                     enabled: false,
                     initialValue: "+237",
+                    decoration:
+                        const InputDecoration(border: OutlineInputBorder()),
                   ),
                 ),
                 horizontalSpacing,
                 Expanded(
-                  flex: 6,
+                  flex: 4,
                   child: InputNumber(
                     controller: _numberController,
                     hintText: 'Numero de telephone',
@@ -114,7 +133,8 @@ class _SignUpContainerState extends State<SignUpContainer> {
                   child: TextFormField(
                     controller: _houseNbrController,
                     keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(hintText: 'N.r'),
+                    decoration: const InputDecoration(
+                        labelText: 'N.r', border: OutlineInputBorder()),
                   ),
                 ),
               ],
@@ -144,13 +164,14 @@ class _SignUpContainerState extends State<SignUpContainer> {
                     controller: _poBoxController,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
-                      hintText: "B.P",
+                      border: OutlineInputBorder(),
+                      labelText: "B.P",
                     ),
                   ),
                 )
               ],
             ),
-           standardSizedBox,
+            standardSizedBox,
             CustomElevatedButton(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
@@ -189,6 +210,7 @@ class _SignUpContainerState extends State<SignUpContainer> {
                 style: standardStyle,
               ),
             ),
+            standardSizedBox
           ],
         ),
       ),

@@ -5,7 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/main.dart';
 import 'package:houlala/model/CountAndPrice.dart';
 import 'package:houlala/model/add_cart_item.dart';
-import 'package:houlala/model/cart-item.dart';
+import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/model/update_cart.dart';
 import 'package:http/http.dart';
 
@@ -61,26 +61,38 @@ class CartItemService extends ChangeNotifier {
   }
 
   Future<void> increaseCartItem(CartItem item) async {
+    String? userId = await storage.read(key: "userId");
+
     item.quantity = item.quantity! + 1;
     item.totalPrice = item.product!.initialPrice! * item.quantity!;
 
-    UpdateCart newCart =
-        UpdateCart(quantity: item.quantity, totalPrice: item.totalPrice);
+    if (userId != null) {
+      UpdateCart newCart =
+          UpdateCart(quantity: item.quantity, totalPrice: item.totalPrice);
 
-    await _editCartItem(item.id!, newCart);
+      await _editCartItem(item.id!, newCart);
+    } else {
+      item.save();
+    }
 
     notifyListeners();
   }
 
   Future<void> decreaseCartItem(CartItem item) async {
+    String? userId = await storage.read(key: "userId");
+
     if (item.quantity! > 1) {
       item.quantity = item.quantity! - 1;
       item.totalPrice = item.product!.initialPrice! * item.quantity!;
 
-      UpdateCart newCart =
-          UpdateCart(quantity: item.quantity, totalPrice: item.totalPrice);
+      if (userId != null) {
+        UpdateCart newCart =
+            UpdateCart(quantity: item.quantity, totalPrice: item.totalPrice);
 
-      await _editCartItem(item.id!, newCart);
+        await _editCartItem(item.id!, newCart);
+      } else {
+        item.save();
+      }
 
       notifyListeners();
     }
@@ -100,9 +112,9 @@ class CartItemService extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> deleteCart(String id) async {
+  Future<void> deleteCart(String uri) async {
     //var jwt = await storage.read(key: 'jwt');
-    var url = Uri.parse('${dotenv.env['CART_URL']}/$id');
+    var url = Uri.parse(uri);
     Map<String, String> headers = {'Content-Type': 'application/json'};
     await delete(
       url,
@@ -110,6 +122,7 @@ class CartItemService extends ChangeNotifier {
     );
     notifyListeners();
   }
+
 
   Future<List<CartItem>> getOfflineItems() async {
     List<CartItem> items = <CartItem>[];
@@ -166,5 +179,10 @@ class CartItemService extends ChangeNotifier {
         CountAndPrice(totalQuantity: totalQuantity, totalPrice: totalPrice);
 
     return total;
+  }
+
+  void deleteOfflineCartItems() {
+    _itemBox.deleteAll(_itemBox.keys);
+    notifyListeners();
   }
 }

@@ -76,7 +76,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         onTap: _onItemTapped,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        selectedItemColor: Colors.red,
+        selectedItemColor: const Color(0xffdf972f),
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
         backgroundColor: const Color(0xffffffff),

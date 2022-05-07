@@ -18,6 +18,11 @@ class PostDetailScreen extends StatelessWidget {
 
   PostDetailScreen({Key? key}) : super(key: key);
 
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context)!.settings.arguments as String;

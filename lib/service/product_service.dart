@@ -26,11 +26,11 @@ class ProductService extends ChangeNotifier {
     }
   }
 
-  Future<FoundProduct> fetchSingleProduct(String id) async {
+  Future<FoundProduct> fetchSingleProduct(String name) async {
     String? userId = await storage.read(key: "userId");
 
     var url =
-        Uri.parse('${dotenv.env['PRODUCT_URL']}/productId/$id?userId=$userId');
+        Uri.parse('${dotenv.env['PRODUCT_URL']}/getProductByNameIsFavorite?name=$name&userId=$userId');
 
     Response response = await get(url);
 

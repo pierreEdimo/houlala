@@ -17,7 +17,10 @@ class InputNumber extends StatelessWidget {
     return TextFormField(
       controller: controller,
       keyboardType: TextInputType.number,
-      decoration: InputDecoration(hintText: hintText),
+      decoration: InputDecoration(
+        labelText: hintText,
+        border: const OutlineInputBorder()
+      ),
       validator: (value) {
         value = controller!.text;
         if (value.isEmpty) {

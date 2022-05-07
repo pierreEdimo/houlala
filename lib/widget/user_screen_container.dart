@@ -7,7 +7,9 @@ import 'package:houlala/widget/launch_url.dart';
 import 'package:houlala/widget/open_login_modal.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 
 class UserScreenContainer extends StatelessWidget {
   const UserScreenContainer({Key? key}) : super(key: key);
@@ -58,13 +60,24 @@ class UserScreenContainer extends StatelessWidget {
                               title: "Mes Favories",
                             ),
                           ),
-                          const CustomListTile(
-                            leadingIcon: FontAwesomeIcons.bagShopping,
-                            title: "Mes Commandes",
+                          InkWell(
+                            onTap: () => Navigator.of(context).pushNamed("/my_orders"),
+                            child: const CustomListTile(
+                              leadingIcon: FontAwesomeIcons.bagShopping,
+                              title: "Mes Commandes",
+                            ),
                           ),
-                          const CustomListTile(
-                            leadingIcon: FontAwesomeIcons.moneyBill,
-                            title: "Mes Factures",
+                          // const CustomListTile(
+                          //   leadingIcon: FontAwesomeIcons.moneyBill,
+                          //   title: "Mes Factures",
+                          // ),
+                          InkWell(
+                            onTap: () =>
+                                Navigator.of(context).pushNamed("/my_personal"),
+                            child: const CustomListTile(
+                              leadingIcon: FontAwesomeIcons.person,
+                              title: "Mes Donnees personnelles",
+                            ),
                           )
                         ],
                       ),
@@ -81,27 +94,13 @@ class UserScreenContainer extends StatelessWidget {
                           //   leadingIcon: FontAwesomeIcons.locationDot,
                           //   title: "Mes Adresses",
                           // ),
-                          const CustomListTile(
-                            leadingIcon: FontAwesomeIcons.gear,
-                            title: "Options",
-                          ),
-                          const CustomListTile(
-                            leadingIcon: FontAwesomeIcons.shareNodes,
-                            title: "Nos reseaux sociaux",
-                          ),
-                          const CustomListTile(
-                            leadingIcon: FontAwesomeIcons.circleInfo,
-                            title: "A Propos",
-                          ),
+                          //const OpenOptions(),
+                          const ConnectWithUs(),
+                          const OpenAbout(),
                           const ContactButton(),
-                          const CustomListTile(
-                            leadingIcon: FontAwesomeIcons.lock,
-                            title: "Conditions d'utilisation",
-                          ),
-                          const CustomListTile(
-                            leadingIcon: FontAwesomeIcons.star,
-                            title: "Evaluez notre application",
-                          ),
+                          const Conditions(),
+                          const Security(),
+                          const OpenReview(),
                           InkWell(
                             onTap: () => Provider.of<AuthService>(context,
                                     listen: false)
@@ -169,11 +168,18 @@ class UserScreenContainer extends StatelessWidget {
                         title: "Mes Commandes",
                       ),
                     ),
+                    // InkWell(
+                    //   onTap: () => openModal(context),
+                    //   child: const CustomListTile(
+                    //     leadingIcon: FontAwesomeIcons.moneyBill,
+                    //     title: "Mes Factures",
+                    //   ),
+                    // ),
                     InkWell(
                       onTap: () => openModal(context),
                       child: const CustomListTile(
-                        leadingIcon: FontAwesomeIcons.moneyBill,
-                        title: "Mes Factures",
+                        leadingIcon: FontAwesomeIcons.person,
+                        title: "Mes Donnees personnelles",
                       ),
                     )
                   ],
@@ -191,27 +197,13 @@ class UserScreenContainer extends StatelessWidget {
                     //   leadingIcon: FontAwesomeIcons.locationDot,
                     //   title: "Mes Adresses",
                     // ),
-                    const CustomListTile(
-                      leadingIcon: FontAwesomeIcons.gear,
-                      title: "Options",
-                    ),
-                    const CustomListTile(
-                      leadingIcon: FontAwesomeIcons.shareNodes,
-                      title: "Nos reseaux sociaux",
-                    ),
-                    const CustomListTile(
-                      leadingIcon: FontAwesomeIcons.circleInfo,
-                      title: "A Propos",
-                    ),
+                    //const OpenOptions(),
+                    const ConnectWithUs(),
+                    const OpenAbout(),
                     const ContactButton(),
-                    const CustomListTile(
-                      leadingIcon: FontAwesomeIcons.lock,
-                      title: "Conditions d'utilisation",
-                    ),
-                    const CustomListTile(
-                      leadingIcon: FontAwesomeIcons.star,
-                      title: "Evaluez notre application",
-                    ),
+                    const Conditions(),
+                    const Security(),
+                    const OpenReview(),
                     InkWell(
                       onTap: () => openModal(context),
                       child: const CustomListTile(
@@ -232,6 +224,81 @@ class UserScreenContainer extends StatelessWidget {
   }
 }
 
+class OpenReview extends StatelessWidget {
+  const OpenReview({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => openStore(context),
+      child: const CustomListTile(
+        leadingIcon: FontAwesomeIcons.star,
+        title: "Evaluez notre application",
+      ),
+    );
+  }
+}
+
+class Conditions extends StatelessWidget {
+  const Conditions({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => Navigator.of(context).pushNamed('/conditions'),
+      child: const CustomListTile(
+        leadingIcon: FontAwesomeIcons.lock,
+        title: "Conditions d'utilisation",
+      ),
+    );
+  }
+}
+
+class Security extends StatelessWidget {
+  const Security({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => Navigator.of(context).pushNamed('/data_security'),
+      child: const CustomListTile(
+        leadingIcon: FontAwesomeIcons.shield,
+        title: "Politique de confidentialites",
+      ),
+    );
+  }
+}
+
+class OpenOptions extends StatelessWidget {
+  const OpenOptions({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => Navigator.of(context).pushNamed('/options'),
+      child: const CustomListTile(
+        leadingIcon: FontAwesomeIcons.gear,
+        title: "Options",
+      ),
+    );
+  }
+}
+
+class OpenAbout extends StatelessWidget {
+  const OpenAbout({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => Navigator.of(context).pushNamed('/about'),
+      child: const CustomListTile(
+        leadingIcon: FontAwesomeIcons.circleInfo,
+        title: "A Propos",
+      ),
+    );
+  }
+}
+
 class ContactButton extends StatelessWidget {
   const ContactButton({Key? key}) : super(key: key);
 
@@ -242,6 +309,77 @@ class ContactButton extends StatelessWidget {
       child: const CustomListTile(
         leadingIcon: FontAwesomeIcons.envelope,
         title: "Contactez nous",
+      ),
+    );
+  }
+}
+
+class ConnectWithUs extends StatelessWidget {
+  const ConnectWithUs({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => showMaterialModalBottomSheet(
+        context: context,
+        builder: (context) => StandardCustomContainer(
+          child: SizedBox(
+            height: 15.h,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    openInWebViewOrVC('https://www.facebook.com/');
+                  },
+                  child: const ImageIcon(
+                    AssetImage("images/facebook.png"),
+                    size: 35,
+                    color: Colors.blue,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    openInWebViewOrVC('https://www.instagram.com/');
+                  },
+                  child: const ImageIcon(
+                    AssetImage("images/instagram.png"),
+                    size: 35,
+                    color: Colors.red,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    openWhatsapp(context);
+                  },
+                  child: const ImageIcon(
+                    AssetImage("images/whatsapp.png"),
+                    size: 35,
+                    color: Colors.green,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    openInWebViewOrVC('https://www.youtube.com/');
+                  },
+                  child: const ImageIcon(
+                    AssetImage("images/youtube.png"),
+                    size: 35,
+                    color: Colors.red,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+      child: const CustomListTile(
+        leadingIcon: FontAwesomeIcons.shareNodes,
+        title: "Nos reseaux sociaux",
       ),
     );
   }

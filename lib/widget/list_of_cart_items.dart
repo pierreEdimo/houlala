@@ -6,7 +6,7 @@ import 'package:houlala/widget/cart_item_bottom.dart';
 import 'package:houlala/widget/cart_item_container.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:provider/provider.dart';
-import '../model/cart-item.dart';
+import '../model/cart_item.dart';
 
 class ListOfCartItems extends StatelessWidget {
   const ListOfCartItems({Key? key}) : super(key: key);
