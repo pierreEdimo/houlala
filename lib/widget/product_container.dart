@@ -95,7 +95,7 @@ class ProductContainer extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: SizedBox(
-                  height: 160,
+                  height: 190,
                   child: BackgroundImage(
                     imageUrl: product!.imageUrl!,
                   ),

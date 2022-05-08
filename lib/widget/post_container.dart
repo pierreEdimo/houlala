@@ -134,9 +134,6 @@ class PostContainer extends StatelessWidget {
                                     )
                                   ],
                                 ),
-                              ),
-                              OnTapIcon(
-                                post: post,
                               )
                             ],
                           ),
@@ -166,7 +163,7 @@ class PostContainer extends StatelessWidget {
                   child: AdditionalInformation(
                     post: post,
                   ),
-                )
+                ),
               ],
             ),
             margin: const EdgeInsets.only(right: 10.0),
@@ -343,11 +340,6 @@ class AdditionalInformation extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                HomeLikeButton(
-                  postId: post!.id!,
-                  info: info,
-                ),
-                horizontalSpacing,
                 Row(
                   children: [
                     const ImageIcon(
@@ -361,6 +353,12 @@ class AdditionalInformation extends StatelessWidget {
                       info.commentCount.toString(),
                     )
                   ],
+                ),
+                const SizedBox(
+                  width: 20.0,
+                ),
+                OnTapIcon(
+                  post: post,
                 )
               ],
             ),

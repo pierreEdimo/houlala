@@ -49,6 +49,6 @@ class AddOrder {
         "payMentMode": payMentMode,
         "orderOptions": orderOptions,
         "address": address!.toJson(),
-        "totalQUantity": totalQuantity,
+        "totalQuantity": totalQuantity,
       };
 }

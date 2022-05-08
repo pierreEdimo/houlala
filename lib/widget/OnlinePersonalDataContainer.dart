@@ -12,6 +12,7 @@ import 'package:houlala/service/order_service.dart';
 import 'package:houlala/widget/address_container.dart';
 import 'package:houlala/widget/checkout_bar.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
+import 'package:houlala/widget/horizontal_cart_preview.dart';
 import 'package:houlala/widget/personal_data_container.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
@@ -21,7 +22,6 @@ import 'package:sizer/sizer.dart';
 import '../model/CountAndPrice.dart';
 import '../model/add_cart_item.dart';
 import '../model/cart_item.dart';
-import 'cart_item_container.dart';
 import 'display_dialog.dart';
 
 class OnlinePersonalDataContainer extends StatelessWidget {
@@ -90,17 +90,8 @@ class OnlinePersonalDataContainer extends StatelessWidget {
                             "Produits",
                             style: standardStyle,
                           ),
-                          SizedBox(
-                            height: 25.h,
-                            child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: items!
-                                  .map((CartItem item) => CartItemContainer(
-                                        horizontal: "horizontal",
-                                        cartItem: item,
-                                      ))
-                                  .toList(),
-                            ),
+                          HorizontalCartPreview(
+                            items: items,
                           ),
                         ],
                       ),
@@ -137,6 +128,7 @@ class OnlinePersonalDataContainer extends StatelessWidget {
 
                       for (var item in items!) {
                         newItem = AddCartItem(
+                            userId: userId,
                             pageId: item.product!.page!.id,
                             productName: item.product!.name!,
                             productId: item.product!.id,
@@ -172,12 +164,12 @@ class OnlinePersonalDataContainer extends StatelessWidget {
                           .addOrder(newOrder);
 
                       if (response.statusCode == 201) {
-                        Navigator.of(context).pop();
-
                         await Provider.of<CartItemService>(context,
                                 listen: false)
                             .deleteCart(
                                 '${dotenv.env['CART_URL']}/deleteMany?userId=$userId');
+
+                        Navigator.of(context).pop();
 
                         showSnack(
                             const Text(

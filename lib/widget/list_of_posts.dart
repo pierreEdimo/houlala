@@ -33,7 +33,10 @@ class ListOfPosts extends StatelessWidget {
                 ? MediaQuery.of(context).size.height * 1
                 : errorHeight!,
             child: Center(
-              child: Text(snapshot.error.toString()),
+              child: Text(
+                textError!,
+                textAlign: TextAlign.center,
+              ),
             ),
           );
         }

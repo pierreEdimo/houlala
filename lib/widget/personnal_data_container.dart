@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/service/cart_item_service.dart';
-import 'package:houlala/widget/cart_item_container.dart';
 import 'package:houlala/widget/checkout_bar.dart';
 import 'package:houlala/widget/display_dialog.dart';
+import 'package:houlala/widget/horizontal_cart_preview.dart';
 import 'package:houlala/widget/input_name.dart';
 import 'package:houlala/widget/input_number.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
-import 'package:sizer/sizer.dart';
 import '../helper/constants.dart';
 import '../model/CountAndPrice.dart';
 import '../model/add_cart_item.dart';
@@ -151,17 +150,8 @@ class _PersonalDataContainerState extends State<PersonalDataContainer> {
                           "Produits",
                           style: standardStyle,
                         ),
-                        SizedBox(
-                          height: 25.h,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: widget.items!
-                                .map((CartItem item) => CartItemContainer(
-                                      horizontal: "horizontal",
-                                      cartItem: item,
-                                    ))
-                                .toList(),
-                          ),
+                        HorizontalCartPreview(
+                          items: widget.items,
                         )
                       ],
                     ),
