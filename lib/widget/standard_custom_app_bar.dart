@@ -21,6 +21,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
       centerTitle: false,
       title: Text(
         title!,
+        textAlign: TextAlign.left,
       ),
       actions: [
         CustomButtonContainer(
