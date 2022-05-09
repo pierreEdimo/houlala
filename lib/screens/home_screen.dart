@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/widget/container_wirth_connectivity_checker.dart';
@@ -13,6 +14,7 @@ import 'package:houlala/widget/web_app_bar.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import '../helper/constants.dart';
+import 'dart:io' show Platform;
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -25,9 +27,22 @@ class HomeScreen extends StatelessWidget {
           case DeviceScreenType.desktop:
             return Scaffold(
               appBar: WebAppBar(),
-              body: const Center(child: Text("Hello World!"),),
+              body: const Center(
+                child: Text("Hello World!"),
+              ),
             );
           case DeviceScreenType.tablet:
+            if (Platform.isIOS) {
+              return CupertinoPageScaffold(
+                navigationBar: CustomAppBar(),
+                child: const Center(
+                  child: Text("Hello Apple"),
+                ),
+              );
+            }
+            return const Scaffold(
+              body: Text("table"),
+            );
           default:
             return Scaffold(
               appBar: CustomAppBar(

@@ -135,7 +135,6 @@ class MyApp extends StatelessWidget {
                 },
               );
             }
-
             return MaterialApp(
               title: 'houlala',
               debugShowCheckedModeBanner: false,
