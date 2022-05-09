@@ -41,7 +41,6 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'dart:io' show Platform;
 
 var box = Hive.box('loggedState');
 const storage = FlutterSecureStorage();
@@ -98,43 +97,6 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return Sizer(
           builder: (context, orientation, deviceType) {
-            if (Platform.isIOS) {
-              return CupertinoApp(
-                title: 'houlala',
-                debugShowCheckedModeBanner: false,
-                theme: const CupertinoThemeData(
-                  textTheme: CupertinoTextThemeData(
-                    textStyle: TextStyle(fontFamily: 'Poppins'),
-                  ),
-                  scaffoldBackgroundColor: Color(0xffffffff),
-                ),
-                initialRoute: '/',
-                routes: {
-                  '/': (context) => const MainNavigation(),
-                  '/all_fruits': (context) => const AllFruits(),
-                  '/all_categories': (context) => const AllProductCategories(),
-                  '/all_pages': (context) => const AllPageScreen(),
-                  ProductDetailScreen.routeName: (context) =>
-                      const ProductDetailScreen(),
-                  CategoryDetailScreen.routeName: (context) =>
-                      const CategoryDetailScreen(),
-                  PageDetailScreen.screenName: (context) =>
-                      const PageDetailScreen(),
-                  JobsDetailScreen.routeName: (context) =>
-                      const JobsDetailScreen(),
-                  '/all_posts': (context) => const AllPostsScreen(),
-                  PostDetailScreen.routeName: (context) => PostDetailScreen(),
-                  '/search': (context) => const SearchScreen(),
-                  FavoriteScreen.routeName: (context) => const FavoriteScreen(),
-                  '/options': (context) => const OptionScreen(),
-                  '/about': (context) => const AboutScreen(),
-                  '/conditions': (context) => const ConditionScreen(),
-                  '/data_security': (context) => const DataSecurityScreen(),
-                  '/my_orders': (context) => const PersonalOrderScreen(),
-                  '/my_personal': (context) => const PersonalDataScreen(),
-                },
-              );
-            }
             return MaterialApp(
               title: 'houlala',
               debugShowCheckedModeBanner: false,

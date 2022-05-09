@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'custom_button_container.dart';
-import 'dart:io' show Platform;
 
-class CustomAppBar extends StatelessWidget with ObstructingPreferredSizeWidget{
+class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
   @override
   final Size preferredSize;
 
@@ -18,15 +16,6 @@ class CustomAppBar extends StatelessWidget with ObstructingPreferredSizeWidget{
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
-      return  CupertinoNavigationBar(
-        leading: Text(title!),
-        trailing: CustomButtonContainer(
-          icon: const FaIcon(FontAwesomeIcons.magnifyingGlass),
-          onPressed: () => Navigator.of(context).pushNamed("/search"),
-        ),
-      );
-    }
     return AppBar(
       elevation: 1,
       centerTitle: false,
@@ -47,9 +36,5 @@ class CustomAppBar extends StatelessWidget with ObstructingPreferredSizeWidget{
     );
   }
 
-  @override
-  bool shouldFullyObstruct(BuildContext context) {
-    // TODO: implement shouldFullyObstruct
-    throw UnimplementedError();
-  }
+
 }
