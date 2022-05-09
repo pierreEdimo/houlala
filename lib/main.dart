@@ -35,7 +35,7 @@ import 'package:houlala/service/page_service.dart';
 import 'package:houlala/service/post_service.dart';
 import 'package:houlala/service/product_service.dart';
 import 'package:houlala/service/word_service.dart';
-import 'package:houlala/widget/bottom_navigation.dart';
+import 'package:houlala/widget/main_navigation.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -96,7 +96,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return Sizer(builder: (context, orientation, deviceType) {
           return MaterialApp(
-            title: 'Flutter Demo',
+            title: 'houlala',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
                 appBarTheme: const AppBarTheme(
@@ -113,7 +113,7 @@ class MyApp extends StatelessWidget {
                 scaffoldBackgroundColor: const Color(0xffffffff)),
             initialRoute: '/',
             routes: {
-              '/': (context) => const BottomNavigation(),
+              '/': (context) => const MainNavigation(),
               '/all_fruits': (context) => const AllFruits(),
               '/all_categories': (context) => const AllProductCategories(),
               '/all_pages': (context) => const AllPageScreen(),

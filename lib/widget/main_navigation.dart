@@ -1,12 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/screens/cart_item_screen.dart';
 import 'package:houlala/screens/discover_screen.dart';
 import 'package:houlala/screens/home_screen.dart';
 import 'package:houlala/screens/notification_screen.dart';
 import 'package:houlala/screens/user_screen.dart';
-
+import 'package:responsive_builder/responsive_builder.dart';
+import 'package:sizer/sizer.dart';
 import 'element_of_cart_items.dart';
+
+class MainNavigation extends StatelessWidget {
+  const MainNavigation({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ResponsiveBuilder(
+      builder: (context, sizingInformation) {
+        switch (sizingInformation.deviceScreenType) {
+          case DeviceScreenType.desktop:
+            return const HomeScreen();
+          case DeviceScreenType.tablet:
+          case DeviceScreenType.mobile:
+          default:
+            return const BottomNavigation();
+        }
+      },
+    );
+  }
+}
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({Key? key}) : super(key: key);
