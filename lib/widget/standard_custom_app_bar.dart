@@ -11,7 +11,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   CustomAppBar({
     this.title,
     Key? key,
-  })  : preferredSize = const Size.fromHeight(60.0),
+  })  : preferredSize = const Size.fromHeight(80.0),
         super(key: key);
 
   @override
@@ -25,6 +25,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   title!,

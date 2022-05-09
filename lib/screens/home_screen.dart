@@ -38,95 +38,97 @@ class HomeScreen extends StatelessWidget {
                     CustomAppBar(
                       title: 'houlala',
                     ),
-                    SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          CustomBoxContainer(
-                            child: SizedBox(
-                              height: 30.h,
-                              child: ListOfCategories(
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            CustomBoxContainer(
+                              child: SizedBox(
+                                height: 30.h,
+                                child: ListOfCategories(
+                                  child: Container(
+                                    margin: const EdgeInsets.only(bottom: 5.0),
+                                    child: const FlexibleRow(
+                                      title: "Categories de produits",
+                                      urlValue: "/all_categories",
+                                    ),
+                                  ),
+                                  uri:
+                                      '${dotenv.env['CATEGORY_URL']}/getRandomCategories?size=6&categoryType=624037f8292cdadb3ad45b7a',
+                                  direction: Axis.horizontal,
+                                  shrinkWrap: true,
+                                ),
+                              ),
+                            ),
+                            standardSizedBox,
+                            CustomBoxContainer(
+                              child: GridOfProducts(
+                                height: 25.h,
+                                textError: "Aucuns Produits",
                                 child: Container(
                                   margin: const EdgeInsets.only(bottom: 5.0),
                                   child: const FlexibleRow(
-                                    title: "Categories de produits",
-                                    urlValue: "/all_categories",
+                                    title: 'fruits & legumes',
+                                    urlValue: "/all_fruits",
                                   ),
                                 ),
                                 uri:
-                                    '${dotenv.env['CATEGORY_URL']}/getRandomCategories?size=6&categoryType=624037f8292cdadb3ad45b7a',
-                                direction: Axis.horizontal,
-                                shrinkWrap: true,
+                                    '${dotenv.env['PRODUCT_URL']}/getRandomProducts?size=4&categoryId=621a245eaf69ff81e170c5f6',
+                                scrollDirection: Axis.vertical,
+                                crossAxisCount: 2,
+                                widthRatio: 1,
+                                heightRatio: 1.5,
                               ),
                             ),
-                          ),
-                          standardSizedBox,
-                          CustomBoxContainer(
-                            child: GridOfProducts(
-                              height: 25.h,
-                              textError: "Aucuns Produits",
-                              child: Container(
-                                margin: const EdgeInsets.only(bottom: 5.0),
+                            standardSizedBox,
+                            CustomBoxContainer(
+                              child: SizedBox(
+                                height: 130,
+                                child: GridPages(
+                                  height: 115,
+                                  textError: "Aucunes Pages",
+                                  child: Container(
+                                    margin: const EdgeInsets.only(bottom: 5.0),
+                                    child: const FlexibleRow(
+                                      title: 'Quelques Magasins',
+                                      urlValue: "/all_pages",
+                                    ),
+                                  ),
+                                  uri:
+                                      '${dotenv.env['PAGE_URL']}/getRandomPages?size=4',
+                                  direction: Axis.horizontal,
+                                ),
+                              ),
+                            ),
+                            standardSizedBox,
+                            CustomBoxContainer(
+                              child: ListOfPosts(
+                                textError: "Aucuns posts",
+                                scrollDirection: Axis.horizontal,
+                                errorHeight: 35.h,
                                 child: const FlexibleRow(
-                                  title: 'fruits & legumes',
-                                  urlValue: "/all_fruits",
-                                ),
-                              ),
-                              uri:
-                                  '${dotenv.env['PRODUCT_URL']}/getRandomProducts?size=4&categoryId=621a245eaf69ff81e170c5f6',
-                              scrollDirection: Axis.vertical,
-                              crossAxisCount: 2,
-                              widthRatio: 1,
-                              heightRatio: 1.5,
-                            ),
-                          ),
-                          standardSizedBox,
-                          CustomBoxContainer(
-                            child: SizedBox(
-                              height: 130,
-                              child: GridPages(
-                                height: 115,
-                                textError: "Aucunes Pages",
-                                child: Container(
-                                  margin: const EdgeInsets.only(bottom: 5.0),
-                                  child: const FlexibleRow(
-                                    title: 'Quelques Magasins',
-                                    urlValue: "/all_pages",
-                                  ),
+                                  title: "Quelques posts recents",
+                                  urlValue: "/all_posts",
                                 ),
                                 uri:
-                                    '${dotenv.env['PAGE_URL']}/getRandomPages?size=4',
-                                direction: Axis.horizontal,
+                                    '${dotenv.env['POST_URL']}/getRandomPosts?size=10',
                               ),
                             ),
-                          ),
-                          standardSizedBox,
-                          CustomBoxContainer(
-                            child: ListOfPosts(
-                              textError: "Aucuns posts",
-                              scrollDirection: Axis.horizontal,
-                              errorHeight: 35.h,
-                              child: const FlexibleRow(
-                                title: "Quelques posts recents",
-                                urlValue: "/all_posts",
+                            standardSizedBox,
+                            CustomBoxContainer(
+                              child: GridOfJobs(
+                                child: Text(
+                                  "Quelques offres de Jobs",
+                                  style: standardStyle,
+                                ),
+                                scrollDirection: Axis.vertical,
+                                ratio: 2.5,
+                                uri: '${dotenv.env['JOB_URL']}/getRandomJobs?size=4',
+                                height: 0.25,
                               ),
-                              uri:
-                                  '${dotenv.env['POST_URL']}/getRandomPosts?size=10',
-                            ),
-                          ),
-                          standardSizedBox,
-                          CustomBoxContainer(
-                            child: GridOfJobs(
-                              child: Text(
-                                "Quelques offres de Jobs",
-                                style: standardStyle,
-                              ),
-                              scrollDirection: Axis.vertical,
-                              ratio: 2.5,
-                              uri: '${dotenv.env['JOB_URL']}/getRandomJobs?size=4',
-                              height: 0.25,
-                            ),
-                          )
-                        ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ],
