@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -40,6 +41,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'dart:io' show Platform;
 
 var box = Hive.box('loggedState');
 const storage = FlutterSecureStorage();
@@ -94,49 +96,90 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => OrderService()),
       ],
       builder: (context, child) {
-        return Sizer(builder: (context, orientation, deviceType) {
-          return MaterialApp(
-            title: 'houlala',
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-                appBarTheme: const AppBarTheme(
-                  backgroundColor: Color(0xf2f2f2f2),
-                  titleTextStyle: TextStyle(
-                    fontFamily: 'PoppinsBold',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22.0,
-                    color: Colors.black,
+        return Sizer(
+          builder: (context, orientation, deviceType) {
+            if (Platform.isIOS) {
+              return CupertinoApp(
+                title: 'houlala',
+                debugShowCheckedModeBanner: false,
+                theme: const CupertinoThemeData(
+                  textTheme: CupertinoTextThemeData(
+                    textStyle: TextStyle(fontFamily: 'Poppins'),
                   ),
+                  scaffoldBackgroundColor: Color(0xffffffff),
                 ),
-                primarySwatch: Colors.grey,
-                fontFamily: 'Poppins',
-                scaffoldBackgroundColor: const Color(0xffffffff)),
-            initialRoute: '/',
-            routes: {
-              '/': (context) => const MainNavigation(),
-              '/all_fruits': (context) => const AllFruits(),
-              '/all_categories': (context) => const AllProductCategories(),
-              '/all_pages': (context) => const AllPageScreen(),
-              ProductDetailScreen.routeName: (context) =>
-                  const ProductDetailScreen(),
-              CategoryDetailScreen.routeName: (context) =>
-                  const CategoryDetailScreen(),
-              PageDetailScreen.screenName: (context) =>
-                  const PageDetailScreen(),
-              JobsDetailScreen.routeName: (context) => const JobsDetailScreen(),
-              '/all_posts': (context) => const AllPostsScreen(),
-              PostDetailScreen.routeName: (context) => PostDetailScreen(),
-              '/search': (context) => const SearchScreen(),
-              FavoriteScreen.routeName: (context) => const FavoriteScreen(),
-              '/options': (context) => const OptionScreen(),
-              '/about': (context) => const AboutScreen(),
-              '/conditions': (context) => const ConditionScreen(),
-              '/data_security': (context) => const DataSecurityScreen(),
-              '/my_orders': (context) => const PersonalOrderScreen(),
-              '/my_personal': (context) => const PersonalDataScreen(),
-            },
-          );
-        });
+                initialRoute: '/',
+                routes: {
+                  '/': (context) => const MainNavigation(),
+                  '/all_fruits': (context) => const AllFruits(),
+                  '/all_categories': (context) => const AllProductCategories(),
+                  '/all_pages': (context) => const AllPageScreen(),
+                  ProductDetailScreen.routeName: (context) =>
+                      const ProductDetailScreen(),
+                  CategoryDetailScreen.routeName: (context) =>
+                      const CategoryDetailScreen(),
+                  PageDetailScreen.screenName: (context) =>
+                      const PageDetailScreen(),
+                  JobsDetailScreen.routeName: (context) =>
+                      const JobsDetailScreen(),
+                  '/all_posts': (context) => const AllPostsScreen(),
+                  PostDetailScreen.routeName: (context) => PostDetailScreen(),
+                  '/search': (context) => const SearchScreen(),
+                  FavoriteScreen.routeName: (context) => const FavoriteScreen(),
+                  '/options': (context) => const OptionScreen(),
+                  '/about': (context) => const AboutScreen(),
+                  '/conditions': (context) => const ConditionScreen(),
+                  '/data_security': (context) => const DataSecurityScreen(),
+                  '/my_orders': (context) => const PersonalOrderScreen(),
+                  '/my_personal': (context) => const PersonalDataScreen(),
+                },
+              );
+            }
+
+            return MaterialApp(
+              title: 'houlala',
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                  appBarTheme: const AppBarTheme(
+                    backgroundColor: Color(0xf2f2f2f2),
+                    titleTextStyle: TextStyle(
+                      fontFamily: 'PoppinsBold',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                  primarySwatch: Colors.grey,
+                  fontFamily: 'Poppins',
+                  scaffoldBackgroundColor: const Color(0xffffffff)),
+              initialRoute: '/',
+              routes: {
+                '/': (context) => const MainNavigation(),
+                '/all_fruits': (context) => const AllFruits(),
+                '/all_categories': (context) => const AllProductCategories(),
+                '/all_pages': (context) => const AllPageScreen(),
+                ProductDetailScreen.routeName: (context) =>
+                    const ProductDetailScreen(),
+                CategoryDetailScreen.routeName: (context) =>
+                    const CategoryDetailScreen(),
+                PageDetailScreen.screenName: (context) =>
+                    const PageDetailScreen(),
+                JobsDetailScreen.routeName: (context) =>
+                    const JobsDetailScreen(),
+                '/all_posts': (context) => const AllPostsScreen(),
+                PostDetailScreen.routeName: (context) => PostDetailScreen(),
+                '/search': (context) => const SearchScreen(),
+                FavoriteScreen.routeName: (context) => const FavoriteScreen(),
+                '/options': (context) => const OptionScreen(),
+                '/about': (context) => const AboutScreen(),
+                '/conditions': (context) => const ConditionScreen(),
+                '/data_security': (context) => const DataSecurityScreen(),
+                '/my_orders': (context) => const PersonalOrderScreen(),
+                '/my_personal': (context) => const PersonalDataScreen(),
+              },
+            );
+          },
+        );
       },
     );
   }
