@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/main.dart';
 import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/service/auth_service.dart';
 import 'package:houlala/widget/OnlinePersonalDataContainer.dart';
@@ -30,7 +29,6 @@ class CheckoutButton extends StatelessWidget {
         style: standardStyle,
       ),
       onPressed: () async {
-        var userId = await storage.read(key: "userId");
         showMaterialModalBottomSheet(
           expand: true,
           context: context,
