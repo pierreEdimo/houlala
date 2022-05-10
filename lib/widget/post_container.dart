@@ -17,6 +17,7 @@ class PostContainer extends StatelessWidget {
   final double? width;
   final double? height;
   final Axis? scrollDirection;
+  final double? postWidth;
 
   const PostContainer({
     Key? key,
@@ -24,6 +25,7 @@ class PostContainer extends StatelessWidget {
     this.width,
     this.height,
     this.scrollDirection,
+    this.postWidth,
   }) : super(key: key);
 
   @override
@@ -91,7 +93,7 @@ class PostContainer extends StatelessWidget {
         );
       case Axis.horizontal:
         return SizedBox(
-          width: 90.w,
+          width: postWidth == null ? 90.w : postWidth!,
           child: Container(
             padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(

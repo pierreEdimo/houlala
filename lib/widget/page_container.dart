@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/page.dart';
+import 'package:sizer/sizer.dart';
 import '../screens/page_detail_screen.dart';
 
 class PageContainer extends StatelessWidget {
   final PageModel? page;
+  final double? width;
 
-  const PageContainer({Key? key, this.page}) : super(key: key);
+  const PageContainer({Key? key, this.page, this.width}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class PageContainer extends StatelessWidget {
               width: 1.0,
               color: Colors.grey.shade300,
             )),
-        width: MediaQuery.of(context).size.width * 0.85,
+        width: width == null ? 85.w : width!,
         height: 90,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

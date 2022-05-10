@@ -12,6 +12,7 @@ class ListOfPosts extends StatelessWidget {
   final double? errorHeight;
   final Axis? scrollDirection;
   final String? textError;
+  final double? postWidth;
 
   const ListOfPosts(
       {Key? key,
@@ -19,6 +20,7 @@ class ListOfPosts extends StatelessWidget {
       this.child,
       this.errorHeight,
       this.scrollDirection,
+      this.postWidth,
       this.textError})
       : super(key: key);
 
@@ -94,6 +96,7 @@ class ListOfPosts extends StatelessWidget {
                                           .pushNamed(PostDetailScreen.routeName,
                                               arguments: post.id),
                                       child: PostContainer(
+                                        postWidth: postWidth,
                                         post: post,
                                         scrollDirection: scrollDirection,
                                       ),

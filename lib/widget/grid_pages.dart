@@ -10,15 +10,17 @@ class GridPages extends StatelessWidget {
   final Widget? child;
   final String? textError;
   final double? height;
+  final double? width;
 
-  const GridPages({
-    Key? key,
-    this.uri,
-    this.direction,
-    this.child,
-    this.textError,
-    this.height
-  }) : super(key: key);
+  const GridPages(
+      {Key? key,
+      this.uri,
+      this.direction,
+      this.child,
+      this.width,
+      this.textError,
+      this.height})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,7 @@ class GridPages extends StatelessWidget {
                                 .map(
                                   (PageModel page) => PageContainer(
                                     page: page,
+                                    width: width,
                                   ),
                                 )
                                 .toList(),
@@ -62,6 +65,7 @@ class GridPages extends StatelessWidget {
                           children: pages
                               .map((PageModel page) => PageContainer(
                                     page: page,
+                                    width: width,
                                   ))
                               .toList(),
                         )
