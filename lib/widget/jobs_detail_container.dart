@@ -33,6 +33,7 @@ class JobsDetailContainer extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.5,
                       child: BackgroundImage(
+                        borderRadius: 0.0,
                         imageUrl: job.page!.imageUrl!,
                       ),
                     ),

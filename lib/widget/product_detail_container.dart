@@ -54,6 +54,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.5,
                               child: BackgroundImage(
+                                borderRadius: 0,
                                 imageUrl: foundProduct.product!.imageUrl!,
                               ),
                             ),

@@ -73,6 +73,7 @@ class PageDetailContainer extends StatelessWidget {
                       SizedBox(
                         height: 50.h,
                         child: BackgroundImage(
+                          borderRadius: 0,
                           imageUrl: page.imageUrl!,
                         ),
                       ),

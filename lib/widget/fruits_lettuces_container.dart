@@ -35,6 +35,7 @@ class FruitsLettucesContainer extends StatelessWidget {
               SizedBox(
                 height: 50.h,
                 child: BackgroundImage(
+                  borderRadius: 0.0,
                   imageUrl: imageUrl!,
                 ),
               ),
