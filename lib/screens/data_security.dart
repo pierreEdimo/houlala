@@ -18,22 +18,19 @@ class DataSecurityScreen extends StatelessWidget {
         elevation: 1,
       ),
       body: StandardCustomContainer(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 25.0),
-          child: FutureBuilder(
-            future: _loadAssset(context),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.hasData) {
-                String? data = snapshot.data;
-                return MarkdownContainer(
-                  data: data,
-                );
-              }
-              return const Center(
-                child: CircularProgressIndicator(),
+        child: FutureBuilder(
+          future: _loadAssset(context),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              String? data = snapshot.data;
+              return MarkdownContainer(
+                data: data,
               );
-            },
-          ),
+            }
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          },
         ),
       ),
     );
