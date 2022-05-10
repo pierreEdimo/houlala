@@ -25,19 +25,7 @@ Future<void> openInWebViewOrVC(String uri) async {
   }
 }
 
-openWhatsapp(BuildContext context) async {
-  bool whatsapp = await FlutterLaunch.hasApp(name: "whatsapp");
-
-  if (whatsapp) {
-    await FlutterLaunch.launchWhatsapp(
-        phone: "+491785171780", message: "Bonjour");
-  } else {
-    showErrorDialog(context, "Erreur",
-        "Nous n'arrivons pas a nous connecter sur  Whatsapp, verifiez si vous avez installer l'application et reesayez plutard");
-  }
-}
-
-openStore(BuildContext context) {
+  openStore(BuildContext context) {
   try {
     LaunchReview.launch();
   } on MissingPluginException catch (e) {

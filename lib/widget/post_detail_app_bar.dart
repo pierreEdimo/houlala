@@ -17,7 +17,6 @@ class PostDetailAppBar extends StatelessWidget {
     return Material(
       elevation: 1,
       child: Container(
-        height: 80.0,
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         color: const Color(0xf2f2f2f2),
         child: SafeArea(

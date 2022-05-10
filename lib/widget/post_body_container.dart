@@ -24,8 +24,11 @@ class PostBodyContainer extends StatelessWidget {
           FoundPost foundPost = snapshot.data!;
           return Column(
             children: [
-              PostDetailAppBar(
-                foundPost: foundPost,
+              SizedBox(
+                height: 120.0,
+                child: PostDetailAppBar(
+                  foundPost: foundPost,
+                ),
               ),
               StandardCustomContainer(
                 child: Padding(

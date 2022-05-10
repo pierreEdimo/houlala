@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/main.dart';
@@ -27,7 +28,13 @@ class _LikeButtonState extends State<LikeButton> {
             )
           : const FaIcon(FontAwesomeIcons.heart),
       onPressed: () async {
-        String? userId = await storage.read(key: "userId");
+        String? userId = "";
+
+        if(!kIsWeb){
+          userId = await storage.read(key: "userId");
+        } else {
+          userId = userIdBox.get("userId");
+        }
 
         if (userId == null) {
           openModal(context);

@@ -4,7 +4,6 @@ import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/additional_info.dart';
 import 'package:houlala/service/comment_service.dart';
 import 'package:houlala/widget/created_at_container.dart';
-import 'package:houlala/widget/home_like_button.dart';
 import 'package:houlala/widget/report_tile.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
@@ -354,12 +353,11 @@ class AdditionalInformation extends StatelessWidget {
                     )
                   ],
                 ),
-                const SizedBox(
-                  width: 20.0,
-                ),
+                standardHorizontalSizedBox,
                 OnTapIcon(
                   post: post,
-                )
+                ),
+                standardHorizontalSizedBox
               ],
             ),
           );

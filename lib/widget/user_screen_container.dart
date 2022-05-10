@@ -353,10 +353,10 @@ class ConnectWithUs extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     Navigator.of(context).pop();
-                    openWhatsapp(context);
+                    openInWebViewOrVC('https://de.linkedin.com/');
                   },
                   child: const ImageIcon(
-                    AssetImage("images/whatsapp.png"),
+                    AssetImage("images/linkedin.png"),
                     size: 35,
                     color: Colors.green,
                   ),

@@ -30,9 +30,9 @@ TextStyle subtitle = const TextStyle(
 
 SizedBox horizontalSpacing = const SizedBox(width: 10.0);
 
-SizedBox verticalSpacing = const SizedBox(
-  height: 10.0,
-);
+SizedBox verticalSpacing = const SizedBox(height: 10.0);
+
+SizedBox standardHorizontalSizedBox = const SizedBox(width: 20.0);
 
 TextStyle titleStyle = const TextStyle(
   fontWeight: FontWeight.bold,

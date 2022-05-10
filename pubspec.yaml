@@ -111,6 +111,7 @@ flutter:
     - images/no-notification.png
     - images/cart.png
     - images/house.png
+    - images/linkedin.png
     - .env
 
 
