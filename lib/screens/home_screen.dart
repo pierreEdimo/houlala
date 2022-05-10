@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                       standardSizedBox,
                       CustomBoxContainer(
                         child: SizedBox(
-                          height: 35.h,
+                          height: 30.h,
                           child: GridOfProducts(
                             textError: "Aucuns Produits",
                             child: Container(
@@ -88,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                         child: SizedBox(
                           height: 140,
                           child: GridPages(
-                            width: 50.w,
+                            width: 45.w,
                             height: 120,
                             textError: "Aucunes Pages",
                             child: Container(
@@ -107,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                       standardSizedBox,
                       CustomBoxContainer(
                         child: ListOfPosts(
-                          postWidth: 50.w,
+                          postWidth: 40.w,
                           textError: "Aucuns posts",
                           scrollDirection: Axis.horizontal,
                           errorHeight: 35.h,
