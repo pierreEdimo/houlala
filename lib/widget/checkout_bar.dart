@@ -7,7 +7,7 @@ class CheckoutBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 90.0,
+      height: 70.0,
       child: Material(
         elevation: 1,
         child: Container(

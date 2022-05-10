@@ -5,7 +5,7 @@ import 'package:houlala/boxes.dart';
 import 'package:houlala/model/personal_datas.dart';
 import 'package:houlala/model/register.dart';
 import 'package:http/http.dart';
-
+import 'package:flutter/foundation.dart' show kIsWeb;
 import '../main.dart';
 import '../model/address.dart';
 import '../model/login.dart';
@@ -30,8 +30,13 @@ class AuthService extends ChangeNotifier {
 
     if (response.statusCode == 201) {
       final responseJson = json.decode(response.body);
-      storage.write(key: "token", value: responseJson['token']);
-      storage.write(key: "userId", value: responseJson['user']['_id']);
+
+      if (!kIsWeb) {
+        storage.write(key: "token", value: responseJson['token']);
+        storage.write(key: "userId", value: responseJson['user']['_id']);
+      } else {
+        userIdBox.put("userId", responseJson['user']['_id']);
+      }
 
       PersonalData user = PersonalData(
         email: responseJson['user']['email'],
@@ -41,11 +46,10 @@ class AuthService extends ChangeNotifier {
       );
 
       Address address = Address(
-        country: responseJson['user']['address']['country'],
-        city: responseJson['user']['address']['city'],
-        poBox: responseJson['user']['address']['poBox'],
-        streetName: responseJson['user']['address']['streetName']
-      );
+          country: responseJson['user']['address']['country'],
+          city: responseJson['user']['address']['city'],
+          poBox: responseJson['user']['address']['poBox'],
+          streetName: responseJson['user']['address']['streetName']);
 
       _userBox.put('ćonnectedUser', user);
       _addressBox.put('userAddress', address);
@@ -71,8 +75,14 @@ class AuthService extends ChangeNotifier {
     );
     if (response.statusCode == 201) {
       final responseJson = json.decode(response.body);
-      storage.write(key: "token", value: responseJson['token']);
-      storage.write(key: "userId", value: responseJson['user']['_id']);
+
+      if (!kIsWeb) {
+        storage.write(key: "token", value: responseJson['token']);
+        storage.write(key: "userId", value: responseJson['user']['_id']);
+      } else {
+        userIdBox.put("userId", responseJson['user']['_id']);
+      }
+
 
       PersonalData user = PersonalData(
         email: responseJson['user']['email'],
@@ -85,8 +95,7 @@ class AuthService extends ChangeNotifier {
           country: responseJson['user']['address']['country'],
           city: responseJson['user']['address']['city'],
           poBox: responseJson['user']['address']['poBox'],
-          streetName: responseJson['user']['address']['streetName']
-      );
+          streetName: responseJson['user']['address']['streetName']);
 
       _userBox.put('connectedUser', user);
       _addressBox.put('userAddress', address);
@@ -105,14 +114,21 @@ class AuthService extends ChangeNotifier {
     return user!;
   }
 
-  Address getAddress(){
+  Address getAddress() {
     Address? address = Address();
     address = _addressBox.get('userAddress');
     return address!;
   }
 
   Future<String> getUserID() async {
-    String? userId = await storage.read(key: "userId");
+    String? userId = "";
+
+    if(!kIsWeb){
+      userId = await storage.read(key: "userId");
+    } else {
+      userId = userIdBox.get("userId");
+    }
+
     if (userId!.isEmpty) {
       return "";
     }

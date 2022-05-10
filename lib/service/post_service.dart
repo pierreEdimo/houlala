@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/main.dart';
 import 'package:houlala/model/found_post.dart';
@@ -23,7 +24,14 @@ class PostService extends ChangeNotifier {
   }
 
   Future<FoundPost> fetchSinglePost(String id) async {
-    String? userId = await storage.read(key: 'userId');
+    String? userId = "";
+
+    if(!kIsWeb){
+      userId = await storage.read(key: "userId");
+    } else {
+      userId = userIdBox.get("userId");
+    }
+
 
     var url = Uri.parse('${dotenv.env['POST_URL']}/$id?userId=$userId');
 
@@ -38,7 +46,14 @@ class PostService extends ChangeNotifier {
 
   Future<void> likePost(String id) async {
     Map<String, String> headers = {'Content-Type': 'application/json'};
-    String? userId = await storage.read(key: "userId");
+    String? userId = "";
+
+    if(!kIsWeb){
+      userId = await storage.read(key: "userId");
+    } else {
+      userId = userIdBox.get("userId");
+    }
+
 
     var url =
         Uri.parse("${dotenv.env['POST_URL']}/likePost/$id?userId=$userId");

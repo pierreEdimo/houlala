@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/model/found_product.dart';
 import 'package:houlala/model/product.dart';
@@ -27,7 +28,14 @@ class ProductService extends ChangeNotifier {
   }
 
   Future<FoundProduct> fetchSingleProduct(String name) async {
-    String? userId = await storage.read(key: "userId");
+    String? userId = "";
+
+    if(!kIsWeb){
+      userId = await storage.read(key: "userId");
+    } else {
+      userId = userIdBox.get("userId");
+    }
+
 
     var url =
         Uri.parse('${dotenv.env['PRODUCT_URL']}/getProductByNameIsFavorite?name=$name&userId=$userId');
@@ -54,7 +62,14 @@ class ProductService extends ChangeNotifier {
 
   Future<void> bookMarkProduct(String id) async {
     Map<String, String> headers = {'Content-Type': 'application/json'};
-    String? userId = await storage.read(key: "userId");
+    String? userId = "";
+
+    if(!kIsWeb){
+      userId = await storage.read(key: "userId");
+    } else {
+      userId = userIdBox.get("userId");
+    }
+
 
     var url = Uri.parse(
         "${dotenv.env['PRODUCT_URL']}/addFavorite/$id?userId=$userId");

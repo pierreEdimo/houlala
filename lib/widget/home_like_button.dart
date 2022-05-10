@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/main.dart';
@@ -25,7 +26,14 @@ class _HomeLikeButtonState extends State<HomeLikeButton> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        String? userId = await storage.read(key: "userId");
+        String? userId = "";
+
+        if(!kIsWeb){
+          userId = await storage.read(key: "userId");
+        } else {
+          userId = userIdBox.get("userId");
+        }
+
 
         if (userId != null) {
           var oldStatus = widget.info!.isLiked!;

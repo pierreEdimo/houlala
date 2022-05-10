@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,7 +21,14 @@ class CartItemDeleteButton extends StatelessWidget {
         color: Color(0xffdf972f),
       ),
       onTap: () async {
-        final String? userId = await storage.read(key: "userId");
+        String? userId = "";
+
+        if(!kIsWeb){
+          userId = await storage.read(key: "userId");
+        } else {
+          userId = userIdBox.get("userId");
+        }
+
         if (userId != null) {
           Provider.of<CartItemService>(context, listen: false)
               .deleteCart('${dotenv.env['CART_URL']}/${item!.id!}');

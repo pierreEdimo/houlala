@@ -16,6 +16,7 @@ class ProductDetailAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 70.0,
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: SafeArea(
         child: Center(

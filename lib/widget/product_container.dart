@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:houlala/main.dart';
 import 'package:houlala/model/add_cart_item.dart';
@@ -65,12 +66,20 @@ class ProductContainer extends StatelessWidget {
                     CustomElevatedButton(
                       child: const Text("Ajouter au Panier"),
                       onPressed: () async {
-                        var userId = await storage.read(key: "userId");
+                        String? userId = "";
+
+                        if (!kIsWeb) {
+                          userId = await storage.read(key: "userId");
+                        } else {
+                          userId = userIdBox.get("userId");
+                        }
+
                         AddCartItem newItem = AddCartItem(
                             quantity: product!.quantity,
                             productId: product!.id,
-                            userId: userId,
-                            totalPrice: product!.initialPrice);
+                            userId: userId!,
+                            totalPrice: product!.initialPrice,
+                            pageId: product!.page!.id!);
                         await Provider.of<CartItemService>(context,
                                 listen: false)
                             .addToCart(newItem);

@@ -8,6 +8,7 @@ import 'package:houlala/model/add_cart_item.dart';
 import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/model/update_cart.dart';
 import 'package:http/http.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import '../boxes.dart';
 
@@ -30,7 +31,13 @@ class CartItemService extends ChangeNotifier {
   }
 
   Future<int> getCountItem() async {
-    String? userId = await storage.read(key: "userId");
+    String? userId = "";
+
+   if(!kIsWeb){
+     userId = await storage.read(key: "userId");
+   } else {
+     userId = userIdBox.get("userId");
+   }
 
     var url = Uri.parse('${dotenv.env['CART_URL']}/cartItemCount/$userId');
 
@@ -44,7 +51,14 @@ class CartItemService extends ChangeNotifier {
   }
 
   Future<List<CartItem>> fetchCartItems() async {
-    var userId = await storage.read(key: "userId");
+    String? userId = "";
+
+    if(!kIsWeb){
+      userId = await storage.read(key: "userId");
+    } else {
+      userId = userIdBox.get("userId");
+    }
+
     var url =
         Uri.parse('${dotenv.env['CART_URL']}/getCartsFromUsers?userId=$userId');
     Response response = await get(url);
@@ -61,7 +75,13 @@ class CartItemService extends ChangeNotifier {
   }
 
   Future<void> increaseCartItem(CartItem item) async {
-    String? userId = await storage.read(key: "userId");
+    String? userId = "";
+
+    if(!kIsWeb){
+      userId = await storage.read(key: "userId");
+    } else {
+      userId = userIdBox.get("userId");
+    }
 
     item.quantity = item.quantity! + 1;
     item.totalPrice = item.product!.initialPrice! * item.quantity!;
@@ -79,7 +99,14 @@ class CartItemService extends ChangeNotifier {
   }
 
   Future<void> decreaseCartItem(CartItem item) async {
-    String? userId = await storage.read(key: "userId");
+    String? userId = "";
+
+    if(!kIsWeb){
+      userId = await storage.read(key: "userId");
+    } else {
+      userId = userIdBox.get("userId");
+    }
+
 
     if (item.quantity! > 1) {
       item.quantity = item.quantity! - 1;

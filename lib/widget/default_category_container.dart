@@ -21,6 +21,7 @@ class DefaultCategoryContainer extends StatelessWidget {
           children: [
             SizedBox(
               child: BackgroundImage(
+                borderRadius: 0,
                 imageUrl: imageUrl!,
               ),
               height: 59.h,

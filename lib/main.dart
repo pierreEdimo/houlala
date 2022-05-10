@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -43,6 +42,8 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 var box = Hive.box('loggedState');
+var userIdBox = Hive.box('userId');
+var tokenBox = Hive.box('token');
 const storage = FlutterSecureStorage();
 
 Future main() async {
@@ -55,6 +56,8 @@ Future main() async {
   Hive.registerAdapter(AddressAdapter());
 
   await Hive.openBox('loggedState');
+  await Hive.openBox('userId');
+  await Hive.openBox('token');
   await Hive.openBox<CartItem>('cart-items');
   await Hive.openBox<Product>('products');
   await Hive.openBox<PersonalData>('user');

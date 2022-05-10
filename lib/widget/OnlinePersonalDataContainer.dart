@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/helper/constants.dart';
@@ -18,7 +19,6 @@ import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
-import 'package:sizer/sizer.dart';
 import '../model/CountAndPrice.dart';
 import '../model/add_cart_item.dart';
 import '../model/cart_item.dart';
@@ -124,7 +124,15 @@ class OnlinePersonalDataContainer extends StatelessWidget {
                     onPressed: () async {
                       late List<AddCartItem> newItems = [];
                       late AddCartItem newItem;
-                      var userId = await storage.read(key: "userId");
+
+                      String? userId = "";
+
+                      if(!kIsWeb){
+                        userId = await storage.read(key: "userId");
+                      } else {
+                        userId = userIdBox.get("userId");
+                      }
+
 
                       for (var item in items!) {
                         newItem = AddCartItem(

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/cart_item.dart';
@@ -166,7 +167,13 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                       ),
                       CustomElevatedButton(
                         onPressed: () async {
-                          String? userId = await storage.read(key: "userId");
+                          String? userId = "";
+
+                          if(!kIsWeb){
+                            userId = await storage.read(key: "userId");
+                          } else {
+                            userId = userIdBox.get("userId");
+                          }
 
                           if (userId != null) {
                             addToCart(
