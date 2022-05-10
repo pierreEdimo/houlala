@@ -11,18 +11,38 @@ class StandardAppBar extends StatelessWidget with PreferredSizeWidget {
     this.title,
     this.button,
     Key? key,
-  })  : preferredSize = const Size.fromHeight(60.0),
+  })  : preferredSize = const Size.fromHeight(70.0),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return Material(
       elevation: 1,
-      title: Text(
-        title!,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        color: const Color(0xf2f2f2f2),
+        child: SafeArea(
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  title!,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'PoppinsBold',
+                    fontSize: 20
+                  ),
+                ),
+                button != null ? button! : Container()
+              ],
+            ),
+          ),
+        ),
       ),
-      actions: [button != null ? button! : Container()],
-      automaticallyImplyLeading: false,
     );
   }
 }
+//   actions: [],
+//       automaticallyImplyLeading: false,

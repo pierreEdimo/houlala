@@ -10,26 +10,32 @@ class ProductDetailAppBar extends StatelessWidget with PreferredSizeWidget {
   final Size preferredSize;
 
   ProductDetailAppBar({Key? key, this.product})
-      : preferredSize = const Size.fromHeight(60.0),
+      : preferredSize = const Size.fromHeight(70.0),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      leading: CustomButtonContainer(
-        icon: const FaIcon(
-          FontAwesomeIcons.angleLeft,
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: SafeArea(
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CustomButtonContainer(
+                icon: const FaIcon(
+                  FontAwesomeIcons.angleLeft,
+                ),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              BookMarker(
+                foundProduct: product,
+              )
+            ],
+          ),
         ),
-        onPressed: () => Navigator.of(context).pop(),
       ),
-      actions: [
-        BookMarker(
-          foundProduct: product,
-        ),
-      ],
-      automaticallyImplyLeading: false,
     );
   }
 }
+

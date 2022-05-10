@@ -11,7 +11,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   CustomAppBar({
     this.title,
     Key? key,
-  })  : preferredSize = const Size.fromHeight(80.0),
+  })  : preferredSize = const Size.fromHeight(70.0),
         super(key: key);
 
   @override
@@ -32,7 +32,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                   style: const TextStyle(
                     fontFamily: 'PoppinsBold',
                     fontWeight: FontWeight.bold,
-                    fontSize: 22.0
+                    fontSize: 20.0
                   ),
                 ),
                 CustomButtonContainer(

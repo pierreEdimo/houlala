@@ -7,7 +7,7 @@ class CheckoutBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80.0,
+      height: 90.0,
       child: Material(
         elevation: 1,
         child: Container(
@@ -19,7 +19,7 @@ class CheckoutBar extends StatelessWidget {
                 child: Text(
                   "Terminer votre Commande",
                   style: TextStyle(
-                      fontSize: 22.0,
+                      fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'PoppinsBold'),
                 ),

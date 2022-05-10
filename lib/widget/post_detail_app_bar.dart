@@ -4,35 +4,37 @@ import 'package:houlala/model/found_post.dart';
 import 'package:houlala/widget/like_button.dart';
 import 'custom_button_container.dart';
 
-class PostDetailAppBar extends StatelessWidget with PreferredSizeWidget {
-  @override
-  final Size preferredSize;
+class PostDetailAppBar extends StatelessWidget {
   final FoundPost? foundPost;
 
-  PostDetailAppBar({
+  const PostDetailAppBar({
     Key? key,
     this.foundPost,
-  })  : preferredSize = const Size.fromHeight(60.0),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return Material(
       elevation: 1,
-      leading: CustomButtonContainer(
-        icon: const FaIcon(FontAwesomeIcons.angleLeft),
-        onPressed: () => Navigator.of(context).pop(),
-      ),
-      actions: [
-        LikeButton(
-          foundPost: foundPost,
+      child: Container(
+        height: 80.0,
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        color: const Color(0xf2f2f2f2),
+        child: SafeArea(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CustomButtonContainer(
+                icon: const FaIcon(FontAwesomeIcons.angleLeft),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              LikeButton(
+                foundPost: foundPost,
+              )
+            ],
+          ),
         ),
-        // CustomButtonContainer(
-        //   icon: const FaIcon(FontAwesomeIcons.share),
-        //   onPressed: () {},
-        // ),
-      ],
-      automaticallyImplyLeading: false,
+      ),
     );
   }
 }
