@@ -78,6 +78,7 @@ class ListOfPosts extends StatelessWidget {
                   : SizedBox(
                       height: 490,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           child == null ? Container() : child!,
                           const SizedBox(
