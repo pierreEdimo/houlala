@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
 import 'package:houlala/widget/background_image.dart';
@@ -23,10 +24,13 @@ class ShopContainer extends StatelessWidget {
                   imageUrl: imageUrl,
                 ),
               ),
-              AppBarWithReturn(
-                color: Colors.transparent,
-                elevation: 0,
-                title: "",
+              SizedBox(
+                height: !kIsWeb ? null : 70.0,
+                child: AppBarWithReturn(
+                  color: Colors.transparent,
+                  elevation: 0,
+                  title: "",
+                ),
               )
             ],
           ),

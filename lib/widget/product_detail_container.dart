@@ -59,8 +59,11 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                                 imageUrl: foundProduct.product!.imageUrl!,
                               ),
                             ),
-                            ProductDetailAppBar(
-                              product: foundProduct,
+                            SizedBox(
+                              height: !kIsWeb ? null : 70.0,
+                              child: ProductDetailAppBar(
+                                product: foundProduct,
+                              ),
                             ),
                           ],
                         ),

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/transformed_container.dart';
@@ -26,10 +27,13 @@ class DefaultCategoryContainer extends StatelessWidget {
               ),
               height: 59.h,
             ),
-            AppBarWithReturn(
-              elevation: 0,
-              color: Colors.transparent,
-              title: "",
+            SizedBox(
+              height: !kIsWeb ? null : 70.0,
+              child: AppBarWithReturn(
+                elevation: 0,
+                color: Colors.transparent,
+                title: "",
+              ),
             )
           ],
         ),

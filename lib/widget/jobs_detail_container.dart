@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -37,10 +38,13 @@ class JobsDetailContainer extends StatelessWidget {
                         imageUrl: job.page!.imageUrl!,
                       ),
                     ),
-                    AppBarWithReturn(
-                      title: "",
-                      elevation: 0.0,
-                      color: Colors.transparent,
+                    SizedBox(
+                      height: !kIsWeb ? null : 70.0,
+                      child: AppBarWithReturn(
+                        title: "",
+                        elevation: 0.0,
+                        color: Colors.transparent,
+                      ),
                     )
                   ],
                 ),

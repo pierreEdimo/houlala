@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/screens/favorite_screen.dart';
@@ -61,7 +62,8 @@ class UserScreenContainer extends StatelessWidget {
                             ),
                           ),
                           InkWell(
-                            onTap: () => Navigator.of(context).pushNamed("/my_orders"),
+                            onTap: () =>
+                                Navigator.of(context).pushNamed("/my_orders"),
                             child: const CustomListTile(
                               leadingIcon: FontAwesomeIcons.bagShopping,
                               title: "Mes Commandes",
@@ -231,10 +233,12 @@ class OpenReview extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => openStore(context),
-      child: const CustomListTile(
-        leadingIcon: FontAwesomeIcons.star,
-        title: "Evaluez notre application",
-      ),
+      child: !kIsWeb
+          ? const CustomListTile(
+              leadingIcon: FontAwesomeIcons.star,
+              title: "Evaluez notre application",
+            )
+          : Container(),
     );
   }
 }

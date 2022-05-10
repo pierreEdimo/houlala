@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/model/found_post.dart';
@@ -25,7 +26,7 @@ class PostBodyContainer extends StatelessWidget {
           return Column(
             children: [
               SizedBox(
-                height: 120.0,
+                height: !kIsWeb ? 120.0 : 70.0,
                 child: PostDetailAppBar(
                   foundPost: foundPost,
                 ),

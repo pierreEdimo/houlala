@@ -62,9 +62,6 @@ class PostContainer extends StatelessWidget {
                             ],
                           ),
                         ),
-                        OnTapIcon(
-                          post: post,
-                        )
                       ],
                     ),
                     verticalSpacing,

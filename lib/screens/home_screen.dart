@@ -23,10 +23,15 @@ class HomeScreen extends StatelessWidget {
       builder: (context, sizingInformation) {
         switch (sizingInformation.deviceScreenType) {
           case DeviceScreenType.desktop:
-            return Scaffold(
-              appBar: WebAppBar(),
-              body: const Center(
-                child: Text("Hello World! i AM Testing the deployment"),
+            return const Scaffold(
+              body: Center(
+                child: Text(
+                  "Houlala est encore en plein developpement , nous travaillons chaque jour pour ameliorer la qualite des services proposees par notre application, ",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 35.0,
+                  ),
+                ),
               ),
             );
           case DeviceScreenType.tablet:

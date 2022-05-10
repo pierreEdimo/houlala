@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
@@ -7,7 +8,7 @@ import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:houlala/widget/transformed_container.dart';
 import 'package:sizer/sizer.dart';
 
-//Color(0xe2e2e2e2);
+
 
 class FruitsLettucesContainer extends StatelessWidget {
   final String? fruitUri;
@@ -39,10 +40,13 @@ class FruitsLettucesContainer extends StatelessWidget {
                   imageUrl: imageUrl!,
                 ),
               ),
-              AppBarWithReturn(
-                title: "",
-                elevation: 0,
-                color: Colors.transparent,
+              SizedBox(
+                height: !kIsWeb ? null : 70.0,
+                child: AppBarWithReturn(
+                  title: "",
+                  elevation: 0,
+                  color: Colors.transparent,
+                ),
               ),
             ],
           ),

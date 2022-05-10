@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/helper/constants.dart';
@@ -77,10 +78,13 @@ class PageDetailContainer extends StatelessWidget {
                           imageUrl: page.imageUrl!,
                         ),
                       ),
-                      AppBarWithReturn(
-                        title: "",
-                        color: Colors.transparent,
-                        elevation: 0,
+                      SizedBox(
+                        height: !kIsWeb ? null : 70.0,
+                        child: AppBarWithReturn(
+                          title: "",
+                          color: Colors.transparent,
+                          elevation: 0,
+                        ),
                       )
                     ],
                   ),
