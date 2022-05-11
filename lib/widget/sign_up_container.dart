@@ -65,13 +65,6 @@ class _SignUpContainerState extends State<SignUpContainer> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(
-              height: 50.0,
-            ),
-            Text(
-              "Bienvenu sur Houlala",
-              style: standardStyle,
-            ),
-            const SizedBox(
               height: 30.0,
             ),
             EmailInput(

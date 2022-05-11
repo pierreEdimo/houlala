@@ -182,7 +182,7 @@ class HomeScreen extends StatelessWidget {
                             child: Container(
                               margin: const EdgeInsets.only(bottom: 5.0),
                               child: const FlexibleRow(
-                                title: 'Quelques Magasins',
+                                title: 'Magasins',
                                 urlValue: "/all_pages",
                               ),
                             ),
@@ -199,7 +199,7 @@ class HomeScreen extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           errorHeight: 35.h,
                           child: const FlexibleRow(
-                            title: "Quelques posts recents",
+                            title: "Les posts recents",
                             urlValue: "/all_posts",
                           ),
                           uri:
@@ -210,7 +210,7 @@ class HomeScreen extends StatelessWidget {
                       CustomBoxContainer(
                         child: GridOfJobs(
                           child: Text(
-                            "Quelques offres de Jobs",
+                            "Les Jobs recents",
                             style: standardStyle,
                           ),
                           scrollDirection: Axis.vertical,

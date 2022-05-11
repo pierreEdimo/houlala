@@ -27,13 +27,24 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  title!,
-                  style: const TextStyle(
-                    fontFamily: 'PoppinsBold',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0
-                  ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 70,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('images/houlala1.png'),
+                              fit: BoxFit.cover)),
+                    ),
+                    Text(
+                      title!,
+                      style: const TextStyle(
+                          fontFamily: 'PoppinsBold',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0),
+                    )
+                  ],
                 ),
                 CustomButtonContainer(
                   icon: const FaIcon(FontAwesomeIcons.magnifyingGlass),

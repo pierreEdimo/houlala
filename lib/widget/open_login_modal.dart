@@ -3,6 +3,7 @@ import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/sign_in_container.dart';
 import 'package:houlala/widget/sign_up_container.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:sizer/sizer.dart';
 
 enum AuthMode { signIn, signUp }
 
@@ -21,6 +22,19 @@ openModal(BuildContext context) {
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: Column(
             children: [
+              const SizedBox(
+                height: 50.0,
+              ),
+              Container(
+                width: 100.w,
+                height: 200,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/houlala.png'),
+                    fit: BoxFit.contain
+                  )
+                ),
+              ),
               _authMode == AuthMode.signIn
                   ? const SignInContainer()
                   : const SignUpContainer(),

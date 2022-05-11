@@ -22,7 +22,7 @@ class FlexibleRow extends StatelessWidget {
         InkWell(
           onTap: () => Navigator.of(context).pushNamed(urlValue!),
           child: const Text(
-            "voire tout",
+            "plus",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontFamily: 'PoppinsBold'
