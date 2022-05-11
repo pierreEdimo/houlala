@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
+import 'package:houlala/widget/app_bar_with_return.dart';
 import 'package:houlala/widget/sign_in_container.dart';
 import 'package:houlala/widget/sign_up_container.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -22,6 +24,13 @@ openModal(BuildContext context) {
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: Column(
             children: [
+              SizedBox(
+                height: kIsWeb ? 70.0 : 90.0,
+                child: AppBarWithReturn(
+                  title: "Se Connecter/S'enregistrer",
+                  elevation: 1,
+                ),
+              ),
               const SizedBox(
                 height: 50.0,
               ),
