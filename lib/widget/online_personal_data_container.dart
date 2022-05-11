@@ -19,7 +19,7 @@ import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
-import '../model/CountAndPrice.dart';
+import '../model/count_and_price.dart';
 import '../model/add_cart_item.dart';
 import '../model/cart_item.dart';
 import 'display_dialog.dart';
