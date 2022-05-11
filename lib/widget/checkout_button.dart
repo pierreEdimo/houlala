@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/service/auth_service.dart';
-import 'package:houlala/widget/OnlinePersonalDataContainer.dart';
+import 'package:houlala/widget/online_personal_data_container.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
 import 'package:houlala/widget/personnal_data_container.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 
-import '../model/CountAndPrice.dart';
+import '../model/count_and_price.dart';
 
 class CheckoutButton extends StatelessWidget {
   final List<CartItem>? items;

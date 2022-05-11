@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/widget/container_wirth_connectivity_checker.dart';
-import 'package:houlala/widget/grid_of_jobs.dart';
 import 'package:houlala/widget/grid_pages.dart';
 import 'package:houlala/widget/list_of_posts.dart';
 import 'package:houlala/widget/standard_custom_app_bar.dart';
@@ -121,7 +120,7 @@ class HomeScreen extends StatelessWidget {
                                   '${dotenv.env['POST_URL']}/getRandomPosts?size=10',
                             ),
                           ),
-                         /* CustomBoxContainer(
+                          /* CustomBoxContainer(
                             child: GridOfJobs(
                               child: Text(
                                 "Les Jobs recents",

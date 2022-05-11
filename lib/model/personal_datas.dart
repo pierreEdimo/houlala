@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-import 'package:houlala/model/address.dart';
 
 part 'personal_datas.g.dart';
 

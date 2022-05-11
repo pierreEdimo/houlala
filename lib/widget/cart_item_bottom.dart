@@ -5,7 +5,7 @@ import 'package:houlala/service/cart_item_service.dart';
 import 'package:houlala/widget/checkout_button.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:provider/provider.dart';
-import '../model/CountAndPrice.dart';
+import '../model/count_and_price.dart';
 
 class CartItemBottom extends StatelessWidget {
   final List<CartItem>? items;

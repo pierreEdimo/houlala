@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:houlala/widget/grid_of_jobs.dart';
 import 'package:houlala/widget/grid_of_products.dart';
 import 'package:houlala/widget/grid_pages.dart';
 import 'package:houlala/widget/list_of_posts.dart';
@@ -59,7 +58,7 @@ class SearchResultContainer extends StatelessWidget {
         child: ListOfPosts(
           scrollDirection: Axis.vertical,
           uri: '${dotenv.env['POST_URL']}/search?searchWord=$searchWorld',
-          errorHeight: MediaQuery.of(context).size.height * 0.8 ,
+          errorHeight: MediaQuery.of(context).size.height * 0.8,
           textError: "Aucuns Posts titre $searchWorld n'a ete trouve\n"
               "veuillez reessayer plutard",
         ),
@@ -85,4 +84,3 @@ class SearchResultContainer extends StatelessWidget {
     );
   }
 }
-

@@ -19,7 +19,6 @@ class PostDetailScreen extends StatelessWidget {
   PostDetailScreen({Key? key}) : super(key: key);
 
   void dispose() {
-    // TODO: implement dispose
     _controller.dispose();
   }
 

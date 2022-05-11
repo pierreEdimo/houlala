@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
 class WebAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
@@ -26,9 +25,7 @@ class WebAppBar extends StatelessWidget with PreferredSizeWidget {
               flex: 3,
               child: Center(
                 child: Row(
-                  children: const [
-                    Text("houlala")
-                  ],
+                  children: const [Text("houlala")],
                 ),
               ),
             ),

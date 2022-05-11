@@ -5,11 +5,6 @@ import 'package:houlala/widget/horizontal_cart_preview.dart';
 
 import 'package:houlala/widget/standard_custom_container.dart';
 
-
-
-import '../model/add_cart_item.dart';
-import 'display_dialog.dart';
-
 class OrderContainer extends StatelessWidget {
   final Order? order;
 

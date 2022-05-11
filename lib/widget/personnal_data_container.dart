@@ -10,7 +10,7 @@ import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import '../helper/constants.dart';
-import '../model/CountAndPrice.dart';
+import '../model/count_and_price.dart';
 import '../model/add_cart_item.dart';
 import '../model/add_order.dart';
 import '../model/address.dart';
@@ -55,7 +55,6 @@ class _PersonalDataContainerState extends State<PersonalDataContainer> {
     _villeController.dispose();
     _countryController.dispose();
     _streetController.dispose();
-    // TODO: implement dispose
     super.dispose();
   }
 

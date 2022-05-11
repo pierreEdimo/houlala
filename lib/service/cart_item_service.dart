@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/main.dart';
-import 'package:houlala/model/CountAndPrice.dart';
+import 'package:houlala/model/count_and_price.dart';
 import 'package:houlala/model/add_cart_item.dart';
 import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/model/update_cart.dart';
