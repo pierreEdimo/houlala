@@ -8,7 +8,6 @@ import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/custom_intern_navigation.dart';
 import 'package:houlala/widget/page_home_container.dart';
 import 'package:houlala/widget/page_info_container.dart';
-import 'package:houlala/widget/page_jobs_container.dart';
 import 'package:houlala/widget/page_post_container.dart';
 import 'package:houlala/widget/page_product_container.dart';
 import 'package:houlala/widget/transformed_container.dart';
@@ -27,7 +26,6 @@ class PageDetailContainer extends StatelessWidget {
     "a propos",
     "produits",
     "posts",
-    "jobs",
   ];
 
   @override
@@ -57,12 +55,6 @@ class PageDetailContainer extends StatelessWidget {
                     "svp venez verifier plutard",
                 url:
                     '${dotenv.env['POST_URL']}/filterPostByPageId?pageId=${page.id!}',
-              ),
-              PageJobsContainer(
-                uri:
-                    '${dotenv.env['JOB_URL']}/filterJobByPageId?pageId=${page.id!}',
-                pageName: page.name!,
-                height: 0.25,
               ),
             ];
 

@@ -3,9 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/widget/column_of_shop_box.dart';
 import 'package:houlala/widget/custom_intern_navigation.dart';
 import 'package:houlala/widget/discover_container_box.dart';
-import 'package:houlala/widget/grid_of_jobs.dart';
 import 'package:houlala/widget/list_of_posts.dart';
-import 'package:houlala/widget/standard_custom_container.dart';
 
 class DiscoverContainer extends StatelessWidget {
   DiscoverContainer({Key? key}) : super(key: key);
@@ -15,7 +13,6 @@ class DiscoverContainer extends StatelessWidget {
     "produits",
     "magasins",
     "posts",
-    "jobs",
   ];
 
   final List<Widget> _widgetOptions = [
@@ -43,7 +40,7 @@ class DiscoverContainer extends StatelessWidget {
         uri: dotenv.env['POST_URL'],
       ),
     ),
-   StandardCustomContainer(
+/*   StandardCustomContainer(
       child: GridOfJobs(
         uri: dotenv.env['JOB_URL'],
         scrollDirection: Axis.vertical,
@@ -52,7 +49,7 @@ class DiscoverContainer extends StatelessWidget {
             "reessayez plus tard",
         height: 0.7,
       ),
-    )
+    )*/
   ];
 
   @override

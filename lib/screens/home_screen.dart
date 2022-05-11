@@ -121,7 +121,7 @@ class HomeScreen extends StatelessWidget {
                                   '${dotenv.env['POST_URL']}/getRandomPosts?size=10',
                             ),
                           ),
-                          CustomBoxContainer(
+                         /* CustomBoxContainer(
                             child: GridOfJobs(
                               child: Text(
                                 "Les Jobs recents",
@@ -134,7 +134,7 @@ class HomeScreen extends StatelessWidget {
                               height: 0.25,
                             ),
                           ),
-                          standardSizedBox,
+                          standardSizedBox,*/
                         ],
                       ),
                     ),
@@ -228,20 +228,20 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           standardSizedBox,
-                          CustomBoxContainer(
-                            child: GridOfJobs(
-                              child: Text(
-                                "Les Jobs recents",
-                                style: standardStyle,
-                              ),
-                              scrollDirection: Axis.vertical,
-                              ratio: 2.5,
-                              uri:
-                                  '${dotenv.env['JOB_URL']}/getRandomJobs?size=4',
-                              height: 0.25,
-                            ),
-                          ),
-                          standardSizedBox,
+                          // CustomBoxContainer(
+                          //   child: GridOfJobs(
+                          //     child: Text(
+                          //       "Les Jobs recents",
+                          //       style: standardStyle,
+                          //     ),
+                          //     scrollDirection: Axis.vertical,
+                          //     ratio: 2.5,
+                          //     uri:
+                          //         '${dotenv.env['JOB_URL']}/getRandomJobs?size=4',
+                          //     height: 0.25,
+                          //   ),
+                          // ),
+                          // standardSizedBox,
                         ],
                       ),
                     ),
@@ -333,18 +333,18 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       standardSizedBox,
-                      CustomBoxContainer(
-                        child: GridOfJobs(
-                          child: Text(
-                            "Les Jobs recents",
-                            style: standardStyle,
-                          ),
-                          scrollDirection: Axis.vertical,
-                          ratio: 2.5,
-                          uri: '${dotenv.env['JOB_URL']}/getRandomJobs?size=4',
-                          height: 0.25,
-                        ),
-                      )
+                      // CustomBoxContainer(
+                      //   child: GridOfJobs(
+                      //     child: Text(
+                      //       "Les Jobs recents",
+                      //       style: standardStyle,
+                      //     ),
+                      //     scrollDirection: Axis.vertical,
+                      //     ratio: 2.5,
+                      //     uri: '${dotenv.env['JOB_URL']}/getRandomJobs?size=4',
+                      //     height: 0.25,
+                      //   ),
+                      // )
                     ],
                   ),
                 ),

@@ -20,7 +20,6 @@ class SearchResultContainer extends StatelessWidget {
     "categories",
     "magasins",
     "posts",
-    "jobs"
   ];
 
   @override
@@ -65,15 +64,15 @@ class SearchResultContainer extends StatelessWidget {
               "veuillez reessayer plutard",
         ),
       ),
-      StandardCustomContainer(
-        child: GridOfJobs(
-          uri: '${dotenv.env['JOB_URL']}/search?searchword=$searchWorld',
-          scrollDirection: Axis.vertical,
-         textError: "Aucuns jobs titre $searchWorld n'a ete trouve\n "
-             "veuillez reessayer plutard",
-          height: 0.8,
-        ),
-      )
+      // StandardCustomContainer(
+      //   child: GridOfJobs(
+      //     uri: '${dotenv.env['JOB_URL']}/search?searchword=$searchWorld',
+      //     scrollDirection: Axis.vertical,
+      //    textError: "Aucuns jobs titre $searchWorld n'a ete trouve\n "
+      //        "veuillez reessayer plutard",
+      //     height: 0.8,
+      //   ),
+      // )
     ];
 
     return CustomInternNavigation(

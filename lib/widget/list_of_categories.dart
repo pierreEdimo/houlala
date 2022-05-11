@@ -28,6 +28,7 @@ class ListOfCategories extends StatelessWidget {
           List<CategoryModel> categories = snapshot.data!;
 
           return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               child != null ? child! : Container() ,
               Expanded(
