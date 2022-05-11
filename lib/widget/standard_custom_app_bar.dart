@@ -30,12 +30,9 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      width: 70,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage('images/houlala1.png'),
-                              fit: BoxFit.cover)),
+                    const CircleAvatar(
+                      radius: 35,
+                      backgroundImage: AssetImage('images/houlala1.png'),
                     ),
                     Text(
                       title!,

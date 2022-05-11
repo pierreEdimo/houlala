@@ -29,20 +29,16 @@ class StandardAppBar extends StatelessWidget with PreferredSizeWidget {
               children: [
                 Row(
                   children: [
-                    Container(
-                      width: 70,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage('images/houlala1.png'),
-                              fit: BoxFit.cover)),
+                    const CircleAvatar(
+                      radius: 35,
+                      backgroundImage: AssetImage('images/houlala1.png'),
                     ),
                     Text(
                       title!,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'PoppinsBold',
-                          fontSize: 20
-                      ),
+                          fontSize: 20),
                     ),
                   ],
                 ),
