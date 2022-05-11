@@ -14,39 +14,46 @@ class JobContainer extends StatelessWidget {
     return InkWell(
       onTap: () => Navigator.of(context)
           .pushNamed(JobsDetailScreen.routeName, arguments: job!.id!),
-      child: TransparentCardContainer(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CircleAvatar(
-              backgroundImage: NetworkImage(job!.page!.imageUrl!),
-            ),
-            horizontalSpacing,
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    job!.jobTitel!,
-                    style: standardStyle,
-                  ),
-                  const SizedBox(
-                    height: 2.0,
-                  ),
-                  Text(
-                    job!.page!.name!,
-                    style: subtitle,
-                  ),
-                  Text(
-                    '${job!.jobLocationCity!} . ${job!.jobLocationCountry!}(${job!.jobType!})',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: subtitle,
-                  ),
-                ],
+      child: Container(
+        padding: const EdgeInsets.all(5.0),
+        decoration:  BoxDecoration(
+          border: Border.all(width: 1, color: Colors.grey.shade300),
+          borderRadius: BorderRadius.circular(5.0)
+        ),
+        child: TransparentCardContainer(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                backgroundImage: NetworkImage(job!.page!.imageUrl!),
               ),
-            )
-          ],
+              horizontalSpacing,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      job!.jobTitel!,
+                      style: standardStyle,
+                    ),
+                    const SizedBox(
+                      height: 2.0,
+                    ),
+                    Text(
+                      job!.page!.name!,
+                      style: subtitle,
+                    ),
+                    Text(
+                      '${job!.jobLocationCity!} . ${job!.jobLocationCountry!}(${job!.jobType!})',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: subtitle,
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
