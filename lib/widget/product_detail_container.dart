@@ -188,6 +188,8 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                               foundProduct.product!.page!.id!
                             );
 
+                            print(userId); 
+
                             showSnack(
                                 const Text("Article a ete ajoute au Panier"),
                                 context);
