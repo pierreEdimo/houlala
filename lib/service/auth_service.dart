@@ -136,6 +136,9 @@ class AuthService extends ChangeNotifier {
   }
 
   logOut() async {
+    box.put('logged', 'loggedOut');
+    userIdBox.put("userId", null); 
+    loggedState = box.get('logged');
     await storage.delete(key: 'userId');
     await storage.delete(key: 'token');
     await box.clear();
