@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 
@@ -7,7 +8,7 @@ class CheckoutBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70.0,
+      height:kIsWeb ? 70.0 : 90.0,
       child: Material(
         elevation: 1,
         child: Container(
