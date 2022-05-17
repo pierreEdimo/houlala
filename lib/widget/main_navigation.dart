@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/screens/cart_item_screen.dart';
@@ -61,10 +62,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           const BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage("images/house.png"),
-              size: 30,
-            ),
+            icon: kIsWeb
+                ? Icon(
+                    Icons.home_outlined,
+                    size: 33,
+                  )
+                : ImageIcon(
+                    AssetImage("images/house.png"),
+                    size: 30,
+                  ),
             label: 'Home',
           ),
           const BottomNavigationBarItem(
@@ -74,10 +80,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
           BottomNavigationBarItem(
             icon: Stack(
               children: const [
-                ImageIcon(
-                  AssetImage("images/cart.png"),
-                  size: 27,
-                ),
+                kIsWeb
+                    ? Icon(
+                        Icons.shopping_basket_outlined,
+                        size: 28 ,
+                      )
+                    : ImageIcon(
+                        AssetImage("images/cart.png"),
+                        size: 27,
+                      ),
                 ElementOfCartItem()
               ],
             ),
