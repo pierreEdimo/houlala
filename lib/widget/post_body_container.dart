@@ -89,10 +89,6 @@ class PostBodyContainer extends StatelessWidget {
                       const SizedBox(
                         height: 5.0,
                       ),
-                      Text(
-                        foundPost.foundPost!.title!,
-                        style: titleStyle,
-                      ),
                       MarkdownContainer(
                         data: foundPost.foundPost!.content!,
                       ),

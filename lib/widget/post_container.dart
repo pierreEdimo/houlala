@@ -200,28 +200,6 @@ class PostImage extends StatelessWidget {
   }
 }
 
-class PostTitle extends StatelessWidget {
-  final Post? post;
-
-  const PostTitle({
-    Key? key,
-    this.post,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      post!.title!,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-      style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 18.0,
-          fontFamily: 'PoppinsBold'),
-    );
-  }
-}
-
 class PostAuthor extends StatelessWidget {
   final Post? post;
 

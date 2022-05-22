@@ -83,7 +83,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 kIsWeb
                     ? Icon(
                         Icons.shopping_basket_outlined,
-                        size: 28 ,
+                        size: 28
                       )
                     : ImageIcon(
                         AssetImage("images/cart.png"),
