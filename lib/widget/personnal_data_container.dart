@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/service/cart_item_service.dart';
 import 'package:houlala/widget/checkout_bar.dart';
 import 'package:houlala/widget/display_dialog.dart';
@@ -135,13 +136,24 @@ class _PersonalDataContainerState extends State<PersonalDataContainer> {
                         verticalSpacing,
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 15.0, horizontal: 5.0),
+                              vertical: 15.0, horizontal: 10.0),
                           decoration: BoxDecoration(
                               color: Colors.grey.shade200,
                               borderRadius: BorderRadius.circular(5.0)),
-                          child: const Text(
-                            "Cash",
-                            style: TextStyle(fontWeight: FontWeight.w700),
+                          child: Row(
+                            children: const [
+                              FaIcon(
+                                FontAwesomeIcons.moneyBill,
+                                color: Colors.green,
+                              ),
+                              SizedBox(
+                                width: 5.0,
+                              ),
+                              Text(
+                                "Cash",
+                                style: TextStyle(fontWeight: FontWeight.w700),
+                              ),
+                            ],
                           ),
                         ),
                         standardSizedBox,

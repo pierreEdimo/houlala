@@ -18,9 +18,12 @@ class InputNumber extends StatelessWidget {
       controller: controller,
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
-        labelText: hintText,
-        border: const OutlineInputBorder()
-      ),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 10.0,
+            vertical: 15.0,
+          ),
+          labelText: hintText,
+          border: const OutlineInputBorder()),
       validator: (value) {
         value = controller!.text;
         if (value.isEmpty) {

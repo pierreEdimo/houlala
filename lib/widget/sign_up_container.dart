@@ -82,8 +82,11 @@ class _SignUpContainerState extends State<SignUpContainer> {
                   child: TextFormField(
                     enabled: false,
                     initialValue: "+237",
-                    decoration:
-                        const InputDecoration(border: OutlineInputBorder()),
+                    decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 15.0),
+                      border: OutlineInputBorder(),
+                    ),
                   ),
                 ),
                 horizontalSpacing,
@@ -126,7 +129,12 @@ class _SignUpContainerState extends State<SignUpContainer> {
                     controller: _houseNbrController,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
-                        labelText: 'N.r', border: OutlineInputBorder()),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 10.0,
+                          vertical: 15.0,
+                        ),
+                        labelText: 'N.r',
+                        border: OutlineInputBorder()),
                   ),
                 ),
               ],
@@ -156,6 +164,10 @@ class _SignUpContainerState extends State<SignUpContainer> {
                     controller: _poBoxController,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: 10.0,
+                        vertical: 15.0,
+                      ),
                       border: OutlineInputBorder(),
                       labelText: "B.P",
                     ),

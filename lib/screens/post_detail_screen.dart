@@ -65,35 +65,38 @@ class PostDetailScreen extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                        onPressed: () async {
-                          if (_controller.text.isEmpty) {
-                            DoNothingAction();
+                      onPressed: () async {
+                        if (_controller.text.isEmpty) {
+                          DoNothingAction();
+                        } else {
+                          var userId = await storage.read(key: "userId");
+                          if (userId != null) {
+                            AddComment newComment = AddComment(
+                                userId: userId,
+                                content: _controller.text,
+                                postId: id);
+                            await Provider.of<CommentService>(context,
+                                    listen: false)
+                                .addComment(newComment);
+
+                            showSnack(
+                                const Text(
+                                    "Votre Commentaire a ete ajoute avec succes "),
+                                context);
+
+                            _controller.clear();
                           } else {
-                            var userId = await storage.read(key: "userId");
-                            if (userId != null) {
-                              AddComment newComment = AddComment(
-                                  userId: userId,
-                                  content: _controller.text,
-                                  postId: id);
-                              await Provider.of<CommentService>(context,
-                                      listen: false)
-                                  .addComment(newComment);
-
-                              showSnack(
-                                  const Text(
-                                      "Votre Commentaire a ete ajoute avec succes "),
-                                  context);
-
-                              _controller.clear();
-                            } else {
-                              _controller.clear();
-                              openModal(context);
-                            }
-
-                            FocusScope.of(context).unfocus();
+                            _controller.clear();
+                            openModal(context);
                           }
-                        },
-                        icon: const FaIcon(FontAwesomeIcons.paperPlane))
+
+                          FocusScope.of(context).unfocus();
+                        }
+                      },
+                      icon: const FaIcon(
+                        FontAwesomeIcons.paperPlane,
+                      ),
+                    )
                   ],
                 ),
               ),

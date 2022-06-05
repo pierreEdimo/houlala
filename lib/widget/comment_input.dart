@@ -20,7 +20,10 @@ class CommentInput extends StatelessWidget {
       maxLines: maxLines,
       decoration: const InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 10.0),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: 10.0,
+            vertical: 15.0,
+          ),
           hintText: "ajouter un commentaire"),
     );
   }

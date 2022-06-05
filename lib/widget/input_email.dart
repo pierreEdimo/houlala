@@ -14,9 +14,12 @@ class EmailInput extends StatelessWidget {
       controller: controller,
       keyboardType: TextInputType.emailAddress,
       decoration: const InputDecoration(
-        labelText: "Email",
-        border: OutlineInputBorder()
-      ),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: 10.0,
+            vertical: 15.0,
+          ),
+          labelText: "Email",
+          border: OutlineInputBorder()),
       validator: (value) {
         value = controller!.text;
         if (value.isEmpty) {

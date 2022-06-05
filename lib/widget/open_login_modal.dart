@@ -25,7 +25,7 @@ openModal(BuildContext context) {
           child: Column(
             children: [
               SizedBox(
-                height: kIsWeb ? 70.0 : 90.0,
+                height: kIsWeb ? 70.0 : 110.0,
                 child: AppBarWithReturn(
                   title: "Se Connecter/S'enregistrer",
                   elevation: 1,

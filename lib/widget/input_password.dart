@@ -18,9 +18,12 @@ class PasswordInput extends StatelessWidget {
       obscureText: true,
       keyboardType: TextInputType.visiblePassword,
       decoration: const InputDecoration(
-        labelText: "Mot De Passe",
-        border: OutlineInputBorder()
-      ),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: 10.0,
+            vertical: 15.0,
+          ),
+          labelText: "Mot De Passe",
+          border: OutlineInputBorder()),
       validator: (value) {
         value = controller!.text;
         if (value.isEmpty) {
