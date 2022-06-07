@@ -38,16 +38,13 @@ openModal(BuildContext context) {
                 width: 100.w,
                 height: 200,
                 decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('images/houlala.png'),
-                    fit: BoxFit.contain
-                  )
-                ),
+                    image: DecorationImage(
+                        image: AssetImage('images/houlala.png'),
+                        fit: BoxFit.contain)),
               ),
               _authMode == AuthMode.signIn
                   ? const SignInContainer()
                   : const SignUpContainer(),
-
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Row(
@@ -59,13 +56,17 @@ openModal(BuildContext context) {
                     InkWell(
                       onTap: () {
                         if (_authMode == AuthMode.signIn) {
-                          setState(() {
-                            _authMode = AuthMode.signUp;
-                          });
+                          setState(
+                            () {
+                              _authMode = AuthMode.signUp;
+                            },
+                          );
                         } else {
-                          setState(() {
-                            _authMode = AuthMode.signIn;
-                          });
+                          setState(
+                            () {
+                              _authMode = AuthMode.signIn;
+                            },
+                          );
                         }
                       },
                       child: Text(

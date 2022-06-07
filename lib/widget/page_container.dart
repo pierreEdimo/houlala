@@ -9,7 +9,11 @@ class PageContainer extends StatelessWidget {
   final PageModel? page;
   final double? width;
 
-  const PageContainer({Key? key, this.page, this.width}) : super(key: key);
+  const PageContainer({
+    Key? key,
+    this.page,
+    this.width,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,7 @@ class PageContainer extends StatelessWidget {
               width: 1.0,
               color: Colors.grey.shade300,
             )),
-        width: width == null ? 85.w : width!,
+        width: width == null ? 80.w : width!,
         height: 90,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +43,7 @@ class PageContainer extends StatelessWidget {
               radius: 38,
               backgroundImage: NetworkImage(page!.imageUrl!),
             ),
-            horizontalSpacing, 
+            horizontalSpacing,
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

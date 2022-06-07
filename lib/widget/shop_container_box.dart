@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/grid_pages.dart';
+import 'package:sizer/sizer.dart';
 
 class ShopContainerBox extends StatelessWidget {
   final String? shopUrl;
