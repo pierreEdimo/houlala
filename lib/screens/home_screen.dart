@@ -119,98 +119,100 @@ class ResponsiveHomeScreen extends StatelessWidget {
       ),
       body: ContainerWithConnectivityChecker(
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CustomBoxContainer(
-                child: SizedBox(
-                  height: categoryListHeight,
-                  child: ListOfCategories(
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 5.0),
-                      child: const FlexibleRow(
-                        title: "Categories de produits",
-                        urlValue: "/all_categories",
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                CustomBoxContainer(
+                  child: SizedBox(
+                    height: categoryListHeight,
+                    child: ListOfCategories(
+                      child: Container(
+                        margin: const EdgeInsets.only(bottom: 5.0),
+                        child: const FlexibleRow(
+                          title: "Categories de produits",
+                          urlValue: "/all_categories",
+                        ),
                       ),
+                      uri:
+                          '${dotenv.env['CATEGORY_URL']}/getRandomCategories?size=6&categoryType=624037f8292cdadb3ad45b7a',
+                      direction: Axis.horizontal,
+                      shrinkWrap: true,
                     ),
-                    uri:
-                        '${dotenv.env['CATEGORY_URL']}/getRandomCategories?size=6&categoryType=624037f8292cdadb3ad45b7a',
-                    direction: Axis.horizontal,
-                    shrinkWrap: true,
                   ),
                 ),
-              ),
-              standardSizedBox,
-              CustomBoxContainer(
-                child: SizedBox(
-                  height: tabletProductGridHeight,
-                  child: GridOfProducts(
-                    height: productGridHeight,
-                    textError: "Aucuns Produits",
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 5.0),
-                      child: const FlexibleRow(
-                        title: 'fruits & legumes',
-                        urlValue: "/all_fruits",
+                standardSizedBox,
+                CustomBoxContainer(
+                  child: SizedBox(
+                    height: tabletProductGridHeight,
+                    child: GridOfProducts(
+                      height: productGridHeight,
+                      textError: "Aucuns Produits",
+                      child: Container(
+                        margin: const EdgeInsets.only(bottom: 5.0),
+                        child: const FlexibleRow(
+                          title: 'fruits & legumes',
+                          urlValue: "/all_fruits",
+                        ),
                       ),
+                      uri:
+                          '${dotenv.env['PRODUCT_URL']}/getRandomProducts?size=4&categoryId=621a245eaf69ff81e170c5f6',
+                      scrollDirection: scrollDirection,
+                      crossAxisCount: crossAxisCount,
+                      widthRatio: widthRatio,
+                      heightRatio: heightRatio,
                     ),
-                    uri:
-                        '${dotenv.env['PRODUCT_URL']}/getRandomProducts?size=4&categoryId=621a245eaf69ff81e170c5f6',
-                    scrollDirection: scrollDirection,
-                    crossAxisCount: crossAxisCount,
-                    widthRatio: widthRatio,
-                    heightRatio: heightRatio,
                   ),
                 ),
-              ),
-              standardSizedBox,
-              CustomBoxContainer(
-                child: SizedBox(
-                  height: 130,
-                  child: GridPages(
-                    height: 115,
-                    width: pageGridWidth,
-                    textError: "Aucunes Pages",
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 5.0),
-                      child: const FlexibleRow(
-                        title: 'Magasins',
-                        urlValue: "/all_pages",
+                standardSizedBox,
+                CustomBoxContainer(
+                  child: SizedBox(
+                    height: 130,
+                    child: GridPages(
+                      height: 115,
+                      width: pageGridWidth,
+                      textError: "Aucunes Pages",
+                      child: Container(
+                        margin: const EdgeInsets.only(bottom: 5.0),
+                        child: const FlexibleRow(
+                          title: 'Magasins',
+                          urlValue: "/all_pages",
+                        ),
                       ),
+                      uri: '${dotenv.env['PAGE_URL']}/getRandomPages?size=4',
+                      direction: Axis.horizontal,
                     ),
-                    uri: '${dotenv.env['PAGE_URL']}/getRandomPages?size=4',
-                    direction: Axis.horizontal,
                   ),
                 ),
-              ),
-              standardSizedBox,
-              CustomBoxContainer(
-                child: ListOfPosts(
-                  postWidth: postWidth,
-                  textError: "Aucuns posts",
-                  scrollDirection: Axis.horizontal,
-                  errorHeight: 35.h,
-                  child: const FlexibleRow(
-                    title: "Les posts recents",
-                    urlValue: "/all_posts",
+                standardSizedBox,
+                CustomBoxContainer(
+                  child: ListOfPosts(
+                    postWidth: postWidth,
+                    textError: "Aucuns posts",
+                    scrollDirection: Axis.horizontal,
+                    errorHeight: 35.h,
+                    child: const FlexibleRow(
+                      title: "Les posts recents",
+                      urlValue: "/all_posts",
+                    ),
+                    uri: '${dotenv.env['POST_URL']}/getRandomPosts?size=10',
                   ),
-                  uri: '${dotenv.env['POST_URL']}/getRandomPosts?size=10',
                 ),
-              ),
-              standardSizedBox,
-              // CustomBoxContainer(
-              //   child: GridOfJobs(
-              //     child: Text(
-              //       "Les Jobs recents",
-              //       style: standardStyle,
-              //     ),
-              //     scrollDirection: Axis.vertical,
-              //     ratio: 2.5,
-              //     uri: '${dotenv.env['JOB_URL']}/getRandomJobs?size=4',
-              //     height: 0.25,
-              //   ),
-              // )
-            ],
+                // CustomBoxContainer(
+                //   child: GridOfJobs(
+                //     child: Text(
+                //       "Les Jobs recents",
+                //       style: standardStyle,
+                //     ),
+                //     scrollDirection: Axis.vertical,
+                //     ratio: 2.5,
+                //     uri: '${dotenv.env['JOB_URL']}/getRandomJobs?size=4',
+                //     height: 0.25,
+                //   ),
+                // )
+              ],
+            ),
           ),
         ),
       ),
