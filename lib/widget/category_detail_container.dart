@@ -41,7 +41,7 @@ class _CategoryDetailContainerState extends State<CategoryDetailContainer> {
           child: TransformedContainer(
             child: Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+                  const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
               child: ColumnOfShopBox(
                 categoryName: widget.categoryName,
               ),

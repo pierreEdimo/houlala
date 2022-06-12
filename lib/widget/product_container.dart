@@ -133,7 +133,7 @@ class ProductContainer extends StatelessWidget {
           elevation: 0,
           color: Colors.transparent,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 child: BackgroundImage(

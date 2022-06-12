@@ -29,100 +29,97 @@ class UserScreenContainer extends StatelessWidget {
               String? userId = snapshot.data;
 
               return SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 45,
-                    ),
-                    const StandardCustomContainer(
-                      child: Text(
-                        "Mon Compte",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            fontFamily: 'PoppinsBold'),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 5.0,
+                    horizontal: 10.0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const StandardCustomContainer(
+                        child: Text(
+                          "Mon Compte",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              fontFamily: 'PoppinsBold'),
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 30.0,
-                    ),
-                    Card(
-                      color: const Color(0xfefefefe),
-                      elevation: 4,
-                      child: Column(
-                        children: [
-                          InkWell(
-                            onTap: () => Navigator.of(context).pushNamed(
-                                FavoriteScreen.routeName,
-                                arguments: userId),
-                            child: const CustomListTile(
-                              leadingIcon: FontAwesomeIcons.solidHeart,
-                              title: "Mes Favories",
+                      Card(
+                        color: const Color(0xfefefefe),
+                        elevation: 4,
+                        child: Column(
+                          children: [
+                            InkWell(
+                              onTap: () => Navigator.of(context).pushNamed(
+                                  FavoriteScreen.routeName,
+                                  arguments: userId),
+                              child: const CustomListTile(
+                                leadingIcon: FontAwesomeIcons.solidHeart,
+                                title: "Mes Favories",
+                              ),
                             ),
-                          ),
-                          InkWell(
-                            onTap: () =>
-                                Navigator.of(context).pushNamed("/my_orders"),
-                            child: const CustomListTile(
-                              leadingIcon: FontAwesomeIcons.bagShopping,
-                              title: "Mes Commandes",
+                            InkWell(
+                              onTap: () =>
+                                  Navigator.of(context).pushNamed("/my_orders"),
+                              child: const CustomListTile(
+                                leadingIcon: FontAwesomeIcons.bagShopping,
+                                title: "Mes Commandes",
+                              ),
                             ),
-                          ),
-                          // const CustomListTile(
-                          //   leadingIcon: FontAwesomeIcons.moneyBill,
-                          //   title: "Mes Factures",
-                          // ),
-                          InkWell(
-                            onTap: () =>
-                                Navigator.of(context).pushNamed("/my_personal"),
-                            child: const CustomListTile(
-                              leadingIcon: FontAwesomeIcons.person,
-                              title: "Mes Donnees personnelles",
-                            ),
-                          )
-                        ],
+                            // const CustomListTile(
+                            //   leadingIcon: FontAwesomeIcons.moneyBill,
+                            //   title: "Mes Factures",
+                            // ),
+                            InkWell(
+                              onTap: () => Navigator.of(context)
+                                  .pushNamed("/my_personal"),
+                              child: const CustomListTile(
+                                leadingIcon: FontAwesomeIcons.person,
+                                title: "Mes Donnees personnelles",
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    Card(
-                      color: const Color(0xfefefefe),
-                      elevation: 4,
-                      child: Column(
-                        children: [
-                          // const CustomListTile(
-                          //   leadingIcon: FontAwesomeIcons.locationDot,
-                          //   title: "Mes Adresses",
-                          // ),
-                          //const OpenOptions(),
-                          const ConnectWithUs(),
-                          const OpenAbout(),
-                          const ContactButton(),
-                          const Conditions(),
-                          const Security(),
-                          const OpenReview(),
-                          InkWell(
-                            onTap: () => Provider.of<AuthService>(context,
-                                    listen: false)
-                                .logOut()
-                                .then((_) => showSnack(
-                                    const Text(
-                                        "vous avez ete deconnecte avec succes"),
-                                    context)),
-                            child: const CustomListTile(
-                              leadingIcon: FontAwesomeIcons.rightFromBracket,
-                              title: "Se deconnecter",
-                            ),
-                          )
-                        ],
+                      const SizedBox(
+                        height: 20.0,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                  ],
+                      Card(
+                        color: const Color(0xfefefefe),
+                        elevation: 4,
+                        child: Column(
+                          children: [
+                            // const CustomListTile(
+                            //   leadingIcon: FontAwesomeIcons.locationDot,
+                            //   title: "Mes Adresses",
+                            // ),
+                            //const OpenOptions(),
+                            const ConnectWithUs(),
+                            const OpenAbout(),
+                            const ContactButton(),
+                            const Conditions(),
+                            const Security(),
+                            const OpenReview(),
+                            InkWell(
+                              onTap: () => Provider.of<AuthService>(context,
+                                      listen: false)
+                                  .logOut()
+                                  .then((_) => showSnack(
+                                      const Text(
+                                          "vous avez ete deconnecte avec succes"),
+                                      context)),
+                              child: const CustomListTile(
+                                leadingIcon: FontAwesomeIcons.rightFromBracket,
+                                title: "Se deconnecter",
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }
@@ -133,93 +130,90 @@ class UserScreenContainer extends StatelessWidget {
         );
       default:
         return SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 45,
-              ),
-              const StandardCustomContainer(
-                child: Text(
-                  "Mon Compte",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      fontFamily: 'PoppinsBold'),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 5.0,
+              horizontal: 10.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const StandardCustomContainer(
+                  child: Text(
+                    "Mon Compte",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        fontFamily: 'PoppinsBold'),
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 30.0,
-              ),
-              Card(
-                color: const Color(0xfefefefe),
-                elevation: 4,
-                child: Column(
-                  children: [
-                    InkWell(
-                      onTap: () => openModal(context),
-                      child: const CustomListTile(
-                        leadingIcon: FontAwesomeIcons.solidHeart,
-                        title: "Mes Favories",
+                Card(
+                  color: const Color(0xfefefefe),
+                  elevation: 4,
+                  child: Column(
+                    children: [
+                      InkWell(
+                        onTap: () => openModal(context),
+                        child: const CustomListTile(
+                          leadingIcon: FontAwesomeIcons.solidHeart,
+                          title: "Mes Favories",
+                        ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () => openModal(context),
-                      child: const CustomListTile(
-                        leadingIcon: FontAwesomeIcons.bagShopping,
-                        title: "Mes Commandes",
+                      InkWell(
+                        onTap: () => openModal(context),
+                        child: const CustomListTile(
+                          leadingIcon: FontAwesomeIcons.bagShopping,
+                          title: "Mes Commandes",
+                        ),
                       ),
-                    ),
-                    // InkWell(
-                    //   onTap: () => openModal(context),
-                    //   child: const CustomListTile(
-                    //     leadingIcon: FontAwesomeIcons.moneyBill,
-                    //     title: "Mes Factures",
-                    //   ),
-                    // ),
-                    InkWell(
-                      onTap: () => openModal(context),
-                      child: const CustomListTile(
-                        leadingIcon: FontAwesomeIcons.person,
-                        title: "Mes Donnees personnelles",
-                      ),
-                    )
-                  ],
+                      // InkWell(
+                      //   onTap: () => openModal(context),
+                      //   child: const CustomListTile(
+                      //     leadingIcon: FontAwesomeIcons.moneyBill,
+                      //     title: "Mes Factures",
+                      //   ),
+                      // ),
+                      InkWell(
+                        onTap: () => openModal(context),
+                        child: const CustomListTile(
+                          leadingIcon: FontAwesomeIcons.person,
+                          title: "Mes Donnees personnelles",
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              Card(
-                color: const Color(0xfefefefe),
-                elevation: 4,
-                child: Column(
-                  children: [
-                    // const CustomListTile(
-                    //   leadingIcon: FontAwesomeIcons.locationDot,
-                    //   title: "Mes Adresses",
-                    // ),
-                    //const OpenOptions(),
-                    const ConnectWithUs(),
-                    const OpenAbout(),
-                    const ContactButton(),
-                    const Conditions(),
-                    const Security(),
-                    const OpenReview(),
-                    InkWell(
-                      onTap: () => openModal(context),
-                      child: const CustomListTile(
-                        leadingIcon: FontAwesomeIcons.rightFromBracket,
-                        title: "Se connecter/s'enregistrer",
-                      ),
-                    )
-                  ],
+                const SizedBox(
+                  height: 20.0,
                 ),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-            ],
+                Card(
+                  color: const Color(0xfefefefe),
+                  elevation: 4,
+                  child: Column(
+                    children: [
+                      // const CustomListTile(
+                      //   leadingIcon: FontAwesomeIcons.locationDot,
+                      //   title: "Mes Adresses",
+                      // ),
+                      //const OpenOptions(),
+                      const ConnectWithUs(),
+                      const OpenAbout(),
+                      const ContactButton(),
+                      const Conditions(),
+                      const Security(),
+                      const OpenReview(),
+                      InkWell(
+                        onTap: () => openModal(context),
+                        child: const CustomListTile(
+                          leadingIcon: FontAwesomeIcons.rightFromBracket,
+                          title: "Se connecter/s'enregistrer",
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         );
     }

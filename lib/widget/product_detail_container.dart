@@ -36,8 +36,8 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future:
-            Provider.of<ProductService>(context).fetchSingleProduct(widget.name!),
+        future: Provider.of<ProductService>(context)
+            .fetchSingleProduct(widget.name!),
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             FoundProduct foundProduct = snapshot.data!;
@@ -148,8 +148,8 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 15.0,
-                    vertical: 10.0,
+                    horizontal: 17.0,
+                    vertical: 5.0,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -172,7 +172,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                         onPressed: () async {
                           String? userId = "";
 
-                          if(!kIsWeb){
+                          if (!kIsWeb) {
                             userId = await storage.read(key: "userId");
                           } else {
                             userId = userIdBox.get("userId");
@@ -180,15 +180,12 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
 
                           if (userId != null) {
                             addToCart(
-                              context,
-                              quantity,
-                              userId,
-                              foundProduct.product!.id!,
-                              price,
-                              foundProduct.product!.page!.id!
-                            );
-
-                            print(userId);
+                                context,
+                                quantity,
+                                userId,
+                                foundProduct.product!.id!,
+                                price,
+                                foundProduct.product!.page!.id!);
 
                             showSnack(
                                 const Text("Article a ete ajoute au Panier"),

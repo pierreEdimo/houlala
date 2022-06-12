@@ -29,7 +29,7 @@ class CategoryContainer extends StatelessWidget {
               )),
       child: TransparentCardContainer(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: SizedBox(
