@@ -25,7 +25,7 @@ class DefaultCategoryContainer extends StatelessWidget {
                 borderRadius: 0,
                 imageUrl: imageUrl!,
               ),
-              height: 59.h,
+              height: 40.h,
             ),
             SizedBox(
               height: !kIsWeb ? null : 70.0,

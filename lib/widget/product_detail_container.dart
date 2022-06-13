@@ -53,7 +53,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                         Stack(
                           children: [
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.5,
+                              height: MediaQuery.of(context).size.height * 0.4,
                               child: BackgroundImage(
                                 borderRadius: 0,
                                 imageUrl: foundProduct.product!.imageUrl!,

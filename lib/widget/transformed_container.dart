@@ -10,7 +10,7 @@ class TransformedContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       transform: Matrix4.translationValues(0.0, -20.0, 0.0),
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
       decoration:  const BoxDecoration(
         color:  Color(0xffffffff),
         borderRadius: BorderRadius.only(

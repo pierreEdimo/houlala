@@ -46,9 +46,8 @@ class UserScreenContainer extends StatelessWidget {
                               fontFamily: 'PoppinsBold'),
                         ),
                       ),
-                      Card(
+                      Container(
                         color: const Color(0xfefefefe),
-                        elevation: 4,
                         child: Column(
                           children: [
                             InkWell(
@@ -83,12 +82,8 @@ class UserScreenContainer extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      Card(
+                      Container(
                         color: const Color(0xfefefefe),
-                        elevation: 4,
                         child: Column(
                           children: [
                             // const CustomListTile(
@@ -147,9 +142,8 @@ class UserScreenContainer extends StatelessWidget {
                         fontFamily: 'PoppinsBold'),
                   ),
                 ),
-                Card(
+                Container(
                   color: const Color(0xfefefefe),
-                  elevation: 4,
                   child: Column(
                     children: [
                       InkWell(
@@ -183,12 +177,8 @@ class UserScreenContainer extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Card(
+                Container(
                   color: const Color(0xfefefefe),
-                  elevation: 4,
                   child: Column(
                     children: [
                       // const CustomListTile(
