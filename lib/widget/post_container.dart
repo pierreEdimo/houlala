@@ -314,27 +314,17 @@ class AdditionalInformation extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 15.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Row(
-                  children: [
-                    const ImageIcon(
-                      AssetImage("images/comment.png"),
-                      size: 22.0,
-                    ),
-                    const SizedBox(
-                      width: 3.0,
-                    ),
-                    Text(
-                      info.commentCount.toString(),
-                    )
-                  ],
+                const ImageIcon(
+                  AssetImage("images/comment.png"),
+                  size: 22.0,
                 ),
-                standardHorizontalSizedBox,
-                OnTapIcon(
-                  post: post,
+                const SizedBox(
+                  width: 3.0,
                 ),
-                standardHorizontalSizedBox
+                Text(
+                  info.commentCount.toString(),
+                )
               ],
             ),
           );
