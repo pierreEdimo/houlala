@@ -82,7 +82,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
               children: const [
                 kIsWeb
                     ? Icon(
-                        Icons.shopping_basket_outlined,
+                        Icons.shopping_bag_outlined,
                         size: 28
                       )
                     : ImageIcon(
