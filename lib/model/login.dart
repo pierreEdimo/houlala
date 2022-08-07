@@ -9,11 +9,11 @@ class Login {
 
   factory Login.fromJson(Map<String, dynamic> json) => Login(
     email: json["email"],
-    password: json["password"],
+    password: json["passWord"],
   );
 
   Map<String, dynamic> toJson() => {
     "email": email,
-    "password": password,
+    "passWord": password,
   };
 }
