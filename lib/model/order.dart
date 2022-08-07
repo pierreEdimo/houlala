@@ -1,30 +1,43 @@
-import 'package:houlala/model/user_information.dart';
+import 'package:houlala/model/simplefied_location.dart';
 
 import 'cart_item.dart';
 
 class Order {
-  final UserInformation? user;
-  final int? totalPrice;
-  final int? totalQuantity;
-  final List<CartItem> cartItems;
+  final String? id;
+  final String? status;
+  final bool? confirmed;
+  final String? paymentMode;
   final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final int? totalQuantity;
+  final int? totalPrice;
+  final SimplifiedLocation? location;
+  final List<CartItem>? cartItems;
 
-  Order({this.user,
-    this.totalPrice,
+  Order({
+    this.id,
+    this.status,
+    this.confirmed,
+    this.paymentMode,
+    this.createdAt,
+    this.updatedAt,
     this.totalQuantity,
-    required this.cartItems,
-    this.createdAt});
+    this.totalPrice,
+    this.location,
+    this.cartItems,
+  });
 
-  factory Order.fromJson(Map<String, dynamic> json) =>
-      Order(
-          user: UserInformation.fromJson(json['userInformation']),
-          totalPrice: json['totalPrice'],
-          totalQuantity: json['totalQuantity'],
-          createdAt: DateTime.parse(json['createdAt']),
-          cartItems: List<CartItem>.from(
-            json["cartItems"].map(
-                  (x) => CartItem.fromJson(x),
-            ),
-          )
+  factory Order.fromJson(Map<String, dynamic> json) => Order(
+        id: json['_id'],
+        status: json['status'],
+        confirmed: json['confirmed'],
+        paymentMode: json['paxMentMode'],
+        createdAt: DateTime.parse(json['createdAt']),
+        updatedAt: DateTime.parse(json['updatedAt']),
+        totalQuantity: json['totalQuantity'],
+        totalPrice: json['totalPrice'],
+        location: SimplifiedLocation.fromJson(json['location']),
+        cartItems: List<CartItem>.from(
+            json['cartItems'].map((x) => CartItem.fromJson(x))),
       );
 }
