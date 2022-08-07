@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:houlala/model/address.dart';
-import 'package:houlala/model/cart_item.dart';
-import 'package:houlala/model/personal_datas.dart';
-import 'package:houlala/model/product.dart';
-import 'package:houlala/model/product_page.dart';
 import 'package:houlala/screens/about_screen.dart';
 import 'package:houlala/screens/all_post_screen.dart';
 import 'package:houlala/screens/all_product_categories_screen.dart';
@@ -15,8 +10,9 @@ import 'package:houlala/screens/all_pages_screen.dart';
 import 'package:houlala/screens/category_detail_screen.dart';
 import 'package:houlala/screens/conditions_screen.dart';
 import 'package:houlala/screens/data_security.dart';
+import 'package:houlala/screens/discovery_category_detail_screen.dart';
+import 'package:houlala/screens/edit_screen.dart';
 import 'package:houlala/screens/favorite_screen.dart';
-import 'package:houlala/screens/jobs_detail_screen.dart';
 import 'package:houlala/screens/options_screen.dart';
 import 'package:houlala/screens/page_detail_screen.dart';
 import 'package:houlala/screens/personal_datas_screen.dart';
@@ -24,12 +20,11 @@ import 'package:houlala/screens/personal_order_screen.dart';
 import 'package:houlala/screens/post_detail_screen.dart';
 import 'package:houlala/screens/product_detail_screen.dart';
 import 'package:houlala/screens/search_screen.dart';
+import 'package:houlala/screens/sub_category_screen.dart';
 import 'package:houlala/service/auth_service.dart';
-import 'package:houlala/service/cart_item_service.dart';
 import 'package:houlala/service/category_service.dart';
 import 'package:houlala/service/comment_service.dart';
 import 'package:houlala/service/connectivity_service.dart';
-import 'package:houlala/service/job_service.dart';
 import 'package:houlala/service/order_service.dart';
 import 'package:houlala/service/page_service.dart';
 import 'package:houlala/service/post_service.dart';
@@ -42,26 +37,12 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 var box = Hive.box('loggedState');
-var userIdBox = Hive.box('userId');
-var tokenBox = Hive.box('token');
 const storage = FlutterSecureStorage();
 
 Future main() async {
   await Hive.initFlutter();
 
-  Hive.registerAdapter(CartItemAdapter());
-  Hive.registerAdapter(ProductAdapter());
-  Hive.registerAdapter(PersonalDataAdapter());
-  Hive.registerAdapter(PageAdapter());
-  Hive.registerAdapter(AddressAdapter());
-
   await Hive.openBox('loggedState');
-  await Hive.openBox('userId');
-  await Hive.openBox('token');
-  await Hive.openBox<CartItem>('cart-items');
-  await Hive.openBox<Product>('products');
-  await Hive.openBox<PersonalData>('user');
-  await Hive.openBox<Address>('address');
 
   await dotenv.load(fileName: '.env');
 
@@ -91,13 +72,11 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => CategoryService()),
         ChangeNotifierProvider(create: (context) => ProductService()),
-        ChangeNotifierProvider(create: (context) => PageService()),
-        ChangeNotifierProvider(create: (context) => JobService()),
+        ChangeNotifierProvider(create: (context) => LocationService()),
         ChangeNotifierProvider(create: (context) => PostService()),
         ChangeNotifierProvider(create: (context) => WordService()),
         ChangeNotifierProvider(create: (context) => AuthService()),
         ChangeNotifierProvider(create: (context) => CommentService()),
-        ChangeNotifierProvider(create: (context) => CartItemService()),
         ChangeNotifierProvider(create: (context) => ConnectivityService()),
         ChangeNotifierProvider(create: (context) => OrderService()),
       ],
@@ -132,8 +111,6 @@ class MyApp extends StatelessWidget {
                     const CategoryDetailScreen(),
                 PageDetailScreen.screenName: (context) =>
                     const PageDetailScreen(),
-                JobsDetailScreen.routeName: (context) =>
-                    const JobsDetailScreen(),
                 '/all_posts': (context) => const AllPostsScreen(),
                 PostDetailScreen.routeName: (context) => PostDetailScreen(),
                 '/search': (context) => const SearchScreen(),
@@ -144,6 +121,10 @@ class MyApp extends StatelessWidget {
                 '/data_security': (context) => const DataSecurityScreen(),
                 '/my_orders': (context) => const PersonalOrderScreen(),
                 '/my_personal': (context) => const PersonalDataScreen(),
+                '/discovery_category_detail': (context) =>
+                    const DiscoveryCategoryDetailScreen(),
+                '/sub_category': (context) => const SubCategoryScreen(),
+                '/edit': (context) => const EditScreen(),
               },
             );
           },
