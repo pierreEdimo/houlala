@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/model/cart_item.dart';
-import 'package:houlala/model/found_product.dart';
-import 'package:houlala/service/cart_item_service.dart';
+import 'package:houlala/model/add_item.dart';
+import 'package:houlala/model/add_order.dart';
+import 'package:houlala/service/order_service.dart';
+import 'package:houlala/widget/blur_container.dart';
+import 'package:houlala/model/product.dart';
 import 'package:houlala/service/product_service.dart';
-import 'package:houlala/widget/add_cart_item.dart';
 import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
 import 'package:houlala/widget/decrease_quantity_text.dart';
@@ -16,7 +17,9 @@ import 'package:houlala/widget/quantity_container.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:houlala/widget/transformed_container.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 
 import '../main.dart';
 
@@ -38,12 +41,12 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
       body: FutureBuilder(
         future: Provider.of<ProductService>(context)
             .fetchSingleProduct(widget.name!),
-        builder: (context, AsyncSnapshot snapshot) {
+        builder: (context, AsyncSnapshot<Product> snapshot) {
           if (snapshot.hasData) {
-            FoundProduct foundProduct = snapshot.data!;
+            Product foundProduct = snapshot.data!;
             int price = quantity > 1
                 ? Provider.of<ProductService>(context).getTotalPrice()
-                : foundProduct.product!.initialPrice!;
+                : foundProduct.sellingPrice!;
             return Column(
               children: [
                 Expanded(
@@ -53,10 +56,23 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                         Stack(
                           children: [
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.4,
+                              height: 35.h,
                               child: BackgroundImage(
                                 borderRadius: 0,
-                                imageUrl: foundProduct.product!.imageUrl!,
+                                imageUrl: foundProduct.imageUrl!,
+                              ),
+                            ),
+                            const BlurContainer(),
+                            SizedBox(
+                              height: 30.h,
+                              child: Container(
+                                alignment: Alignment.bottomLeft,
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10.0),
+                                child: Text(
+                                  foundProduct.name!,
+                                  style: detailTitleStyle,
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -78,12 +94,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Flexible(
-                                      child: Text(
-                                        foundProduct.product!.name!,
-                                        style: detailTitleStyle,
-                                      ),
-                                    ),
+                                    Container(),
                                     Container(
                                       padding: const EdgeInsets.all(5.0),
                                       child: Row(
@@ -99,8 +110,8 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                                                       context,
                                                       listen: false)
                                                   .calculatePrice(
-                                                      foundProduct.product!
-                                                          .initialPrice!,
+                                                      foundProduct
+                                                          .sellingPrice!,
                                                       quantity);
                                             },
                                             child: const DecreaseQuantityText(),
@@ -123,8 +134,8 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                                                       context,
                                                       listen: false)
                                                   .calculatePrice(
-                                                      foundProduct.product!
-                                                          .initialPrice!,
+                                                      foundProduct
+                                                          .sellingPrice!,
                                                       quantity);
                                             },
                                             child: const InCreaseQuantityText(),
@@ -136,7 +147,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                                 ),
                                 verticalSpacing,
                                 MarkdownContainer(
-                                  data: foundProduct.product!.description!,
+                                  data: foundProduct.description!,
                                 )
                               ],
                             ),
@@ -170,37 +181,36 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                       ),
                       CustomElevatedButton(
                         onPressed: () async {
-                          String? userId = "";
-
-                          if (!kIsWeb) {
-                            userId = await storage.read(key: "userId");
-                          } else {
-                            userId = userIdBox.get("userId");
-                          }
+                          String? userId = await storage.read(key: "userId");
 
                           if (userId != null) {
-                            addToCart(
-                                context,
-                                quantity,
-                                userId,
-                                foundProduct.product!.id!,
-                                price,
-                                foundProduct.product!.page!.id!);
+                            AddItem newItem = AddItem(
+                              price: price,
+                              productSku: foundProduct.productSku,
+                              quantity: quantity,
+                              initialPrice: foundProduct.sellingPrice
+                            );
 
-                            showSnack(
-                                const Text("Article a ete ajoute au Panier"),
-                                context);
+                            List<AddItem> items = <AddItem>[];
+
+                            items.add(newItem);
+
+                            AddOrder newOrder = AddOrder(
+                                userId: userId,
+                                locationId: foundProduct.locationId,
+                                cartItems: items);
+
+                            Response response = await Provider.of<OrderService>(
+                                    context,
+                                    listen: false)
+                                .addOrder(newOrder);
+
+                            if (response.statusCode == 201) {
+                              showSnack(
+                                  const Text("Article a ete ajoute au Panier"),
+                                  context);
+                            }
                           } else {
-                            CartItem item = CartItem(
-                                quantity: quantity,
-                                totalPrice: price,
-                                product: foundProduct.product,
-                                id: "",
-                                userId: "");
-
-                            Provider.of<CartItemService>(context, listen: false)
-                                .addToCartOffline(item);
-
                             showSnack(
                                 const Text("Article a ete ajoute au Panier"),
                                 context);

@@ -1,17 +1,19 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:houlala/main.dart';
-import 'package:houlala/widget/show_nack.dart';
+import 'package:houlala/service/order_service.dart';
 import 'package:provider/provider.dart';
+import '../main.dart';
 import '../model/cart_item.dart';
-import '../service/cart_item_service.dart';
 
 class CartItemDeleteButton extends StatelessWidget {
   final CartItem? item;
+  final String? orderId;
 
-  const CartItemDeleteButton({Key? key, this.item}) : super(key: key);
+  const CartItemDeleteButton({
+    Key? key,
+    this.item,
+    this.orderId,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,22 +23,12 @@ class CartItemDeleteButton extends StatelessWidget {
         color: Color(0xffdf972f),
       ),
       onTap: () async {
-        String? userId = "";
-
-        if(!kIsWeb){
-          userId = await storage.read(key: "userId");
-        } else {
-          userId = userIdBox.get("userId");
-        }
+        String? userId = await storage.read(key: "userId");
 
         if (userId != null) {
-          Provider.of<CartItemService>(context, listen: false)
-              .deleteCart('${dotenv.env['CART_URL']}/${item!.id!}');
-        } else {
-          Provider.of<CartItemService>(context, listen: false)
-              .deleteCartItem(item!);
+          Provider.of<OrderService>(context, listen: false)
+              .deleteFromOrder(item!.productSku!, orderId);
         }
-        showSnack(const Text("Produit a ete supprime du Panier"), context);
       },
     );
   }

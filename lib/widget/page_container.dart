@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/model/page.dart';
+import 'package:houlala/model/location.dart';
 import 'package:sizer/sizer.dart';
 import '../screens/page_detail_screen.dart';
 
 class PageContainer extends StatelessWidget {
-  final PageModel? page;
+  final LocationModel? page;
   final double? width;
 
   const PageContainer({
@@ -28,7 +28,7 @@ class PageContainer extends StatelessWidget {
         ),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(
-              10.0,
+              4.0,
             ),
             border: Border.all(
               width: 1.0,
@@ -40,8 +40,10 @@ class PageContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CircleAvatar(
-              radius: 38,
-              backgroundImage: NetworkImage(page!.imageUrl!),
+              radius: 25,
+              backgroundImage: NetworkImage(
+                page!.imageUrl!,
+              ),
             ),
             horizontalSpacing,
             Expanded(
@@ -54,9 +56,10 @@ class PageContainer extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'PoppinsBold',
-                          fontSize: 16),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'PoppinsBold',
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -64,16 +67,13 @@ class PageContainer extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      const FaIcon(
-                        FontAwesomeIcons.briefcase,
-                        size: 15,
-                      ),
+                      Text(page!.category!.thumbNail!),
                       const SizedBox(
                         width: 3.0,
                       ),
                       Flexible(
                         child: Text(
-                          page!.pageSpecialisation!.label!,
+                          page!.category!.name!,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: subtitle,
@@ -88,15 +88,15 @@ class PageContainer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const FaIcon(
-                        FontAwesomeIcons.building,
+                        FontAwesomeIcons.compass,
                         size: 15,
                       ),
                       const SizedBox(
-                        width: 3.0,
+                        width: 5.0,
                       ),
                       Flexible(
                         child: Text(
-                          '${page!.headQuartersCity!} . ${page!.headQuartersCountry}',
+                          '${page!.address!.city!}, ${page!.country!.name!}',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: subtitle,

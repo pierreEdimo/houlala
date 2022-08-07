@@ -16,7 +16,7 @@ class FavoriteScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBarWithReturn(
-        title: "Mes Favories",
+        title: "Favories",
         elevation: 1,
       ),
       body: StandardCustomContainer(
@@ -27,7 +27,7 @@ class FavoriteScreen extends StatelessWidget {
             uri: '${dotenv.env['PRODUCT_URL']}/favorites?userId=$userId',
             crossAxisCount: 1,
             scrollDirection: Axis.vertical,
-            widthRatio: 1,
+            widthRatio: 0.8,
             heightRatio: 0.5,
             displayType: "favories",
           ),

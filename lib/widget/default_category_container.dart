@@ -4,6 +4,7 @@ import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/transformed_container.dart';
 import 'package:sizer/sizer.dart';
 
+import 'blur_container.dart';
 import 'app_bar_with_return.dart';
 import 'background_image.dart';
 
@@ -25,7 +26,21 @@ class DefaultCategoryContainer extends StatelessWidget {
                 borderRadius: 0,
                 imageUrl: imageUrl!,
               ),
-              height: 40.h,
+              height: 35.h,
+            ),
+            const BlurContainer(),
+            SizedBox(
+              height: 30.h,
+              child: Container(
+                alignment: Alignment.bottomLeft,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10.0,
+                ),
+                child: Text(
+                  categoryName!,
+                  style: detailTitleStyle,
+                ),
+              ),
             ),
             SizedBox(
               height: !kIsWeb ? null : 70.0,
@@ -41,10 +56,6 @@ class DefaultCategoryContainer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                categoryName!,
-                style: detailTitleStyle,
-              ),
               SizedBox(
                 height: 40.h,
                 child: Center(

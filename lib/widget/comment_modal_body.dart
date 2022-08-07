@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/main.dart';
@@ -25,20 +24,13 @@ class CommentModelBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        String? userId = "";
-
-        if(!kIsWeb){
-          userId = await storage.read(key: "userId");
-        } else {
-          userId = userIdBox.get("userId");
-        }
-
+        String? email = await storage.read(key: "email");
 
         showMaterialModalBottomSheet(
           context: context,
           expand: false,
           builder: (context) => StandardCustomContainer(
-            child: userId == comment!.author!.id!
+            child: email == comment!.author!.email!
                 ? SizedBox(
                     height: 18.5.h,
                     child: Column(

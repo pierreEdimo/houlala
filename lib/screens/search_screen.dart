@@ -26,7 +26,7 @@ class _SearchScreenState extends State<SearchScreen> {
       body: searchWord!.isEmpty
           ? Container()
           : SearchResultContainer(
-              searchWorld: searchWord.trim(),
+              searchword: searchWord.trim(),
             ),
     );
   }

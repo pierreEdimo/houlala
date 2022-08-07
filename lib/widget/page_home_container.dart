@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/model/page.dart';
+import 'package:houlala/model/location.dart';
 import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/grid_of_products.dart';
 import 'package:houlala/widget/markdown_container.dart';
@@ -10,7 +10,7 @@ import 'list_of_posts.dart';
 import 'package:sizer/sizer.dart';
 
 class PageHomeContainer extends StatelessWidget {
-  final PageModel? pageModel;
+  final LocationModel? pageModel;
 
   const PageHomeContainer({Key? key, this.pageModel}) : super(key: key);
 
@@ -28,7 +28,9 @@ class PageHomeContainer extends StatelessWidget {
             data: pageModel!.description!,
           ),
         ),
-        standardSizedBox,
+        const SizedBox(
+          height: 5.0,
+        ),
         SizedBox(
           height: 280,
           child: GridOfProducts(
@@ -45,12 +47,14 @@ class PageHomeContainer extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             crossAxisCount: 1,
             uri:
-                '${dotenv.env['PRODUCT_URL']}/getRandomProductsByPageId?size=4&pageId=${pageModel!.id}',
+                '${dotenv.env['PRODUCT_URL']}/random/location/${pageModel!.uniqueIdentifier!}?size=10',
             heightRatio: 1,
             widthRatio: 1.5,
           ),
         ),
-        standardSizedBox,
+        const SizedBox(
+          height: 5.0,
+        ),
         ListOfPosts(
           textError: "${pageModel!.name!} n'a pas encore insere de posts"
               "svp venez verifier plutard",
@@ -64,7 +68,7 @@ class PageHomeContainer extends StatelessWidget {
                 fontFamily: "PoppinsBold"),
           ),
           uri:
-              '${dotenv.env['POST_URL']}/getRandomPostsByPageId?size=10&pageId=${pageModel!.id}',
+              '${dotenv.env['POST_URL']}/random/location/${pageModel!.uniqueIdentifier!}?size=10',
         )
       ],
     );

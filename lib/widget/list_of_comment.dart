@@ -17,7 +17,7 @@ class ListOfComments extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: Provider.of<CommentService>(context).fetchAllCategories(uri!),
+        future: Provider.of<CommentService>(context).fetchAllComments(uri!),
         builder: (BuildContext context, AsyncSnapshot<List<Comment>> snapshot) {
           if (snapshot.hasData) {
             List<Comment>? comments = snapshot.data;
@@ -28,14 +28,16 @@ class ListOfComments extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const ClampingScrollPhysics(),
                 children: comments!
-                    .map((Comment comment) => CommentContainer(
-                          comment: comment,
-                        ))
+                    .map(
+                      (Comment comment) => CommentContainer(
+                        comment: comment,
+                      ),
+                    )
                     .toList(),
               ),
             );
           }
-          return  Center(
+          return Center(
             child: Container(),
           );
         });

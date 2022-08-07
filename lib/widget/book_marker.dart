@@ -1,8 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/main.dart';
-import 'package:houlala/model/found_product.dart';
+import 'package:houlala/model/product.dart';
 import 'package:houlala/service/product_service.dart';
 import 'package:houlala/widget/custom_button_container.dart';
 import 'package:houlala/widget/open_login_modal.dart';
@@ -10,7 +9,7 @@ import 'package:houlala/widget/show_nack.dart';
 import 'package:provider/provider.dart';
 
 class BookMarker extends StatefulWidget {
-  final FoundProduct? foundProduct;
+  final Product? foundProduct;
 
   const BookMarker({
     Key? key,
@@ -25,7 +24,7 @@ class _BookMarkerState extends State<BookMarker> {
   @override
   Widget build(BuildContext context) {
     return CustomButtonContainer(
-      icon: widget.foundProduct!.isFavorite!
+      icon: widget.foundProduct!.bookMarked!
           ? const FaIcon(
               FontAwesomeIcons.solidHeart,
               color: Colors.red,
@@ -34,23 +33,19 @@ class _BookMarkerState extends State<BookMarker> {
       onPressed: () async {
         String? userId = "";
 
-        if(!kIsWeb){
-          userId = await storage.read(key: "userId");
-        } else {
-          userId = userIdBox.get("userId");
-        }
+        userId = await storage.read(key: "userId");
 
         if (userId != null) {
-          var oldStatus = widget.foundProduct!.isFavorite!;
+          var oldStatus = widget.foundProduct!.bookMarked!;
           setState(() {
-            widget.foundProduct!.isFavorite =
-                !(widget.foundProduct!.isFavorite!);
+            widget.foundProduct!.bookMarked =
+                !(widget.foundProduct!.bookMarked!);
           });
           try {
             await Provider.of<ProductService>(context, listen: false)
-                .bookMarkProduct(widget.foundProduct!.product!.id!);
+                .bookMarkProduct(widget.foundProduct!.id!);
 
-            if (widget.foundProduct!.isFavorite!) {
+            if (widget.foundProduct!.bookMarked!) {
               showSnack(const Text("Article a ete enregiste dans vos favoris"),
                   context);
             } else {
@@ -59,7 +54,7 @@ class _BookMarkerState extends State<BookMarker> {
             }
           } catch (error) {
             setState(() {
-              widget.foundProduct!.isFavorite = oldStatus;
+              widget.foundProduct!.bookMarked = oldStatus;
             });
           }
         } else {

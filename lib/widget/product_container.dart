@@ -1,13 +1,14 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:houlala/main.dart';
-import 'package:houlala/model/add_cart_item.dart';
+import 'package:houlala/model/add_item.dart';
+import 'package:houlala/model/add_order.dart';
 import 'package:houlala/model/product.dart';
-import 'package:houlala/service/cart_item_service.dart';
+import 'package:houlala/service/order_service.dart';
 import 'package:houlala/service/product_service.dart';
 import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
 import 'package:houlala/widget/show_nack.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
 class ProductContainer extends StatelessWidget {
@@ -25,7 +26,7 @@ class ProductContainer extends StatelessWidget {
     late int quantity = 1;
     int price = quantity > 1
         ? Provider.of<ProductService>(context).getTotalPrice()
-        : product!.initialPrice!;
+        : product!.sellingPrice!;
     switch (displayType) {
       case 'favories':
         return Card(
@@ -66,26 +67,36 @@ class ProductContainer extends StatelessWidget {
                     CustomElevatedButton(
                       child: const Text("Ajouter au Panier"),
                       onPressed: () async {
-                        String? userId = "";
+                        String? userId = await storage.read(key: "userId");
 
-                        if (!kIsWeb) {
-                          userId = await storage.read(key: "userId");
-                        } else {
-                          userId = userIdBox.get("userId");
+                        if (userId != null) {
+                          List<AddItem>? cartItems = <AddItem>[];
+
+                          AddItem item = AddItem(
+                              productSku: product!.productSku!,
+                              price: price,
+                              quantity: quantity,
+                              initialPrice: product!.sellingPrice!);
+
+                          cartItems.add(item);
+
+                          AddOrder newOrder = AddOrder(
+                              userId: userId,
+                              locationId: product!.locationId!,
+                              cartItems: cartItems);
+
+                          Response response = await Provider.of<OrderService>(
+                                  context,
+                                  listen: false)
+                              .addOrder(newOrder);
+
+                          if (response.statusCode == 201) {
+                            showSnack(
+                                const Text(
+                                    "Produit a ete ajoute dans le panier "),
+                                context);
+                          }
                         }
-
-                        AddCartItem newItem = AddCartItem(
-                            quantity: product!.quantity,
-                            productId: product!.id,
-                            userId: userId!,
-                            totalPrice: product!.initialPrice,
-                            pageId: product!.page!.id!);
-                        await Provider.of<CartItemService>(context,
-                                listen: false)
-                            .addToCart(newItem);
-                        showSnack(
-                            const Text("Produit a ete ajoute dans le panier "),
-                            context);
                       },
                     )
                   ],
@@ -150,10 +161,11 @@ class ProductContainer extends StatelessWidget {
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'PoppinsBold',
+                  fontSize: 18.0,
                 ),
               ),
               Text(
-                '${product!.initialPrice!.toString()} FCFA',
+                '${product!.sellingPrice!.toString()} FCFA',
               ),
             ],
           ),

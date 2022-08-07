@@ -4,7 +4,7 @@ import 'package:houlala/widget/category_container.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-import '../model/category.dart';
+import '../model/product_category.dart';
 
 class VerticalListOfCategories extends StatelessWidget {
   final String? uri;

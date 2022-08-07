@@ -1,258 +1,221 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:houlala/service/cart_item_service.dart';
-import 'package:houlala/widget/checkout_bar.dart';
-import 'package:houlala/widget/display_dialog.dart';
-import 'package:houlala/widget/horizontal_cart_preview.dart';
-import 'package:houlala/widget/input_name.dart';
-import 'package:houlala/widget/input_number.dart';
-import 'package:houlala/widget/show_nack.dart';
-import 'package:houlala/widget/standard_custom_container.dart';
-import 'package:http/http.dart';
-import 'package:provider/provider.dart';
+import 'package:houlala/model/edit_screen_arguments.dart';
+import 'package:houlala/model/user_information.dart';
+import 'package:houlala/widget/custom_elevated_button.dart';
+import 'package:sizer/sizer.dart';
+
 import '../helper/constants.dart';
-import '../model/count_and_price.dart';
-import '../model/add_cart_item.dart';
-import '../model/add_order.dart';
-import '../model/address.dart';
-import '../model/cart_item.dart';
-import '../model/user_information.dart';
-import '../service/order_service.dart';
-import 'custom_elevated_button.dart';
-import 'input_email.dart';
 
-class PersonalDataContainer extends StatefulWidget {
-  final List<CartItem>? items;
-  final CountAndPrice? total;
+class PersonnalDataContainer extends StatelessWidget {
+  final UserInformation? connectedUser;
 
-  const PersonalDataContainer({
+  const PersonnalDataContainer({
     Key? key,
-    this.items,
-    this.total,
+    this.connectedUser,
   }) : super(key: key);
-
-  @override
-  State<PersonalDataContainer> createState() => _PersonalDataContainerState();
-}
-
-class _PersonalDataContainerState extends State<PersonalDataContainer> {
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _numberController = TextEditingController();
-  final TextEditingController _villeController =
-      TextEditingController(text: "Yaounde");
-  final TextEditingController _countryController =
-      TextEditingController(text: "Cameroun");
-  final TextEditingController _streetController = TextEditingController();
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _firstNameController.dispose();
-    _emailController.dispose();
-    _numberController.dispose();
-    _villeController.dispose();
-    _countryController.dispose();
-    _streetController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
-          child: SingleChildScrollView(
+        Card(
+          color: Colors.transparent,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(color: Colors.grey.shade300, width: 1),
+            borderRadius: BorderRadius.circular(4.0),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CheckoutBar(),
-                standardSizedBox,
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text(
-                          "Donnees personnelles",
-                          style: standardStyle,
-                        ),
-                        verticalSpacing,
-                        Column(
-                          children: [
-                            EmailInput(
-                              controller: _emailController,
-                            ),
-                            verticalSpacing,
-                            NameInput(
-                              hintText: "Nom",
-                              errorMessage: "inserer votre nom",
-                              controller: _nameController,
-                            ),
-                            verticalSpacing,
-                            NameInput(
-                              hintText: "Prenom",
-                              controller: _firstNameController,
-                              errorMessage: "inserer votre prenom",
-                            ),
-                            verticalSpacing,
-                            InputNumber(
-                              hintText: "numero de telephone",
-                              errorMessage: "inserer votre numero de telephone",
-                              controller: _numberController,
-                            )
-                          ],
-                        ),
-                        standardSizedBox,
-                        Text(
-                          "Adresse de Livraison",
-                          style: standardStyle,
-                        ),
-                        verticalSpacing,
-                        Column(
-                          children: [
-                            NameInput(
-                              enabled: false,
-                              hintText: "",
-                              controller: _villeController,
-                            ),
-                            verticalSpacing,
-                            NameInput(
-                              hintText: "Rue",
-                              controller: _streetController,
-                              errorMessage: "inserer votre rue",
-                            ),
-                            verticalSpacing,
-                          ],
-                        ),
-                        standardSizedBox,
-                        Text(
-                          "Mode de paiement",
-                          style: standardStyle,
-                        ),
-                        verticalSpacing,
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 15.0, horizontal: 10.0),
-                          decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(5.0)),
-                          child: Row(
-                            children: const [
-                              FaIcon(
-                                FontAwesomeIcons.moneyBill,
-                                color: Colors.green,
-                              ),
-                              SizedBox(
-                                width: 5.0,
-                              ),
-                              Text(
-                                "Cash",
-                                style: TextStyle(fontWeight: FontWeight.w700),
-                              ),
-                            ],
-                          ),
-                        ),
-                        standardSizedBox,
-                        Text(
-                          "Produits",
-                          style: standardStyle,
-                        ),
-                        HorizontalCartPreview(
-                          items: widget.items,
-                        )
-                      ],
+                Container(
+                  width: 100.w,
+                  margin: const EdgeInsets.only(bottom: 10.0),
+                  child: const Text(
+                    "Informations Personnelles",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "PoppinsBold"),
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(width: 1, color: Colors.grey.shade300),
                     ),
                   ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      connectedUser!.userName!,
+                      style: TextStyle(
+                        fontSize: customFontSize,
+                      ),
+                    ),
+                    Text(
+                      connectedUser!.name!,
+                      style: TextStyle(fontSize: customFontSize),
+                    ),
+                    connectedUser!.telephoneNumber != null
+                        ? Text(
+                            "+237 ${connectedUser!.telephoneNumber!}",
+                            style: TextStyle(fontSize: customFontSize),
+                          )
+                        : Container()
+                  ],
                 )
               ],
             ),
           ),
         ),
-        StandardCustomContainer(
+        const SizedBox(
+          height: 10.0,
+        ),
+        CustomElevatedButton(
+          onPressed: () {
+            EditScreenArguments args = EditScreenArguments(
+                email: connectedUser!.email!,
+                country: connectedUser!.country,
+                city: connectedUser!.city,
+                userName: connectedUser!.userName,
+                poBox: connectedUser!.poBox,
+                streetName: connectedUser!.streetName,
+                telephoneNumber: connectedUser!.telephoneNumber,
+                name: connectedUser!.name,
+                houseNumber: connectedUser!.houseNumber,
+                type: "personal");
+
+            Navigator.of(context).pushNamed("/edit", arguments: args);
+          },
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  const Text(
-                    "Prix Total",
-                    style: TextStyle(fontSize: 16.0),
-                  ),
-                  Text(
-                    widget.total!.totalPrice!.toString(),
-                    style: standardStyle,
-                  )
-                ],
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Icon(Icons.edit_outlined),
+              Text(
+                "Modifier Mes informations",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontFamily: "PoppinsBold"),
               ),
-              CustomElevatedButton(
-                child: Text(
-                  '(${widget.total!.totalQuantity.toString()}) Commander',
-                  style: standardStyle,
-                ),
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    late List<AddCartItem> newItems = [];
-                    late AddCartItem newItem;
-                    for (var item in widget.items!) {
-                      newItem = AddCartItem(
-                          pageId: item.product!.page!.id,
-                          productName: item.product!.name!,
-                          productId: item.product!.id,
-                          totalPrice: item.totalPrice,
-                          quantity: item.quantity);
-                      newItems.add(newItem);
-                    }
-
-                    UserInformation user = UserInformation(
-                      firstName: _firstNameController.text,
-                      lastName: _nameController.text,
-                      telephoneNumber: '+237${_numberController.text}',
-                      email: _emailController.text,
-                    );
-
-                    Address livraisonAddress = Address(
-                        city: _villeController.text,
-                        country: _countryController.text,
-                        streetName: _streetController.text,
-                        poBox: "1100");
-
-                    AddOrder newOrder = AddOrder(
-                        totalQuantity: widget.total!.totalQuantity!,
-                        totalPrice: widget.total!.totalPrice!,
-                        cartItems: newItems,
-                        address: livraisonAddress,
-                        user: user,
-                        payMentMode: "Cash",
-                        orderOptions: "Livraison",
-                        status: "Attente");
-
-                    Response response =
-                        await Provider.of<OrderService>(context, listen: false)
-                            .addOrder(newOrder);
-
-                    if (response.statusCode == 201) {
-                      Navigator.of(context).pop();
-
-                      Provider.of<CartItemService>(context, listen: false)
-                          .deleteOfflineCartItems();
-
-                      showSnack(
-                          const Text(
-                              "Votre Commande a ete envoye, vous serez contacte pour plus d'informations"),
-                          context);
-                    } else {
-                      showErrorDialog(context, "Erreur",
-                          "Desole, nous ne pouvons pas proceder votre commande , veuillez reasseyer, si le probleme persiste, contactez notre service client.");
-                    }
-                  }
-                },
-              )
             ],
           ),
+        ),
+        const SizedBox(
+          height: 10.0,
+        ),
+        Card(
+          color: Colors.transparent,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(color: Colors.grey.shade300, width: 1),
+            borderRadius: BorderRadius.circular(4.0),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 100.w,
+                  margin: const EdgeInsets.only(bottom: 10.0),
+                  child: const Text(
+                    "Adresse de livraison",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "PoppinsBold"),
+                  ),
+                  decoration: BoxDecoration(
+                      border: Border(
+                          bottom: BorderSide(
+                              width: 1, color: Colors.grey.shade300))),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          '${connectedUser!.streetName!} ',
+                          style: TextStyle(
+                            fontSize: customFontSize,
+                          ),
+                        ),
+                        connectedUser!.houseNumber != null
+                            ? Text(
+                                connectedUser!.houseNumber!,
+                                style: TextStyle(
+                                  fontSize: customFontSize,
+                                ),
+                              )
+                            : Container(),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        connectedUser!.poBox != null
+                            ? Text(
+                                "${connectedUser!.poBox!}, ",
+                                style: TextStyle(
+                                  fontSize: customFontSize,
+                                ),
+                              )
+                            : Container(),
+                        Text(
+                          connectedUser!.city!,
+                          style: TextStyle(
+                            fontSize: customFontSize,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      connectedUser!.country!,
+                      style: TextStyle(
+                        fontSize: customFontSize,
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 10.0,
+        ),
+        CustomElevatedButton(
+          onPressed: () {
+            EditScreenArguments args = EditScreenArguments(
+                email: connectedUser!.email!,
+                country: connectedUser!.country,
+                city: connectedUser!.city,
+                userName: connectedUser!.userName,
+                poBox: connectedUser!.poBox,
+                streetName: connectedUser!.streetName,
+                telephoneNumber: connectedUser!.telephoneNumber,
+                name: connectedUser!.name,
+                houseNumber: connectedUser!.houseNumber,
+                type: "address");
+
+            Navigator.of(context).pushNamed("/edit", arguments: args);
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Icon(Icons.edit_outlined),
+              Text(
+                "Modifier Mon Addresse",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontFamily: "PoppinsBold"),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 10.0,
         )
       ],
     );

@@ -10,7 +10,6 @@ import 'package:houlala/widget/show_nack.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import '../helper/constants.dart';
-import '../model/address.dart';
 import 'custom_elevated_button.dart';
 import 'input_email.dart';
 import 'input_password.dart';
@@ -108,9 +107,9 @@ class _SignUpContainerState extends State<SignUpContainer> {
             ),
             standardSizedBox,
             NameInput(
-              hintText: 'Prenom',
+              hintText: 'surnom',
               controller: _firstNameController,
-              errorMessage: 'Inserez votre Prenom',
+              errorMessage: 'Inserez votre Surnom',
             ),
             standardSizedBox,
             Row(
@@ -179,19 +178,18 @@ class _SignUpContainerState extends State<SignUpContainer> {
             CustomElevatedButton(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  Address address = Address(
-                      poBox: _poBoxController!.text,
-                      city: _cityController!.text,
-                      country: _countryController!.text,
-                      streetName: _streetController!.text);
-
                   Register register = Register(
-                      email: _emailController!.text,
-                      firstName: _firstNameController!.text,
-                      lastName: _nameController!.text,
-                      telephoneNumber: _numberController!.text,
-                      password: _passwordController!.text,
-                      address: address);
+                    email: _emailController!.text,
+                    userName: _firstNameController!.text,
+                    name: _nameController!.text,
+                    telephoneNumber: _numberController!.text,
+                    password: _passwordController!.text,
+                    poBox: _poBoxController!.text,
+                    city: _cityController!.text,
+                    country: _countryController!.text,
+                    streetName: _streetController!.text,
+                    houseNumber: _houseNbrController!.text,
+                  );
 
                   Response response =
                       await Provider.of<AuthService>(context, listen: false)

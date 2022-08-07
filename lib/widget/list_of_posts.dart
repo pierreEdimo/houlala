@@ -49,7 +49,7 @@ class ListOfPosts extends StatelessWidget {
             case Axis.vertical:
               return posts.isEmpty
                   ? SizedBox(
-                      height: 25.h,
+                      height: errorHeight == null ? 25.h : errorHeight!,
                       child: Center(
                         child: Text(
                           textError!,
@@ -58,6 +58,7 @@ class ListOfPosts extends StatelessWidget {
                       ),
                     )
                   : ListView(
+                      padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       physics: const ClampingScrollPhysics(),
                       children: posts

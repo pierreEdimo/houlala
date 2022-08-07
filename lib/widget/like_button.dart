@@ -1,15 +1,14 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/main.dart';
-import 'package:houlala/model/found_post.dart';
+import 'package:houlala/model/post.dart';
 import 'package:houlala/service/post_service.dart';
 import 'package:houlala/widget/custom_button_container.dart';
 import 'package:houlala/widget/open_login_modal.dart';
 import 'package:provider/provider.dart';
 
 class LikeButton extends StatefulWidget {
-  final FoundPost? foundPost;
+  final Post? foundPost;
 
   const LikeButton({Key? key, this.foundPost}) : super(key: key);
 
@@ -21,34 +20,28 @@ class _LikeButtonState extends State<LikeButton> {
   @override
   Widget build(BuildContext context) {
     return CustomButtonContainer(
-      icon: widget.foundPost!.isLiked!
+      icon: widget.foundPost!.liked!
           ? const FaIcon(
               FontAwesomeIcons.solidHeart,
               color: Colors.red,
             )
           : const FaIcon(FontAwesomeIcons.heart),
       onPressed: () async {
-        String? userId = "";
-
-        if(!kIsWeb){
-          userId = await storage.read(key: "userId");
-        } else {
-          userId = userIdBox.get("userId");
-        }
+        String? userId = await storage.read(key: "userId");
 
         if (userId == null) {
           openModal(context);
         } else {
-          var oldStatus = widget.foundPost!.isLiked!;
+          var oldStatus = widget.foundPost!.liked!;
           setState(() {
-            widget.foundPost!.isLiked = !(widget.foundPost!.isLiked!);
+            widget.foundPost!.liked = !(widget.foundPost!.liked!);
           });
           try {
             await Provider.of<PostService>(context, listen: false)
-                .likePost(widget.foundPost!.foundPost!.id!);
+                .likePost(widget.foundPost!.id!);
           } catch (error) {
             setState(() {
-              widget.foundPost!.isLiked = oldStatus;
+              widget.foundPost!.liked = oldStatus;
             });
           }
         }

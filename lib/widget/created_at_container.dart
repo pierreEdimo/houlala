@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/helper/constants.dart';
 import 'package:intl/intl.dart';
 
 class CreatedAtContainer extends StatelessWidget {
   final DateTime? createdAt;
+  final double? fontSize;
 
   const CreatedAtContainer({
     Key? key,
     this.createdAt,
+    this.fontSize,
   }) : super(key: key);
 
   @override
@@ -18,7 +19,11 @@ class CreatedAtContainer extends StatelessWidget {
       ),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
-      style: subtitle,
+      style: TextStyle(
+        fontSize: fontSize != null ? fontSize! : 12.0,
+        fontWeight: FontWeight.bold,
+        color: Colors.grey,
+      ),
     );
   }
 }

@@ -131,12 +131,12 @@ class ResponsiveHomeScreen extends StatelessWidget {
                       child: Container(
                         margin: const EdgeInsets.only(bottom: 5.0),
                         child: const FlexibleRow(
-                          title: "Categories de produits",
+                          title: "Categories",
                           urlValue: "/all_categories",
                         ),
                       ),
                       uri:
-                          '${dotenv.env['CATEGORY_URL']}/getRandomCategories?size=6&categoryType=624037f8292cdadb3ad45b7a',
+                          '${dotenv.env['CATEGORY_URL']}/random?size=10',
                       direction: Axis.horizontal,
                       shrinkWrap: true,
                     ),
@@ -157,7 +157,7 @@ class ResponsiveHomeScreen extends StatelessWidget {
                         ),
                       ),
                       uri:
-                          '${dotenv.env['PRODUCT_URL']}/getRandomProducts?size=4&categoryId=621a245eaf69ff81e170c5f6',
+                          '${dotenv.env['PRODUCT_URL']}/random/category/621a245eaf69ff81e170c5f6?size=4',
                       scrollDirection: scrollDirection,
                       crossAxisCount: crossAxisCount,
                       widthRatio: widthRatio,
@@ -180,7 +180,7 @@ class ResponsiveHomeScreen extends StatelessWidget {
                           urlValue: "/all_pages",
                         ),
                       ),
-                      uri: '${dotenv.env['PAGE_URL']}/getRandomPages?size=4',
+                      uri: '${dotenv.env['LOCATION_URL']}/store?limit=10',
                       direction: Axis.horizontal,
                     ),
                   ),
@@ -196,21 +196,9 @@ class ResponsiveHomeScreen extends StatelessWidget {
                       title: "Les posts recents",
                       urlValue: "/all_posts",
                     ),
-                    uri: '${dotenv.env['POST_URL']}/getRandomPosts?size=10',
+                    uri: '${dotenv.env['POST_URL']}/random?size=10',
                   ),
                 ),
-                // CustomBoxContainer(
-                //   child: GridOfJobs(
-                //     child: Text(
-                //       "Les Jobs recents",
-                //       style: standardStyle,
-                //     ),
-                //     scrollDirection: Axis.vertical,
-                //     ratio: 2.5,
-                //     uri: '${dotenv.env['JOB_URL']}/getRandomJobs?size=4',
-                //     height: 0.25,
-                //   ),
-                // )
               ],
             ),
           ),

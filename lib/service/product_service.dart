@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:houlala/model/found_product.dart';
 import 'package:houlala/model/product.dart';
 import 'package:http/http.dart';
 
@@ -22,26 +21,20 @@ class ProductService extends ChangeNotifier {
           body.map((dynamic product) => Product.fromJson(product)).toList();
       return products;
     } else {
-      throw "No Categories";
+      throw "No Products";
     }
   }
 
-  Future<FoundProduct> fetchSingleProduct(String name) async {
-    String? userId = "";
+  Future<Product> fetchSingleProduct(String name) async {
+    String? userId = await storage.read(key: "userId");
 
-    if (!kIsWeb) {
-      userId = await storage.read(key: "userId");
-    } else {
-      userId = userIdBox.get("userId");
-    }
-
-    var url = Uri.parse(
-        '${dotenv.env['PRODUCT_URL']}/getProductByNameIsFavorite?name=$name&userId=$userId');
+    var url =
+        Uri.parse('${dotenv.env['PRODUCT_URL']}/name/$name?userId=$userId');
 
     Response response = await get(url);
 
     if (response.statusCode == 200) {
-      return FoundProduct.fromJson(jsonDecode(response.body));
+      return Product.fromJson(jsonDecode(response.body));
     } else {
       throw "No Product found";
     }
@@ -60,17 +53,12 @@ class ProductService extends ChangeNotifier {
 
   Future<void> bookMarkProduct(String id) async {
     Map<String, String> headers = {'Content-Type': 'application/json'};
-    String? userId = "";
 
-    if (!kIsWeb) {
-      userId = await storage.read(key: "userId");
-    } else {
-      userId = userIdBox.get("userId");
-    }
+    String? userId = await storage.read(key: "userId");
 
     var url = Uri.parse(
-        "${dotenv.env['PRODUCT_URL']}/addFavorite/$id?userId=$userId");
-    await patch(
+        "${dotenv.env['PRODUCT_URL']}/favorites/$id?userId=$userId");
+    await post(
       url,
       headers: headers,
     );

@@ -11,7 +11,7 @@ import '../main.dart';
 import '../model/additional_info.dart';
 
 class CommentService extends ChangeNotifier {
-  Future<List<Comment>> fetchAllCategories(String uri) async {
+  Future<List<Comment>> fetchAllComments(String uri) async {
     var url = Uri.parse(uri);
     Response response = await get(url);
 
@@ -30,9 +30,8 @@ class CommentService extends ChangeNotifier {
     Map<String, String> headers = {'Content-Type': 'application/json'};
     String jsEncode;
     jsEncode = jsonEncode(comment);
-    var url =
-        Uri.parse('${dotenv.env['POST_URL']}/addComment/${comment.postId}');
-    await patch(
+    var url = Uri.parse('${dotenv.env['COMMENT_URL']}/${comment.postId}');
+    await post(
       url,
       headers: headers,
       body: jsEncode,
@@ -56,12 +55,12 @@ class CommentService extends ChangeNotifier {
   }
 
   Future<void> deleteComment(String postId, String commentId) async {
-    var url = Uri.parse(
-        '${dotenv.env['POST_URL']}/deleteComment/$postId?commentId=$commentId');
+    var url =
+        Uri.parse('${dotenv.env['COMMENT_URL']}/$postId?commentId=$commentId');
     Map<String, String> headers = {
       'Content-Type': 'application/json',
     };
-    await patch(
+    await delete(
       url,
       headers: headers,
     );
@@ -72,14 +71,13 @@ class CommentService extends ChangeNotifier {
       String postId, String commentId, EditComment comment) async {
     String jsEncode = jsonEncode(comment);
     Map<String, String> headers = {'Content-Type': 'application/json'};
-    var url = Uri.parse(
-        '${dotenv.env['POST_URL']}/editCommentFromPost/$postId?commentId=$commentId');
-    await patch(
+    var url =
+        Uri.parse('${dotenv.env['COMMENT_URL']}/$postId?commentId=$commentId');
+    await put(
       url,
       headers: headers,
       body: jsEncode,
     );
-
     notifyListeners();
   }
 }

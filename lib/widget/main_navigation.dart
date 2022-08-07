@@ -7,7 +7,6 @@ import 'package:houlala/screens/home_screen.dart';
 import 'package:houlala/screens/notification_screen.dart';
 import 'package:houlala/screens/user_screen.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'element_of_cart_items.dart';
 
 class MainNavigation extends StatelessWidget {
   const MainNavigation({Key? key}) : super(key: key);
@@ -81,15 +80,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
             icon: Stack(
               children: const [
                 kIsWeb
-                    ? Icon(
-                        Icons.shopping_bag_outlined,
-                        size: 28
-                      )
+                    ? Icon(Icons.shopping_bag_outlined, size: 28)
                     : ImageIcon(
                         AssetImage("images/cart.png"),
                         size: 27,
                       ),
-                ElementOfCartItem()
               ],
             ),
             label: "Stories",

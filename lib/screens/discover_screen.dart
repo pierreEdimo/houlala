@@ -12,7 +12,7 @@ class DiscoverScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: "Decouvrez",
       ),
-      body: ContainerWithConnectivityChecker(
+      body: const ContainerWithConnectivityChecker(
         child: DiscoverContainer(),
       ),
     );

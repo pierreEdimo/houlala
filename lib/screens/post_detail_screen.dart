@@ -37,7 +37,7 @@ class PostDetailScreen extends StatelessWidget {
                   ),
                   ListOfComments(
                     uri:
-                        '${dotenv.env['POST_URL']}/getCommentFromPost?postId=$id',
+                        '${dotenv.env['COMMENT_URL']}?postId=$id',
                   )
                 ],
               ),
@@ -69,7 +69,7 @@ class PostDetailScreen extends StatelessWidget {
                         if (_controller.text.isEmpty) {
                           DoNothingAction();
                         } else {
-                          var userId = await storage.read(key: "userId");
+                          var userId = await storage.read(key: "email");
                           if (userId != null) {
                             AddComment newComment = AddComment(
                                 userId: userId,

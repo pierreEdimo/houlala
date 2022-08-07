@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:houlala/model/found_post.dart';
+import 'package:houlala/model/post.dart';
 import 'package:houlala/widget/like_button.dart';
 import 'custom_button_container.dart';
 
 class PostDetailAppBar extends StatelessWidget {
-  final FoundPost? foundPost;
+  final Post? foundPost;
 
   const PostDetailAppBar({
     Key? key,

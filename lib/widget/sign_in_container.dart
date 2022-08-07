@@ -79,7 +79,7 @@ class _SignInContainerState extends State<SignInContainer> {
                         await Provider.of<AuthService>(context, listen: false)
                             .logIn(login);
 
-                    if (response.statusCode != 201) {
+                    if (response.statusCode != 202) {
                       final responseJson = json.decode(response.body);
                       showErrorDialog(context, "Erreur",
                           "${responseJson['message']}, svp reessayez plutard, si le probleme persiste, contectez nous");

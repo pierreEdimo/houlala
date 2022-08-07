@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/main.dart';
-import 'package:houlala/model/found_post.dart';
 import 'package:houlala/model/post.dart';
 import 'package:http/http.dart';
 
@@ -22,21 +21,17 @@ class PostService extends ChangeNotifier {
     }
   }
 
-  Future<FoundPost> fetchSinglePost(String id) async {
+  Future<Post> fetchSinglePost(String id) async {
     String? userId = "";
 
-    if (!kIsWeb) {
-      userId = await storage.read(key: "userId");
-    } else {
-      userId = userIdBox.get("userId");
-    }
+    userId = await storage.read(key: "userId");
 
     var url = Uri.parse('${dotenv.env['POST_URL']}/$id?userId=$userId');
 
     Response response = await get(url);
 
     if (response.statusCode == 200) {
-      return FoundPost.fromJson(jsonDecode(response.body));
+      return Post.fromJson(jsonDecode(response.body));
     } else {
       throw "No Post found";
     }
@@ -46,11 +41,7 @@ class PostService extends ChangeNotifier {
     Map<String, String> headers = {'Content-Type': 'application/json'};
     String? userId = "";
 
-    if (!kIsWeb) {
-      userId = await storage.read(key: "userId");
-    } else {
-      userId = userIdBox.get("userId");
-    }
+    userId = await storage.read(key: "userId");
 
     var url =
         Uri.parse("${dotenv.env['POST_URL']}/likePost/$id?userId=$userId");

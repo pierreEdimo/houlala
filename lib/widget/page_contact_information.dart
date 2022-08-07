@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:houlala/model/page.dart';
+import 'package:houlala/model/location.dart';
 import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/launch_url.dart';
 import 'package:houlala/widget/page_contact_row.dart';
@@ -8,7 +8,7 @@ import 'package:houlala/widget/page_contact_row.dart';
 import '../helper/constants.dart';
 
 class PageContactInformation extends StatelessWidget {
-  final PageModel? page;
+  final LocationModel? page;
 
   const PageContactInformation({Key? key, this.page}) : super(key: key);
 
@@ -17,7 +17,7 @@ class PageContactInformation extends StatelessWidget {
     return CustomColumnContainer(
       child: const Text(
         "Contacts",
-        style: TextStyle(fontSize: 17.0),
+        style: TextStyle(fontSize: 17.0, fontFamily: 'PoppinsBold'),
       ),
       gridList: Column(
         children: [
@@ -45,14 +45,14 @@ class PageContactInformation extends StatelessWidget {
             ),
           ),
           verticalSpacing,
-          const PageContactRow(
-            icon: FontAwesomeIcons.briefcase,
-            child: Text("Assurances"),
+          PageContactRow(
+            thumbNail: page!.category!.thumbNail!,
+            child: Text(page!.category!.name!),
           ),
           verticalSpacing,
           PageContactRow(
             icon: FontAwesomeIcons.building,
-            child: Text("Bayreuth, ${page!.headQuartersCountry!}"),
+            child: Text('${page!.address!.city!}, ${page!.country!.name!}'),
           )
         ],
       ),

@@ -9,10 +9,10 @@ class PageDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final id = ModalRoute.of(context)!.settings.arguments as String;
+    final id = ModalRoute.of(context)!.settings.arguments as int;
     return Scaffold(
       body: PageDetailContainer(
-        uri: '${dotenv.env['PAGE_URL']}/$id',
+        uri: '${dotenv.env['LOCATION_URL']}/$id',
       ),
     );
   }

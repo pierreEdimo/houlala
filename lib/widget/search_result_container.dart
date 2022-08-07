@@ -10,9 +10,9 @@ import 'package:sizer/sizer.dart';
 import 'custom_intern_navigation.dart';
 
 class SearchResultContainer extends StatelessWidget {
-  final String? searchWorld;
+  final String? searchword;
 
-  SearchResultContainer({Key? key, this.searchWorld}) : super(key: key);
+  SearchResultContainer({Key? key, this.searchword}) : super(key: key);
 
   final List<String> _menuItems = [
     "produits",
@@ -27,9 +27,9 @@ class SearchResultContainer extends StatelessWidget {
       StandardCustomContainer(
         child: GridOfProducts(
           height: 80.h,
-          textError: "Aucuns produits appelle $searchWorld n'a ete trouve\n"
+          textError: "Aucuns produits appelle $searchword n'a ete trouve\n"
               "svp verifiez plutard",
-          uri: '${dotenv.env['PRODUCT_URL']}/search?searchword=$searchWorld',
+          uri: '${dotenv.env['PRODUCT_URL']}/search?searchWord=$searchword',
           crossAxisCount: 2,
           scrollDirection: Axis.vertical,
           widthRatio: 1,
@@ -38,46 +38,36 @@ class SearchResultContainer extends StatelessWidget {
       ),
       StandardCustomContainer(
         child: VerticalListOfCategories(
-          uri: '${dotenv.env['CATEGORY_URL']}/search?searchword=$searchWorld',
+          uri: '${dotenv.env['CATEGORY_URL']}/search?searchword=$searchword',
           shrinkwrap: true,
           height: 0.8,
-          error: "Aucunes categories appeles $searchWorld n'a ete trouvee\n"
+          error: "Aucunes categories appeles $searchword n'a ete trouvee\n"
               "veuillez reessayer plutard",
         ),
       ),
       StandardCustomContainer(
         child: GridPages(
-          height: MediaQuery.of(context).size.height * 0.8,
-          textError: "Aucuns magasins appele $searchWorld n'a ete trouve\n"
+          height: 80.h,
+          textError: "Aucuns magasins appele $searchword n'a ete trouve\n"
               "svp veuillez reessayer plutard",
-          uri: '${dotenv.env['PAGE_URL']}/search?searchword=$searchWorld',
+          uri: '${dotenv.env['LOCATION_URL']}/search?word=$searchword',
           direction: Axis.vertical,
         ),
       ),
       StandardCustomContainer(
         child: ListOfPosts(
           scrollDirection: Axis.vertical,
-          uri: '${dotenv.env['POST_URL']}/search?searchWord=$searchWorld',
-          errorHeight: MediaQuery.of(context).size.height * 0.8,
-          textError: "Aucuns Posts titre $searchWorld n'a ete trouve\n"
+          uri: '${dotenv.env['POST_URL']}/search?word=$searchword',
+          errorHeight: 80.h,
+          textError: "Aucuns Posts titre $searchword n'a ete trouve\n"
               "veuillez reessayer plutard",
         ),
       ),
-      // StandardCustomContainer(
-      //   child: GridOfJobs(
-      //     uri: '${dotenv.env['JOB_URL']}/search?searchword=$searchWorld',
-      //     scrollDirection: Axis.vertical,
-      //    textError: "Aucuns jobs titre $searchWorld n'a ete trouve\n "
-      //        "veuillez reessayer plutard",
-      //     height: 0.8,
-      //   ),
-      // )
     ];
-
     return CustomInternNavigation(
       menuItems: _menuItems,
       widgetOptions: _widgetOptions,
-      elevationValue: 2.0,
+      elevationValue: 0,
       verticalPadding: 23.0,
       horizontalPadding: 15.0,
       height: 0.1,

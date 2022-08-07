@@ -4,7 +4,7 @@ import 'package:houlala/screens/category_detail_screen.dart';
 import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/transparent_card_container.dart';
 
-import '../model/category.dart';
+import '../model/product_category.dart';
 
 class CategoryContainer extends StatelessWidget {
   final CategoryModel? categoryModel;
@@ -24,7 +24,6 @@ class CategoryContainer extends StatelessWidget {
               arguments: PageScreenArguments(
                 categoryId: categoryModel!.id!,
                 categoryName: categoryModel!.name!,
-                categoryType: categoryModel!.categoryType!.label!,
                 imageUrl: categoryModel!.imageUrl!,
               )),
       child: TransparentCardContainer(
@@ -47,6 +46,7 @@ class CategoryContainer extends StatelessWidget {
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontFamily: 'PoppinsBold',
+                fontSize: 18.0
               ),
             )
           ],

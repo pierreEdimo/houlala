@@ -13,30 +13,21 @@ class ColumnOfShopBox extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        categoryName!.isNotEmpty
-            ? Text(
-                categoryName!,
-                style: detailTitleStyle,
-              )
-            : Container(),
-        SizedBox(
-          height: categoryName!.isNotEmpty ? 20.0 : 0.0,
-        ),
         ShopContainerBox(
           shopUrl:
-              '${dotenv.env['PAGE_URL']}/filterPageByCategoryIdAndSpecialisation?categoryId=6233b38345bff7f776f0d30e&specialisation=6245a243dd701819d970a0be',
+              '${dotenv.env['LOCATION_URL']}',
           title: 'Electronique Grand public',
         ),
         verticalSpacing,
         ShopContainerBox(
           shopUrl:
-              '${dotenv.env['PAGE_URL']}/filterPageByCategoryIdAndSpecialisation?categoryId=6233b38345bff7f776f0d30e&specialisation=6245a221dd701819d970a0bc',
+              '${dotenv.env['LOCATION_URL']}/',
           title: 'Aliments',
         ),
         verticalSpacing,
         ShopContainerBox(
           shopUrl:
-              '${dotenv.env['PAGE_URL']}/filterPageByCategoryIdAndSpecialisation?categoryId=6233b38345bff7f776f0d30e&specialisation=6245a273dd701819d970a0c0',
+              '${dotenv.env['LOCATION_URL']}',
           title: 'Habits & Chaussures',
         )
       ],

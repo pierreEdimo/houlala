@@ -15,8 +15,8 @@ class CommentContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String? userName = comment!.author!.firstName![0].toUpperCase() +
-        comment!.author!.lastName![0].toUpperCase();
+    String? userName =  comment!.author!.userName![0].toUpperCase() +
+        comment!.author!.userName![2].toLowerCase();
     return TransparentCardContainer(
         child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,9 +43,7 @@ class CommentContainer extends StatelessWidget {
                         children: [
                           Flexible(
                             child: Text(
-                              comment!.author!.lastName! +
-                                  " " +
-                                  comment!.author!.firstName!,
+                              comment!.author!.userName!,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: standardStyle,

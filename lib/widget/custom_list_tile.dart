@@ -5,12 +5,14 @@ class CustomListTile extends StatelessWidget {
   final IconData? leadingIcon;
   final String? title;
   final Widget? icon;
+  final Color? color;
 
   const CustomListTile({
     Key? key,
     this.leadingIcon,
     this.title,
     this.icon,
+    this.color,
   }) : super(key: key);
 
   @override
@@ -22,7 +24,10 @@ class CustomListTile extends StatelessWidget {
         children: [
           Row(
             children: [
-              FaIcon(leadingIcon),
+              FaIcon(
+                leadingIcon,
+                color: color ?? const Color(0xff000000),
+              ),
               const SizedBox(
                 width: 10.0,
               ),

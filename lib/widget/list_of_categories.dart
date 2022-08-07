@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/model/category.dart';
+import 'package:houlala/model/product_category.dart';
 import 'package:houlala/service/category_service.dart';
 import 'package:houlala/widget/category_container.dart';
 import 'package:provider/provider.dart';

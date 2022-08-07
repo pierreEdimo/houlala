@@ -8,15 +8,15 @@ class CustomInternNavigation extends StatefulWidget {
   final double? horizontalPadding;
   final double? height;
 
-  const CustomInternNavigation({
-    Key? key,
-    this.menuItems,
-    this.widgetOptions,
-    this.elevationValue,
-    this.verticalPadding,
-    this.horizontalPadding,
-    this.height
-  }) : super(key: key);
+  const CustomInternNavigation(
+      {Key? key,
+      this.menuItems,
+      this.widgetOptions,
+      this.elevationValue,
+      this.verticalPadding,
+      this.horizontalPadding,
+      this.height})
+      : super(key: key);
 
   @override
   State<CustomInternNavigation> createState() => _CustomInternNavigationState();
@@ -37,7 +37,10 @@ class _CustomInternNavigationState extends State<CustomInternNavigation> {
             child: SizedBox(
               height: 70,
               child: Padding(
-                padding:  EdgeInsets.symmetric(horizontal: widget.horizontalPadding!),
+                padding: EdgeInsets.symmetric(
+                  horizontal: widget.horizontalPadding!,
+                  vertical: 8.0,
+                ),
                 child: Container(
                   alignment: Alignment.centerLeft,
                   child: ListView.builder(
@@ -55,15 +58,21 @@ class _CustomInternNavigationState extends State<CustomInternNavigation> {
                             _currentIndex = index;
                           });
                         },
-                        child: Center(
-                          child: Container(
-                            margin: const EdgeInsets.only(right: 20.0),
-                            child: Text(
-                              menu,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: _isSelected ? 20 : 15,
-                                color: _isSelected ? const Color(0xffdf972f) : Colors.black,
+                        child: Card(
+                          elevation: 0,
+                          color: const Color(0xf2f2f2f2),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                              child: Text(
+                                menu,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: _isSelected ? 18 : 15,
+                                  color: _isSelected
+                                      ? const Color(0xffdf972f)
+                                      : Colors.black,
+                                ),
                               ),
                             ),
                           ),
@@ -75,9 +84,7 @@ class _CustomInternNavigationState extends State<CustomInternNavigation> {
               ),
             ),
           ),
-
           widget.widgetOptions!.elementAt(_currentIndex),
-
         ],
       ),
     );

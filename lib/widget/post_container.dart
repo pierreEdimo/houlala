@@ -97,7 +97,7 @@ class PostContainer extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(10.0),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(4.0),
               border: Border.all(width: 1, color: Colors.grey.shade300),
             ),
             child: Stack(
@@ -211,7 +211,7 @@ class PostAuthor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      post!.page!.name!,
+      post!.location!.name!,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
       style: const TextStyle(
@@ -233,7 +233,9 @@ class PostAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      backgroundImage: NetworkImage(post!.page!.imageUrl!),
+      backgroundImage: NetworkImage(
+        post!.location!.imageUrl!,
+      ),
     );
   }
 }

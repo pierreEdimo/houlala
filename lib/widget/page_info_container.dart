@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/model/page.dart';
+import 'package:houlala/model/location.dart';
 import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/markdown_container.dart';
 import 'package:houlala/widget/page_contact_information.dart';
 
 class PageInfoContainer extends StatelessWidget {
-  final PageModel? page;
+  final LocationModel? page;
 
   const PageInfoContainer({Key? key, this.page}) : super(key: key);
 
@@ -17,7 +17,10 @@ class PageInfoContainer extends StatelessWidget {
         CustomColumnContainer(
           child: const Text(
             "Historique",
-            style: TextStyle(fontSize: 17.0),
+            style: TextStyle(
+              fontSize: 17.0,
+              fontFamily: "PoppinsBold"
+            ),
           ),
           gridList: MarkdownContainer(
             data: page!.description!,

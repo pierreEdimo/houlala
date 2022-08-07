@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/service/order_service.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
-import 'package:houlala/widget/list_of_orders.dart';
+import 'package:houlala/widget/order_container.dart';
+import 'package:provider/provider.dart';
+
+import '../model/order.dart';
 
 class PersonalOrderScreen extends StatelessWidget {
   const PersonalOrderScreen({Key? key}) : super(key: key);
@@ -12,7 +16,39 @@ class PersonalOrderScreen extends StatelessWidget {
         title: "Mes Commandes",
         elevation: 1,
       ),
-      body: const ListOfOrders(),
+      body: FutureBuilder(
+        future:
+            Provider.of<OrderService>(context).fetchCartItems(confirmed: true),
+        builder: (BuildContext context, AsyncSnapshot<List<Order>> snapshot) {
+          if (snapshot.hasData) {
+            List<Order>? orders = snapshot.data;
+
+            return orders!.isEmpty
+                ? const Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 11.0),
+                      child: Text(
+                        "Vous n'avez pas encore fait une commmande en ce moment",
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  )
+                : ListView(
+                    children: orders
+                        .map(
+                          (order) => OrderContainer(
+                            order: order,
+                            confirmed: true,
+                          ),
+                        )
+                        .toList(),
+                  );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
     );
   }
 }

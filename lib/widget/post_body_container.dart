@@ -1,14 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:houlala/model/found_post.dart';
+import 'package:houlala/model/post.dart';
 import 'package:houlala/widget/created_at_container.dart';
 import 'package:houlala/widget/markdown_container.dart';
 import 'package:houlala/widget/post_detail_app_bar.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 import '../helper/constants.dart';
-import '../screens/page_detail_screen.dart';
 import '../service/post_service.dart';
 
 class PostBodyContainer extends StatelessWidget {
@@ -20,13 +20,13 @@ class PostBodyContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: Provider.of<PostService>(context).fetchSinglePost(id!),
-      builder: (context, AsyncSnapshot<FoundPost> snapshot) {
+      builder: (context, AsyncSnapshot<Post> snapshot) {
         if (snapshot.hasData) {
-          FoundPost foundPost = snapshot.data!;
+          Post foundPost = snapshot.data!;
           return Column(
             children: [
               SizedBox(
-                height: !kIsWeb ? 120.0 : 70.0,
+                height: !kIsWeb ? 90.0 : 70.0,
                 child: PostDetailAppBar(
                   foundPost: foundPost,
                 ),
@@ -36,16 +36,14 @@ class PostBodyContainer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
-                      onTap: () => Navigator.of(context).pushNamed(
-                          PageDetailScreen.screenName,
-                          arguments: foundPost.foundPost!.page!.id),
+                      onTap: () {},
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CircleAvatar(
-                            radius: 30,
+                            radius: 22,
                             backgroundImage: NetworkImage(
-                              foundPost.foundPost!.page!.imageUrl!,
+                              foundPost.location!.imageUrl!,
                             ),
                           ),
                           horizontalSpacing,
@@ -55,12 +53,12 @@ class PostBodyContainer extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    foundPost.foundPost!.page!.name!,
+                                    "Houlala",
                                     style: nameTitleStyle,
                                   ),
                                   horizontalSpacing,
                                   CreatedAtContainer(
-                                    createdAt: foundPost.foundPost!.createdAt!,
+                                    createdAt: foundPost.createdAt!,
                                   )
                                 ],
                               ),
@@ -73,7 +71,7 @@ class PostBodyContainer extends StatelessWidget {
                                   ),
                                   horizontalSpacing,
                                   Text(
-                                    '${foundPost.foundPost!.page!.headQuarterCity!}, ${foundPost.foundPost!.page!.headQuarterCountry!}',
+                                    'Yaounde, Cameroun',
                                     style: subtitle,
                                   ),
                                 ],
@@ -87,10 +85,10 @@ class PostBodyContainer extends StatelessWidget {
                       height: 5.0,
                     ),
                     MarkdownContainer(
-                      data: foundPost.foundPost!.content!,
+                      data: foundPost.content!,
                     ),
                     standardSizedBox,
-                    foundPost.foundPost!.imageUrl!.isEmpty
+                    foundPost.imageUrl!.isEmpty
                         ? Container()
                         : Container(
                             constraints: const BoxConstraints(
@@ -100,8 +98,7 @@ class PostBodyContainer extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20.0),
                               image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: NetworkImage(
-                                    foundPost.foundPost!.imageUrl!),
+                                image: NetworkImage(foundPost.imageUrl!),
                               ),
                             ),
                           ),
@@ -123,8 +120,11 @@ class PostBodyContainer extends StatelessWidget {
             ],
           );
         }
-        return const Center(
-          child: CircularProgressIndicator(),
+        return  SizedBox(
+          height: 100.h,
+          child: const Center(
+            child: CircularProgressIndicator(),
+          ),
         );
       },
     );

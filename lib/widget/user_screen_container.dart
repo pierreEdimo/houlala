@@ -106,6 +106,7 @@ class UserScreenContainer extends StatelessWidget {
                                           "vous avez ete deconnecte avec succes"),
                                       context)),
                               child: const CustomListTile(
+                                color: Colors.red,
                                 leadingIcon: FontAwesomeIcons.rightFromBracket,
                                 title: "Se deconnecter",
                               ),
@@ -195,6 +196,7 @@ class UserScreenContainer extends StatelessWidget {
                       InkWell(
                         onTap: () => openModal(context),
                         child: const CustomListTile(
+                          color: Colors.green,
                           leadingIcon: FontAwesomeIcons.rightFromBracket,
                           title: "Se connecter/s'enregistrer",
                         ),

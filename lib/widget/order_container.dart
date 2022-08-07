@@ -1,107 +1,263 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/model/order.dart';
+import 'package:houlala/widget/bordered_card.dart';
+import 'package:houlala/widget/cart_item_container.dart';
 import 'package:houlala/widget/created_at_container.dart';
-import 'package:houlala/widget/horizontal_cart_preview.dart';
 
-import 'package:houlala/widget/standard_custom_container.dart';
+import '../model/cart_item.dart';
 
 class OrderContainer extends StatelessWidget {
   final Order? order;
+  final bool? confirmed;
+  final String? status;
 
-  const OrderContainer({Key? key, this.order}) : super(key: key);
+  const OrderContainer({
+    Key? key,
+    this.order,
+    this.confirmed,
+    this.status,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return StandardCustomContainer(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+    switch (status) {
+      case 'confirmation':
+        return BorderedCard(
+          child: Column(
+            children: [
+              CardTitle(
+                name: order!.location!.name!,
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              ListOFItems(
+                status: status,
+                confirmed: confirmed!,
+                orderId: order!.id!,
+                items: order!.cartItems!,
+              ),
+              CardBottom(
+                quantity: order!.totalQuantity!,
+                price: order!.totalPrice!,
+              )
+            ],
+          ),
+        );
+      default:
+        return BorderedCard(
+          child: Column(
+            children: [
+              CardTitle(
+                name: order!.location!.name!,
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              confirmed!
+                  ? Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                                  width: 2, color: Colors.grey.shade300))),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              const Text("Status: ",
+                                  style: TextStyle(fontSize: 16.0)),
+                              Text(
+                                order!.status!,
+                                style: TextStyle(
+                                    fontSize: 16.0,
+                                    fontFamily: "PoppinsBold",
+                                    color: getColor(order!.status!)),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const Text(
+                                "Livraison: ",
+                                style: TextStyle(fontSize: 16.0),
+                              ),
+                              CreatedAtContainer(
+                                createdAt: order!.updatedAt!,
+                                fontSize: 16.0,
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    )
+                  : Container(),
+              const SizedBox(
+                height: 10.0,
+              ),
+              ListOFItems(
+                confirmed: confirmed!,
+                orderId: order!.id!,
+                items: order!.cartItems!,
+              ),
+              CardBottom(
+                price: order!.totalPrice,
+                quantity: order!.totalQuantity!,
+              )
+            ],
+          ),
+        );
+    }
+  }
+}
+
+class CardBottom extends StatelessWidget {
+  final int? price;
+  final int? quantity;
+
+  const CardBottom({
+    Key? key,
+    this.price,
+    this.quantity,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50.0,
+      alignment: Alignment.center,
+      margin: const EdgeInsets.only(
+        top: 15.0,
+      ),
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            width: 2,
+            color: Colors.grey.shade300,
+          ),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CreatedAtContainer(
-            createdAt: order!.createdAt!,
-          ),
-          const SizedBox(
-            height: 3.0,
-          ),
-          HorizontalCartPreview(
-            items: order!.cartItems,
+          Row(
+            children: [
+              const Text(
+                "Quantite: ",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "PoppinsBold",
+                ),
+              ),
+              Text(
+                quantity.toString(),
+                style: const TextStyle(
+                  fontSize: 18.0,
+                ),
+              )
+            ],
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  const Text(
-                    "prix total:",
-                  ),
-                  const SizedBox(
-                    width: 5.0,
-                  ),
-                  Text(
-                    '${order!.totalPrice.toString()} FCFA',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                ],
+              const Text(
+                "Prix: ",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "PoppinsBold",
+                ),
               ),
-              // CustomElevatedButton(
-              //   onPressed: () async {
-              //     var userId = await storage.read(key: "userId");
-              //
-              //     Address? address =
-              //         Provider.of<AuthService>(context, listen: false)
-              //             .getAddress();
-              //
-              //     late AddCartItem newItem;
-              //     late List<AddCartItem> newItems = [];
-              //
-              //     for (var item in order!.cartItems) {
-              //       newItem = AddCartItem(
-              //           userId: userId,
-              //           pageId: item.product!.page!.id,
-              //           productName: item.product!.name!,
-              //           productId: item.product!.id,
-              //           totalPrice: item.totalPrice,
-              //           quantity: item.quantity);
-              //
-              //       newItems.add(newItem);
-              //     }
-              //
-              //     AddOrder newOrder = AddOrder(
-              //         totalQuantity: order!.totalQuantity!,
-              //         totalPrice: order!.totalPrice!,
-              //         cartItems: newItems,
-              //         user: order!.user!,
-              //         payMentMode: "Cash",
-              //         orderOptions: "Livraison",
-              //         status: "Attente",
-              //         address: address);
-              //
-              //     Response response =
-              //         await Provider.of<OrderService>(context, listen: false)
-              //             .addOrder(newOrder);
-              //
-              //     if (response.statusCode == 201) {
-              //       showSnack(
-              //           const Text(
-              //               "Votre Commande a ete envoyee, vous serz contacte pour plus d'informations"),
-              //           context,
-              //           second: 2);
-              //     } else {
-              //       showErrorDialog(context, "Erreur",
-              //           "Desole, nous ne pouvons pas proceder votre commande , veuillez reasseyer, si le probleme persiste, contactez notre service client.");
-              //     }
-              //   },
-              //   child: Text(
-              //     '(${order!.totalQuantity.toString()}) Commander encore',
-              //     style: const TextStyle(fontWeight: FontWeight.bold),
-              //   ),
-              // )
+              Text(
+                '${price.toString()} FCFA',
+                style: const TextStyle(fontSize: 18.0),
+              )
             ],
           )
         ],
       ),
     );
   }
+}
+
+class CardTitle extends StatelessWidget {
+  final String? name;
+
+  const CardTitle({
+    Key? key,
+    this.name,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const FaIcon(
+          FontAwesomeIcons.store,
+          size: 22,
+        ),
+        const SizedBox(
+          width: 5.0,
+        ),
+        Text(
+          name!,
+          style: const TextStyle(
+            fontSize: 22.0,
+            fontFamily: "PoppinsBold",
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ListOFItems extends StatelessWidget {
+  final List<CartItem>? items;
+  final String? orderId;
+  final bool? confirmed;
+  final String? status;
+
+  const ListOFItems({
+    Key? key,
+    this.items,
+    this.orderId,
+    this.confirmed,
+    this.status,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      physics: const ClampingScrollPhysics(),
+      shrinkWrap: true,
+      children: items!
+          .map(
+            (item) => CartItemContainer(
+              status: status,
+              cartItem: item,
+              orderId: orderId!,
+              confirmed: confirmed!,
+            ),
+          )
+          .toList(),
+    );
+  }
+}
+
+Color getColor(String status) {
+  Color color;
+  switch (status) {
+    case 'Delivre':
+      color = const Color(0xff7CFC00);
+      break;
+    case 'Attente':
+      color = const Color(0xffFF0000);
+      break;
+    default:
+      color = const Color(0xff000000);
+  }
+  return color;
 }

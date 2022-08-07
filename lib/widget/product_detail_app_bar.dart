@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/model/product.dart';
 import 'package:houlala/widget/book_marker.dart';
-import 'package:houlala/model/found_product.dart';
 import 'custom_button_container.dart';
 
 class ProductDetailAppBar extends StatelessWidget with PreferredSizeWidget {
-  final FoundProduct? product;
+  final Product? product;
   @override
   final Size preferredSize;
 

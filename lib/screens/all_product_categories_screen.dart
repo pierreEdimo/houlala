@@ -11,14 +11,14 @@ class AllProductCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWithReturn(
-        title: 'Categories de Produits',
+        title: 'Categories',
         elevation: 1,
       ),
       body: StandardCustomContainer(
         child: VerticalListOfCategories(
           shrinkwrap: false,
           uri:
-              '${dotenv.env['CATEGORY_URL']}/filterCategoriesByType?categoryType=624037f8292cdadb3ad45b7a&limit=0',
+              '${dotenv.env['CATEGORY_URL']}',
         ),
       ),
     );
