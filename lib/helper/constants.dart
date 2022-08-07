@@ -4,10 +4,13 @@ const standardSizedBox = SizedBox(
   height: 20.0,
 );
 
+double customFontSize = 18;
+
 TextStyle detailTitleStyle = const TextStyle(
   fontWeight: FontWeight.bold,
   fontFamily: 'PoppinsBold',
   fontSize: 28.0,
+  color: Color(0xffffffff)
 );
 
 TextStyle standardStyle = const TextStyle(
