@@ -3,10 +3,12 @@ import 'package:houlala/model/order.dart';
 import 'package:houlala/service/auth_service.dart';
 import 'package:houlala/service/order_service.dart';
 import 'package:houlala/widget/cart_error.dart';
+import 'package:houlala/widget/offline_order_container.dart';
 import 'package:houlala/widget/order_container.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:provider/provider.dart';
 
+import '../model/offline_order.dart';
 import 'cart_item_bottom.dart';
 
 class ListOfCartItems extends StatelessWidget {
@@ -57,8 +59,34 @@ class ListOfCartItems extends StatelessWidget {
               );
             },
           )
-        : const Center(
-            child: CartError(),
+        : FutureBuilder(
+            future: Provider.of<OrderService>(context).getOfflineOrders(),
+            builder: (BuildContext context,
+                AsyncSnapshot<List<OfflineOrder>> snapshot) {
+              if (snapshot.hasData) {
+                final List<OfflineOrder> orders = snapshot.data!;
+                return orders.isEmpty
+                    ? const StandardCustomContainer(
+                        child: CartError(),
+                      )
+                    : ListView(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 11.0,
+                          vertical: 8.0,
+                        ),
+                        children: orders
+                            .map(
+                              (element) => OfflineOrderContainer(
+                                order: element,
+                              ),
+                            )
+                            .toList(),
+                      );
+              }
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            },
           );
   }
 }

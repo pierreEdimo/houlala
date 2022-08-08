@@ -18,14 +18,16 @@ class CartItemContainer extends StatelessWidget {
   final bool? confirmed;
   final String? orderId;
   final String? status;
+  final String? locationId;
 
-  const CartItemContainer({
-    Key? key,
-    this.cartItem,
-    this.confirmed,
-    this.orderId,
-    this.status,
-  }) : super(key: key);
+  const CartItemContainer(
+      {Key? key,
+      this.cartItem,
+      this.confirmed,
+      this.orderId,
+      this.status,
+      this.locationId})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -186,12 +188,21 @@ class CartItemContainer extends StatelessWidget {
                                                             cartItem!
                                                                 .productSku!,
                                                             orderId);
+                                                  } else {
+                                                    Provider.of<OrderService>(
+                                                            context,
+                                                            listen: false)
+                                                        .decreaseItemQuantity(
+                                                            locationId!,
+                                                            cartItem!
+                                                                .productSku!);
                                                   }
                                                 },
                                                 child: cartItem!.quantity! <= 1
                                                     ? CartItemDeleteButton(
                                                         orderId: orderId,
                                                         item: cartItem!,
+                                                        locationId: locationId,
                                                       )
                                                     : const DecreaseQuantityText(),
                                               ),
@@ -214,6 +225,14 @@ class CartItemContainer extends StatelessWidget {
                                                             cartItem!
                                                                 .productSku!,
                                                             orderId);
+                                                  } else {
+                                                    Provider.of<OrderService>(
+                                                            context,
+                                                            listen: false)
+                                                        .increaseItemQuantity(
+                                                            locationId!,
+                                                            cartItem!
+                                                                .productSku!);
                                                   }
                                                 },
                                                 child:
@@ -224,6 +243,7 @@ class CartItemContainer extends StatelessWidget {
                                           CartItemDeleteButton(
                                             orderId: orderId,
                                             item: cartItem!,
+                                            locationId: locationId,
                                           )
                                         ],
                                       )

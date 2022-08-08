@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/add_item.dart';
 import 'package:houlala/model/add_order.dart';
+import 'package:houlala/model/cart_item.dart';
+import 'package:houlala/model/offline_order.dart';
 import 'package:houlala/service/order_service.dart';
 import 'package:houlala/widget/blur_container.dart';
 import 'package:houlala/model/product.dart';
@@ -185,11 +187,10 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
 
                           if (userId != null) {
                             AddItem newItem = AddItem(
-                              price: price,
-                              productSku: foundProduct.productSku,
-                              quantity: quantity,
-                              initialPrice: foundProduct.sellingPrice
-                            );
+                                price: price,
+                                productSku: foundProduct.productSku,
+                                quantity: quantity,
+                                initialPrice: foundProduct.sellingPrice);
 
                             List<AddItem> items = <AddItem>[];
 
@@ -211,9 +212,32 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                                   context);
                             }
                           } else {
+                            CartItem item = CartItem(
+                              productSku: foundProduct.productSku,
+                              price: price,
+                              name: foundProduct.name,
+                              imageUrl: foundProduct.imageUrl,
+                              quantity: quantity,
+                              initialPrice: foundProduct.sellingPrice,
+                            );
+
+                            List<CartItem> items = <CartItem>[];
+                            items.add(item);
+
+                            OfflineOrder order = OfflineOrder(
+                              locationName: foundProduct.locationName,
+                              locationId: foundProduct.locationId,
+                              cartItems: items,
+                              totalQuantity: quantity,
+                              totalPrice: price,
+                            );
+
                             showSnack(
                                 const Text("Article a ete ajoute au Panier"),
                                 context);
+
+                            Provider.of<OrderService>(context, listen: false)
+                                .addOfflineOrder(order);
                           }
                         },
                         child: Text(

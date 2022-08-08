@@ -8,11 +8,13 @@ import '../model/cart_item.dart';
 class CartItemDeleteButton extends StatelessWidget {
   final CartItem? item;
   final String? orderId;
+  final String? locationId;
 
   const CartItemDeleteButton({
     Key? key,
     this.item,
     this.orderId,
+    this.locationId,
   }) : super(key: key);
 
   @override
@@ -28,6 +30,9 @@ class CartItemDeleteButton extends StatelessWidget {
         if (userId != null) {
           Provider.of<OrderService>(context, listen: false)
               .deleteFromOrder(item!.productSku!, orderId);
+        } else {
+          Provider.of<OrderService>(context, listen: false)
+              .deleteItemFromOrder(locationId!, item!.productSku!);
         }
       },
     );

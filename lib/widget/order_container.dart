@@ -219,6 +219,7 @@ class ListOFItems extends StatelessWidget {
   final String? orderId;
   final bool? confirmed;
   final String? status;
+  final String? locationId;
 
   const ListOFItems({
     Key? key,
@@ -226,6 +227,7 @@ class ListOFItems extends StatelessWidget {
     this.orderId,
     this.confirmed,
     this.status,
+    this.locationId,
   }) : super(key: key);
 
   @override
@@ -240,6 +242,7 @@ class ListOFItems extends StatelessWidget {
               cartItem: item,
               orderId: orderId!,
               confirmed: confirmed!,
+              locationId: locationId,
             ),
           )
           .toList(),

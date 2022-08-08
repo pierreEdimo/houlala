@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:houlala/model/cart_item.dart';
+import 'package:houlala/model/offline_order.dart';
 import 'package:houlala/screens/about_screen.dart';
 import 'package:houlala/screens/all_post_screen.dart';
 import 'package:houlala/screens/all_product_categories_screen.dart';
@@ -41,8 +43,12 @@ const storage = FlutterSecureStorage();
 
 Future main() async {
   await Hive.initFlutter();
-
   await Hive.openBox('loggedState');
+  Hive.registerAdapter(OfflineOrderAdapter());
+  Hive.registerAdapter(CartItemAdapter());
+
+  await Hive.openBox<CartItem>('items');
+  await Hive.openBox<OfflineOrder>('orders');
 
   await dotenv.load(fileName: '.env');
 
