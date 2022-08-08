@@ -1,4 +1,3 @@
-
 class Product {
   final String? id;
   final String? name;
@@ -11,6 +10,7 @@ class Product {
   late bool? bookMarked;
   final String? productSku;
   late int? availableQuantity = 0;
+  final String? locationName;
 
   Product(
       {this.name,
@@ -21,6 +21,7 @@ class Product {
       this.locationId,
       this.id,
       this.bookMarked,
+      this.locationName,
       this.productSku});
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
@@ -33,5 +34,6 @@ class Product {
         locationId: json['locationId'],
         bookMarked: json['bookMarked'],
         productSku: json['productSku'],
+        locationName: json['locationName'],
       );
 }
