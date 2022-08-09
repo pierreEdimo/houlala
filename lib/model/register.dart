@@ -10,6 +10,7 @@ class Register {
     this.city,
     this.houseNumber,
     this.streetName,
+    this.firstName,
   });
 
   final String? email;
@@ -17,6 +18,7 @@ class Register {
   final String? telephoneNumber;
   final String? userName;
   final String? name;
+  final String? firstName;
   final String? streetName;
   final String? houseNumber;
   final String? city;
@@ -26,7 +28,7 @@ class Register {
   factory Register.fromJson(Map<String, dynamic> json) => Register(
         email: json["email"],
         password: json["passWord"],
-        name: json["name"],
+        name: json["lastName"],
         telephoneNumber: json["phoneNumber"],
         userName: json["userName"],
         streetName: json["streetName"],
@@ -34,6 +36,7 @@ class Register {
         city: json["city"],
         country: json["country"],
         houseNumber: json["houseNumber"],
+        firstName: json["firstName"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -46,6 +49,7 @@ class Register {
         "houseNumber": houseNumber,
         "poBox": poBox,
         "streetName": streetName,
-        "name": name,
+        "lastName": name,
+        "firstName": firstName,
       };
 }

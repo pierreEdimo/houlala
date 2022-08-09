@@ -40,7 +40,6 @@ class OrderService extends ChangeNotifier {
       headers: headers,
       body: jsEncode,
     );
-    print(response.statusCode);
     notifyListeners();
     return response;
   }

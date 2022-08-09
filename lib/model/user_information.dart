@@ -9,6 +9,7 @@ class UserInformation {
   final String? poBox;
   final String? houseNumber;
   final String? userName;
+  final String? firstName;
 
   UserInformation({
     this.email,
@@ -21,13 +22,15 @@ class UserInformation {
     this.houseNumber,
     this.userName,
     this.id,
+    this.firstName,
   });
 
   factory UserInformation.fromJson(Map<String, dynamic> json) =>
       UserInformation(
           email: json["email"],
           telephoneNumber: json["phoneNumber"],
-          name: json["name"],
+          name: json["lastName"],
+          firstName: json["firstName"],
           city: json["city"],
           country: json["country"],
           streetName: json["streetName"],
@@ -39,13 +42,14 @@ class UserInformation {
   Map<String, dynamic> toJson() => {
         "email": email,
         "phoneNumber": telephoneNumber,
-        "name": name,
+        "lastName": name,
         "city": city,
         "country": country,
         "streetName": streetName,
         "poBox": poBox,
         "houseNumber": houseNumber,
         "userName": userName,
-        "id": id
+        "id": id,
+        "firstName": firstName,
       };
 }

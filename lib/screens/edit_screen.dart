@@ -36,6 +36,7 @@ class _EditScreenState extends State<EditScreen> {
   final TextEditingController? _cityController =
       TextEditingController(text: 'Yaounde');
   final TextEditingController? _poBoxController = TextEditingController();
+  final TextEditingController? _firstNameController = TextEditingController();
 
   @override
   void dispose() {
@@ -49,6 +50,7 @@ class _EditScreenState extends State<EditScreen> {
     _countryController!.dispose();
     _poBoxController!.dispose();
     _houseNbrController!.dispose();
+    _firstNameController!.dispose();
     super.dispose();
   }
 
@@ -67,6 +69,7 @@ class _EditScreenState extends State<EditScreen> {
     _streetController!.text = editScreenArguments.streetName!;
     _cityController!.text = editScreenArguments.city!;
     _countryController!.text = editScreenArguments.country!;
+    _firstNameController!.text = editScreenArguments.firstName!;
 
     switch (editScreenArguments.type!) {
       case 'email':
@@ -240,6 +243,12 @@ class _EditScreenState extends State<EditScreen> {
                         ),
                         standardSizedBox,
                         NameInput(
+                          controller: _firstNameController,
+                          hintText: 'Prenom',
+                          errorMessage: 'Insererz votre Prenom',
+                        ),
+                        standardSizedBox,
+                        NameInput(
                           controller: _numberController,
                           hintText: 'Numero de telephone',
                           errorMessage: 'Inserez votre numero',
@@ -261,6 +270,7 @@ class _EditScreenState extends State<EditScreen> {
                     name: _nameController!.text,
                     userName: _userNameController!.text,
                     phoneNumber: _numberController!.text,
+                    firstName: _firstNameController!.text,
                   );
 
                   Response? response =

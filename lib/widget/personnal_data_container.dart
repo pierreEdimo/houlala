@@ -56,7 +56,7 @@ class PersonnalDataContainer extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      connectedUser!.name!,
+                      '${connectedUser!.name!} ${connectedUser!.firstName}',
                       style: TextStyle(fontSize: customFontSize),
                     ),
                     connectedUser!.telephoneNumber != null
@@ -86,6 +86,7 @@ class PersonnalDataContainer extends StatelessWidget {
                 telephoneNumber: connectedUser!.telephoneNumber,
                 name: connectedUser!.name,
                 houseNumber: connectedUser!.houseNumber,
+                firstName: connectedUser!.firstName,
                 type: "personal");
 
             Navigator.of(context).pushNamed("/edit", arguments: args);
@@ -198,6 +199,7 @@ class PersonnalDataContainer extends StatelessWidget {
                 telephoneNumber: connectedUser!.telephoneNumber,
                 name: connectedUser!.name,
                 houseNumber: connectedUser!.houseNumber,
+                firstName: connectedUser!.firstName,
                 type: "address");
 
             Navigator.of(context).pushNamed("/edit", arguments: args);

@@ -27,7 +27,7 @@ class _SignUpContainerState extends State<SignUpContainer> {
   final TextEditingController? _passwordController = TextEditingController();
   final TextEditingController? _numberController = TextEditingController();
   final TextEditingController? _nameController = TextEditingController();
-  final TextEditingController? _firstNameController = TextEditingController();
+  final TextEditingController? _userNameController = TextEditingController();
   final TextEditingController? _streetController = TextEditingController();
   final TextEditingController? _houseNbrController = TextEditingController();
   final TextEditingController? _countryController =
@@ -35,6 +35,7 @@ class _SignUpContainerState extends State<SignUpContainer> {
   final TextEditingController? _cityController =
       TextEditingController(text: 'Yaounde');
   final TextEditingController? _poBoxController = TextEditingController();
+  final TextEditingController? _firstNameController = TextEditingController(); 
 
   @override
   void dispose() {
@@ -42,12 +43,13 @@ class _SignUpContainerState extends State<SignUpContainer> {
     _passwordController!.dispose();
     _numberController!.dispose();
     _nameController!.dispose();
-    _firstNameController!.dispose();
+    _userNameController!.dispose();
     _streetController!.dispose();
     _cityController!.dispose();
     _countryController!.dispose();
     _poBoxController!.dispose();
     _houseNbrController!.dispose();
+    _firstNameController!.dispose();
     super.dispose();
   }
 
@@ -107,8 +109,14 @@ class _SignUpContainerState extends State<SignUpContainer> {
             ),
             standardSizedBox,
             NameInput(
-              hintText: 'surnom',
+              hintText: 'Prenom',
               controller: _firstNameController,
+              errorMessage: "Inserez votre Prenom",
+            ),
+            standardSizedBox,
+            NameInput(
+              hintText: 'surnom',
+              controller: _userNameController,
               errorMessage: 'Inserez votre Surnom',
             ),
             standardSizedBox,
@@ -180,7 +188,7 @@ class _SignUpContainerState extends State<SignUpContainer> {
                 if (_formKey.currentState!.validate()) {
                   Register register = Register(
                     email: _emailController!.text,
-                    userName: _firstNameController!.text,
+                    userName: _userNameController!.text,
                     name: _nameController!.text,
                     telephoneNumber: _numberController!.text,
                     password: _passwordController!.text,
@@ -189,6 +197,7 @@ class _SignUpContainerState extends State<SignUpContainer> {
                     country: _countryController!.text,
                     streetName: _streetController!.text,
                     houseNumber: _houseNbrController!.text,
+                    firstName: _firstNameController!.text
                   );
 
                   Response response =

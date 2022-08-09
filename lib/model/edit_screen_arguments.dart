@@ -9,6 +9,7 @@ class EditScreenArguments {
   final String? poBox;
   final String? houseNumber;
   final String? userName;
+  final String? firstName;
 
   EditScreenArguments({
     this.type,
@@ -21,5 +22,6 @@ class EditScreenArguments {
     this.houseNumber,
     this.userName,
     this.poBox,
+    this.firstName
   });
 }
