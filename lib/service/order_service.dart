@@ -11,6 +11,8 @@ import 'package:houlala/model/order.dart';
 import 'package:houlala/model/user_information.dart';
 import 'package:http/http.dart';
 
+import '../model/add_unregistered_user_order.dart';
+
 class OrderService extends ChangeNotifier {
   final _orderBox = HiveBoxes.getOrders();
 
@@ -24,6 +26,21 @@ class OrderService extends ChangeNotifier {
       headers: headers,
       body: jsEncode,
     );
+    notifyListeners();
+    return response;
+  }
+
+  Future<Response> confirmUnregisteredUserOrder(UnregisteredUserOrder? newOrder) async {
+    Map<String, String> headers = {'Content-Type': 'application/json'};
+    String jsEncode;
+    jsEncode = jsonEncode(newOrder);
+    var url = Uri.parse('${dotenv.env['ORDER_URL']}/unregistereds');
+    Response response = await post(
+      url,
+      headers: headers,
+      body: jsEncode,
+    );
+    print(response.statusCode);
     notifyListeners();
     return response;
   }
@@ -271,6 +288,13 @@ class OrderService extends ChangeNotifier {
     existingOrder.totalPrice = totalPrice!;
     existingOrder.save();
 
+    notifyListeners();
+  }
+
+  void deleteAfterOrder(List<OfflineOrder> orders){
+    for(var order in orders){
+      order.delete();
+    }
     notifyListeners();
   }
 }

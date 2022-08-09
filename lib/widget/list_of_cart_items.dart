@@ -69,18 +69,28 @@ class ListOfCartItems extends StatelessWidget {
                     ? const StandardCustomContainer(
                         child: CartError(),
                       )
-                    : ListView(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 11.0,
-                          vertical: 8.0,
-                        ),
-                        children: orders
-                            .map(
-                              (element) => OfflineOrderContainer(
-                                order: element,
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Expanded(
+                            child: ListView(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 11.0,
+                                vertical: 8.0,
                               ),
-                            )
-                            .toList(),
+                              children: orders
+                                  .map(
+                                    (element) => OfflineOrderContainer(
+                                      order: element,
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                          ),
+                          CartItemBottom(
+                            offlineItems: orders,
+                          ),
+                        ],
                       );
               }
               return const Center(

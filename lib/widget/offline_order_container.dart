@@ -5,10 +5,12 @@ import 'package:houlala/widget/order_container.dart';
 
 class OfflineOrderContainer extends StatelessWidget {
   final OfflineOrder? order;
+  final String? status;
 
   const OfflineOrderContainer({
     Key? key,
     this.order,
+    this.status,
   }) : super(key: key);
 
   @override
@@ -23,6 +25,7 @@ class OfflineOrderContainer extends StatelessWidget {
             height: 10.0,
           ),
           ListOFItems(
+            status: status,
             confirmed: false,
             items: order!.cartItems!,
             orderId: "",
