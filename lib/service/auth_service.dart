@@ -151,6 +151,7 @@ class AuthService extends ChangeNotifier {
       headers: headers,
       body: jsEncode,
     );
+    print(response.statusCode);
     if (response.statusCode == 201) {
       final responseJson = json.decode(response.body);
 

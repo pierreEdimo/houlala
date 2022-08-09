@@ -77,18 +77,18 @@ class OrderContainer extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Row(
-                            children: [
-                              const Text(
-                                "Livraison: ",
-                                style: TextStyle(fontSize: 16.0),
-                              ),
-                              CreatedAtContainer(
-                                createdAt: order!.updatedAt!,
-                                fontSize: 16.0,
-                              )
-                            ],
-                          )
+                          // Row(
+                          //   children: [
+                          //     const Text(
+                          //       "Date de Livraison: ",
+                          //       style: TextStyle(fontSize: 16.0),
+                          //     ),
+                          //     CreatedAtContainer(
+                          //       createdAt: order!.createdAt!,
+                          //       fontSize: 16.0,
+                          //     )
+                          //   ],
+                          // )
                         ],
                       ),
                     )

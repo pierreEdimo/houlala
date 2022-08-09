@@ -43,8 +43,11 @@ class ListOfCartItems extends StatelessWidget {
                                     .toList(),
                               ),
                             ),
-                            CartItemBottom(
-                              items: orders,
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8.0),
+                              child: CartItemBottom(
+                                items: orders,
+                              ),
                             ),
                           ],
                         ),

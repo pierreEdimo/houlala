@@ -105,40 +105,6 @@ class ProductContainer extends StatelessWidget {
             ],
           ),
         );
-      case 'cart-item':
-        return Card(
-          elevation: 0,
-          color: Colors.transparent,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 1,
-                child: SizedBox(
-                  height: 170,
-                  child: BackgroundImage(
-                    imageUrl: product!.imageUrl!,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                width: 10.0,
-              ),
-              Expanded(
-                child: Text(
-                  product!.name!,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'PoppinsBold',
-                    fontSize: 22.0,
-                  ),
-                ),
-              )
-            ],
-          ),
-        );
       default:
         return Card(
           elevation: 0,

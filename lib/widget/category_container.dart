@@ -43,6 +43,8 @@ class CategoryContainer extends StatelessWidget {
             ),
             Text(
               categoryModel!.name!,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontFamily: 'PoppinsBold',
