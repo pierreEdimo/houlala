@@ -27,6 +27,7 @@ import 'package:houlala/service/auth_service.dart';
 import 'package:houlala/service/category_service.dart';
 import 'package:houlala/service/comment_service.dart';
 import 'package:houlala/service/connectivity_service.dart';
+import 'package:houlala/service/email_service.dart';
 import 'package:houlala/service/order_service.dart';
 import 'package:houlala/service/page_service.dart';
 import 'package:houlala/service/post_service.dart';
@@ -85,6 +86,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => CommentService()),
         ChangeNotifierProvider(create: (context) => ConnectivityService()),
         ChangeNotifierProvider(create: (context) => OrderService()),
+        ChangeNotifierProvider(create: (context) => EmailService()),
       ],
       builder: (context, child) {
         return Sizer(

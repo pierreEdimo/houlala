@@ -1,9 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/main.dart';
+import 'package:houlala/model/send_email.dart';
 import 'package:houlala/model/user_information.dart';
 import 'package:houlala/service/auth_service.dart';
+import 'package:houlala/service/email_service.dart';
 import 'package:houlala/service/order_service.dart';
 import 'package:houlala/widget/checkout_bar.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
@@ -158,6 +159,30 @@ class CheckoutButton extends StatelessWidget {
                                               connectedUser.houseNumber!,
                                           firstName: connectedUser.firstName!,
                                         );
+
+                                        for (var order in orders!) {
+                                          SimplifiedOrder orderEmail =
+                                              SimplifiedOrder(
+                                                  status: order.status,
+                                                  cartItems: order.cartItems,
+                                                  payMentMode:
+                                                      order.paymentMode,
+                                                  totalQuantity:
+                                                      order.totalQuantity,
+                                                  totalPrice: order.totalPrice);
+
+                                          var newEmail = SendEmail(
+                                              subject:
+                                                  "Nouvelle commanded venant de ${connectedUser.name}, ${connectedUser.firstName}",
+                                              to: order.location!.email!,
+                                              userInformation: connectedUser,
+                                              order: orderEmail);
+
+                                          await Provider.of<EmailService>(
+                                                  context,
+                                                  listen: false)
+                                              .sendEmail(newEmail);
+                                        }
 
                                         Response response =
                                             await Provider.of<OrderService>(

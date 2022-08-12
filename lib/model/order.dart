@@ -31,7 +31,7 @@ class Order {
         id: json['_id'],
         status: json['status'],
         confirmed: json['confirmed'],
-        paymentMode: json['paxMentMode'],
+        paymentMode: json['payMentMode'],
         createdAt: DateTime.parse(json['createdAt']),
         updatedAt: DateTime.parse(json['updatedAt']),
         totalQuantity: json['totalQuantity'],

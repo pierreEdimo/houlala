@@ -42,7 +42,7 @@ class CartItem extends HiveObject {
   Map<String, dynamic> toJson() => {
         "productSku": productSku,
         "price": price,
-        "name": name,
+        "product": name,
         "imageUrl": imageUrl,
         "quantity": quantity,
         "initialPrice": initialPrice,

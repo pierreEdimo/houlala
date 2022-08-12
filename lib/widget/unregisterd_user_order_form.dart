@@ -241,13 +241,13 @@ class _UnregisteredUserBorderFormState
                       margin: const EdgeInsets.symmetric(vertical: 15.0),
                       child: CustomElevatedButton(
                         onPressed: () async {
-                          // if (_nameController!.text.isEmpty ||
-                          //     _nameController!.text.isEmpty ||
-                          //     _phoneNumber!.text.isEmpty ||
-                          //     _streetController!.text.isEmpty ||
-                          //     _firstNameController!.text.isEmpty) {
-                          //   DoNothingAction();
-                          // } else {
+                          if (_nameController!.text.isEmpty ||
+                              _nameController!.text.isEmpty ||
+                              _phoneNumber!.text.isEmpty ||
+                              _streetController!.text.isEmpty ||
+                              _firstNameController!.text.isEmpty) {
+                            DoNothingAction();
+                          } else {
                             UserInformation info = UserInformation(
                               email: _emailController!.text,
                               name: _nameController!.text,
@@ -280,8 +280,8 @@ class _UnregisteredUserBorderFormState
                                 print(e);
                               }
                             }
-                          },
-
+                          }
+                        },
                         child: Text(
                           "Commander",
                           style: standardStyle,
