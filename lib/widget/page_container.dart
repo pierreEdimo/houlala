@@ -65,44 +65,24 @@ class PageContainer extends StatelessWidget {
                   const SizedBox(
                     height: 3.0,
                   ),
-                  Row(
-                    children: [
-                      Text(page!.category!.thumbNail!),
-                      const SizedBox(
-                        width: 3.0,
-                      ),
-                      Flexible(
-                        child: Text(
-                          page!.category!.name!,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: subtitle,
-                        ),
-                      )
-                    ],
+                  Flexible(
+                    child: Text(
+                      page!.category!.name!,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: subtitle,
+                    ),
                   ),
                   const SizedBox(
                     height: 5.0,
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const FaIcon(
-                        FontAwesomeIcons.compass,
-                        size: 15,
-                      ),
-                      const SizedBox(
-                        width: 5.0,
-                      ),
-                      Flexible(
-                        child: Text(
-                          '${page!.address!.city!}, ${page!.country!.name!}',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: subtitle,
-                        ),
-                      ),
-                    ],
+                  Flexible(
+                    child: Text(
+                      '${page!.address!.city!}, ${page!.country!.name!}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: subtitle,
+                    ),
                   ),
                 ],
               ),

@@ -33,12 +33,7 @@ class DiscoveryCategoryContainer extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 40,
                   backgroundColor: Colors.blue,
-                  child: Text(
-                    thumbNail!,
-                    style: const TextStyle(
-                      fontSize: 45.0,
-                    ),
-                  ),
+                  backgroundImage: NetworkImage(thumbNail!),
                 ),
               ),
               Text(

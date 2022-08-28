@@ -33,6 +33,7 @@ class ProductService extends ChangeNotifier {
 
     Response response = await get(url);
 
+
     if (response.statusCode == 200) {
       return Product.fromJson(jsonDecode(response.body));
     } else {
