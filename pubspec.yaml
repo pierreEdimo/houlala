@@ -115,6 +115,9 @@ flutter:
     - images/house.png
     - images/linkedin.png
     - images/houlala1.png
+    - images/category.png
+    - images/big_category.png
+    - images/hand-shake.png
     - .env
 
 

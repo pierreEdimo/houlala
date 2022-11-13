@@ -8,7 +8,6 @@ import 'package:houlala/widget/custom_box_container.dart';
 import 'package:houlala/widget/flexible_row.dart';
 import 'package:houlala/widget/grid_of_products.dart';
 import 'package:houlala/widget/list_of_categories.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
 import '../helper/constants.dart';
 
@@ -17,72 +16,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveBuilder(
-      builder: (context, sizingInformation) {
-        switch (sizingInformation.deviceScreenType) {
-          case DeviceScreenType.desktop:
-            return const Scaffold(
-              body: Center(
-                child: Text(
-                  "Houlala est encore en plein developpement , nous travaillons chaque jour pour ameliorer la qualite des services proposees par notre application, ",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 35.0,
-                  ),
-                ),
-              ),
-            );
-          case DeviceScreenType.tablet:
-            return OrientationLayoutBuilder(
-              portrait: (context) {
-                return ResponsiveHomeScreen(
-                  categoryListHeight: 20.h,
-                  tabletProductGridHeight: 30.h,
-                  scrollDirection: Axis.horizontal,
-                  crossAxisCount: 1,
-                  widthRatio: 1.5,
-                  heightRatio: 1,
-                  pageGridWidth: 45.w,
-                  postWidth: 45.w,
-                );
-              },
-              landscape: (context) {
-                return ResponsiveHomeScreen(
-                  categoryListHeight: 35.h,
-                  tabletProductGridHeight: 70.h,
-                  scrollDirection: Axis.horizontal,
-                  crossAxisCount: 1,
-                  widthRatio: 1.5,
-                  heightRatio: 1,
-                  pageGridWidth: 45.w,
-                  postWidth: 45.w,
-                );
-              },
-            );
-          case DeviceScreenType.mobile:
-            return ResponsiveHomeScreen(
-              categoryListHeight: 220,
-              productGridHeight: 25.h,
-              scrollDirection: Axis.vertical,
-              crossAxisCount: 2,
-              widthRatio: 1,
-              heightRatio: 1.5,
-              pageGridWidth: 90.w,
-              postWidth: 90.w,
-            );
-          default:
-            return ResponsiveHomeScreen(
-              categoryListHeight: 220,
-              productGridHeight: 25.h,
-              scrollDirection: Axis.vertical,
-              crossAxisCount: 2,
-              widthRatio: 1,
-              heightRatio: 1.5,
-              pageGridWidth: 90.w,
-              postWidth: 90.w,
-            );
-        }
-      },
+    return ResponsiveHomeScreen(
+      categoryListHeight: 220,
+      productGridHeight: 25.h,
+      scrollDirection: Axis.vertical,
+      crossAxisCount: 2,
+      widthRatio: 1,
+      heightRatio: 1.5,
+      pageGridWidth: 90.w,
+      postWidth: 90.w,
     );
   }
 }
@@ -135,8 +77,7 @@ class ResponsiveHomeScreen extends StatelessWidget {
                           urlValue: "/all_categories",
                         ),
                       ),
-                      uri:
-                          '${dotenv.env['CATEGORY_URL']}/random?size=10',
+                      uri: '${dotenv.env['CATEGORY_URL']}/random?size=10',
                       direction: Axis.horizontal,
                       shrinkWrap: true,
                     ),

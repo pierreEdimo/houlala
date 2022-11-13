@@ -35,7 +35,7 @@ class AuthService extends ChangeNotifier {
 
       box.put('logged', 'loggedIn');
       loggedState = box.get('logged');
-
+      print(responseJson['token']);
       notifyListeners();
     }
     return response;
@@ -135,6 +135,8 @@ class AuthService extends ChangeNotifier {
 
       box.put('logged', 'loggedIn');
       loggedState = box.get('logged');
+
+
 
       notifyListeners();
     }

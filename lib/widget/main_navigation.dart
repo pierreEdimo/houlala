@@ -73,18 +73,19 @@ class _BottomNavigationState extends State<BottomNavigation> {
             label: 'Home',
           ),
           const BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.compass),
+            icon: ImageIcon(
+              AssetImage("images/category.png"),
+              size: 27,
+            ),
             label: 'Business',
           ),
           BottomNavigationBarItem(
             icon: Stack(
               children: const [
-                kIsWeb
-                    ? Icon(Icons.shopping_bag_outlined, size: 28)
-                    : ImageIcon(
-                        AssetImage("images/cart.png"),
-                        size: 27,
-                      ),
+                ImageIcon(
+                  AssetImage("images/cart.png"),
+                  size: 27,
+                ),
               ],
             ),
             label: "Stories",
@@ -103,7 +104,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         selectedItemColor: const Color(0xffdf972f),
-        unselectedItemColor: Colors.grey,
+        unselectedItemColor: const Color(0xff000000),
         type: BottomNavigationBarType.fixed,
         backgroundColor: const Color(0xffffffff),
         elevation: 0,

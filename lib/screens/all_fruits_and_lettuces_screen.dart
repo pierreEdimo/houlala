@@ -10,7 +10,7 @@ class AllFruits extends StatelessWidget {
       body: FruitsLettucesContainer(
         categoryName: "fruits & legumes",
         imageUrl:
-            "https://images.unsplash.com/photo-1573246123716-6b1782bfc499?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=765&q=80",
+            "https://upload.houlala.store/Images/849d21c7-6436-485a-97b5-03144287c8c7.jpg",
       ),
     );
   }

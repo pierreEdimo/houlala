@@ -51,13 +51,23 @@ class GridPages extends StatelessWidget {
                     )
                   : pages.isEmpty
                       ? SizedBox(
-                          height: height!,
-                          child: Center(
-                            child: Text(
-                              textError!,
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
+                          height: MediaQuery.of(context).size.height * height!,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const ImageIcon(
+                                AssetImage("images/hand-shake.png"),
+                                size: 140,
+                              ),
+                              const SizedBox(
+                                height: 30.0,
+                              ),
+                              Text(
+                                textError!,
+                                textAlign: TextAlign.center,
+                              )
+                            ],
+                          )
                         )
                       : ListView(
                           padding: EdgeInsets.zero,

@@ -39,6 +39,8 @@ class StoreBodyContainer extends StatelessWidget {
                 fontWeight: FontWeight.bold),
           ),
           uri: '${dotenv.env['LOCATION_URL']}/store?limit=10',
+          textError: "Nous n'avons encore aucuns Partenaires, svp reessayez plutard.",
+          height: 0.5,
         )
       ],
     );

@@ -1,27 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/model/product_sub_category.dart';
 
 class SubCategoryContainer extends StatelessWidget {
-  final ProductSubCategory? category;
+  final String? name;
+  final String? thumbNail;
 
   const SubCategoryContainer({
     Key? key,
-    this.category,
+    this.name,
+    this.thumbNail,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: const Color(0xf2f2f2f2),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            category!.label!,
-            style: const TextStyle(
-              fontFamily: 'PoppinsBold',
-              fontWeight: FontWeight.bold
+    return SizedBox(
+      width: 150,
+      child: Card(
+        color: Colors.transparent,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: Colors.grey.shade300,
+              width: 1,
             ),
+            borderRadius: BorderRadius.circular(
+              4.0,
+            )),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              CircleAvatar(
+                radius: 40,
+                backgroundImage: NetworkImage(thumbNail!),
+              ),
+              Text(
+                name!,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontFamily: 'PoppinsBold', fontSize: 18),
+              )
+            ],
           ),
         ),
       ),

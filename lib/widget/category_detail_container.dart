@@ -24,12 +24,12 @@ class _CategoryDetailContainerState extends State<CategoryDetailContainer> {
   @override
   Widget build(BuildContext context) {
     switch (widget.categoryName) {
-      case 'Fruits & legumes':
+      case 'fruits & legumes':
         return FruitsLettucesContainer(
           categoryName: widget.categoryName,
           imageUrl: widget.imageUrl!,
         );
-      case 'Magasins':
+      case 'magasins':
         return ShopContainer(
           categoryName: widget.categoryName!,
           imageUrl: widget.imageUrl,

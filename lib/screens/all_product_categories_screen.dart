@@ -19,6 +19,8 @@ class AllProductCategories extends StatelessWidget {
           shrinkwrap: false,
           uri:
               '${dotenv.env['CATEGORY_URL']}',
+          height: 1,
+          error: "Nous n'avons aucunes Categories enregistrees en Ce moment, svp reessayez platard",
         ),
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/model/store_category_argument.dart';
 import 'package:houlala/service/category_service.dart';
-import 'package:houlala/widget/discovery_category_container.dart';
+import 'package:houlala/widget/sub_category_container.dart';
 import 'package:provider/provider.dart';
 
 import '../model/store_category.dart';
@@ -37,7 +37,7 @@ class HorizontalStoreCategoryList extends StatelessWidget {
                           thumbNail: category.thumbNail,
                         ),
                       ),
-                      child: DiscoveryCategoryContainer(
+                      child: SubCategoryContainer(
                         name: category.name,
                         thumbNail: category.thumbNail,
                       ),

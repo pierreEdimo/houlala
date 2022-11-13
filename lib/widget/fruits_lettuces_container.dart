@@ -71,12 +71,12 @@ class FruitsLettucesContainer extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 70,
+                    height: 20.h,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: SubCategoryHorizontalList(
                         uri:
-                            '${dotenv.env['SUBCATEGORY_URL']}/category/621a245eaf69ff81e170c5f6',
+                            '${dotenv.env['SUBCATEGORY_URL']}/category/637062247d728921c4e3fa19',
                       ),
                     ),
                   ),
@@ -96,7 +96,7 @@ class FruitsLettucesContainer extends StatelessWidget {
                     textError: "Aucuns produits appelle n'a ete trouve\n"
                         "svp verifiez plutard",
                     uri:
-                        '${dotenv.env['PRODUCT_URL']}/random/category/621a245eaf69ff81e170c5f6?size=10',
+                        '${dotenv.env['PRODUCT_URL']}/random/category/636ee1fc17e88507378888d5?size=10',
                     crossAxisCount: 2,
                     scrollDirection: Axis.vertical,
                     widthRatio: 1,

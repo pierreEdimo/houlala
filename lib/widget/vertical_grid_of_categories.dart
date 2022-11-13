@@ -40,11 +40,24 @@ class VerticalListOfCategories extends StatelessWidget {
               ? SizedBox(
                height: MediaQuery.of(context).size.height * height!,
                 child: Center(
-                    child: Text(
-                      error!,
-                      textAlign: TextAlign.center,
-                    ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const ImageIcon(
+                        AssetImage("images/big_category.png"),
+                        size: 140,
+                      ),
+                      const SizedBox(
+                        height: 30.0,
+                      ),
+                      Text(
+                        error!,
+                        textAlign: TextAlign.center,
+                      )
+                    ],
                   ),
+                ),
               )
               : GridView.count(
                   crossAxisCount: 2,
