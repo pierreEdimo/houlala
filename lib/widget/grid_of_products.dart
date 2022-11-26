@@ -204,7 +204,7 @@ class _FilterProductsInPageState extends State<FilterProductsInPage> {
           height: 5.0,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 7.8),
+          padding: const EdgeInsets.all(5.0),
           child: TextFormField(
             textInputAction: TextInputAction.search,
             onChanged: (value) {
@@ -224,12 +224,9 @@ class _FilterProductsInPageState extends State<FilterProductsInPage> {
                   color: Color(0xff000000),
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                  borderSide: const BorderSide(
-                    width: 0,
-                    style: BorderStyle.none
-                  )
-                ),
+                    borderRadius: BorderRadius.circular(5.0),
+                    borderSide:
+                        const BorderSide(width: 0, style: BorderStyle.none)),
                 prefixIcon: const Icon(
                   Icons.search,
                   color: Color(0xff000000),
