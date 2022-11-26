@@ -58,6 +58,7 @@ dependencies:
   url_launcher: ^6.1.5
   flutter_launch: ^0.3.0
   launch_review: ^3.0.1
+  cached_network_image: ^3.2.2
 
 dev_dependencies:
   flutter_test:
@@ -118,6 +119,13 @@ flutter:
     - images/category.png
     - images/big_category.png
     - images/hand-shake.png
+    - images/categories.png
+    - images/sound-off.png
+    - images/stock.png
+    - images/no-shopping-cart.png
+    - images/customer-service.png
+    - images/shop.png
+    - images/no-talk.png
     - .env
 
 
