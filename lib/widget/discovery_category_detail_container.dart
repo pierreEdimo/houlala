@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
+import 'package:houlala/widget/custom_avatar.dart';
 import 'package:houlala/widget/transformed_container.dart';
 import 'package:sizer/sizer.dart';
 
@@ -45,13 +46,9 @@ class DiscoveryCategoryDetailContainer extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          CircleAvatar(
-                            radius: 40,
-                            backgroundColor: Colors.transparent,
-                            child: Text(
-                              thumbNail!,
-                              style: const TextStyle(fontSize: 45.0),
-                            ),
+                          CustomAvatar(
+                            radius: 20,
+                            thumbnailUrl: thumbNail!,
                           ),
                           Text(
                             name!,
@@ -79,9 +76,11 @@ class DiscoveryCategoryDetailContainer extends StatelessWidget {
             ),
             TransformedContainer(
               child: GridPages(
-                height: 55.h,
-                textError: "No Stores",
+                height: 0.5,
+                textError:
+                    "Nous n'avons encore aucuns magasins dans cette rubrique. Svp reessayez plutard.",
                 uri: '${dotenv.env['LOCATION_URL']}/category/$id',
+                direction: Axis.vertical,
               ),
             )
           ],

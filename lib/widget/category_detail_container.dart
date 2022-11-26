@@ -36,7 +36,9 @@ class _CategoryDetailContainerState extends State<CategoryDetailContainer> {
           child: const TransformedContainer(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-              child: StoreBodyContainer(),
+              child: StoreBodyContainer(
+                height: 0.33,
+              ),
             ),
           ),
         );

@@ -35,7 +35,6 @@ class AuthService extends ChangeNotifier {
 
       box.put('logged', 'loggedIn');
       loggedState = box.get('logged');
-      print(responseJson['token']);
       notifyListeners();
     }
     return response;
@@ -44,10 +43,13 @@ class AuthService extends ChangeNotifier {
   Future<UserInformation> fetchConnectedUser() async {
     String? email = await storage.read(key: "email");
 
+    String? jwt = await storage.read(key: "token");
     var url = Uri.parse('${dotenv.env['AUTH_URL']}/users/$email');
 
-    Response response = await get(url);
-
+    Response response = await get(url, headers: {
+      'Content-Type': 'application/json',
+      'Authorization': jwt!,
+    });
     if (response.statusCode == 200) {
       return UserInformation.fromJson(jsonDecode(response.body));
     } else {
@@ -57,8 +59,12 @@ class AuthService extends ChangeNotifier {
 
   Future<Response> editPersonalData(PersonalData model) async {
     String? email = await storage.read(key: "email");
+    String? jwt = await storage.read(key: "token");
 
-    Map<String, String> headers = {'Content-Type': 'application/json'};
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Authorization': jwt!,
+    };
     String jsEncode;
     jsEncode = jsonEncode(model);
 
@@ -86,7 +92,13 @@ class AuthService extends ChangeNotifier {
   }
 
   Future<Response> editAddressData(Address model) async {
-    Map<String, String> headers = {'Content-Type': 'application/json'};
+    String? jwt = await storage.read(key: "token");
+
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Authorization': jwt!,
+    };
+
     String jsEncode;
     jsEncode = jsonEncode(model);
     String? email = await storage.read(key: "email");
@@ -114,7 +126,13 @@ class AuthService extends ChangeNotifier {
   }
 
   Future<Response> editEmail(EditEmail model) async {
-    Map<String, String> headers = {'Content-Type': 'application/json'};
+    String? jwt = await storage.read(key: "token");
+
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Authorization': jwt!,
+    };
+
     String jsEncode;
     jsEncode = jsonEncode(model);
     String? email = await storage.read(key: "email");
@@ -136,8 +154,6 @@ class AuthService extends ChangeNotifier {
       box.put('logged', 'loggedIn');
       loggedState = box.get('logged');
 
-
-
       notifyListeners();
     }
     return response;
@@ -153,7 +169,6 @@ class AuthService extends ChangeNotifier {
       headers: headers,
       body: jsEncode,
     );
-    print(response.statusCode);
     if (response.statusCode == 201) {
       final responseJson = json.decode(response.body);
 

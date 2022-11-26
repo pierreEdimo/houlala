@@ -6,7 +6,12 @@ import 'grid_pages.dart';
 import 'horizontal_d_category_list.dart';
 
 class StoreBodyContainer extends StatelessWidget {
-  const StoreBodyContainer({Key? key}) : super(key: key);
+  final double? height;
+
+  const StoreBodyContainer({
+    Key? key,
+    this.height,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +44,10 @@ class StoreBodyContainer extends StatelessWidget {
                 fontWeight: FontWeight.bold),
           ),
           uri: '${dotenv.env['LOCATION_URL']}/store?limit=10',
-          textError: "Nous n'avons encore aucuns Partenaires, svp reessayez plutard.",
-          height: 0.5,
+          textError:
+              "Nous n'avons encore aucuns Partenaires, svp reessayez plutard.",
+          height: height,
+          direction: Axis.vertical,
         )
       ],
     );

@@ -15,13 +15,14 @@ class PageProductContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridOfProducts(
-      height: 25.h,
+      height: 35.h,
       textError: textError,
       scrollDirection: Axis.vertical,
       uri: uri!,
       heightRatio: 1.35,
       widthRatio: 1,
       crossAxisCount: 2,
+      origin: "Location",
     );
   }
 }

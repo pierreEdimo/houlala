@@ -15,7 +15,9 @@ class AllPageScreen extends StatelessWidget {
       ),
       body: const SingleChildScrollView(
         child: StandardCustomContainer(
-          child: StoreBodyContainer(),
+          child: StoreBodyContainer(
+            height: 0.5,
+          ),
         ),
       ),
     );

@@ -1,11 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:houlala/widget/blur_container.dart';
 import 'package:houlala/service/page_service.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
-import 'package:houlala/widget/background_image.dart';
-import 'package:houlala/widget/intern_navigation.dart';
+import 'package:houlala/widget/custom_avatar.dart';
+import 'package:houlala/widget/custom_intern_navigation.dart';
 import 'package:houlala/widget/page_home_container.dart';
 import 'package:houlala/widget/page_info_container.dart';
 import 'package:houlala/widget/page_post_container.dart';
@@ -13,8 +12,6 @@ import 'package:houlala/widget/page_product_container.dart';
 import 'package:houlala/widget/transformed_container.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
-
-import '../helper/constants.dart';
 import '../model/location.dart';
 
 class PageDetailContainer extends StatelessWidget {
@@ -39,14 +36,12 @@ class PageDetailContainer extends StatelessWidget {
                 page: page,
               ),
               PageProductContainer(
-                textError: "${page.name} n'a pas encore insere de produits\n"
-                    "svp verifiez plutard",
+                textError: "${page.name} n'a pas encore insere de produits",
                 uri:
                     '${dotenv.env['PRODUCT_URL']}/location/${page.uniqueIdentifier}?limit=0',
               ),
               PagePostContainer(
-                textError: "${page.name} n'a pas encore insere de posts\n"
-                    "svp venez verifier plutard",
+                textError: "${page.name} n'a pas encore insere de posts",
                 url:
                     '${dotenv.env['POST_URL']}/location/${page.uniqueIdentifier!}',
               ),
@@ -59,18 +54,9 @@ class PageDetailContainer extends StatelessWidget {
                     children: [
                       SizedBox(
                         height: 35.h,
-                        child: BackgroundImage(
-                          borderRadius: 0,
-                          imageUrl: page.imageUrl,
-                        ),
-                      ),
-                      const BlurContainer(),
-                      SizedBox(
-                        height: !kIsWeb ? null : 70.0,
-                        child: AppBarWithReturn(
-                          title: "",
-                          color: Colors.transparent,
-                          elevation: 0,
+                        child: Container(
+                          width: 100.w,
+                          color: const Color(0xf2f2f2f2),
                         ),
                       ),
                       SizedBox(
@@ -78,24 +64,49 @@ class PageDetailContainer extends StatelessWidget {
                         child: Container(
                           alignment: Alignment.bottomLeft,
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Text(
-                            page.name!,
-                            style: detailTitleStyle,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              CustomAvatar(
+                                radius: 20,
+                                thumbnailUrl: page.imageUrl!,
+                              ),
+                              Text(
+                                page.name!,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: "PoppinsBold",
+                                    fontSize: 28.0,
+                                    color: Colors.black),
+                              )
+                            ],
                           ),
                         ),
-                      )
+                      ),
+                      SizedBox(
+                        height: !kIsWeb ? null : 70.0,
+                        child: AppBarWithReturn(
+                          title: "",
+                          color: Colors.black,
+                          elevation: 0,
+                        ),
+                      ),
                     ],
                   ),
                   TransformedContainer(
-                    child: InternNavigation(
-                      elevationValue: 0,
-                      children: _widgetOptions,
+                    child: CustomInternNavigation(
                       menuItems: const [
                         "Accueil",
                         "A Propos",
                         "Produits",
                         "Annonces",
                       ],
+                      widgetOptions: _widgetOptions,
+                      elevationValue: 0,
+                      verticalPadding: 23.0,
+                      horizontalPadding: 0.0,
+                      height: 0.1,
                     ),
                   )
                 ],

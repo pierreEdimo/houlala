@@ -6,16 +6,18 @@ import 'package:houlala/model/send_email.dart';
 import 'package:http/http.dart';
 
 class EmailService extends ChangeNotifier {
-  Future<void> sendEmail(SendEmail newEmail) async {
+  Future<void> sendEmail(String emailtype, SendEmail newEmail) async {
     Map<String, String> headers = {'Content-Type': 'application/json'};
     String jsEncode;
     jsEncode = jsonEncode(newEmail);
-    var url = Uri.parse('${dotenv.env['EMAIL_URL']}');
-    await post(
+    var url = Uri.parse('${dotenv.env['EMAIL_URL']}/$emailtype');
+    Response response = await post(
       url,
       headers: headers,
       body: jsEncode,
     );
+    print(response.body.toString());
+    print(response.statusCode);
     notifyListeners();
   }
 }

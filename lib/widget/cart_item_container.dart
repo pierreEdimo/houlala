@@ -57,7 +57,7 @@ class CartItemContainer extends StatelessWidget {
                     Expanded(
                       child: Text(
                         cartItem!.name!,
-                        maxLines: 3,
+                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
@@ -135,7 +135,7 @@ class CartItemContainer extends StatelessWidget {
                     Expanded(
                       child: Text(
                         cartItem!.name!,
-                        maxLines: 3,
+                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,

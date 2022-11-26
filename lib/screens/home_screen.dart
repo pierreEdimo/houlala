@@ -16,45 +16,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveHomeScreen(
-      categoryListHeight: 220,
-      productGridHeight: 25.h,
-      scrollDirection: Axis.vertical,
-      crossAxisCount: 2,
-      widthRatio: 1,
-      heightRatio: 1.5,
-      pageGridWidth: 90.w,
-      postWidth: 90.w,
-    );
-  }
-}
-
-class ResponsiveHomeScreen extends StatelessWidget {
-  final double? categoryListHeight;
-  final double? productGridHeight;
-  final int? crossAxisCount;
-  final double? widthRatio;
-  final double? heightRatio;
-  final Axis? scrollDirection;
-  final double? pageGridWidth;
-  final double? postWidth;
-  final double? tabletProductGridHeight;
-
-  const ResponsiveHomeScreen(
-      {Key? key,
-      this.categoryListHeight,
-      this.productGridHeight,
-      this.widthRatio,
-      this.heightRatio,
-      this.crossAxisCount,
-      this.scrollDirection,
-      this.pageGridWidth,
-      this.tabletProductGridHeight,
-      this.postWidth})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'houlala',
@@ -68,7 +29,7 @@ class ResponsiveHomeScreen extends StatelessWidget {
               children: [
                 CustomBoxContainer(
                   child: SizedBox(
-                    height: categoryListHeight,
+                    height: 220,
                     child: ListOfCategories(
                       child: Container(
                         margin: const EdgeInsets.only(bottom: 5.0),
@@ -86,10 +47,9 @@ class ResponsiveHomeScreen extends StatelessWidget {
                 standardSizedBox,
                 CustomBoxContainer(
                   child: SizedBox(
-                    height: tabletProductGridHeight,
                     child: GridOfProducts(
-                      height: productGridHeight,
-                      textError: "Aucuns Produits",
+                      height: 180,
+                      textError: "Aucuns produits",
                       child: Container(
                         margin: const EdgeInsets.only(bottom: 5.0),
                         child: const FlexibleRow(
@@ -98,21 +58,21 @@ class ResponsiveHomeScreen extends StatelessWidget {
                         ),
                       ),
                       uri:
-                          '${dotenv.env['PRODUCT_URL']}/random/category/621a245eaf69ff81e170c5f6?size=4',
-                      scrollDirection: scrollDirection,
-                      crossAxisCount: crossAxisCount,
-                      widthRatio: widthRatio,
-                      heightRatio: heightRatio,
+                          '${dotenv.env['PRODUCT_URL']}/random/category/637062247d728921c4e3fa19?size=4',
+                      scrollDirection: Axis.vertical,
+                      crossAxisCount: 2,
+                      widthRatio: 1,
+                      heightRatio: 1.5,
                     ),
                   ),
                 ),
                 standardSizedBox,
                 CustomBoxContainer(
                   child: SizedBox(
-                    height: 130,
+                    height: 220,
                     child: GridPages(
-                      height: 115,
-                      width: pageGridWidth,
+                      height: 25.h,
+                      width: 90.w,
                       textError: "Aucunes Pages",
                       child: Container(
                         margin: const EdgeInsets.only(bottom: 5.0),
@@ -129,7 +89,7 @@ class ResponsiveHomeScreen extends StatelessWidget {
                 standardSizedBox,
                 CustomBoxContainer(
                   child: ListOfPosts(
-                    postWidth: postWidth,
+                    postWidth: 90.w,
                     textError: "Aucuns posts",
                     scrollDirection: Axis.horizontal,
                     errorHeight: 35.h,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/widget/custom_avatar.dart';
 
 class SubCategoryContainer extends StatelessWidget {
   final String? name;
@@ -28,10 +29,12 @@ class SubCategoryContainer extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: 40,
-                backgroundImage: NetworkImage(thumbNail!),
+              CustomAvatar(
+                radius: 25,
+                thumbnailUrl: thumbNail!,
               ),
               Text(
                 name!,

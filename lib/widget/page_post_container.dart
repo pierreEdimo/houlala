@@ -17,7 +17,7 @@ class PagePostContainer extends StatelessWidget {
     return ListOfPosts(
       textError: textError,
       scrollDirection: Axis.vertical,
-      errorHeight: 25.h,
+      errorHeight: 35.h,
       uri: url!,
     );
   }

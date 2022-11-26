@@ -10,7 +10,6 @@ class CategoryService extends ChangeNotifier {
   Future<List<CategoryModel>> fetchAllCategories(String uri) async {
     var url = Uri.parse(uri);
     Response response = await get(url);
-    print(response.statusCode);
 
     if (response.statusCode == 200) {
       List<dynamic> body = jsonDecode(response.body);

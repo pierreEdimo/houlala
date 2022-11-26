@@ -44,12 +44,15 @@ class VerticalListOfCategories extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const ImageIcon(
-                        AssetImage("images/big_category.png"),
-                        size: 140,
+                      CircleAvatar(
+                        radius: 70,
+                        backgroundColor: Colors.transparent,
+                        child: ClipRRect(
+                          child: Image.asset("images/categories.png"),
+                        ),
                       ),
                       const SizedBox(
-                        height: 30.0,
+                        height: 10.0,
                       ),
                       Text(
                         error!,

@@ -26,7 +26,7 @@ class SearchResultContainer extends StatelessWidget {
     final List<Widget> _widgetOptions = [
       StandardCustomContainer(
         child: GridOfProducts(
-          height: 80.h,
+          height: 50.h,
           textError: "Aucuns produits appelle $searchword n'a ete trouve\n"
               "svp verifiez plutard",
           uri: '${dotenv.env['PRODUCT_URL']}/search?searchWord=$searchword',
@@ -40,14 +40,14 @@ class SearchResultContainer extends StatelessWidget {
         child: VerticalListOfCategories(
           uri: '${dotenv.env['CATEGORY_URL']}/search?searchword=$searchword',
           shrinkwrap: true,
-          height: 0.8,
+          height: 0.5,
           error: "Aucunes categories appeles $searchword n'a ete trouvee\n"
               "veuillez reessayer plutard",
         ),
       ),
       StandardCustomContainer(
         child: GridPages(
-          height: 80.h,
+          height: 0.5,
           textError: "Aucuns magasins appele $searchword n'a ete trouve\n"
               "svp veuillez reessayer plutard",
           uri: '${dotenv.env['LOCATION_URL']}/search?word=$searchword',
@@ -58,7 +58,7 @@ class SearchResultContainer extends StatelessWidget {
         child: ListOfPosts(
           scrollDirection: Axis.vertical,
           uri: '${dotenv.env['POST_URL']}/search?word=$searchword',
-          errorHeight: 80.h,
+          errorHeight: 50.h,
           textError: "Aucuns Posts titre $searchword n'a ete trouve\n"
               "veuillez reessayer plutard",
         ),

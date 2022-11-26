@@ -172,16 +172,17 @@ class CheckoutButton extends StatelessWidget {
                                                   totalPrice: order.totalPrice);
 
                                           var newEmail = SendEmail(
-                                              subject:
-                                                  "Nouvelle commanded venant de ${connectedUser.name}, ${connectedUser.firstName}",
-                                              to: order.location!.email!,
-                                              userInformation: connectedUser,
-                                              order: orderEmail);
+                                            subject:
+                                                "Nouvelle commande venant de ${connectedUser.name}, ${connectedUser.firstName}",
+                                            to: order.location!.email!,
+                                            userInformation: connectedUser,
+                                            order: orderEmail,
+                                          );
 
                                           await Provider.of<EmailService>(
                                                   context,
                                                   listen: false)
-                                              .sendEmail(newEmail);
+                                              .sendEmail("order", newEmail);
                                         }
 
                                         Response response =

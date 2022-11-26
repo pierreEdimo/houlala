@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/screens/post_detail_screen.dart';
 import 'package:houlala/service/post_service.dart';
+import 'package:houlala/widget/custom_avatar.dart';
 import 'package:houlala/widget/post_container.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
@@ -51,9 +52,22 @@ class ListOfPosts extends StatelessWidget {
                   ? SizedBox(
                       height: errorHeight == null ? 25.h : errorHeight!,
                       child: Center(
-                        child: Text(
-                          textError!,
-                          textAlign: TextAlign.center,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const CustomAvatar(
+                              localAsset: "images/no-talk.png",
+                              radius: 50,
+                            ),
+                            const SizedBox(
+                              height: 10.0,
+                            ),
+                            Text(
+                              textError!,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
                         ),
                       ),
                     )

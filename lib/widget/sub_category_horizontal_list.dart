@@ -32,6 +32,7 @@ class SubCategoryHorizontalList extends StatelessWidget {
                         arguments: SubCategoryParameter(
                           id: category.id,
                           label: category.label,
+                          thumbNail: category.thumbNailUrl
                         ),
                       ),
                       child: SubCategoryContainer(

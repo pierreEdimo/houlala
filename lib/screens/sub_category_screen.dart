@@ -40,6 +40,12 @@ class SubCategoryScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
+                          CircleAvatar(
+                            radius: 20,
+                            backgroundColor: Colors.transparent,
+                            backgroundImage:
+                                NetworkImage(subCategoryParameter.thumbNail!),
+                          ),
                           Text(
                             subCategoryParameter.label!,
                             style: const TextStyle(
