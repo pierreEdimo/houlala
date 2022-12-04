@@ -219,6 +219,7 @@ class _FilterProductsInPageState extends State<FilterProductsInPage> {
             decoration: InputDecoration(
                 hintText: "Rechercher",
                 fillColor: const Color(0xfff2f2f2),
+                contentPadding:  const EdgeInsets.symmetric(vertical: 15.0),
                 filled: true,
                 hintStyle: const TextStyle(
                   color: Color(0xff000000),

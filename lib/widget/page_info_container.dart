@@ -16,17 +16,16 @@ class PageInfoContainer extends StatelessWidget {
       children: [
         CustomColumnContainer(
           child: const Text(
-            "Historique",
-            style: TextStyle(
-              fontSize: 17.0,
-              fontFamily: "PoppinsBold"
-            ),
+            "A Propos",
+            style: TextStyle(fontSize: 22.0, fontFamily: "PoppinsBold"),
           ),
           gridList: MarkdownContainer(
             data: page!.description!,
           ),
         ),
-        standardSizedBox,
+        const SizedBox(
+          height: 20.0,
+        ),
         PageContactInformation(
           page: page,
         )

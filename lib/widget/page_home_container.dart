@@ -20,16 +20,20 @@ class PageHomeContainer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomColumnContainer(
-          child: Text(
+          child: const Text(
             "A Propos",
-            style: standardStyle,
+            style: TextStyle(
+              fontSize: 22.0,
+              fontWeight: FontWeight.bold,
+              fontFamily: "PoppinsBold",
+            ),
           ),
           gridList: MarkdownContainer(
-            data: pageModel!.description!,
+            data: pageModel!.shortDescription!,
           ),
         ),
         const SizedBox(
-          height: 5.0,
+          height: 20.0,
         ),
         SizedBox(
           height: 280,
@@ -39,9 +43,12 @@ class PageHomeContainer extends StatelessWidget {
                 "svp veuillez verifier plutard",
             child: Container(
               margin: const EdgeInsets.only(bottom: 5.0),
-              child: Text(
+              child: const Text(
                 "Produits",
-                style: standardStyle,
+                style: TextStyle(
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "PoppinsBold"),
               ),
             ),
             scrollDirection: Axis.horizontal,
@@ -53,7 +60,7 @@ class PageHomeContainer extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: 5.0,
+          height: 20.0,
         ),
         ListOfPosts(
           textError: "${pageModel!.name!} n'a pas encore insere de posts"

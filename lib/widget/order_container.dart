@@ -146,7 +146,7 @@ class CardBottom extends StatelessWidget {
               const Text(
                 "Quantite: ",
                 style: TextStyle(
-                  fontSize: 16.0,
+                  fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                   fontFamily: "PoppinsBold",
                 ),
@@ -164,7 +164,7 @@ class CardBottom extends StatelessWidget {
               const Text(
                 "Prix: ",
                 style: TextStyle(
-                  fontSize: 16.0,
+                  fontSize: 18.0,
                   fontWeight: FontWeight.bold,
                   fontFamily: "PoppinsBold",
                 ),

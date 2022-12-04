@@ -98,7 +98,7 @@ class PageDetailContainer extends StatelessWidget {
                     child: CustomInternNavigation(
                       menuItems: const [
                         "Accueil",
-                        "A Propos",
+                        "Informations",
                         "Produits",
                         "Annonces",
                       ],

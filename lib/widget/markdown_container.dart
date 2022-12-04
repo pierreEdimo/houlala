@@ -17,18 +17,23 @@ class MarkdownContainer extends StatelessWidget {
       physics: const ClampingScrollPhysics(),
       shrinkWrap: true,
       data: data!,
-      onTapLink: (text, uri, title){
+      onTapLink: (text, uri, title) {
         Uri url = Uri.parse(uri!);
         launchUrl(url);
       },
       styleSheet: MarkdownStyleSheet(
-          h1: const TextStyle(
-              fontWeight: FontWeight.bold, fontFamily: 'PoppinsBold'),
-          h2: const TextStyle(
-            fontFamily: 'PoppinsBold',
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          )),
+        h1: const TextStyle(
+            fontWeight: FontWeight.bold, fontFamily: 'PoppinsBold'),
+        h2: const TextStyle(
+          fontFamily: 'PoppinsBold',
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+        p: const TextStyle(
+          fontSize: 18.0,
+          letterSpacing: 0.1,
+        )
+      ),
     );
   }
 }
