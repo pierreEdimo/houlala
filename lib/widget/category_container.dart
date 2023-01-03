@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/model/page_screen_arguments.dart';
 import 'package:houlala/screens/category_detail_screen.dart';
-import 'package:houlala/widget/background_image.dart';
+import 'package:houlala/widget/custom_avatar.dart';
 import 'package:houlala/widget/transparent_card_container.dart';
 
 import '../model/product_category.dart';
@@ -9,11 +9,13 @@ import '../model/product_category.dart';
 class CategoryContainer extends StatelessWidget {
   final CategoryModel? categoryModel;
   final double? weight;
+  final double? radius;
 
   const CategoryContainer({
     Key? key,
     this.categoryModel,
     this.weight,
+    this.radius,
   }) : super(key: key);
 
   @override
@@ -28,13 +30,15 @@ class CategoryContainer extends StatelessWidget {
               )),
       child: TransparentCardContainer(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              child: SizedBox(
-                width: weight!,
-                child: BackgroundImage(
-                  imageUrl: categoryModel!.imageUrl!,
+            SizedBox(
+              width: weight!,
+              child: Center(
+                child: CustomAvatar(
+                  radius: radius,
+                  thumbnailUrl: categoryModel!.imageUrl!,
                 ),
               ),
             ),
@@ -47,10 +51,11 @@ class CategoryContainer extends StatelessWidget {
                 categoryModel!.name!,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'PoppinsBold',
-                  fontSize: 18.0
+                  fontSize: 18.0,
                 ),
               ),
             )

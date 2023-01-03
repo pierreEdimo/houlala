@@ -5,7 +5,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/model/offline_order.dart';
 import 'package:houlala/screens/about_screen.dart';
-import 'package:houlala/screens/all_post_screen.dart';
 import 'package:houlala/screens/all_product_categories_screen.dart';
 import 'package:houlala/screens/all_fruits_and_lettuces_screen.dart';
 import 'package:houlala/screens/all_pages_screen.dart';
@@ -43,6 +42,8 @@ var box = Hive.box('loggedState');
 const storage = FlutterSecureStorage();
 
 Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await Hive.initFlutter();
   await Hive.openBox('loggedState');
   Hive.registerAdapter(OfflineOrderAdapter());
@@ -119,7 +120,6 @@ class MyApp extends StatelessWidget {
                     const CategoryDetailScreen(),
                 PageDetailScreen.screenName: (context) =>
                     const PageDetailScreen(),
-                '/all_posts': (context) => const AllPostsScreen(),
                 PostDetailScreen.routeName: (context) => PostDetailScreen(),
                 '/search': (context) => const SearchScreen(),
                 FavoriteScreen.routeName: (context) => const FavoriteScreen(),

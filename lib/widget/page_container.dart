@@ -52,6 +52,7 @@ class PageContainer extends StatelessWidget {
                     Flexible(
                       child: Text(
                         page!.name!,
+                        textAlign: TextAlign.center,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
@@ -67,6 +68,7 @@ class PageContainer extends StatelessWidget {
                     Flexible(
                       child: Text(
                         "${page!.category!.name!}, ${page!.address!.city!}",
+                        textAlign: TextAlign.center,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: subtitle,

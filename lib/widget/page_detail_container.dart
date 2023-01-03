@@ -7,7 +7,6 @@ import 'package:houlala/widget/custom_avatar.dart';
 import 'package:houlala/widget/custom_intern_navigation.dart';
 import 'package:houlala/widget/page_home_container.dart';
 import 'package:houlala/widget/page_info_container.dart';
-import 'package:houlala/widget/page_post_container.dart';
 import 'package:houlala/widget/page_product_container.dart';
 import 'package:houlala/widget/transformed_container.dart';
 import 'package:provider/provider.dart';
@@ -39,12 +38,7 @@ class PageDetailContainer extends StatelessWidget {
                 textError: "${page.name} n'a pas encore insere de produits",
                 uri:
                     '${dotenv.env['PRODUCT_URL']}/location/${page.uniqueIdentifier}?limit=0',
-              ),
-              PagePostContainer(
-                textError: "${page.name} n'a pas encore insere de posts",
-                url:
-                    '${dotenv.env['POST_URL']}/location/${page.uniqueIdentifier!}',
-              ),
+              )
             ];
 
             return SingleChildScrollView(
@@ -100,7 +94,6 @@ class PageDetailContainer extends StatelessWidget {
                         "Accueil",
                         "Informations",
                         "Produits",
-                        "Annonces",
                       ],
                       widgetOptions: _widgetOptions,
                       elevationValue: 0,

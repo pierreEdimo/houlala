@@ -113,8 +113,15 @@ class ProductContainer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: BackgroundImage(
-                  imageUrl: product!.imageUrl!,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(5.0)
+                  ),
+                  child: BackgroundImage(
+                    imageUrl: product!.imageUrl!,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               const SizedBox(

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/widget/grid_of_products.dart';
 import 'package:houlala/widget/grid_pages.dart';
-import 'package:houlala/widget/list_of_posts.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:houlala/widget/vertical_grid_of_categories.dart';
 import 'package:sizer/sizer.dart';
@@ -18,7 +17,6 @@ class SearchResultContainer extends StatelessWidget {
     "produits",
     "categories",
     "magasins",
-    "posts",
   ];
 
   @override
@@ -53,16 +51,7 @@ class SearchResultContainer extends StatelessWidget {
           uri: '${dotenv.env['LOCATION_URL']}/search?word=$searchword',
           direction: Axis.vertical,
         ),
-      ),
-      StandardCustomContainer(
-        child: ListOfPosts(
-          scrollDirection: Axis.vertical,
-          uri: '${dotenv.env['POST_URL']}/search?word=$searchword',
-          errorHeight: 50.h,
-          textError: "Aucuns Posts titre $searchword n'a ete trouve\n"
-              "veuillez reessayer plutard",
-        ),
-      ),
+      )
     ];
     return CustomInternNavigation(
       menuItems: _menuItems,

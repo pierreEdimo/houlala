@@ -6,7 +6,6 @@ import 'package:houlala/model/location.dart';
 import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/grid_of_products.dart';
 import 'package:houlala/widget/markdown_container.dart';
-import 'list_of_posts.dart';
 import 'package:sizer/sizer.dart';
 
 class PageHomeContainer extends StatelessWidget {
@@ -62,21 +61,6 @@ class PageHomeContainer extends StatelessWidget {
         const SizedBox(
           height: 20.0,
         ),
-        ListOfPosts(
-          textError: "${pageModel!.name!} n'a pas encore insere de posts"
-              "svp venez verifier plutard",
-          scrollDirection: Axis.horizontal,
-          errorHeight: 35.h,
-          child: Text(
-            "posts par ${pageModel!.name}",
-            style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 17,
-                fontFamily: "PoppinsBold"),
-          ),
-          uri:
-              '${dotenv.env['POST_URL']}/random/location/${pageModel!.uniqueIdentifier!}?size=10',
-        )
       ],
     );
   }

@@ -19,7 +19,7 @@ class PageProductContainer extends StatelessWidget {
       textError: textError,
       scrollDirection: Axis.vertical,
       uri: uri!,
-      heightRatio: 1.35,
+      heightRatio: 1.5,
       widthRatio: 1,
       crossAxisCount: 2,
       origin: "Location",

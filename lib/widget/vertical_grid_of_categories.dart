@@ -63,11 +63,13 @@ class VerticalListOfCategories extends StatelessWidget {
                 ),
               )
               : GridView.count(
-                  crossAxisCount: 2,
+                  crossAxisCount: 3,
                   shrinkWrap: true,
                   physics: const ClampingScrollPhysics(),
+                  childAspectRatio: 2.4/3,
                   children: categories
                       .map((CategoryModel categoryModel) => CategoryContainer(
+                     radius: 40,
                             categoryModel: categoryModel,
                             weight: 100.w,
                           ))

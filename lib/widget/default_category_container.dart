@@ -19,38 +19,56 @@ class DefaultCategoryContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Stack(
-          children: [
-            SizedBox(
-              child: BackgroundImage(
-                borderRadius: 0,
-                imageUrl: imageUrl!,
-              ),
-              height: 35.h,
-            ),
-            const BlurContainer(),
-            SizedBox(
-              height: 30.h,
-              child: Container(
-                alignment: Alignment.bottomLeft,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10.0,
-                ),
-                child: Text(
-                  categoryName!,
-                  style: detailTitleStyle,
+        Material(
+          elevation: 1,
+          child: Stack(
+            children: [
+              SizedBox(
+                height: 35.h,
+                child: Container(
+                  width: 100.w,
+                  color: const Color(0xf2f2f2f2),
                 ),
               ),
-            ),
-            SizedBox(
-              height: !kIsWeb ? null : 70.0,
-              child: AppBarWithReturn(
-                elevation: 0,
-                color: Colors.transparent,
-                title: "",
+              SizedBox(
+                height: 30.h,
+                child: Container(
+                  alignment: Alignment.bottomLeft,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10.0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      CircleAvatar(
+                        radius: 20,
+                        backgroundColor: Colors.transparent,
+                        backgroundImage: NetworkImage(imageUrl!),
+                      ),
+                      Text(
+                        categoryName!,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontFamily: "poppinsBold",
+                          fontSize: 28.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            )
-          ],
+              SizedBox(
+                height: !kIsWeb ? null : 70.0,
+                child: AppBarWithReturn(
+                  elevation: 0,
+                  color: Colors.transparent,
+                  title: "",
+                ),
+              )
+            ],
+          ),
         ),
         TransformedContainer(
           child: Column(

@@ -57,23 +57,29 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                       children: [
                         Stack(
                           children: [
-                            SizedBox(
-                              height: 35.h,
+                            Container(
+                              color: Colors.grey.shade200,
+                              height: 65.h,
                               child: BackgroundImage(
                                 borderRadius: 0,
                                 imageUrl: foundProduct.imageUrl!,
+                                fit: BoxFit.contain,
                               ),
                             ),
-                            const BlurContainer(),
                             SizedBox(
-                              height: 30.h,
+                              height: 62.h,
                               child: Container(
                                 alignment: Alignment.bottomLeft,
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10.0),
                                 child: Text(
                                   foundProduct.name!,
-                                  style: detailTitleStyle,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                    fontSize: 28.0,
+                                    fontFamily: "PoppinsBold",
+                                  ),
                                 ),
                               ),
                             ),

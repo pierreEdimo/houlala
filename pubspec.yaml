@@ -126,6 +126,7 @@ flutter:
     - images/customer-service.png
     - images/shop.png
     - images/no-talk.png
+    - ca/lets-encrypt-r3.pem
     - .env
 
 

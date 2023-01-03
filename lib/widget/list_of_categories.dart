@@ -37,8 +37,9 @@ class ListOfCategories extends StatelessWidget {
                   shrinkWrap: shrinkWrap!,
                   children: categories
                       .map((CategoryModel category) => CategoryContainer(
+                    radius: 40,
                             categoryModel: category,
-                            weight: 150,
+                            weight: 100,
                           ))
                       .toList(),
                 ),

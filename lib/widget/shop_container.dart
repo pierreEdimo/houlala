@@ -27,12 +27,11 @@ class ShopContainer extends StatelessWidget {
             children: [
               SizedBox(
                 height: 35.h,
-                child: BackgroundImage(
-                  borderRadius: 0.0,
-                  imageUrl: imageUrl,
+                child: Container(
+                  width: 100.w,
+                  color: const Color(0xf2f2f2f2),
                 ),
               ),
-              const BlurContainer(),
               SizedBox(
                 height: 30.h,
                 child: Container(
@@ -40,9 +39,25 @@ class ShopContainer extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     horizontal: 10.0,
                   ),
-                  child: Text(
-                    categoryName!,
-                    style: detailTitleStyle,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      CircleAvatar(
+                        radius: 20.0,
+                        backgroundColor: Colors.transparent,
+                        backgroundImage: NetworkImage(imageUrl!),
+                      ),
+                      Text(
+                        categoryName!,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontSize: 28.0,
+                          fontFamily: "poppinsBold",
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

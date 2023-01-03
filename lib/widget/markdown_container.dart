@@ -22,18 +22,22 @@ class MarkdownContainer extends StatelessWidget {
         launchUrl(url);
       },
       styleSheet: MarkdownStyleSheet(
-        h1: const TextStyle(
-            fontWeight: FontWeight.bold, fontFamily: 'PoppinsBold'),
-        h2: const TextStyle(
-          fontFamily: 'PoppinsBold',
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
-        p: const TextStyle(
-          fontSize: 18.0,
-          letterSpacing: 0.1,
-        )
-      ),
+          h1: const TextStyle(
+              fontWeight: FontWeight.bold, fontFamily: 'PoppinsBold'),
+          h2: const TextStyle(
+            fontFamily: 'PoppinsBold',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+          h6: const TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.red,
+          ),
+          p: const TextStyle(
+            fontSize: 18.0,
+            letterSpacing: 0.1,
+          )),
     );
   }
 }

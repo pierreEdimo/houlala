@@ -4,12 +4,14 @@ class BackgroundImage extends StatelessWidget {
   final String? imageUrl;
   final double? width;
   final double? borderRadius;
+  final BoxFit? fit;
 
   const BackgroundImage({
     Key? key,
     this.imageUrl,
     this.width,
     this.borderRadius,
+    this.fit,
   }) : super(key: key);
 
   @override
@@ -19,9 +21,10 @@ class BackgroundImage extends StatelessWidget {
       decoration: BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(imageUrl!),
-            fit: BoxFit.cover,
+            fit: fit == null ? BoxFit.cover : fit!,
           ),
-          borderRadius: BorderRadius.circular(borderRadius == null ? 5 : borderRadius !)),
+          borderRadius:
+              BorderRadius.circular(borderRadius == null ? 5 : borderRadius!)),
     );
   }
 }

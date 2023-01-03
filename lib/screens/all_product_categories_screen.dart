@@ -17,10 +17,10 @@ class AllProductCategories extends StatelessWidget {
       body: StandardCustomContainer(
         child: VerticalListOfCategories(
           shrinkwrap: false,
-          uri:
-              '${dotenv.env['CATEGORY_URL']}',
+          uri: '${dotenv.env['CATEGORY_URL']}',
           height: 1,
-          error: "Nous n'avons aucunes Categories enregistrees en Ce moment, svp reessayez platard",
+          error:
+              "Nous n'avons aucunes Categories enregistrees en Ce moment, svp reessayez platard",
         ),
       ),
     );

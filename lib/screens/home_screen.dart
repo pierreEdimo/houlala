@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/widget/container_wirth_connectivity_checker.dart';
 import 'package:houlala/widget/grid_pages.dart';
-import 'package:houlala/widget/list_of_posts.dart';
 import 'package:houlala/widget/standard_custom_app_bar.dart';
 import 'package:houlala/widget/custom_box_container.dart';
 import 'package:houlala/widget/flexible_row.dart';
@@ -29,7 +28,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 CustomBoxContainer(
                   child: SizedBox(
-                    height: 220,
+                    height: 160,
                     child: ListOfCategories(
                       child: Container(
                         margin: const EdgeInsets.only(bottom: 5.0),
@@ -46,24 +45,22 @@ class HomeScreen extends StatelessWidget {
                 ),
                 standardSizedBox,
                 CustomBoxContainer(
-                  child: SizedBox(
-                    child: GridOfProducts(
-                      height: 180,
-                      textError: "Aucuns produits",
-                      child: Container(
-                        margin: const EdgeInsets.only(bottom: 5.0),
-                        child: const FlexibleRow(
-                          title: 'fruits & legumes',
-                          urlValue: "/all_fruits",
-                        ),
+                  child: GridOfProducts(
+                    height: 180,
+                    textError: "Aucuns produits",
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 5.0),
+                      child: const FlexibleRow(
+                        title: 'fruits & legumes',
+                        urlValue: "/all_fruits",
                       ),
-                      uri:
-                          '${dotenv.env['PRODUCT_URL']}/random/category/637062247d728921c4e3fa19?size=4',
-                      scrollDirection: Axis.vertical,
-                      crossAxisCount: 2,
-                      widthRatio: 1,
-                      heightRatio: 1.5,
                     ),
+                    uri:
+                        '${dotenv.env['PRODUCT_URL']}/random/category/638d214e9e725bd8c2dca355?size=4',
+                    scrollDirection: Axis.vertical,
+                    crossAxisCount: 2,
+                    widthRatio: 1,
+                    heightRatio: 1.5,
                   ),
                 ),
                 standardSizedBox,
@@ -84,20 +81,6 @@ class HomeScreen extends StatelessWidget {
                       uri: '${dotenv.env['LOCATION_URL']}/store?limit=10',
                       direction: Axis.horizontal,
                     ),
-                  ),
-                ),
-                standardSizedBox,
-                CustomBoxContainer(
-                  child: ListOfPosts(
-                    postWidth: 90.w,
-                    textError: "Aucuns posts",
-                    scrollDirection: Axis.horizontal,
-                    errorHeight: 35.h,
-                    child: const FlexibleRow(
-                      title: "Les posts recents",
-                      urlValue: "/all_posts",
-                    ),
-                    uri: '${dotenv.env['POST_URL']}/random?size=10',
                   ),
                 ),
               ],
