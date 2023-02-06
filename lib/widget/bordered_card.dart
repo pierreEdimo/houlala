@@ -12,19 +12,19 @@ class BorderedCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(
-          4.0,
-        ),
-        side: BorderSide(
-          color: Colors.grey.shade300,
-          width: 1,
-        ),
-      ),
+          borderRadius: BorderRadius.circular(
+        4.0,
+      )),
       elevation: 0,
       color: Colors.transparent,
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: child!,
+      child: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: child!,
+        ),
+        decoration: BoxDecoration(
+          border: Border.all(width: 1.0, color: Colors.grey.shade300),
+        ),
       ),
     );
   }

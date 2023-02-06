@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/main.dart';
 import 'package:houlala/service/comment_service.dart';
 import 'package:houlala/widget/comment_input.dart';
-import 'package:houlala/widget/list_of_comment.dart';
 import 'package:houlala/widget/open_login_modal.dart';
 import 'package:houlala/widget/post_body_container.dart';
 import 'package:houlala/widget/show_nack.dart';
@@ -35,10 +33,6 @@ class PostDetailScreen extends StatelessWidget {
                   PostBodyContainer(
                     id: id,
                   ),
-                  ListOfComments(
-                    uri:
-                        '${dotenv.env['COMMENT_URL']}?postId=$id',
-                  )
                 ],
               ),
             ),

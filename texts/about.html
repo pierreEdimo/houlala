@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .horizontal-line {
+        border: 1px solid orange;
+        width: 40px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .image-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box-container {
+        width: 100%;
+        height: 450px;
+        background-color: rgba(211, 211, 211, 0.2);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .contact-container {
+        width: 100%;
+        padding: 10px;
+        background-color: rgba(211, 211, 211, 0.2);
+        border-radius: 5px;
+    }
+
+    .box-container p {
+        text-align: center;
+    }
+
+</style>
+<body>
+<div class="about-container">
+    <div class="flex-container">
+        <div>
+            <h4 style="text-align: center">Qui Sommes Nous?</h4>
+            <hr class="horizontal-line">
+        </div>
+        <div class="banner-container">
+            <div class="image-container">
+                <img src="https://shop.houlala.store/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhoulala1.da60dfcc.png&w=384&q=75">
+            </div>
+            <p style="text-align: center;">
+                Houla la est une idee, une vision, un reve, Celui de permettre aux citoyens
+                Camerounais a
+                court terme,
+                et aux Africains a moyen et a long terme, de pouvoir commander a partir de son
+                smartphone ou
+                d&apos;une page web
+                differents type de produits(fruits, legumes, viandes, fraiches, etc...) et d&apos;etre
+                delivre a son domicile dans les
+                plus brefs delais.
+            </p>
+        </div>
+    </div>
+</div>
+<div>
+    <h4 style="text-align:center;">Notre Mission</h4>
+    <hr class="horizontal-line">
+    <div style="height:10px;">
+    </div>
+    <div class="grid-container">
+        <div class="box-container">
+            <img src="https://shop.houlala.store/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpromotion.a959307a.png&w=96&q=75">
+            <p>La promotion et la vente des produits locaux</p>
+        </div>
+        <div class="box-container">
+            <img src="https://shop.houlala.store/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Faffordable.fb24c826.png&w=96&q=75">
+            <p>
+                La vente de produits a des prix affordables pour
+                tous
+            </p>
+        </div>
+        <div class="box-container">
+            <img src="https://shop.houlala.store/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fproject-management.065aca53.png&w=96&q=75">
+            <p> Promouvoir
+                l&apos;apprentissage et
+                l&apos;usage de
+                nouvelles technologies </p>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div>
+    <h4 style="text-align: center;">Nos Contacts</h4>
+    <hr class="horizontal-line">
+    <div class="contact-container">
+        <div>
+            <p>E-mail:</p>
+            <p style="font-weight:bold;">
+                pierre.edimo@houlala.store
+            </p>
+        </div>
+        <br/>
+        <div>
+            <p>telephone:</p>
+            <p style="font-weight:bold;">
+                +237 6 97 59 04 70
+            </p>
+        </div>
+        <br/>
+    </div>
+</div>
+</body>
+</html>

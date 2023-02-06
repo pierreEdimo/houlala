@@ -92,13 +92,14 @@ class PageContainer extends StatelessWidget {
               vertical: 8.0,
             ),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  4.0,
-                ),
-                border: Border.all(
-                  width: 1.0,
-                  color: Colors.grey.shade300,
-                )),
+              borderRadius: BorderRadius.circular(
+                4.0,
+              ),
+              border: Border.all(
+                width: 1.0,
+                color: Colors.grey.shade300,
+              ),
+            ),
             width: width == null ? 80.w : width!,
             height: 90,
             child: Row(

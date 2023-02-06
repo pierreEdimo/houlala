@@ -51,7 +51,6 @@ dependencies:
   mongo_dart: ^0.7.4+1
   badges: ^2.0.3
   auto_size_text: ^3.0.0
-  modal_bottom_sheet: ^2.1.0
   path_provider: ^2.0.11
   connectivity_plus: ^2.3.6
   responsive_builder: ^0.4.2
@@ -59,6 +58,7 @@ dependencies:
   flutter_launch: ^0.3.0
   launch_review: ^3.0.1
   cached_network_image: ^3.2.2
+  webview_flutter_plus: ^0.3.0+2
 
 dev_dependencies:
   flutter_test:
@@ -104,7 +104,7 @@ flutter:
     - images/houlala.png
     - texts/security.md
     - texts/condition.md
-    - texts/about.md
+    - texts/about.html
     - images/whatsapp.png
     - images/youtube.png
     - images/facebook.png
@@ -126,7 +126,18 @@ flutter:
     - images/customer-service.png
     - images/shop.png
     - images/no-talk.png
+    - images/heart.png
+    - images/about.png
+    - images/contact-mail.png
+    - images/log-out.png
+    - images/privacy-policy.png
+    - images/shopping-bag.png
+    - images/sign-in.png
+    - images/terms-and-conditions.png
+    - images/user.png
     - ca/lets-encrypt-r3.pem
+    - texts/term.html
+    - texts/conditions.html
     - .env
 
 

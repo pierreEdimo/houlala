@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomListTile extends StatelessWidget {
-  final IconData? leadingIcon;
+  final String? imageUrl;
   final String? title;
   final Widget? icon;
   final Color? color;
 
   const CustomListTile({
     Key? key,
-    this.leadingIcon,
+    this.imageUrl,
     this.title,
     this.icon,
     this.color,
@@ -24,8 +24,9 @@ class CustomListTile extends StatelessWidget {
         children: [
           Row(
             children: [
-              FaIcon(
-                leadingIcon,
+              ImageIcon(
+                AssetImage(imageUrl!),
+                size: 27,
                 color: color ?? const Color(0xff000000),
               ),
               const SizedBox(

@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/screens/favorite_screen.dart';
 import 'package:houlala/service/auth_service.dart';
 import 'package:houlala/widget/custom_list_tile.dart';
@@ -8,7 +7,6 @@ import 'package:houlala/widget/launch_url.dart';
 import 'package:houlala/widget/open_login_modal.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
@@ -55,7 +53,7 @@ class UserScreenContainer extends StatelessWidget {
                                   FavoriteScreen.routeName,
                                   arguments: userId),
                               child: const CustomListTile(
-                                leadingIcon: FontAwesomeIcons.solidHeart,
+                                imageUrl: "images/heart.png",
                                 title: "Mes Favories",
                               ),
                             ),
@@ -63,7 +61,7 @@ class UserScreenContainer extends StatelessWidget {
                               onTap: () =>
                                   Navigator.of(context).pushNamed("/my_orders"),
                               child: const CustomListTile(
-                                leadingIcon: FontAwesomeIcons.bagShopping,
+                                imageUrl: "images/shopping-bag.png",
                                 title: "Mes Commandes",
                               ),
                             ),
@@ -75,7 +73,7 @@ class UserScreenContainer extends StatelessWidget {
                               onTap: () => Navigator.of(context)
                                   .pushNamed("/my_personal"),
                               child: const CustomListTile(
-                                leadingIcon: FontAwesomeIcons.person,
+                                imageUrl: "images/user.png",
                                 title: "Mes Donnees personnelles",
                               ),
                             )
@@ -106,8 +104,7 @@ class UserScreenContainer extends StatelessWidget {
                                           "vous avez ete deconnecte avec succes"),
                                       context)),
                               child: const CustomListTile(
-                                color: Colors.red,
-                                leadingIcon: FontAwesomeIcons.rightFromBracket,
+                                imageUrl: "images/log-out.png",
                                 title: "Se deconnecter",
                               ),
                             )
@@ -150,14 +147,14 @@ class UserScreenContainer extends StatelessWidget {
                       InkWell(
                         onTap: () => openModal(context),
                         child: const CustomListTile(
-                          leadingIcon: FontAwesomeIcons.solidHeart,
+                          imageUrl: "images/heart.png",
                           title: "Mes Favories",
                         ),
                       ),
                       InkWell(
                         onTap: () => openModal(context),
                         child: const CustomListTile(
-                          leadingIcon: FontAwesomeIcons.bagShopping,
+                          imageUrl: "images/shopping-bag.png",
                           title: "Mes Commandes",
                         ),
                       ),
@@ -171,7 +168,7 @@ class UserScreenContainer extends StatelessWidget {
                       InkWell(
                         onTap: () => openModal(context),
                         child: const CustomListTile(
-                          leadingIcon: FontAwesomeIcons.person,
+                          imageUrl: "images/user.png",
                           title: "Mes Donnees personnelles",
                         ),
                       )
@@ -196,8 +193,7 @@ class UserScreenContainer extends StatelessWidget {
                       InkWell(
                         onTap: () => openModal(context),
                         child: const CustomListTile(
-                          color: Colors.green,
-                          leadingIcon: FontAwesomeIcons.rightFromBracket,
+                          imageUrl: "images/sign-in.png",
                           title: "Se connecter/s'enregistrer",
                         ),
                       )
@@ -221,7 +217,7 @@ class OpenReview extends StatelessWidget {
       onTap: () => openStore(context),
       child: !kIsWeb
           ? const CustomListTile(
-              leadingIcon: FontAwesomeIcons.star,
+              imageUrl: "images/about.png",
               title: "Evaluez notre application",
             )
           : Container(),
@@ -237,7 +233,7 @@ class Conditions extends StatelessWidget {
     return InkWell(
       onTap: () => Navigator.of(context).pushNamed('/conditions'),
       child: const CustomListTile(
-        leadingIcon: FontAwesomeIcons.lock,
+        imageUrl: "images/terms-and-conditions.png",
         title: "Conditions d'utilisation",
       ),
     );
@@ -252,7 +248,7 @@ class Security extends StatelessWidget {
     return InkWell(
       onTap: () => Navigator.of(context).pushNamed('/data_security'),
       child: const CustomListTile(
-        leadingIcon: FontAwesomeIcons.shield,
+        imageUrl: "images/privacy-policy.png",
         title: "Politique de confidentialites",
       ),
     );
@@ -267,7 +263,7 @@ class OpenOptions extends StatelessWidget {
     return InkWell(
       onTap: () => Navigator.of(context).pushNamed('/options'),
       child: const CustomListTile(
-        leadingIcon: FontAwesomeIcons.gear,
+        imageUrl: "images/about.png",
         title: "Options",
       ),
     );
@@ -282,7 +278,7 @@ class OpenAbout extends StatelessWidget {
     return InkWell(
       onTap: () => Navigator.of(context).pushNamed('/about'),
       child: const CustomListTile(
-        leadingIcon: FontAwesomeIcons.circleInfo,
+        imageUrl: "images/about.png",
         title: "A Propos",
       ),
     );
@@ -297,7 +293,7 @@ class ContactButton extends StatelessWidget {
     return InkWell(
       onTap: () async => openContact('mailto', 'pierredimo@live.com'),
       child: const CustomListTile(
-        leadingIcon: FontAwesomeIcons.envelope,
+        imageUrl: "images/contact-mail.png",
         title: "Contactez nous",
       ),
     );
@@ -310,7 +306,7 @@ class ConnectWithUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => showMaterialModalBottomSheet(
+      onTap: () => showModalBottomSheet<void>(
         context: context,
         builder: (context) => StandardCustomContainer(
           child: SizedBox(
@@ -368,7 +364,7 @@ class ConnectWithUs extends StatelessWidget {
         ),
       ),
       child: const CustomListTile(
-        leadingIcon: FontAwesomeIcons.shareNodes,
+        imageUrl: "images/contact-mail.png",
         title: "Nos reseaux sociaux",
       ),
     );

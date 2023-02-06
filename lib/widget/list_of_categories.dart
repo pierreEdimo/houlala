@@ -39,7 +39,7 @@ class ListOfCategories extends StatelessWidget {
                       .map((CategoryModel category) => CategoryContainer(
                     radius: 40,
                             categoryModel: category,
-                            weight: 100,
+                            weight: 115,
                           ))
                       .toList(),
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/widget/bordered_card.dart';
 import 'package:houlala/widget/custom_avatar.dart';
 
 class SubCategoryContainer extends StatelessWidget {
@@ -15,17 +16,7 @@ class SubCategoryContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 150,
-      child: Card(
-        color: Colors.transparent,
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-            side: BorderSide(
-              color: Colors.grey.shade300,
-              width: 1,
-            ),
-            borderRadius: BorderRadius.circular(
-              4.0,
-            )),
+      child: BorderedCard(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(

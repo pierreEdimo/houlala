@@ -5,7 +5,6 @@ import 'package:houlala/model/additional_info.dart';
 import 'package:houlala/service/comment_service.dart';
 import 'package:houlala/widget/created_at_container.dart';
 import 'package:houlala/widget/report_tile.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:sizer/sizer.dart';
@@ -289,7 +288,7 @@ class OnTapIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        showMaterialModalBottomSheet(
+        showModalBottomSheet<void>(
           context: context,
           builder: (context) => const ReportTile(),
         );

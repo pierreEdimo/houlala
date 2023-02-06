@@ -4,7 +4,6 @@ import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
 import 'package:houlala/widget/sign_in_container.dart';
 import 'package:houlala/widget/sign_up_container.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:sizer/sizer.dart';
 
 enum AuthMode { signIn, signUp }
@@ -12,13 +11,11 @@ enum AuthMode { signIn, signUp }
 openModal(BuildContext context) {
   AuthMode _authMode = AuthMode.signIn;
 
-  showMaterialModalBottomSheet(
-    expand: true,
+  showModalBottomSheet<void>(
     context: context,
     builder: (context) =>
         StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
       return SingleChildScrollView(
-        controller: ModalScrollController.of(context),
         child: Padding(
           padding:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),

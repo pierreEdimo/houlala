@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/model/page_screen_arguments.dart';
 import 'package:houlala/screens/category_detail_screen.dart';
-import 'package:houlala/widget/custom_avatar.dart';
 import 'package:houlala/widget/transparent_card_container.dart';
 
 import '../model/product_category.dart';
@@ -29,36 +28,51 @@ class CategoryContainer extends StatelessWidget {
                 imageUrl: categoryModel!.imageUrl!,
               )),
       child: TransparentCardContainer(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Stack(
           children: [
             SizedBox(
               width: weight!,
               child: Center(
-                child: CustomAvatar(
-                  radius: radius,
-                  thumbnailUrl: categoryModel!.imageUrl!,
+                child: Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          categoryModel!.imageUrl!,
+                        ),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.circular(5.0)),
                 ),
               ),
             ),
-            const SizedBox(
-              height: 5.0,
+            Container(
+              width: 105,
+              alignment: Alignment.topLeft,
+              height: 30,
+              decoration: const BoxDecoration(
+                color: Color.fromRGBO(0, 0, 0, 0.5),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(5.0),
+                  bottomRight: Radius.circular(5.0),
+                ),
+              ),
             ),
-            SizedBox(
-              width: weight,
+            Container(
+              width: 100,
+              alignment: Alignment.topLeft,
               child: Text(
                 categoryModel!.name!,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
+                  color: Color(0xFFFFFFFF),
                   fontWeight: FontWeight.bold,
                   fontFamily: 'PoppinsBold',
                   fontSize: 18.0,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

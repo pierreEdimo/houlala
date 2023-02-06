@@ -13,7 +13,6 @@ import 'package:houlala/widget/personnal_data_container.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/unregisterd_user_order_form.dart';
 import 'package:http/http.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
@@ -40,8 +39,7 @@ class CheckoutButton extends StatelessWidget {
       ),
       onPressed: () async {
         String? email = await storage.read(key: "email");
-        showMaterialModalBottomSheet(
-          expand: true,
+        showModalBottomSheet<void>(
           context: context,
           builder: (BuildContext context) {
             switch (loggedState) {

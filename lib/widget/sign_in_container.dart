@@ -8,7 +8,6 @@ import 'package:houlala/widget/input_email.dart';
 import 'package:houlala/widget/input_password.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:http/http.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import '../helper/constants.dart';
 import 'custom_elevated_button.dart';
@@ -35,7 +34,6 @@ class _SignInContainerState extends State<SignInContainer> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      controller: ModalScrollController.of(context),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Form(

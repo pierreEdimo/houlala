@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 CustomBoxContainer(
                   child: SizedBox(
-                    height: 160,
+                    height: 180,
                     child: ListOfCategories(
                       child: Container(
                         margin: const EdgeInsets.only(bottom: 5.0),
