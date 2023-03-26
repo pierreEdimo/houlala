@@ -1,4 +1,4 @@
-package com.shophoulala.houlala.houlala
+package com.shophoulala
 
 import io.flutter.embedding.android.FlutterActivity
 

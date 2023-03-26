@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 CustomBoxContainer(
                   child: SizedBox(
-                    height: 180,
+                    height: 250,
                     child: ListOfCategories(
                       child: Container(
                         margin: const EdgeInsets.only(bottom: 5.0),
@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     uri:
-                        '${dotenv.env['PRODUCT_URL']}/random/category/638d214e9e725bd8c2dca355?size=4',
+                        '${dotenv.env['PRODUCT_URL']}/random/category/638d214e9e725bd8c2dca355?size=8',
                     scrollDirection: Axis.vertical,
                     crossAxisCount: 2,
                     widthRatio: 1,

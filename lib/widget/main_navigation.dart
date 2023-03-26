@@ -91,7 +91,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
             label: "Stories",
           ),
           const BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.bell),
+            icon: ImageIcon(
+              AssetImage("images/notification.png"),
+              size: 27,
+            ),
             label: 'Notifications',
           ),
           const BottomNavigationBarItem(

@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
-version: 1.0.0+2
+version: 1.0.0
 
 
 environment:
@@ -37,9 +37,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
   font_awesome_flutter: ^10.1.0
-  line_icons: ^2.0.1
-  http: ^0.13.4
-  provider: ^6.0.3
+  http: ^0.13.5
+  provider: ^6.0.5
   flutter_dotenv: ^5.0.2
   flutter_markdown: ^0.6.13
   sizer: ^2.0.15
@@ -47,7 +46,7 @@ dependencies:
   dev: ^1.0.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-  flutter_secure_storage: ^5.0.2
+  flutter_secure_storage: ^7.0.1
   mongo_dart: ^0.7.4+1
   badges: ^2.0.3
   auto_size_text: ^3.0.0
@@ -57,7 +56,6 @@ dependencies:
   url_launcher: ^6.1.5
   flutter_launch: ^0.3.0
   launch_review: ^3.0.1
-  cached_network_image: ^3.2.2
   webview_flutter_plus: ^0.3.0+2
 
 dev_dependencies:
@@ -138,6 +136,7 @@ flutter:
     - ca/lets-encrypt-r3.pem
     - texts/term.html
     - texts/conditions.html
+    - images/notification.png
     - .env
 
 

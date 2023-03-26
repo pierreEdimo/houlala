@@ -40,6 +40,8 @@ class CheckoutButton extends StatelessWidget {
       onPressed: () async {
         String? email = await storage.read(key: "email");
         showModalBottomSheet<void>(
+          isScrollControlled: true,
+          isDismissible: true,
           context: context,
           builder: (BuildContext context) {
             switch (loggedState) {
@@ -61,10 +63,11 @@ class CheckoutButton extends StatelessWidget {
                               height: 5,
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 11.0),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 11.0),
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                crossAxisAlignment:
+                                    CrossAxisAlignment.stretch,
                                 children: [
                                   PersonnalDataContainer(
                                     connectedUser: connectedUser,
@@ -76,7 +79,8 @@ class CheckoutButton extends StatelessWidget {
                                       side: BorderSide(
                                           color: Colors.grey.shade300,
                                           width: 1),
-                                      borderRadius: BorderRadius.circular(4.0),
+                                      borderRadius:
+                                          BorderRadius.circular(4.0),
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(10.0),
@@ -142,13 +146,15 @@ class CheckoutButton extends StatelessWidget {
                                         vertical: 15.0),
                                     child: CustomElevatedButton(
                                       onPressed: () async {
-                                        UserInformation info = UserInformation(
+                                        UserInformation info =
+                                            UserInformation(
                                           id: connectedUser!.id!,
                                           email: email,
                                           name: connectedUser.name!,
                                           country: connectedUser.country!,
                                           city: connectedUser.city!,
-                                          streetName: connectedUser.streetName!,
+                                          streetName:
+                                              connectedUser.streetName!,
                                           poBox: connectedUser.poBox!,
                                           telephoneNumber:
                                               connectedUser.telephoneNumber!,
@@ -167,7 +173,8 @@ class CheckoutButton extends StatelessWidget {
                                                       order.paymentMode,
                                                   totalQuantity:
                                                       order.totalQuantity,
-                                                  totalPrice: order.totalPrice);
+                                                  totalPrice:
+                                                      order.totalPrice);
 
                                           var newEmail = SendEmail(
                                             subject:

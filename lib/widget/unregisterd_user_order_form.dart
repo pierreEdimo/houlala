@@ -60,8 +60,7 @@ class _UnregisteredUserBorderFormState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
         child: Form(
           key: _formKey,
           child: Column(
@@ -289,7 +288,7 @@ class _UnregisteredUserBorderFormState
             ],
           ),
         ),
-      ),
+
     );
   }
 }
