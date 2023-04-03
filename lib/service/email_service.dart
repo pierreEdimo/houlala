@@ -11,13 +11,11 @@ class EmailService extends ChangeNotifier {
     String jsEncode;
     jsEncode = jsonEncode(newEmail);
     var url = Uri.parse('${dotenv.env['EMAIL_URL']}/$emailtype');
-    Response response = await post(
+    await post(
       url,
       headers: headers,
       body: jsEncode,
     );
-    print(response.body.toString());
-    print(response.statusCode);
     notifyListeners();
   }
 }
