@@ -20,7 +20,6 @@ import 'package:houlala/screens/options_screen.dart';
 import 'package:houlala/screens/page_detail_screen.dart';
 import 'package:houlala/screens/personal_datas_screen.dart';
 import 'package:houlala/screens/personal_order_screen.dart';
-import 'package:houlala/screens/post_detail_screen.dart';
 import 'package:houlala/screens/product_detail_screen.dart';
 import 'package:houlala/screens/search_screen.dart';
 import 'package:houlala/screens/sub_category_screen.dart';
@@ -58,8 +57,7 @@ Future main() async {
 
   initializeDateFormatting('fr', null);
 
-  ByteData data =
-      await PlatformAssetBundle().load('ca/lets-encrypt-r3.pem');
+  ByteData data = await PlatformAssetBundle().load('ca/lets-encrypt-r3.pem');
   SecurityContext.defaultContext
       .setTrustedCertificatesBytes(data.buffer.asUint8List());
 
@@ -127,7 +125,6 @@ class MyApp extends StatelessWidget {
                     const CategoryDetailScreen(),
                 PageDetailScreen.screenName: (context) =>
                     const PageDetailScreen(),
-                PostDetailScreen.routeName: (context) => PostDetailScreen(),
                 '/search': (context) => const SearchScreen(),
                 FavoriteScreen.routeName: (context) => const FavoriteScreen(),
                 '/options': (context) => const OptionScreen(),

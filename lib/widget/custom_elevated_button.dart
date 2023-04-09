@@ -3,25 +3,35 @@ import 'package:flutter/material.dart';
 class CustomElevatedButton extends StatelessWidget {
   final Widget? child;
   final VoidCallback? onPressed;
+  final Color? color;
+  final bool? hasBorder;
 
   const CustomElevatedButton({
     Key? key,
     this.child,
     this.onPressed,
+    this.color,
+    this.hasBorder,
   }) : super(key: key);
+
+  getColor() {
+    if (hasBorder == null || !hasBorder!) {
+      return const Color(0xffd3d3d3);
+    }
+    return Colors.transparent;
+  }
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-
         foregroundColor: MaterialStateProperty.all<Color>(
           const Color(0xff000000),
         ),
         elevation: MaterialStateProperty.all<double>(0.0),
         side: MaterialStateProperty.all<BorderSide>(
-          const BorderSide(
-            color: Color(0xff000000),
+          BorderSide(
+            color: getColor(),
           ),
         ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -30,7 +40,7 @@ class CustomElevatedButton extends StatelessWidget {
           ),
         ),
         backgroundColor: MaterialStateProperty.all<Color>(
-          const Color(0xffffffff),
+          color == null ? const Color(0xffffffff) : color!,
         ),
         padding: MaterialStateProperty.all<EdgeInsets>(
           const EdgeInsets.symmetric(vertical: 13.0, horizontal: 10.0),

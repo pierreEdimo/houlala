@@ -31,6 +31,27 @@ class _SignInContainerState extends State<SignInContainer> {
     super.dispose();
   }
 
+  /// Connecte l'utilisateur dans la base de donnees
+  login() async {
+    if (_formKey.currentState!.validate()) {
+      Login login = Login(
+          email: _emailController!.text, password: _passwordController!.text);
+
+      Response response =
+          await Provider.of<AuthService>(context, listen: false).logIn(login);
+
+      if (response.statusCode != 202) {
+        final responseJson = json.decode(response.body);
+        showErrorDialog(context, "Erreur",
+            "${responseJson['message']}, svp reessayez plutard, si le probleme persiste, contectez nous");
+      } else {
+        Navigator.of(context).pop();
+        showSnack(const Text("felicitations, vous etes connecte sur houlala."),
+            context);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -67,29 +88,7 @@ class _SignInContainerState extends State<SignInContainer> {
                 height: 40.0,
               ),
               CustomElevatedButton(
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    Login login = Login(
-                        email: _emailController!.text,
-                        password: _passwordController!.text);
-
-                    Response response =
-                        await Provider.of<AuthService>(context, listen: false)
-                            .logIn(login);
-
-                    if (response.statusCode != 202) {
-                      final responseJson = json.decode(response.body);
-                      showErrorDialog(context, "Erreur",
-                          "${responseJson['message']}, svp reessayez plutard, si le probleme persiste, contectez nous");
-                    } else {
-                      Navigator.of(context).pop();
-                      showSnack(
-                          const Text(
-                              "felicitations, vous etes connecte sur houlala."),
-                          context);
-                    }
-                  }
-                },
+                onPressed: () async => login(),
                 child: Text(
                   "Se Connecter",
                   style: standardStyle,

@@ -60,17 +60,27 @@ class _CustomInternNavigationState extends State<CustomInternNavigation> {
                         },
                         child: Card(
                           elevation: 0,
-                          color: const Color(0xf2f2f2f2),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                          color: const Color.fromRGBO(0, 0, 0, 0),
+                          child: Container(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 5.0),
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: _isSelected
+                                    ? const BorderSide(
+                                        color: Colors.orangeAccent, width: 2.0)
+                                    : const BorderSide(
+                                        color: Colors.transparent,
+                                      ),
+                              ),
+                            ),
                             child: Center(
                               child: Text(
                                 menu,
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: _isSelected ? 18 : 15,
                                   color: _isSelected
-                                      ? const Color(0xffdf972f)
+                                      ? Colors.orangeAccent
                                       : Colors.black,
                                 ),
                               ),

@@ -129,9 +129,10 @@ class PersonnalDataContainer extends StatelessWidget {
                         fontFamily: "PoppinsBold"),
                   ),
                   decoration: BoxDecoration(
-                      border: Border(
-                          bottom: BorderSide(
-                              width: 1, color: Colors.grey.shade300))),
+                    border: Border(
+                      bottom: BorderSide(width: 1, color: Colors.grey.shade300),
+                    ),
+                  ),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

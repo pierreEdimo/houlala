@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/model/location.dart';
 import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/launch_url.dart';
-import 'package:houlala/widget/page_contact_row.dart';
-
 import '../helper/constants.dart';
 
 class PageContactInformation extends StatelessWidget {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
-import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:houlala/widget/store_body_container.dart';
 import 'package:houlala/widget/transformed_container.dart';
 import 'package:sizer/sizer.dart';
@@ -37,8 +36,8 @@ class AllPageScreen extends StatelessWidget {
                           CircleAvatar(
                             radius: 20,
                             backgroundColor: Colors.transparent,
-                            backgroundImage:
-                                NetworkImage("https://upload.houlala.store/images/bf3f1bef-02a0-4c14-9adb-93b795c28b15.jpg"),
+                            backgroundImage: NetworkImage(
+                                "https://upload.houlala.store/images/bf3f1bef-02a0-4c14-9adb-93b795c28b15.jpg"),
                           ),
                           Text(
                             "Nos partenaires",

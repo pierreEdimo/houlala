@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       elevation: 1,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        color: const Color(0xf2f2f2f2),
+        color: const Color.fromRGBO(236, 236, 236, 0.4),
         child: SafeArea(
           child: Center(
             child: Row(

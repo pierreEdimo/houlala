@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 
-const standardSizedBox = SizedBox(
-  height: 20.0,
-);
+const standardSizedBox = SizedBox(height: 20.0);
 
 double customFontSize = 18;
 
 TextStyle detailTitleStyle = const TextStyle(
-  fontWeight: FontWeight.bold,
-  fontFamily: 'PoppinsBold',
-  fontSize: 28.0,
-  color: Color(0xffffffff)
-);
+    fontWeight: FontWeight.bold,
+    fontFamily: 'PoppinsBold',
+    fontSize: 28.0,
+    color: Color(0xffffffff));
 
 TextStyle standardStyle = const TextStyle(
   fontWeight: FontWeight.bold,
@@ -42,3 +39,5 @@ TextStyle titleStyle = const TextStyle(
   fontFamily: 'PoppinsBold',
   fontSize: 17,
 );
+
+Color lightgrey = const Color.fromRGBO(236, 236, 236, 0.4);

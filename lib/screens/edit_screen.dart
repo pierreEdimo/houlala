@@ -71,6 +71,61 @@ class _EditScreenState extends State<EditScreen> {
     _countryController!.text = editScreenArguments.country!;
     _firstNameController!.text = editScreenArguments.firstName!;
 
+    /// modifie l'E-mail de l'utilisateur
+    editEmail() async {
+      EditEmail model = EditEmail(email: _emailController!.text);
+
+      Response response = await Provider.of<AuthService>(context, listen: false)
+          .editEmail(model);
+
+      if (response.statusCode == 200) {
+        showSnack(
+            const Text("votre adresse a ete mise a jour avec succes"), context);
+        Navigator.of(context).pop();
+      }
+    }
+
+    /// modifie l'adresse de l'utilisateur
+    editAddress() async {
+      Address address = Address(
+        country: _countryController!.text,
+        city: _cityController!.text,
+        poBox: _poBoxController!.text,
+        streetName: _streetController!.text,
+        houseNumber: _houseNbrController!.text,
+      );
+
+      Response? response =
+          await Provider.of<AuthService>(context, listen: false)
+              .editAddressData(address);
+
+      if (response.statusCode == 200) {
+        showSnack(
+            const Text("votre adresse a ete mise a jour avec succes"), context);
+        Navigator.of(context).pop();
+      }
+    }
+
+    /// modifie les informations personnelles
+    editProfile() async {
+      PersonalData data = PersonalData(
+        name: _nameController!.text,
+        userName: _userNameController!.text,
+        phoneNumber: _numberController!.text,
+        firstName: _firstNameController!.text,
+      );
+
+      Response? response =
+          await Provider.of<AuthService>(context, listen: false)
+              .editPersonalData(data);
+
+      if (response.statusCode == 200) {
+        showSnack(
+            const Text("votre profile a ete mise a jour avec succes"), context);
+        Navigator.of(context).pop();
+      }
+    }
+
     switch (editScreenArguments.type!) {
       case 'email':
         return Scaffold(
@@ -98,21 +153,7 @@ class _EditScreenState extends State<EditScreen> {
             child: SizedBox(
               width: 100.w,
               child: CustomElevatedButton(
-                onPressed: () async {
-                  EditEmail model = EditEmail(email: _emailController!.text);
-
-                  Response response =
-                      await Provider.of<AuthService>(context, listen: false)
-                          .editEmail(model);
-
-                  if (response.statusCode == 200) {
-                    showSnack(
-                        const Text(
-                            "votre adresse a ete mise a jour avec succes"),
-                        context);
-                    Navigator.of(context).pop();
-                  }
-                },
+                onPressed: () async => editEmail(),
                 child: const Text(
                   "Enregistrer",
                   style: TextStyle(
@@ -181,27 +222,7 @@ class _EditScreenState extends State<EditScreen> {
             child: SizedBox(
               width: 100.w,
               child: CustomElevatedButton(
-                onPressed: () async {
-                  Address address = Address(
-                    country: _countryController!.text,
-                    city: _cityController!.text,
-                    poBox: _poBoxController!.text,
-                    streetName: _streetController!.text,
-                    houseNumber: _houseNbrController!.text,
-                  );
-
-                  Response? response =
-                      await Provider.of<AuthService>(context, listen: false)
-                          .editAddressData(address);
-
-                  if (response.statusCode == 200) {
-                    showSnack(
-                        const Text(
-                            "votre adresse a ete mise a jour avec succes"),
-                        context);
-                    Navigator.of(context).pop();
-                  }
-                },
+                onPressed: () async => editAddress(),
                 child: const Text(
                   "Enregistrer",
                   style: TextStyle(
@@ -265,26 +286,7 @@ class _EditScreenState extends State<EditScreen> {
             child: SizedBox(
               width: 100.w,
               child: CustomElevatedButton(
-                onPressed: () async {
-                  PersonalData data = PersonalData(
-                    name: _nameController!.text,
-                    userName: _userNameController!.text,
-                    phoneNumber: _numberController!.text,
-                    firstName: _firstNameController!.text,
-                  );
-
-                  Response? response =
-                      await Provider.of<AuthService>(context, listen: false)
-                          .editPersonalData(data);
-
-                  if (response.statusCode == 200) {
-                    showSnack(
-                        const Text(
-                            "votre profile a ete mise a jour avec succes"),
-                        context);
-                    Navigator.of(context).pop();
-                  }
-                },
+                onPressed: () async => editProfile(),
                 child: const Text(
                   "Enregistrer",
                   style: TextStyle(

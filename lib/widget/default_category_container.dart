@@ -1,12 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/transformed_container.dart';
 import 'package:sizer/sizer.dart';
-
-import 'blur_container.dart';
 import 'app_bar_with_return.dart';
-import 'background_image.dart';
 
 class DefaultCategoryContainer extends StatelessWidget {
   final String? imageUrl;

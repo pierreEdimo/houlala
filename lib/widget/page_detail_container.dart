@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:houlala/service/page_service.dart';
@@ -50,7 +49,7 @@ class PageDetailContainer extends StatelessWidget {
                         height: 35.h,
                         child: Container(
                           width: 100.w,
-                          color: const Color(0xf2f2f2f2),
+                          color: const Color.fromRGBO(236, 236, 236, 0.4),
                         ),
                       ),
                       SizedBox(
@@ -79,7 +78,6 @@ class PageDetailContainer extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: !kIsWeb ? null : 70.0,
                         child: AppBarWithReturn(
                           title: "",
                           color: Colors.black,

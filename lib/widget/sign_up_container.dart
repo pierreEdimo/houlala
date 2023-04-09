@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:houlala/model/register.dart';
@@ -35,7 +36,7 @@ class _SignUpContainerState extends State<SignUpContainer> {
   final TextEditingController? _cityController =
       TextEditingController(text: 'Yaounde');
   final TextEditingController? _poBoxController = TextEditingController();
-  final TextEditingController? _firstNameController = TextEditingController(); 
+  final TextEditingController? _firstNameController = TextEditingController();
 
   @override
   void dispose() {
@@ -51,6 +52,36 @@ class _SignUpContainerState extends State<SignUpContainer> {
     _houseNbrController!.dispose();
     _firstNameController!.dispose();
     super.dispose();
+  }
+
+  /// Enregistre un utilisateur dans la base de donnee
+  logup() async {
+    if (_formKey.currentState!.validate()) {
+      Register register = Register(
+          email: _emailController!.text,
+          userName: _userNameController!.text,
+          name: _nameController!.text,
+          telephoneNumber: _numberController!.text,
+          password: _passwordController!.text,
+          poBox: _poBoxController!.text,
+          city: _cityController!.text,
+          country: _countryController!.text,
+          streetName: _streetController!.text,
+          houseNumber: _houseNbrController!.text,
+          firstName: _firstNameController!.text);
+
+      Response response = await Provider.of<AuthService>(context, listen: false)
+          .register(register);
+
+      if (response.statusCode != HttpStatus.created) {
+        final responseJson = json.decode(response.body);
+        showErrorDialog(context, "Erreur", responseJson['message']);
+      } else {
+        Navigator.of(context).pop();
+        showSnack(const Text("felicitations, Vous etes connecte sur houlala."),
+            context);
+      }
+    }
   }
 
   @override
@@ -184,38 +215,7 @@ class _SignUpContainerState extends State<SignUpContainer> {
             ),
             standardSizedBox,
             CustomElevatedButton(
-              onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  Register register = Register(
-                    email: _emailController!.text,
-                    userName: _userNameController!.text,
-                    name: _nameController!.text,
-                    telephoneNumber: _numberController!.text,
-                    password: _passwordController!.text,
-                    poBox: _poBoxController!.text,
-                    city: _cityController!.text,
-                    country: _countryController!.text,
-                    streetName: _streetController!.text,
-                    houseNumber: _houseNbrController!.text,
-                    firstName: _firstNameController!.text
-                  );
-
-                  Response response =
-                      await Provider.of<AuthService>(context, listen: false)
-                          .register(register);
-
-                  if (response.statusCode != 201) {
-                    final responseJson = json.decode(response.body);
-                    showErrorDialog(context, "Erreur", responseJson['message']);
-                  } else {
-                    Navigator.of(context).pop();
-                    showSnack(
-                        const Text(
-                            "felicitations, Vous etes connecte sur houlala."),
-                        context);
-                  }
-                }
-              },
+              onPressed: () async => logup(),
               child: Text(
                 "Creer un Compte",
                 style: standardStyle,

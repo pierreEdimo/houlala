@@ -3,8 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/model/order.dart';
 import 'package:houlala/widget/bordered_card.dart';
 import 'package:houlala/widget/cart_item_container.dart';
-import 'package:houlala/widget/created_at_container.dart';
-
 import '../model/cart_item.dart';
 
 class OrderContainer extends StatelessWidget {
