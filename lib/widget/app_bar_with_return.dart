@@ -22,7 +22,7 @@ class AppBarWithReturn extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return elevation == 0
         ? Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            padding: horizontalPadding,
             color: Colors.transparent,
             child: SafeArea(
               child: Center(

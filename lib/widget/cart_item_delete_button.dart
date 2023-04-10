@@ -35,7 +35,6 @@ class CartItemDeleteButton extends StatelessWidget {
     return InkWell(
       child: const FaIcon(
         FontAwesomeIcons.trashCan,
-        color: Color(0xffdf972f),
       ),
       onTap: () async => deleteItemFromOrder(context),
     );

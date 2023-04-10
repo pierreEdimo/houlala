@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/widget/bordered_card.dart';
 import 'package:houlala/widget/custom_avatar.dart';
+import 'package:houlala/widget/product_title.dart';
 
 class SubCategoryContainer extends StatelessWidget {
   final String? name;
@@ -15,7 +16,7 @@ class SubCategoryContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 150,
+      width: 180,
       child: BorderedCard(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -27,12 +28,10 @@ class SubCategoryContainer extends StatelessWidget {
                 radius: 25,
                 thumbnailUrl: thumbNail!,
               ),
-              Text(
-                name!,
+              ProductTitle(
+                title: name,
                 maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontFamily: 'PoppinsBold', fontSize: 18),
-              )
+              ),
             ],
           ),
         ),

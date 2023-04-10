@@ -26,12 +26,10 @@ import 'package:houlala/screens/search_screen.dart';
 import 'package:houlala/screens/sub_category_screen.dart';
 import 'package:houlala/service/auth_service.dart';
 import 'package:houlala/service/category_service.dart';
-import 'package:houlala/service/comment_service.dart';
 import 'package:houlala/service/connectivity_service.dart';
 import 'package:houlala/service/email_service.dart';
 import 'package:houlala/service/order_service.dart';
 import 'package:houlala/service/page_service.dart';
-import 'package:houlala/service/post_service.dart';
 import 'package:houlala/service/product_service.dart';
 import 'package:houlala/service/word_service.dart';
 import 'package:houlala/widget/main_navigation.dart';
@@ -87,10 +85,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => CategoryService()),
         ChangeNotifierProvider(create: (context) => ProductService()),
         ChangeNotifierProvider(create: (context) => LocationService()),
-        ChangeNotifierProvider(create: (context) => PostService()),
         ChangeNotifierProvider(create: (context) => WordService()),
         ChangeNotifierProvider(create: (context) => AuthService()),
-        ChangeNotifierProvider(create: (context) => CommentService()),
         ChangeNotifierProvider(create: (context) => ConnectivityService()),
         ChangeNotifierProvider(create: (context) => OrderService()),
         ChangeNotifierProvider(create: (context) => EmailService()),

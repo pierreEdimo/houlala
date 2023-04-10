@@ -20,8 +20,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     return Material(
       elevation: 1,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        color: lightgrey,
+        padding: horizontalPadding,
         child: SafeArea(
           child: Center(
             child: Row(
@@ -37,10 +36,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                     ),
                     Text(
                       title!,
-                      style: const TextStyle(
-                          fontFamily: 'PoppinsBold',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0),
+                      style: titleStyle,
                     )
                   ],
                 ),

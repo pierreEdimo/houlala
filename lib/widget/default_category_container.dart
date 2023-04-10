@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/transformed_container.dart';
 import 'package:sizer/sizer.dart';
 import 'app_bar_with_return.dart';
@@ -55,13 +56,10 @@ class DefaultCategoryContainer extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: !kIsWeb ? null : 70.0,
-                child: AppBarWithReturn(
-                  elevation: 0,
-                  color: Colors.transparent,
-                  title: "",
-                ),
+              AppBarWithReturn(
+                elevation: 0,
+                color: Colors.transparent,
+                title: "",
               )
             ],
           ),
@@ -73,12 +71,24 @@ class DefaultCategoryContainer extends StatelessWidget {
               SizedBox(
                 height: 40.h,
                 child: Center(
-                  child: Text(
-                    "Desole nous n'avons pac encore des produits de categorie ${categoryName!} "
-                    "nous travaillons tres dure chaque jour pour ameliorer nos services "
-                    "svp soyez patients et reeasseyez plutard.\n"
-                    "excellentes journee",
-                    textAlign: TextAlign.center,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 130,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('images/stock.png'))),
+                      ),
+                      verticalSpacing,
+                      Text(
+                        "Nous n'avons pas encore de produit dans la categorie"
+                        "${categoryName}. Nous travaillons tres dure pour ameliorer"
+                        "nos service. Svp reessayez plutard.",
+                        textAlign: TextAlign.center,
+                      )
+                    ],
                   ),
                 ),
               ),

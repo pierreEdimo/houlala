@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/service/category_service.dart';
 import 'package:houlala/widget/category_container.dart';
 import 'package:provider/provider.dart';
@@ -51,9 +52,7 @@ class VerticalListOfCategories extends StatelessWidget {
                           child: Image.asset("images/categories.png"),
                         ),
                       ),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
+                      verticalSpacing,
                       Text(
                         error!,
                         textAlign: TextAlign.center,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/custom_button_container.dart';
+import 'package:houlala/widget/product_title.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 
 class ModalBar extends StatelessWidget {
@@ -35,11 +36,9 @@ class ModalBar extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Flexible(
-                      child: Text(
-                        title!,
+                      child: ProductTitle(
+                        title: title,
                         maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: titleStyle,
                       ),
                     ),
                     CustomButtonContainer(

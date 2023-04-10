@@ -3,11 +3,10 @@ import 'package:houlala/helper/constants.dart';
 import 'package:houlala/main.dart';
 import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/service/order_service.dart';
-import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/decrease_quantity_text.dart';
-import 'package:houlala/widget/expanded_title.dart';
 import 'package:houlala/widget/image_container.dart';
 import 'package:houlala/widget/increase_quantity_text.dart';
+import 'package:houlala/widget/product_title.dart';
 import 'package:houlala/widget/quantity_container.dart';
 import 'package:houlala/widget/transparent_card_container.dart';
 import 'package:provider/provider.dart';
@@ -77,8 +76,9 @@ class CartItemContainer extends StatelessWidget {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ExpandedTitel(
+                        ProductTitle(
                           title: cartItem!.name!,
+                          maxLines: 2,
                         ),
                         verticalSpacing,
                         Text(
@@ -118,8 +118,9 @@ class CartItemContainer extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ExpandedTitel(
+                      ProductTitle(
                         title: cartItem!.name!,
+                        maxLines: 2,
                       ),
                       verticalSpacing,
                       !confirmed!
@@ -150,11 +151,11 @@ class CartItemContainer extends StatelessWidget {
                                                 )
                                               : const DecreaseQuantityText(),
                                         ),
-                                        const SizedBox(width: 20.0),
+                                        horizontalSizedBox,
                                         QuantityContainer(
                                           quantity: cartItem!.quantity!,
                                         ),
-                                        const SizedBox(width: 20.0),
+                                        horizontalSizedBox,
                                         GestureDetector(
                                           onTap: () async =>
                                               increaseQuantity(context),

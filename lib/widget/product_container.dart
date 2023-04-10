@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/main.dart';
 import 'package:houlala/model/add_item.dart';
 import 'package:houlala/model/add_order.dart';
@@ -7,6 +10,7 @@ import 'package:houlala/service/order_service.dart';
 import 'package:houlala/service/product_service.dart';
 import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
+import 'package:houlala/widget/product_title.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +24,36 @@ class ProductContainer extends StatelessWidget {
     this.product,
     this.displayType,
   }) : super(key: key);
+
+  /// ajoute les produits dans le panier
+  addProductToCart(int price, int quantity, BuildContext context) async {
+    String? userId = await storage.read(key: "userId");
+
+    if (userId != null) {
+      List<AddItem>? cartItems = <AddItem>[];
+
+      AddItem item = AddItem(
+          productSku: product!.productSku!,
+          price: price,
+          quantity: quantity,
+          initialPrice: product!.sellingPrice!);
+
+      cartItems.add(item);
+
+      AddOrder newOrder = AddOrder(
+          userId: userId,
+          locationId: product!.locationId!,
+          cartItems: cartItems);
+
+      Response response =
+          await Provider.of<OrderService>(context, listen: false)
+              .addOrder(newOrder);
+
+      if (response.statusCode == HttpStatus.created) {
+        showSnack(const Text("Produit a ete ajoute dans le panier "), context);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,65 +73,25 @@ class ProductContainer extends StatelessWidget {
                   imageUrl: product!.imageUrl!,
                 ),
               ),
-              const SizedBox(
-                width: 10.0,
-              ),
+              horizontalSpacing,
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Flexible(
-                      child: Text(
-                        product!.name!,
+                      child: ProductTitle(
+                        title: product!.name!,
                         maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'PoppinsBold',
-                          fontSize: 18.0,
-                        ),
                       ),
                     ),
                     Text(
                       '${price.toString()} FCFA',
                     ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
+                    verticalSpacing,
                     CustomElevatedButton(
                       child: const Text("Ajouter au Panier"),
-                      onPressed: () async {
-                        String? userId = await storage.read(key: "userId");
-
-                        if (userId != null) {
-                          List<AddItem>? cartItems = <AddItem>[];
-
-                          AddItem item = AddItem(
-                              productSku: product!.productSku!,
-                              price: price,
-                              quantity: quantity,
-                              initialPrice: product!.sellingPrice!);
-
-                          cartItems.add(item);
-
-                          AddOrder newOrder = AddOrder(
-                              userId: userId,
-                              locationId: product!.locationId!,
-                              cartItems: cartItems);
-
-                          Response response = await Provider.of<OrderService>(
-                                  context,
-                                  listen: false)
-                              .addOrder(newOrder);
-
-                          if (response.statusCode == 201) {
-                            showSnack(
-                                const Text(
-                                    "Produit a ete ajoute dans le panier "),
-                                context);
-                          }
-                        }
-                      },
+                      onPressed: () async =>
+                          addProductToCart(price, quantity, context),
                     )
                   ],
                 ),
@@ -113,28 +107,22 @@ class ProductContainer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
+                flex: 1,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(5.0)
-                  ),
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: BackgroundImage(
                     imageUrl: product!.imageUrl!,
                     fit: BoxFit.contain,
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 5.0,
-              ),
-              Text(
-                product!.name!,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'PoppinsBold',
-                  fontSize: 18.0,
+              Expanded(
+                flex: 0,
+                child: ProductTitle(
+                  title: product!.name!,
+                  maxLines: 1,
                 ),
               ),
               Text(

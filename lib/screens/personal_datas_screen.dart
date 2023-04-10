@@ -14,6 +14,24 @@ import '../model/user_information.dart';
 class PersonalDataScreen extends StatelessWidget {
   const PersonalDataScreen({Key? key}) : super(key: key);
 
+  /// Navigate vers l'Edit
+  navigateToEdit(UserInformation connectedUser, BuildContext context){
+    EditScreenArguments args = EditScreenArguments(
+        email: connectedUser.email!,
+        country: connectedUser.country,
+        city: connectedUser.city,
+        userName: connectedUser.userName,
+        poBox: connectedUser.poBox,
+        streetName: connectedUser.streetName,
+        telephoneNumber: connectedUser.telephoneNumber,
+        name: connectedUser.name,
+        houseNumber: connectedUser.houseNumber,
+        type: "email");
+
+    Navigator.of(context)
+        .pushNamed("/edit", arguments: args);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +62,7 @@ class PersonalDataScreen extends StatelessWidget {
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                         side: BorderSide(color: Colors.grey.shade300, width: 1),
-                        borderRadius: BorderRadius.circular(4.0),
+                        borderRadius: BorderRadius.circular(5.0),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -74,30 +92,13 @@ class PersonalDataScreen extends StatelessWidget {
                                 fontSize: customFontSize,
                               ),
                             ),
-                            const SizedBox(
-                              height: 10.0,
-                            ),
+                            verticalSpacing,
                           ],
                         ),
                       ),
                     ),
                     CustomElevatedButton(
-                      onPressed: () {
-                        EditScreenArguments args = EditScreenArguments(
-                            email: connectedUser.email!,
-                            country: connectedUser.country,
-                            city: connectedUser.city,
-                            userName: connectedUser.userName,
-                            poBox: connectedUser.poBox,
-                            streetName: connectedUser.streetName,
-                            telephoneNumber: connectedUser.telephoneNumber,
-                            name: connectedUser.name,
-                            houseNumber: connectedUser.houseNumber,
-                            type: "email");
-
-                        Navigator.of(context)
-                            .pushNamed("/edit", arguments: args);
-                      },
+                      onPressed: () => navigateToEdit(connectedUser, context),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
@@ -112,9 +113,7 @@ class PersonalDataScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
+                    verticalSpacing,
                     PersonnalDataContainer(
                       connectedUser: connectedUser,
                     ),

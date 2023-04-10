@@ -12,7 +12,7 @@ class CardTitle extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const ImageIcon(AssetImage('images/store.png')),
-        const SizedBox(width: 10.0),
+        horizontalSpacing,
         Text(name!, style: titleStyle)
       ],
     );

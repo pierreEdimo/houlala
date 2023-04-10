@@ -14,6 +14,23 @@ class PersonnalDataContainer extends StatelessWidget {
     this.connectedUser,
   }) : super(key: key);
 
+  navigateToEdit(BuildContext context, String type) {
+    EditScreenArguments args = EditScreenArguments(
+        email: connectedUser!.email!,
+        country: connectedUser!.country,
+        city: connectedUser!.city,
+        userName: connectedUser!.userName,
+        poBox: connectedUser!.poBox,
+        streetName: connectedUser!.streetName,
+        telephoneNumber: connectedUser!.telephoneNumber,
+        name: connectedUser!.name,
+        houseNumber: connectedUser!.houseNumber,
+        firstName: connectedUser!.firstName,
+        type: type);
+
+    Navigator.of(context).pushNamed("/edit", arguments: args);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,12 +50,9 @@ class PersonnalDataContainer extends StatelessWidget {
                 Container(
                   width: 100.w,
                   margin: const EdgeInsets.only(bottom: 10.0),
-                  child: const Text(
+                  child: Text(
                     "Informations Personnelles",
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "PoppinsBold"),
+                    style: titleStyle,
                   ),
                   decoration: BoxDecoration(
                     border: Border(
@@ -71,26 +85,9 @@ class PersonnalDataContainer extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(
-          height: 10.0,
-        ),
+        verticalSpacing,
         CustomElevatedButton(
-          onPressed: () {
-            EditScreenArguments args = EditScreenArguments(
-                email: connectedUser!.email!,
-                country: connectedUser!.country,
-                city: connectedUser!.city,
-                userName: connectedUser!.userName,
-                poBox: connectedUser!.poBox,
-                streetName: connectedUser!.streetName,
-                telephoneNumber: connectedUser!.telephoneNumber,
-                name: connectedUser!.name,
-                houseNumber: connectedUser!.houseNumber,
-                firstName: connectedUser!.firstName,
-                type: "personal");
-
-            Navigator.of(context).pushNamed("/edit", arguments: args);
-          },
+          onPressed: () => navigateToEdit(context, "personal"),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
@@ -185,26 +182,9 @@ class PersonnalDataContainer extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(
-          height: 10.0,
-        ),
+        verticalSpacing,
         CustomElevatedButton(
-          onPressed: () {
-            EditScreenArguments args = EditScreenArguments(
-                email: connectedUser!.email!,
-                country: connectedUser!.country,
-                city: connectedUser!.city,
-                userName: connectedUser!.userName,
-                poBox: connectedUser!.poBox,
-                streetName: connectedUser!.streetName,
-                telephoneNumber: connectedUser!.telephoneNumber,
-                name: connectedUser!.name,
-                houseNumber: connectedUser!.houseNumber,
-                firstName: connectedUser!.firstName,
-                type: "address");
-
-            Navigator.of(context).pushNamed("/edit", arguments: args);
-          },
+          onPressed: () => navigateToEdit(context, "address"),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
@@ -217,9 +197,6 @@ class PersonnalDataContainer extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(
-          height: 10.0,
-        )
       ],
     );
   }

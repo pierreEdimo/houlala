@@ -59,7 +59,6 @@ class SubCategoryScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: !kIsWeb ? null : 70.0,
                     child: AppBarWithReturn(
                       color: Colors.transparent,
                       elevation: 0,

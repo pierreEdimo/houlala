@@ -4,6 +4,8 @@ import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/markdown_container.dart';
 import 'package:houlala/widget/page_contact_information.dart';
 
+import '../helper/constants.dart';
+
 class PageInfoContainer extends StatelessWidget {
   final LocationModel? page;
 
@@ -16,15 +18,13 @@ class PageInfoContainer extends StatelessWidget {
         CustomColumnContainer(
           child: const Text(
             "A Propos",
-            style: TextStyle(fontSize: 22.0, fontFamily: "PoppinsBold"),
+            style: TextStyle(fontSize: 20.0, fontFamily: "PoppinsBold"),
           ),
           gridList: MarkdownContainer(
             data: page!.description!,
           ),
         ),
-        const SizedBox(
-          height: 20.0,
-        ),
+        verticalSpacing,
         PageContactInformation(
           page: page,
         )

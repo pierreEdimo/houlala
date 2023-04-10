@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:sizer/sizer.dart';
 
 import 'grid_pages.dart';
@@ -32,9 +33,7 @@ class StoreBodyContainer extends StatelessWidget {
             uri: '${dotenv.env['DISCOVERY_CATEGORY_URL']}/store',
           ),
         ),
-        const SizedBox(
-          height: 10.0,
-        ),
+        verticalSpacing,
         GridPages(
           child: const Text(
             "Quelques Magasins",

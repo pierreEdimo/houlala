@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
 import 'package:sizer/sizer.dart';
 
@@ -25,7 +26,7 @@ class ShopContainer extends StatelessWidget {
                 height: 35.h,
                 child: Container(
                   width: 100.w,
-                  color: const Color(0xf2f2f2f2),
+                  color: lightgrey,
                 ),
               ),
               SizedBox(

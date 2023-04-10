@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/helper/constants.dart';
 
 class CustomListTile extends StatelessWidget {
   final String? imageUrl;
@@ -29,9 +30,7 @@ class CustomListTile extends StatelessWidget {
                 size: 27,
                 color: color ?? const Color(0xff000000),
               ),
-              const SizedBox(
-                width: 10.0,
-              ),
+              horizontalSpacing,
               Text(
                 title!,
                 style: const TextStyle(

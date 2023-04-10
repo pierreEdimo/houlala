@@ -69,7 +69,7 @@ class CategoryContainer extends StatelessWidget {
                   color: Color(0xFFFFFFFF),
                   fontWeight: FontWeight.bold,
                   fontFamily: 'PoppinsBold',
-                  fontSize: 18.0,
+                  fontSize: 20.0,
                 ),
               ),
             ),

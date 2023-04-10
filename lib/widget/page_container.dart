@@ -93,7 +93,7 @@ class PageContainer extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(
-                4.0,
+                5.0,
               ),
               border: Border.all(
                 width: 1.0,

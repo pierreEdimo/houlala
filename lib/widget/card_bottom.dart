@@ -19,7 +19,7 @@ class CardBottom extends StatelessWidget {
       margin: const EdgeInsets.only(top: 15.0),
       decoration: BoxDecoration(
         border: Border(
-          top: BorderSide(width: 2, color: Colors.grey.shade200),
+          top: BorderSide(width: 1, color: Colors.grey.shade300),
         ),
       ),
       child: Row(
