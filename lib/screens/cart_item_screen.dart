@@ -12,10 +12,8 @@ class CartItemScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: "Mon Panier",
       ),
-      body: const ContainerWithConnectivityChecker(
-        child: SingleChildScrollView(
-          child: ListOfCartItems(),
-        ),
+      body: const  ContainerWithConnectivityChecker(
+        child: ListOfCartItems(),
       ),
     );
   }

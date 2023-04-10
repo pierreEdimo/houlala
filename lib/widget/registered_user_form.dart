@@ -12,7 +12,6 @@ import '../helper/constants.dart';
 import '../model/send_email.dart';
 import '../service/email_service.dart';
 import '../service/order_service.dart';
-import 'checkout_bar.dart';
 import 'custom_elevated_button.dart';
 
 import '../model/order.dart';
@@ -80,95 +79,93 @@ class RegisteredUserForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 11.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                PersonnalDataContainer(
-                  connectedUser: connectedUser,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 11.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              PersonnalDataContainer(
+                connectedUser: connectedUser,
+              ),
+              Card(
+                color: Colors.transparent,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(color: Colors.grey.shade300, width: 1),
+                  borderRadius: BorderRadius.circular(4.0),
                 ),
-                Card(
-                  color: Colors.transparent,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.grey.shade300, width: 1),
-                    borderRadius: BorderRadius.circular(4.0),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 100.w,
-                          margin: const EdgeInsets.only(bottom: 10.0),
-                          child: const Text(
-                            "Mode de Paiement",
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: "PoppinsBold"),
-                          ),
-                          decoration: BoxDecoration(
-                              border: Border(
-                                  bottom: BorderSide(
-                                      width: 1, color: Colors.grey.shade300))),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 100.w,
+                        margin: const EdgeInsets.only(bottom: 10.0),
+                        child: const Text(
+                          "Mode de Paiement",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "PoppinsBold"),
                         ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.money_outlined,
-                              color: Colors.green,
-                              size: 18.0,
-                            ),
-                            const SizedBox(
-                              width: 5.0,
-                            ),
-                            Text(
-                              "Cash",
-                              style: TextStyle(fontSize: customFontSize),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
+                        decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    width: 1, color: Colors.grey.shade300))),
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.money_outlined,
+                            color: Colors.green,
+                            size: 18.0,
+                          ),
+                          const SizedBox(
+                            width: 5.0,
+                          ),
+                          Text(
+                            "Cash",
+                            style: TextStyle(fontSize: customFontSize),
+                          )
+                        ],
+                      )
+                    ],
                   ),
                 ),
-                ListView(
-                  shrinkWrap: true,
-                  physics: const ClampingScrollPhysics(),
-                  children: orders!
-                      .map((order) => OrderContainer(
-                            status: 'confirmation',
-                            order: order,
-                            confirmed: false,
-                          ))
-                      .toList(),
-                ),
-                Container(
-                  height: 55,
-                  margin: const EdgeInsets.symmetric(vertical: 15.0),
-                  child: CustomElevatedButton(
-                    hasBorder: false,
-                    color: Colors.orangeAccent,
-                    onPressed: () async => confirmCommand(context),
-                    child: Text(
-                      "Commander",
-                      style: standardStyle,
-                    ),
+              ),
+              ListView(
+                shrinkWrap: true,
+                physics: const ClampingScrollPhysics(),
+                children: orders!
+                    .map((order) => OrderContainer(
+                          status: 'confirmation',
+                          order: order,
+                          confirmed: false,
+                        ))
+                    .toList(),
+              ),
+              Container(
+                height: 55,
+                margin: const EdgeInsets.symmetric(vertical: 15.0),
+                child: CustomElevatedButton(
+                  hasBorder: false,
+                  color: Colors.orangeAccent,
+                  onPressed: () async => confirmCommand(context),
+                  child: Text(
+                    "Commander",
+                    style: standardStyle,
                   ),
-                )
-              ],
-            ),
-          )
-        ],
-      ),
+                ),
+              )
+            ],
+          ),
+        )
+      ],
     );
   }
 }

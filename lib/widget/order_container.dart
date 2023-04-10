@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/order.dart';
 import 'package:houlala/widget/bordered_card.dart';
 import 'package:houlala/widget/card_bottom.dart';
@@ -50,9 +51,7 @@ class OrderContainer extends StatelessWidget {
               CardTitle(
                 name: order!.location!.name!,
               ),
-              const SizedBox(
-                height: 10.0,
-              ),
+              verticalSpacing,
               confirmed!
                   ? Container(
                       height: 50,
@@ -91,9 +90,7 @@ class OrderContainer extends StatelessWidget {
                       ),
                     )
                   : Container(),
-              const SizedBox(
-                height: 10.0,
-              ),
+              verticalSpacing,
               ListOfItems(
                 confirmed: confirmed!,
                 orderId: order!.id!,

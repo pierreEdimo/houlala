@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/model/offline_order.dart';
 import 'package:houlala/screens/about_screen.dart';
@@ -101,9 +102,9 @@ class MyApp extends StatelessWidget {
               title: 'houlala',
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                  appBarTheme: const AppBarTheme(
-                    backgroundColor: Color(0xf2f2f2f2),
-                    titleTextStyle: TextStyle(
+                  appBarTheme:  AppBarTheme(
+                    backgroundColor: lightgrey,
+                    titleTextStyle: const TextStyle(
                       fontFamily: 'PoppinsBold',
                       fontWeight: FontWeight.bold,
                       fontSize: 22.0,

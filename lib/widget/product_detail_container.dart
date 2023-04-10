@@ -130,7 +130,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                     children: [
                       Container(
                         color: Colors.grey.shade200,
-                        height: 60.h,
+                        height: 65.h,
                         child: BackgroundImage(
                           borderRadius: 0,
                           imageUrl: foundProduct.imageUrl!,
@@ -138,7 +138,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                         ),
                       ),
                       SizedBox(
-                        height: 55.h,
+                        height: 60.h,
                         child: Container(
                           alignment: Alignment.bottomLeft,
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -210,11 +210,12 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
-                              children: const [
-                                ImageIcon(
+                              children: [
+                                const ImageIcon(
                                   AssetImage('images/shopping.png'),
                                 ),
-                                Text("Ajouter au panier")
+                                horizontalSpacing,
+                                const Text("Ajouter au panier")
                               ],
                             ),
                           ),

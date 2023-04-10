@@ -14,7 +14,7 @@ class BorderedCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
         5.0,
-      )),
+      ), ),
       elevation: 0,
       color: Colors.transparent,
       child: Container(
@@ -23,7 +23,7 @@ class BorderedCard extends StatelessWidget {
           child: child!,
         ),
         decoration: BoxDecoration(
-          border: Border.all(width: 1.0, color: Colors.grey.shade200),
+          border: Border.all(width: 1.0, color: Colors.grey.shade300),
         ),
       ),
     );

@@ -16,7 +16,7 @@ class CustomElevatedButton extends StatelessWidget {
 
   getColor() {
     if (hasBorder == null || !hasBorder! == false) {
-      return const Color(0xffd3d3d3);
+      return Colors.grey.shade300;
     }
     return Colors.transparent;
   }
@@ -43,7 +43,7 @@ class CustomElevatedButton extends StatelessWidget {
           color == null ? const Color(0xffffffff) : color!,
         ),
         padding: MaterialStateProperty.all<EdgeInsets>(
-          const EdgeInsets.symmetric(vertical: 13.0, horizontal: 10.0),
+          const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
         ),
       ),
       onPressed: onPressed,
