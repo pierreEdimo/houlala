@@ -17,6 +17,19 @@ class CartItemDeleteButton extends StatelessWidget {
     this.locationId,
   }) : super(key: key);
 
+  /// Supprime les items de la Commande
+  deleteItemFromOrder(BuildContext context) async {
+    String? userId = await storage.read(key: "userId");
+
+    if (userId != null) {
+      Provider.of<OrderService>(context, listen: false)
+          .deleteFromOrder(item!.productSku!, orderId);
+    } else {
+      Provider.of<OrderService>(context, listen: false)
+          .deleteItemFromOrder(locationId!, item!.productSku!);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -24,17 +37,7 @@ class CartItemDeleteButton extends StatelessWidget {
         FontAwesomeIcons.trashCan,
         color: Color(0xffdf972f),
       ),
-      onTap: () async {
-        String? userId = await storage.read(key: "userId");
-
-        if (userId != null) {
-          Provider.of<OrderService>(context, listen: false)
-              .deleteFromOrder(item!.productSku!, orderId);
-        } else {
-          Provider.of<OrderService>(context, listen: false)
-              .deleteItemFromOrder(locationId!, item!.productSku!);
-        }
-      },
+      onTap: () async => deleteItemFromOrder(context),
     );
   }
 }

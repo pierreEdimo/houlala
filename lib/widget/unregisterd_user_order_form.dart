@@ -58,237 +58,236 @@ class _UnregisteredUserBorderFormState
     super.dispose();
   }
 
+  /// valide l'envoie de commande dans la base de donnees
+  validateForm() async {
+    if (_formKey.currentState!.validate()) {
+      UserInformation info = UserInformation(
+        email: _emailController!.text,
+        name: _nameController!.text,
+        telephoneNumber: _phoneNumber!.text,
+        streetName: _streetController!.text,
+        houseNumber: _houseNumberController!.text,
+        city: _cityController!.text,
+        country: _countryController!.text,
+        poBox: _poBoxController!.text,
+        firstName: _firstNameController!.text,
+      );
+
+      try {
+        for (var order in widget.offlineOrders!) {
+          UnregisteredUserOrder newOrder = UnregisteredUserOrder(
+              locationId: order.locationId,
+              userInformation: info,
+              cartItems: order.cartItems);
+
+          await Provider.of<OrderService>(context, listen: false)
+              .confirmUnregisteredUserOrder(newOrder);
+        }
+
+        Provider.of<OrderService>(context, listen: false)
+            .deleteAfterOrder(widget.offlineOrders!);
+        Navigator.of(context).pop();
+      } catch (e) {
+        if (kDebugMode) {
+          print(e);
+        }
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const CheckoutBar(),
-              const SizedBox(
-                height: 5,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 11.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    BorderedCard(
-                      child: Column(
-                        children: [
-                          const BorderedCardTitle(
-                            title: "Donnees Personnelles",
-                          ),
-                          EmailInput(
-                            controller: _emailController,
-                          ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          NameInput(
-                            hintText: 'Nom',
-                            controller: _nameController,
-                            errorMessage: 'Inserez votre  Nom',
-                          ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          NameInput(
-                            hintText: 'Prenom',
-                            controller: _firstNameController,
-                            errorMessage: 'Inserez votre Prenom',
-                          ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: TextFormField(
-                                  enabled: false,
-                                  initialValue: "+237",
-                                  decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.symmetric(
-                                          horizontal: 10.0, vertical: 15.0),
-                                      border: OutlineInputBorder()),
-                                ),
-                              ),
-                              horizontalSpacing,
-                              Expanded(
-                                flex: 4,
-                                child: InputNumber(
-                                  controller: _phoneNumber,
-                                  hintText: 'Numero de telephone',
-                                  errorMessage:
-                                      'Inserez votre Numero de telephone',
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    BorderedCard(
-                      child: Column(
-                        children: [
-                          const BorderedCardTitle(
-                            title: "Addresse",
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                flex: 2,
-                                child: NameInput(
-                                  hintText: 'Rue',
-                                  errorMessage: 'Inserez votre rue',
-                                  controller: _streetController,
-                                ),
-                              ),
-                              horizontalSpacing,
-                              Expanded(
-                                child: TextFormField(
-                                  controller: _houseNumberController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.symmetric(
-                                          horizontal: 10.0, vertical: 15.0),
-                                      labelText: 'N.r',
-                                      border: OutlineInputBorder()),
-                                ),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          TextFormField(
-                            controller: _poBoxController,
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              contentPadding: EdgeInsets.symmetric(
-                                horizontal: 10.0,
-                                vertical: 15.0,
-                              ),
-                              border: OutlineInputBorder(),
-                              labelText: "B.P",
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          NameInput(
-                            enabled: false,
-                            hintText: 'ville',
-                            errorMessage: 'Inserez votre Ville',
-                            controller: _cityController,
-                          ),
-                          const SizedBox(
-                            height: 20.0,
-                          ),
-                          NameInput(
-                            enabled: false,
-                            hintText: 'Pays',
-                            errorMessage: 'Inserez votre Pays',
-                            controller: _countryController,
-                          )
-                        ],
-                      ),
-                    ),
-                    BorderedCard(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const BorderedCardTitle(
-                            title: "Mode de Paiement",
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Icon(
-                                Icons.money_outlined,
-                                color: Colors.green,
-                                size: 18.0,
-                              ),
-                              const SizedBox(
-                                width: 5.0,
-                              ),
-                              Text(
-                                "Cash",
-                                style: TextStyle(
-                                  fontSize: customFontSize,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    ListView(
-                      shrinkWrap: true,
-                      physics: const ClampingScrollPhysics(),
-                      children: widget.offlineOrders!
-                          .map((order) => OfflineOrderContainer(
-                                status: 'confirmation',
-                                order: order,
-                              ))
-                          .toList(),
-                    ),
-                    Container(
-                      height: 55.0,
-                      margin: const EdgeInsets.symmetric(vertical: 15.0),
-                      child: CustomElevatedButton(
-                        onPressed: () async {
-                          if (_formKey.currentState!.validate()) {
-                            UserInformation info = UserInformation(
-                              email: _emailController!.text,
-                              name: _nameController!.text,
-                              telephoneNumber: _phoneNumber!.text,
-                              streetName: _streetController!.text,
-                              houseNumber: _houseNumberController!.text,
-                              city: _cityController!.text,
-                              country: _countryController!.text,
-                              poBox: _poBoxController!.text,
-                              firstName: _firstNameController!.text,
-                            );
-
-                            try {
-                              for (var order in widget.offlineOrders!) {
-                                UnregisteredUserOrder newOrder =
-                                    UnregisteredUserOrder(
-                                        locationId: order.locationId,
-                                        userInformation: info,
-                                        cartItems: order.cartItems);
-
-                                await Provider.of<OrderService>(context,
-                                        listen: false)
-                                    .confirmUnregisteredUserOrder(newOrder);
-                              }
-
-                              Provider.of<OrderService>(context, listen: false)
-                                  .deleteAfterOrder(widget.offlineOrders!);
-                              Navigator.of(context).pop();
-                            } catch (e) {
-                              if (kDebugMode) {
-                                print(e);
-                              }
-                            }
-                          }
-                        },
-                        child: Text(
-                          "Commander",
-                          style: standardStyle,
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(
+              height: 5,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 11.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  BorderedCard(
+                    child: Column(
+                      children: [
+                        const BorderedCardTitle(
+                          title: "Donnees Personnelles",
                         ),
+                        EmailInput(
+                          controller: _emailController,
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        NameInput(
+                          hintText: 'Nom',
+                          controller: _nameController,
+                          errorMessage: 'Inserez votre  Nom',
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        NameInput(
+                          hintText: 'Prenom',
+                          controller: _firstNameController,
+                          errorMessage: 'Inserez votre Prenom',
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: TextFormField(
+                                enabled: false,
+                                initialValue: "+237",
+                                decoration: const InputDecoration(
+                                    contentPadding: EdgeInsets.symmetric(
+                                        horizontal: 10.0, vertical: 15.0),
+                                    border: OutlineInputBorder()),
+                              ),
+                            ),
+                            horizontalSpacing,
+                            Expanded(
+                              flex: 4,
+                              child: InputNumber(
+                                controller: _phoneNumber,
+                                hintText: 'Numero de telephone',
+                                errorMessage:
+                                    'Inserez votre Numero de telephone',
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  BorderedCard(
+                    child: Column(
+                      children: [
+                        const BorderedCardTitle(
+                          title: "Addresse",
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: NameInput(
+                                hintText: 'Rue',
+                                errorMessage: 'Inserez votre rue',
+                                controller: _streetController,
+                              ),
+                            ),
+                            horizontalSpacing,
+                            Expanded(
+                              child: TextFormField(
+                                controller: _houseNumberController,
+                                keyboardType: TextInputType.number,
+                                decoration: const InputDecoration(
+                                    contentPadding: EdgeInsets.symmetric(
+                                        horizontal: 10.0, vertical: 15.0),
+                                    labelText: 'N.r',
+                                    border: OutlineInputBorder()),
+                              ),
+                            )
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        TextFormField(
+                          controller: _poBoxController,
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 10.0,
+                              vertical: 15.0,
+                            ),
+                            border: OutlineInputBorder(),
+                            labelText: "B.P",
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        NameInput(
+                          enabled: false,
+                          hintText: 'ville',
+                          errorMessage: 'Inserez votre Ville',
+                          controller: _cityController,
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        NameInput(
+                          enabled: false,
+                          hintText: 'Pays',
+                          errorMessage: 'Inserez votre Pays',
+                          controller: _countryController,
+                        )
+                      ],
+                    ),
+                  ),
+                  BorderedCard(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const BorderedCardTitle(
+                          title: "Mode de Paiement",
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.money_outlined,
+                              color: Colors.green,
+                              size: 18.0,
+                            ),
+                            const SizedBox(width: 10.0),
+                            Text(
+                              "Cash",
+                              style: TextStyle(
+                                fontSize: customFontSize,
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  ListView(
+                    shrinkWrap: true,
+                    physics: const ClampingScrollPhysics(),
+                    children: widget.offlineOrders!
+                        .map((order) => OfflineOrderContainer(
+                              status: 'confirmation',
+                              order: order,
+                            ))
+                        .toList(),
+                  ),
+                  Container(
+                    height: 55.0,
+                    margin: const EdgeInsets.symmetric(vertical: 15.0),
+                    child: CustomElevatedButton(
+                      hasBorder: false,
+                      color: Colors.orangeAccent,
+                      onPressed: () async => validateForm(),
+                      child: Text(
+                        "Commander",
+                        style: standardStyle,
                       ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
         ),
-
+      ),
     );
   }
 }

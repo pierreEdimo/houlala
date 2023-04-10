@@ -15,7 +15,7 @@ class CustomElevatedButton extends StatelessWidget {
   }) : super(key: key);
 
   getColor() {
-    if (hasBorder == null || !hasBorder!) {
+    if (hasBorder == null || !hasBorder! == false) {
       return const Color(0xffd3d3d3);
     }
     return Colors.transparent;

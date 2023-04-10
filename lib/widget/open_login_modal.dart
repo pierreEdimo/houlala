@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/widget/custom_button_container.dart';
+import 'package:houlala/widget/checkout_bar.dart';
 import 'package:houlala/widget/sign_in_container.dart';
 import 'package:houlala/widget/sign_up_container.dart';
 import 'package:sizer/sizer.dart';
@@ -24,42 +23,9 @@ openModal(BuildContext context) {
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: Column(
               children: [
-                SafeArea(
-                  child: SizedBox(
-                    height: 120.0,
-                    child: Material(
-                      elevation: 1,
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 10.0,
-                            right: 10.0,
-                            top: 40.0,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Flexible(
-                                child: Text(
-                                  "Se Connecter/S'enregistrer",
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 22.0,
-                                      fontFamily: "PoppinsBold"),
-                                ),
-                              ),
-                              CustomButtonContainer(
-                                icon: const FaIcon(FontAwesomeIcons.xmark),
-                                onPressed: () => Navigator.of(context).pop(),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                const SafeArea(
+                  child: ModalBar(
+                    title: "Se Connecter/S'enregistrer",
                   ),
                 ),
                 const SizedBox(

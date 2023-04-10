@@ -101,6 +101,7 @@ flutter:
     - texts/conditions.html
     - images/notification.png
     - images/shopping.png
+    - images/store.png
     - .env
 
 

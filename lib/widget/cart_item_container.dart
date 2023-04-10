@@ -5,11 +5,12 @@ import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/service/order_service.dart';
 import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/decrease_quantity_text.dart';
+import 'package:houlala/widget/expanded_title.dart';
+import 'package:houlala/widget/image_container.dart';
 import 'package:houlala/widget/increase_quantity_text.dart';
 import 'package:houlala/widget/quantity_container.dart';
 import 'package:houlala/widget/transparent_card_container.dart';
 import 'package:provider/provider.dart';
-import 'package:sizer/sizer.dart';
 import '../screens/product_detail_screen.dart';
 import 'cart_item_delete_button.dart';
 
@@ -29,6 +30,32 @@ class CartItemContainer extends StatelessWidget {
       this.locationId})
       : super(key: key);
 
+  /// Reduis la quantite de produits du panier
+  decreaseQuantity(BuildContext context) async {
+    String? userId = await storage.read(key: "userId");
+
+    if (userId != null) {
+      Provider.of<OrderService>(context, listen: false)
+          .updateQuantity('decrease', cartItem!.productSku!, orderId);
+    } else {
+      Provider.of<OrderService>(context, listen: false)
+          .decreaseItemQuantity(locationId!, cartItem!.productSku!);
+    }
+  }
+
+  /// augmente la quantite de produits du panier
+  increaseQuantity(BuildContext context) async {
+    String? userId = await storage.read(key: "userId");
+
+    if (userId != null) {
+      Provider.of<OrderService>(context, listen: false)
+          .updateQuantity('increase', cartItem!.productSku!, orderId);
+    } else {
+      Provider.of<OrderService>(context, listen: false)
+          .increaseItemQuantity(locationId!, cartItem!.productSku!);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     switch (status) {
@@ -39,70 +66,33 @@ class CartItemContainer extends StatelessWidget {
                 arguments: cartItem!.name);
           },
           child: TransparentCardContainer(
-            child: Stack(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 45.w,
-                      height: 200,
-                      child: BackgroundImage(
-                        imageUrl: cartItem!.imageUrl!,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10.0,
-                    ),
-                    Expanded(
-                      child: Text(
-                        cartItem!.name!,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'PoppinsBold',
-                          fontSize: 22.0,
-                        ),
-                      ),
-                    )
-                  ],
+                ImageContainer(
+                  imageUrl: cartItem!.imageUrl!,
                 ),
+                horizontalSpacing,
                 SizedBox(
-                  width: 100.w,
-                  height: 200,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 45.w,
-                      ),
-                      const SizedBox(
-                        width: 10.0,
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: const EdgeInsets.only(top: 30.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '${cartItem!.price.toString()} FCFA',
-                                style: const TextStyle(
-                                  fontSize: 18.0,
-                                ),
-                              ),
-                              Text(
-                                cartItem!.quantity.toString(),
-                                style: const TextStyle(
-                                  fontSize: 18.0,
-                                ),
-                              )
-                            ],
-                          ),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ExpandedTitel(
+                          title: cartItem!.name!,
                         ),
-                      )
-                    ],
-                  ),
+                        verticalSpacing,
+                        Text(
+                          '${cartItem!.price.toString()}FCFA',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontSize: 18.0),
+                        ),
+                        verticalSpacing,
+                        Text(
+                          cartItem!.quantity.toString(),
+                          style: const TextStyle(fontSize: 18.0),
+                        )
+                      ]),
                 )
               ],
             ),
@@ -117,172 +107,89 @@ class CartItemContainer extends StatelessWidget {
             );
           },
           child: TransparentCardContainer(
-            child: Stack(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: 45.w,
-                      height: 200,
-                      child: BackgroundImage(
-                        imageUrl: cartItem!.imageUrl!,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10.0,
-                    ),
-                    Expanded(
-                      child: Text(
-                        cartItem!.name!,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'PoppinsBold',
-                            fontSize: 22.0),
-                      ),
-                    )
-                  ],
+                ImageContainer(
+                  imageUrl: cartItem!.imageUrl!,
                 ),
-                SizedBox(
-                  width: 100.w,
-                  height: 200,
-                  child: !confirmed!
-                      ? Row(
-                          children: [
-                            SizedBox(
-                              width: 45.w,
-                            ),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            Flexible(
-                              child: Container(
-                                padding: const EdgeInsets.only(top: 30.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                horizontalSpacing,
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ExpandedTitel(
+                        title: cartItem!.name!,
+                      ),
+                      verticalSpacing,
+                      !confirmed!
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${cartItem!.price!.toString()}FCFA',
+                                  style: const TextStyle(fontSize: 18.0),
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      '${cartItem!.price!.toString()} FCFA',
-                                      style: const TextStyle(fontSize: 18.0),
-                                    ),
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Row(
-                                          children: [
-                                            GestureDetector(
-                                              onTap: () async {
-                                                String? userId = await storage
-                                                    .read(key: "userId");
-
-                                                if (userId != null) {
-                                                  Provider.of<OrderService>(
-                                                          context,
-                                                          listen: false)
-                                                      .updateQuantity(
-                                                          'decrease',
-                                                          cartItem!.productSku!,
-                                                          orderId);
-                                                } else {
-                                                  Provider.of<OrderService>(
-                                                          context,
-                                                          listen: false)
-                                                      .decreaseItemQuantity(
-                                                          locationId!,
-                                                          cartItem!
-                                                              .productSku!);
-                                                }
-                                              },
-                                              child: cartItem!.quantity! <= 1
-                                                  ? CartItemDeleteButton(
-                                                      orderId: orderId,
-                                                      item: cartItem!,
-                                                      locationId: locationId,
-                                                    )
-                                                  : const DecreaseQuantityText(),
-                                            ),
-                                            horizontalSpacing,
-                                            QuantityContainer(
-                                              quantity: cartItem!.quantity,
-                                            ),
-                                            horizontalSpacing,
-                                            InkWell(
-                                              onTap: () async {
-                                                String? userId = await storage
-                                                    .read(key: "userId");
-
-                                                if (userId != null) {
-                                                  Provider.of<OrderService>(
-                                                          context,
-                                                          listen: false)
-                                                      .updateQuantity(
-                                                          'increase',
-                                                          cartItem!.productSku!,
-                                                          orderId);
-                                                } else {
-                                                  Provider.of<OrderService>(
-                                                          context,
-                                                          listen: false)
-                                                      .increaseItemQuantity(
-                                                          locationId!,
-                                                          cartItem!
-                                                              .productSku!);
-                                                }
-                                              },
-                                              child:
-                                                  const InCreaseQuantityText(),
-                                            )
-                                          ],
+                                        GestureDetector(
+                                          onTap: () async =>
+                                              decreaseQuantity(context),
+                                          child: cartItem!.quantity! <= 1
+                                              ? CartItemDeleteButton(
+                                                  orderId: orderId,
+                                                  item: cartItem!,
+                                                  locationId: locationId,
+                                                )
+                                              : const DecreaseQuantityText(),
                                         ),
-                                        CartItemDeleteButton(
-                                          orderId: orderId,
-                                          item: cartItem!,
-                                          locationId: locationId,
+                                        const SizedBox(width: 20.0),
+                                        QuantityContainer(
+                                          quantity: cartItem!.quantity!,
+                                        ),
+                                        const SizedBox(width: 20.0),
+                                        GestureDetector(
+                                          onTap: () async =>
+                                              increaseQuantity(context),
+                                          child: const InCreaseQuantityText(),
                                         )
                                       ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
-                      : Row(
-                          children: [
-                            SizedBox(
-                              width: 45.w,
-                            ),
-                            const SizedBox(
-                              width: 10.0,
-                            ),
-                            Expanded(
-                              child: Container(
-                                margin: const EdgeInsets.only(top: 30.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '${cartItem!.price!.toString()} FCFA',
-                                      maxLines: 3,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(fontSize: 18.0),
                                     ),
-                                    Text(
-                                      cartItem!.quantity.toString(),
-                                      style: const TextStyle(
-                                        fontSize: 18.0,
-                                      ),
+                                    CartItemDeleteButton(
+                                      orderId: orderId,
+                                      item: cartItem!,
+                                      locationId: locationId,
                                     )
                                   ],
-                                ),
-                              ),
+                                )
+                              ],
                             )
-                          ],
-                        ),
-                ),
+                          : Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${cartItem!.price!.toString()}FCFA',
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(fontSize: 18.0),
+                                ),
+                                verticalSpacing,
+                                Text(
+                                  cartItem!.quantity.toString(),
+                                  style: const TextStyle(fontSize: 18.0),
+                                )
+                              ],
+                            )
+                    ],
+                  ),
+                )
               ],
             ),
           ),

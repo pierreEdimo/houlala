@@ -84,11 +84,6 @@ class UserScreenContainer extends StatelessWidget {
                         color: const Color(0xfefefefe),
                         child: Column(
                           children: [
-                            // const CustomListTile(
-                            //   leadingIcon: FontAwesomeIcons.locationDot,
-                            //   title: "Mes Adresses",
-                            // ),
-                            //const OpenOptions(),
                             const ConnectWithUs(),
                             const OpenAbout(),
                             const ContactButton(),
@@ -158,13 +153,6 @@ class UserScreenContainer extends StatelessWidget {
                           title: "Mes Commandes",
                         ),
                       ),
-                      // InkWell(
-                      //   onTap: () => openModal(context),
-                      //   child: const CustomListTile(
-                      //     leadingIcon: FontAwesomeIcons.moneyBill,
-                      //     title: "Mes Factures",
-                      //   ),
-                      // ),
                       InkWell(
                         onTap: () => openModal(context),
                         child: const CustomListTile(
@@ -179,11 +167,6 @@ class UserScreenContainer extends StatelessWidget {
                   color: const Color(0xfefefefe),
                   child: Column(
                     children: [
-                      // const CustomListTile(
-                      //   leadingIcon: FontAwesomeIcons.locationDot,
-                      //   title: "Mes Adresses",
-                      // ),
-                      //const OpenOptions(),
                       const ConnectWithUs(),
                       const OpenAbout(),
                       const ContactButton(),

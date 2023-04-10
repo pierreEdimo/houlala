@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/model/offline_order.dart';
 import 'package:houlala/widget/bordered_card.dart';
-import 'package:houlala/widget/order_container.dart';
+import 'package:houlala/widget/card_bottom.dart';
+import 'package:houlala/widget/card_title.dart';
+import 'package:houlala/widget/list_items.dart';
 
 class OfflineOrderContainer extends StatelessWidget {
   final OfflineOrder? order;
@@ -24,7 +26,7 @@ class OfflineOrderContainer extends StatelessWidget {
           const SizedBox(
             height: 10.0,
           ),
-          ListOFItems(
+          ListOfItems(
             status: status,
             confirmed: false,
             items: order!.cartItems!,

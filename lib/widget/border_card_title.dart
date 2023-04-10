@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:sizer/sizer.dart';
 
 class BorderedCardTitle extends StatelessWidget {
@@ -14,16 +15,13 @@ class BorderedCardTitle extends StatelessWidget {
     return Container(
       width: 100.w,
       margin: const EdgeInsets.only(bottom: 10.0),
-      child:  Text(
+      child: Text(
         title!,
-        style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            fontFamily: "PoppinsBold"),
+        style: titleStyle,
       ),
       decoration: BoxDecoration(
           border: Border(
-              bottom: BorderSide(width: 1, color: Colors.grey.shade300))),
+              bottom: BorderSide(width: 1, color: Colors.grey.shade200))),
     );
   }
 }

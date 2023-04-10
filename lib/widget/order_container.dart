@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/model/order.dart';
 import 'package:houlala/widget/bordered_card.dart';
-import 'package:houlala/widget/cart_item_container.dart';
-import '../model/cart_item.dart';
+import 'package:houlala/widget/card_bottom.dart';
+import 'package:houlala/widget/card_title.dart';
+import 'package:houlala/widget/list_items.dart';
 
 class OrderContainer extends StatelessWidget {
   final Order? order;
@@ -30,7 +30,7 @@ class OrderContainer extends StatelessWidget {
               const SizedBox(
                 height: 10.0,
               ),
-              ListOFItems(
+              ListOfItems(
                 status: status,
                 confirmed: confirmed!,
                 orderId: order!.id!,
@@ -94,7 +94,7 @@ class OrderContainer extends StatelessWidget {
               const SizedBox(
                 height: 10.0,
               ),
-              ListOFItems(
+              ListOfItems(
                 confirmed: confirmed!,
                 orderId: order!.id!,
                 items: order!.cartItems!,
@@ -107,144 +107,6 @@ class OrderContainer extends StatelessWidget {
           ),
         );
     }
-  }
-}
-
-class CardBottom extends StatelessWidget {
-  final int? price;
-  final int? quantity;
-
-  const CardBottom({
-    Key? key,
-    this.price,
-    this.quantity,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 50.0,
-      alignment: Alignment.center,
-      margin: const EdgeInsets.only(
-        top: 15.0,
-      ),
-      decoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(
-            width: 2,
-            color: Colors.grey.shade300,
-          ),
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              const Text(
-                "Quantite: ",
-                style: TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "PoppinsBold",
-                ),
-              ),
-              Text(
-                quantity.toString(),
-                style: const TextStyle(
-                  fontSize: 18.0,
-                ),
-              )
-            ],
-          ),
-          Row(
-            children: [
-              const Text(
-                "Prix: ",
-                style: TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "PoppinsBold",
-                ),
-              ),
-              Text(
-                '${price.toString()} FCFA',
-                style: const TextStyle(fontSize: 18.0),
-              )
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class CardTitle extends StatelessWidget {
-  final String? name;
-
-  const CardTitle({
-    Key? key,
-    this.name,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const FaIcon(
-          FontAwesomeIcons.store,
-          size: 22,
-        ),
-        const SizedBox(
-          width: 5.0,
-        ),
-        Text(
-          name!,
-          style: const TextStyle(
-            fontSize: 22.0,
-            fontFamily: "PoppinsBold",
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class ListOFItems extends StatelessWidget {
-  final List<CartItem>? items;
-  final String? orderId;
-  final bool? confirmed;
-  final String? status;
-  final String? locationId;
-
-  const ListOFItems({
-    Key? key,
-    this.items,
-    this.orderId,
-    this.confirmed,
-    this.status,
-    this.locationId,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      physics: const ClampingScrollPhysics(),
-      shrinkWrap: true,
-      children: items!
-          .map(
-            (item) => CartItemContainer(
-              status: status,
-              cartItem: item,
-              orderId: orderId!,
-              confirmed: confirmed!,
-              locationId: locationId,
-            ),
-          )
-          .toList(),
-    );
   }
 }
 

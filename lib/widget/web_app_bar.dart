@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 
 class WebAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
@@ -17,7 +18,7 @@ class WebAppBar extends StatelessWidget with PreferredSizeWidget {
     return Material(
       elevation: 1,
       child: Container(
-        color: const Color(0xf2f2f2f2),
+        color: lightgrey,
         child: Row(
           children: [
             const Spacer(),

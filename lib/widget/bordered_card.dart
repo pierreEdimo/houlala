@@ -13,7 +13,7 @@ class BorderedCard extends StatelessWidget {
     return Card(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
-        4.0,
+        5.0,
       )),
       elevation: 0,
       color: Colors.transparent,
@@ -23,7 +23,7 @@ class BorderedCard extends StatelessWidget {
           child: child!,
         ),
         decoration: BoxDecoration(
-          border: Border.all(width: 1.0, color: Colors.grey.shade300),
+          border: Border.all(width: 1.0, color: Colors.grey.shade200),
         ),
       ),
     );

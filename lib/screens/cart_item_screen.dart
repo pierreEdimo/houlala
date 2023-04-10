@@ -13,7 +13,9 @@ class CartItemScreen extends StatelessWidget {
         title: "Mon Panier",
       ),
       body: const ContainerWithConnectivityChecker(
-        child: ListOfCartItems(),
+        child: SingleChildScrollView(
+          child: ListOfCartItems(),
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:houlala/model/login.dart';
@@ -40,7 +41,7 @@ class _SignInContainerState extends State<SignInContainer> {
       Response response =
           await Provider.of<AuthService>(context, listen: false).logIn(login);
 
-      if (response.statusCode != 202) {
+      if (response.statusCode != HttpStatus.accepted) {
         final responseJson = json.decode(response.body);
         showErrorDialog(context, "Erreur",
             "${responseJson['message']}, svp reessayez plutard, si le probleme persiste, contectez nous");

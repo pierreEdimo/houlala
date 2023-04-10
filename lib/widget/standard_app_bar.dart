@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'custom_button_container.dart';
 
 class StandardAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -20,7 +21,7 @@ class StandardAppBar extends StatelessWidget with PreferredSizeWidget {
       elevation: 1,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        color: const Color(0xf2f2f2f2),
+        color: lightgrey,
         child: SafeArea(
           child: Center(
             child: Row(

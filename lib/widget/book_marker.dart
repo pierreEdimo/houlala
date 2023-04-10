@@ -21,6 +21,38 @@ class BookMarker extends StatefulWidget {
 }
 
 class _BookMarkerState extends State<BookMarker> {
+  /// enregistre les Produits dans les Favoris
+  bookmarkProduct() async {
+    String? userId = "";
+
+    userId = await storage.read(key: "userId");
+
+    if (userId != null) {
+      var oldStatus = widget.foundProduct!.bookMarked!;
+      setState(() {
+        widget.foundProduct!.bookMarked = !(widget.foundProduct!.bookMarked!);
+      });
+      try {
+        await Provider.of<ProductService>(context, listen: false)
+            .bookMarkProduct(widget.foundProduct!.id!);
+
+        if (widget.foundProduct!.bookMarked!) {
+          showSnack(
+              const Text("Article a ete enregiste dans vos favoris"), context);
+        } else {
+          showSnack(
+              const Text("Article a ete supprime de vos favoris"), context);
+        }
+      } catch (error) {
+        setState(() {
+          widget.foundProduct!.bookMarked = oldStatus;
+        });
+      }
+    } else {
+      openModal(context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return CustomButtonContainer(
@@ -30,37 +62,7 @@ class _BookMarkerState extends State<BookMarker> {
               color: Colors.red,
             )
           : const FaIcon(FontAwesomeIcons.heart),
-      onPressed: () async {
-        String? userId = "";
-
-        userId = await storage.read(key: "userId");
-
-        if (userId != null) {
-          var oldStatus = widget.foundProduct!.bookMarked!;
-          setState(() {
-            widget.foundProduct!.bookMarked =
-                !(widget.foundProduct!.bookMarked!);
-          });
-          try {
-            await Provider.of<ProductService>(context, listen: false)
-                .bookMarkProduct(widget.foundProduct!.id!);
-
-            if (widget.foundProduct!.bookMarked!) {
-              showSnack(const Text("Article a ete enregiste dans vos favoris"),
-                  context);
-            } else {
-              showSnack(
-                  const Text("Article a ete supprime de vos favoris"), context);
-            }
-          } catch (error) {
-            setState(() {
-              widget.foundProduct!.bookMarked = oldStatus;
-            });
-          }
-        } else {
-          openModal(context);
-        }
-      },
+      onPressed: () async => bookmarkProduct(),
     );
   }
 }

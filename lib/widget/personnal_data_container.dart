@@ -22,8 +22,8 @@ class PersonnalDataContainer extends StatelessWidget {
           color: Colors.transparent,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            side: BorderSide(color: Colors.grey.shade300, width: 1),
-            borderRadius: BorderRadius.circular(4.0),
+            side: BorderSide(color: Colors.grey.shade200, width: 1),
+            borderRadius: BorderRadius.circular(5.0),
           ),
           child: Padding(
             padding: const EdgeInsets.all(10.0),

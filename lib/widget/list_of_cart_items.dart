@@ -7,6 +7,7 @@ import 'package:houlala/widget/offline_order_container.dart';
 import 'package:houlala/widget/order_container.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 
 import '../model/offline_order.dart';
 import 'cart_item_bottom.dart';
@@ -25,33 +26,37 @@ class ListOfCartItems extends StatelessWidget {
                 (BuildContext context, AsyncSnapshot<List<Order>> snapshot) {
               if (snapshot.hasData) {
                 List<Order>? orders = snapshot.data!;
-                return StandardCustomContainer(
-                  child: orders.isEmpty
-                      ? const CartError()
-                      : Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Expanded(
-                              child: ListView(
-                                children: orders
-                                    .map(
-                                      (Order item) => OrderContainer(
-                                        order: item,
-                                        confirmed: false,
-                                      ),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 8.0),
-                              child: CartItemBottom(
-                                items: orders,
-                              ),
-                            ),
-                          ],
+                return orders.isEmpty
+                    ? StandardCustomContainer(
+                        child: SizedBox(
+                          height: 80.h,
+                          child: const CartError(),
                         ),
-                );
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          ListView(
+                            shrinkWrap: true,
+                            physics: const ClampingScrollPhysics(),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10.0,
+                              vertical: 8.0,
+                            ),
+                            children: orders
+                                .map(
+                                  (Order item) => OrderContainer(
+                                    order: item,
+                                    confirmed: false,
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                          CartItemBottom(
+                            items: orders,
+                          ),
+                        ],
+                      );
               } else if (snapshot.hasError) {
                 return const StandardCustomContainer(
                   child: CartError(),
@@ -69,26 +74,29 @@ class ListOfCartItems extends StatelessWidget {
               if (snapshot.hasData) {
                 final List<OfflineOrder> orders = snapshot.data!;
                 return orders.isEmpty
-                    ? const StandardCustomContainer(
-                        child: CartError(),
+                    ? StandardCustomContainer(
+                        child: SizedBox(
+                          height: 80.h,
+                          child: const CartError(),
+                        ),
                       )
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Expanded(
-                            child: ListView(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 11.0,
-                                vertical: 8.0,
-                              ),
-                              children: orders
-                                  .map(
-                                    (element) => OfflineOrderContainer(
-                                      order: element,
-                                    ),
-                                  )
-                                  .toList(),
+                          ListView(
+                            shrinkWrap: true,
+                            physics: const ClampingScrollPhysics(),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10.0,
+                              vertical: 8.0,
                             ),
+                            children: orders
+                                .map(
+                                  (element) => OfflineOrderContainer(
+                                    order: element,
+                                  ),
+                                )
+                                .toList(),
                           ),
                           CartItemBottom(
                             offlineItems: orders,
