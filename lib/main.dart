@@ -22,6 +22,7 @@ import 'package:houlala/screens/page_detail_screen.dart';
 import 'package:houlala/screens/personal_datas_screen.dart';
 import 'package:houlala/screens/personal_order_screen.dart';
 import 'package:houlala/screens/product_detail_screen.dart';
+import 'package:houlala/screens/reset_screen.dart';
 import 'package:houlala/screens/search_screen.dart';
 import 'package:houlala/screens/sub_category_screen.dart';
 import 'package:houlala/service/auth_service.dart';
@@ -98,7 +99,7 @@ class MyApp extends StatelessWidget {
               title: 'houlala',
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                  appBarTheme:  AppBarTheme(
+                  appBarTheme: AppBarTheme(
                     backgroundColor: lightgrey,
                     titleTextStyle: const TextStyle(
                       fontFamily: 'PoppinsBold',
@@ -134,6 +135,7 @@ class MyApp extends StatelessWidget {
                     const DiscoveryCategoryDetailScreen(),
                 '/sub_category': (context) => const SubCategoryScreen(),
                 '/edit': (context) => const EditScreen(),
+                '/reset': (context) => const ResetPasswordScreen(),
               },
             );
           },

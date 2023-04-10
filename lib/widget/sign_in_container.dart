@@ -57,7 +57,7 @@ class _SignInContainerState extends State<SignInContainer> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -77,7 +77,7 @@ class _SignInContainerState extends State<SignInContainer> {
                 height: 40.0,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () => Navigator.of(context).popAndPushNamed("/reset"),
                 child: const Text(
                   "Mot de Passe oublie? / Probleme de connexion?",
                   style: TextStyle(
@@ -90,6 +90,8 @@ class _SignInContainerState extends State<SignInContainer> {
               ),
               CustomElevatedButton(
                 onPressed: () async => login(),
+                hasBorder: false,
+                color: Colors.orangeAccent,
                 child: Text(
                   "Se Connecter",
                   style: standardStyle,

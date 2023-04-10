@@ -29,8 +29,11 @@ class PasswordInput extends StatelessWidget {
         if (value.isEmpty) {
           return 'Inserer un Mot de passe';
         }
+        if (value.length < 7) {
+          return 'votre mot de passe doit avoir minimum 7 caracteres';
+        }
         if (!passWordRex.hasMatch(value)) {
-          return 'Mot de passe invalide';
+          return 'mot de passe invalide';
         }
         return null;
       },

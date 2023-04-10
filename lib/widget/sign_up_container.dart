@@ -215,6 +215,8 @@ class _SignUpContainerState extends State<SignUpContainer> {
             ),
             standardSizedBox,
             CustomElevatedButton(
+              hasBorder: false,
+              color: Colors.orangeAccent,
               onPressed: () async => logup(),
               child: Text(
                 "Creer un Compte",

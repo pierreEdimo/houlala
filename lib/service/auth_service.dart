@@ -40,6 +40,17 @@ class AuthService extends ChangeNotifier {
     return response;
   }
 
+  Future<Response> resetPassword(Login userInfo) async {
+    Map<String, String> headers = {'Content-Type': 'application/json'};
+    String jsEncode;
+    jsEncode = jsonEncode(userInfo);
+
+    var url = Uri.parse('${dotenv.env['AUTH_URL']}/users/renewPassword');
+    final Response response = await post(url, headers: headers, body: jsEncode);
+
+    return response;
+  }
+
   Future<UserInformation> fetchConnectedUser() async {
     String? email = await storage.read(key: "email");
 
