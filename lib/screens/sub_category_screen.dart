@@ -77,7 +77,6 @@ class SubCategoryScreen extends StatelessWidget {
                   uri:
                       '${dotenv.env['PRODUCT_URL']}/type/${subCategoryParameter.id}?limit=0',
                   crossAxisCount: 2,
-                  scrollDirection: Axis.vertical,
                   widthRatio: 1,
                   heightRatio: 1.5,
                 ),

@@ -76,7 +76,7 @@ class DiscoveryCategoryDetailContainer extends StatelessWidget {
             ),
             TransformedContainer(
               child: GridPages(
-                height: 0.5,
+                height: 0.4,
                 textError:
                     "Nous n'avons encore aucuns magasins dans cette rubrique. Svp reessayez plutard.",
                 uri: '${dotenv.env['LOCATION_URL']}/category/$id',

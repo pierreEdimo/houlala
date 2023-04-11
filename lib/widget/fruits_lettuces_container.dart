@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
 import 'package:houlala/widget/grid_of_products.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
@@ -31,7 +32,7 @@ class FruitsLettucesContainer extends StatelessWidget {
                   height: 35.h,
                   child: Container(
                     width: 100.w,
-                    color: const Color(0xf2f2f2f2),
+                    color: lightgrey,
                   ),
                 ),
                 SizedBox(
@@ -62,7 +63,6 @@ class FruitsLettucesContainer extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: !kIsWeb ? null : 70.0,
                   child: AppBarWithReturn(
                     title: "",
                     elevation: 0,
@@ -92,9 +92,7 @@ class FruitsLettucesContainer extends StatelessWidget {
                           '${dotenv.env['SUBCATEGORY_URL']}/category/638d214e9e725bd8c2dca355',
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  verticalSpacing,
                   GridOfProducts(
                     child: const Text(
                       "Recemment ajoutees",
@@ -110,7 +108,6 @@ class FruitsLettucesContainer extends StatelessWidget {
                     uri:
                         '${dotenv.env['PRODUCT_URL']}/random/category/638d214e9e725bd8c2dca355?size=10',
                     crossAxisCount: 2,
-                    scrollDirection: Axis.vertical,
                     widthRatio: 1,
                     heightRatio: 1.5,
                   )

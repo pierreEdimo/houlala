@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/model/location.dart';
 import 'package:houlala/widget/custom_avatar.dart';
+import 'package:houlala/widget/no_items.dart';
 import 'package:houlala/widget/page_container.dart';
 import 'package:provider/provider.dart';
+import 'package:sizer/sizer.dart';
 import '../service/page_service.dart';
 
 class GridPages extends StatelessWidget {
@@ -10,18 +12,18 @@ class GridPages extends StatelessWidget {
   final Axis? direction;
   final Widget? child;
   final String? textError;
-  final double? height;
   final double? width;
+  final double? height;
 
-  const GridPages(
-      {Key? key,
-      this.uri,
-      this.direction,
-      this.child,
-      this.width,
-      this.textError,
-      this.height})
-      : super(key: key);
+  const GridPages({
+    Key? key,
+    this.uri,
+    this.direction,
+    this.child,
+    this.width,
+    this.textError,
+    this.height,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class GridPages extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const CustomAvatar(
-                                  radius: 50,
+                                  radius: 60,
                                   localAsset: "images/shop.png",
                                 ),
                                 const SizedBox(
@@ -71,27 +73,12 @@ class GridPages extends StatelessWidget {
                             ),
                     )
                   : pages.isEmpty
-                      ? SizedBox(
-                          height: MediaQuery.of(context).size.height * height!,
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const CustomAvatar(
-                                  radius: 50,
-                                  localAsset: "images/shop.png",
-                                ),
-                                const SizedBox(
-                                  height: 10.0,
-                                ),
-                                Text(
-                                  textError!,
-                                  textAlign: TextAlign.center,
-                                )
-                              ],
-                            ),
-                          ))
+                      ? VerticalNoItem(
+                          height: 50.h,
+                          radius: 60,
+                          imageAsset: 'images/shop.png',
+                          errorMessage: textError,
+                        )
                       : ListView(
                           padding: EdgeInsets.zero,
                           shrinkWrap: true,

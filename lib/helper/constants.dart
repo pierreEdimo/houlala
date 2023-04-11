@@ -25,7 +25,7 @@ SizedBox verticalSpacing = const SizedBox(height: 10.0);
 TextStyle titleStyle = const TextStyle(
   fontWeight: FontWeight.bold,
   fontFamily: 'PoppinsBold',
-  fontSize: 20,
+  fontSize: 18,
 );
 
 Color lightgrey = const Color.fromRGBO(236, 236, 236, 0.4);

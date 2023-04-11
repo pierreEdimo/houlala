@@ -17,7 +17,6 @@ class PageProductContainer extends StatelessWidget {
     return GridOfProducts(
       height: 35.h,
       textError: textError,
-      scrollDirection: Axis.vertical,
       uri: uri!,
       heightRatio: 1.5,
       widthRatio: 1,

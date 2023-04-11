@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
+import 'package:houlala/widget/no_items.dart';
 import 'package:houlala/widget/transformed_container.dart';
 import 'package:sizer/sizer.dart';
 import 'app_bar_with_return.dart';
@@ -24,7 +24,7 @@ class DefaultCategoryContainer extends StatelessWidget {
                 height: 35.h,
                 child: Container(
                   width: 100.w,
-                  color: const Color(0xf2f2f2f2),
+                  color: lightgrey,
                 ),
               ),
               SizedBox(
@@ -65,36 +65,13 @@ class DefaultCategoryContainer extends StatelessWidget {
           ),
         ),
         TransformedContainer(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 40.h,
-                child: Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 130,
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('images/stock.png'))),
-                      ),
-                      verticalSpacing,
-                      Text(
-                        "Nous n'avons pas encore de produit dans la categorie"
-                        "${categoryName}. Nous travaillons tres dure pour ameliorer"
-                        "nos service. Svp reessayez plutard.",
-                        textAlign: TextAlign.center,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+            child: VerticalNoItem(
+          height: 50.h,
+          radius: 60,
+          imageAsset: 'images/stock.png',
+          errorMessage:
+              "Pas de produits dans la categorie $categoryName pour le moment.",
+        )),
       ],
     );
   }

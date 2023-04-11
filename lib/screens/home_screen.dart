@@ -57,7 +57,6 @@ class HomeScreen extends StatelessWidget {
                     ),
                     uri:
                         '${dotenv.env['PRODUCT_URL']}/random/category/638d214e9e725bd8c2dca355?size=8',
-                    scrollDirection: Axis.vertical,
                     crossAxisCount: 2,
                     widthRatio: 1,
                     heightRatio: 1.5,

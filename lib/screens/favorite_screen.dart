@@ -26,7 +26,6 @@ class FavoriteScreen extends StatelessWidget {
             textError: "Aucuns produits enregistrees dans les Favories",
             uri: '${dotenv.env['PRODUCT_URL']}/favorites?userId=$userId',
             crossAxisCount: 1,
-            scrollDirection: Axis.vertical,
             widthRatio: 0.8,
             heightRatio: 0.5,
             displayType: "favories",

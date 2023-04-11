@@ -29,7 +29,6 @@ class SearchResultContainer extends StatelessWidget {
               "svp verifiez plutard",
           uri: '${dotenv.env['PRODUCT_URL']}/search?searchWord=$searchword',
           crossAxisCount: 2,
-          scrollDirection: Axis.vertical,
           widthRatio: 1,
           heightRatio: 1.5,
         ),
@@ -38,15 +37,15 @@ class SearchResultContainer extends StatelessWidget {
         child: VerticalListOfCategories(
           uri: '${dotenv.env['CATEGORY_URL']}/search?searchword=$searchword',
           shrinkwrap: true,
-          height: 0.5,
+          height: 50.h,
           error: "Aucunes categories appeles $searchword n'a ete trouvee\n"
               "veuillez reessayer plutard",
         ),
       ),
       StandardCustomContainer(
         child: GridPages(
-          height: 0.5,
-          textError: "Aucuns magasins appele $searchword n'a ete trouve\n"
+          height: 50.h,
+          textError: "Aucuns magasins appeles $searchword n'a ete trouve\n"
               "svp veuillez reessayer plutard",
           uri: '${dotenv.env['LOCATION_URL']}/search?word=$searchword',
           direction: Axis.vertical,

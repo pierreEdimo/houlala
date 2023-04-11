@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/helper/constants.dart';
 import 'package:houlala/service/category_service.dart';
 import 'package:houlala/widget/category_container.dart';
+import 'package:houlala/widget/no_items.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
@@ -28,7 +28,7 @@ class VerticalListOfCategories extends StatelessWidget {
       builder: (context, AsyncSnapshot<List<CategoryModel>> snapshot) {
         if (snapshot.hasError) {
           return SizedBox(
-            height: MediaQuery.of(context).size.height * height!,
+            height: height!,
             child: Center(
               child: Text(snapshot.error.toString()),
             ),
@@ -38,29 +38,12 @@ class VerticalListOfCategories extends StatelessWidget {
           List<CategoryModel> categories = snapshot.data!;
 
           return categories.isEmpty
-              ? SizedBox(
-               height: MediaQuery.of(context).size.height * height!,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        radius: 70,
-                        backgroundColor: Colors.transparent,
-                        child: ClipRRect(
-                          child: Image.asset("images/categories.png"),
-                        ),
-                      ),
-                      verticalSpacing,
-                      Text(
-                        error!,
-                        textAlign: TextAlign.center,
-                      )
-                    ],
-                  ),
-                ),
-              )
+              ? VerticalNoItem(
+                  height: height,
+                  radius: 60,
+                  imageAsset: 'images/categories.png',
+                  errorMessage: error,
+                )
               : GridView.count(
                   crossAxisCount: 2,
                   shrinkWrap: true,
@@ -70,7 +53,7 @@ class VerticalListOfCategories extends StatelessWidget {
                   childAspectRatio: 0.9,
                   children: categories
                       .map((CategoryModel categoryModel) => CategoryContainer(
-                     radius: 40,
+                            radius: 40,
                             categoryModel: categoryModel,
                             weight: 100.w,
                           ))

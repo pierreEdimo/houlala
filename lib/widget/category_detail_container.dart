@@ -37,7 +37,7 @@ class _CategoryDetailContainerState extends State<CategoryDetailContainer> {
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
               child: StoreBodyContainer(
-                height: 0.33,
+                height: 0.4,
               ),
             ),
           ),

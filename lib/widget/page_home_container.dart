@@ -34,7 +34,6 @@ class PageHomeContainer extends StatelessWidget {
           height: 20.0,
         ),
         SizedBox(
-          height: 280,
           child: GridOfProducts(
             height: 25.h,
             textError: "${pageModel!.name} n'a pas encore insere de produits"
@@ -42,23 +41,19 @@ class PageHomeContainer extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.only(bottom: 5.0),
               child: const Text(
-                "Produits",
+                "Recemment ajoutes",
                 style: TextStyle(
                     fontSize: 22.0,
                     fontWeight: FontWeight.bold,
                     fontFamily: "PoppinsBold"),
               ),
             ),
-            scrollDirection: Axis.horizontal,
-            crossAxisCount: 1,
+            crossAxisCount: 2,
             uri:
-                '${dotenv.env['PRODUCT_URL']}/random/location/${pageModel!.uniqueIdentifier!}?size=10',
-            heightRatio: 1,
-            widthRatio: 1.5,
+                '${dotenv.env['PRODUCT_URL']}/random/location/${pageModel!.uniqueIdentifier!}?size=6',
+            heightRatio: 1.5,
+            widthRatio: 1,
           ),
-        ),
-        const SizedBox(
-          height: 20.0,
         ),
       ],
     );

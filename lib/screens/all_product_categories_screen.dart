@@ -18,7 +18,7 @@ class AllProductCategories extends StatelessWidget {
         child: VerticalListOfCategories(
           shrinkwrap: false,
           uri: '${dotenv.env['CATEGORY_URL']}',
-          height: 1,
+          height: MediaQuery.of(context).size.height - 170,
           error:
               "Nous n'avons aucunes Categories enregistrees en Ce moment, svp reessayez platard",
         ),
