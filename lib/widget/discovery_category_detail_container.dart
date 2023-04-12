@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
 import 'package:houlala/widget/custom_avatar.dart';
 import 'package:houlala/widget/transformed_container.dart';
@@ -34,7 +35,7 @@ class DiscoveryCategoryDetailContainer extends StatelessWidget {
                     height: 35.h,
                     child: Container(
                       width: 100.w,
-                      color: const Color(0xf2f2f2f2),
+                      color: lightgrey,
                     ),
                   ),
                   SizedBox(

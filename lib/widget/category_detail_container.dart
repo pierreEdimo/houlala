@@ -29,7 +29,7 @@ class _CategoryDetailContainerState extends State<CategoryDetailContainer> {
           categoryName: widget.categoryName,
           imageUrl: widget.imageUrl!,
         );
-      case 'magasins':
+      case 'boutique':
         return ShopContainer(
           categoryName: widget.categoryName!,
           imageUrl: widget.imageUrl,

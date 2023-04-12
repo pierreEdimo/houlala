@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/app_bar_with_return.dart';
 import 'package:houlala/widget/store_body_container.dart';
 import 'package:houlala/widget/transformed_container.dart';
@@ -21,7 +22,7 @@ class AllPageScreen extends StatelessWidget {
                     height: 35.h,
                     child: Container(
                       width: 100.w,
-                      color: const Color(0xf2f2f2f2),
+                      color: lightgrey,
                     ),
                   ),
                   SizedBox(
@@ -37,10 +38,10 @@ class AllPageScreen extends StatelessWidget {
                             radius: 20,
                             backgroundColor: Colors.transparent,
                             backgroundImage: NetworkImage(
-                                "https://upload.houlala.store/images/bf3f1bef-02a0-4c14-9adb-93b795c28b15.jpg"),
+                                "http://upload.houlala.store/images/a7f315b5-d0a3-4937-9cdf-019e7887e881.jpg"),
                           ),
                           Text(
-                            "Nos partenaires",
+                            "Quelques boutiques",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: "PoppinsBold",
