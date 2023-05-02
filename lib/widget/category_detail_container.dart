@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/widget/app_bar_with_return.dart';
 import 'package:houlala/widget/default_category_container.dart';
 import 'package:houlala/widget/shop_container.dart';
 import 'package:houlala/widget/store_body_container.dart';
-import 'package:houlala/widget/transformed_container.dart';
 
 import 'fruits_lettuces_container.dart';
 
@@ -25,28 +25,36 @@ class _CategoryDetailContainerState extends State<CategoryDetailContainer> {
   Widget build(BuildContext context) {
     switch (widget.categoryName) {
       case 'fruits & legumes':
-        return FruitsLettucesContainer(
-          categoryName: widget.categoryName,
-          imageUrl: widget.imageUrl!,
+        return Scaffold(
+          appBar: AppBarWithReturn(
+            title: "fruits & legumes",
+            color: Colors.transparent,
+            elevation: 1,
+          ),
+          body: const FruitsLettucesContainer(),
         );
       case 'boutique':
-        return ShopContainer(
-          categoryName: widget.categoryName!,
-          imageUrl: widget.imageUrl,
-          child: const TransformedContainer(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-              child: StoreBodyContainer(
-                height: 0.4,
-              ),
+        return Scaffold(
+          appBar: AppBarWithReturn(
+            title: "boutique",
+            color: Colors.transparent,
+            elevation: 1,
+          ),
+          body: const ShopContainer(
+            child: StoreBodyContainer(
+              height: 0.7,
             ),
           ),
         );
       default:
         return Scaffold(
+          appBar: AppBarWithReturn(
+            elevation: 1,
+            title: "${widget.categoryName}",
+            color: Colors.transparent,
+          ),
           body: SingleChildScrollView(
               child: DefaultCategoryContainer(
-            imageUrl: widget.imageUrl,
             categoryName: widget.categoryName,
           )),
         );

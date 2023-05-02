@@ -16,6 +16,7 @@ class ConditionScreen extends StatelessWidget {
       appBar: AppBarWithReturn(
         title: "Conditions d'utilisation",
         elevation: 1,
+        color: Colors.transparent,
       ),
       body:  StandardCustomContainer(
         child: FutureBuilder(

@@ -6,10 +6,11 @@ class OptionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBarWithReturn(
         title: "Options",
         elevation: 1,
+        color: Colors.transparent,
       ),
       body: const Text("Hello Options"),
     );

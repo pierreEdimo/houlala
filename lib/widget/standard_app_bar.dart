@@ -30,6 +30,7 @@ class StandardAppBar extends StatelessWidget with PreferredSizeWidget {
                 Row(
                   children: [
                     const CircleAvatar(
+                      backgroundColor: Colors.transparent,
                       radius: 35,
                       backgroundImage: AssetImage('images/houlala1.png'),
                     ),

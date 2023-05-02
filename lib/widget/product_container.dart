@@ -114,7 +114,6 @@ class ProductContainer extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5.0)),
                   child: BackgroundImage(
                     imageUrl: product!.imageUrl!,
-                    fit: BoxFit.contain,
                   ),
                 ),
               ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/helper/constants.dart';
 import 'package:houlala/main.dart';
 import 'package:houlala/model/product.dart';
 import 'package:houlala/service/product_service.dart';
-import 'package:houlala/widget/custom_button_container.dart';
+import 'package:houlala/widget/custom_elevated_button.dart';
 import 'package:houlala/widget/open_login_modal.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:provider/provider.dart';
@@ -55,13 +56,25 @@ class _BookMarkerState extends State<BookMarker> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomButtonContainer(
-      icon: widget.foundProduct!.bookMarked!
-          ? const FaIcon(
-              FontAwesomeIcons.solidHeart,
-              color: Colors.red,
-            )
-          : const FaIcon(FontAwesomeIcons.heart),
+    return CustomElevatedButton(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          widget.foundProduct!.bookMarked!
+              ? const FaIcon(
+            FontAwesomeIcons.solidHeart,
+            color: Colors.red,
+            size: 20.0,
+          )
+              : const FaIcon(
+            FontAwesomeIcons.heart,
+            size: 20.0,
+          ),
+          horizontalSpacing,
+          const Text("Ajouter aux favoris")
+        ],
+      ),
       onPressed: () async => bookmarkProduct(),
     );
   }

@@ -3,8 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/helper/constants.dart';
 import 'custom_button_container.dart';
 
-class
-CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   final Size preferredSize;
 
@@ -31,10 +30,10 @@ CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                     const CircleAvatar(
+                    const CircleAvatar(
                       backgroundColor: Colors.transparent,
                       radius: 35,
-                      backgroundImage:  AssetImage('images/houlala1.png'),
+                      backgroundImage: AssetImage('images/houlala1.png'),
                     ),
                     Text(
                       title!,

@@ -16,6 +16,7 @@ class DataSecurityScreen extends StatelessWidget {
       appBar: AppBarWithReturn(
         title: "Politiques de confidentialites",
         elevation: 1,
+        color: Colors.transparent,
       ),
       body: StandardCustomContainer(
         child: FutureBuilder(

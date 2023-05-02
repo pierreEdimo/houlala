@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/widget/app_bar_with_return.dart';
 import 'package:houlala/widget/product_detail_container.dart';
 
 class ProductDetailScreen extends StatelessWidget {
@@ -10,6 +11,11 @@ class ProductDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final name = ModalRoute.of(context)!.settings.arguments as String;
     return  Scaffold(
+      appBar:  AppBarWithReturn(
+        color: Colors.transparent,
+        elevation: 1,
+        title: "$name",
+      ),
       body: ProductDetailContainer(
         name: name,
       ),

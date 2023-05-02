@@ -1,3 +1,4 @@
+
 class StoreCategoryArguments {
   final int? id;
   final String? name;

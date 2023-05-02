@@ -20,13 +20,14 @@ class CategoryContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () =>
-          Navigator.of(context).pushNamed(CategoryDetailScreen.routeName,
-              arguments: PageScreenArguments(
-                categoryId: categoryModel!.id!,
-                categoryName: categoryModel!.name!,
-                imageUrl: categoryModel!.imageUrl!,
-              )),
+      onTap: () => Navigator.of(context).pushNamed(
+        CategoryDetailScreen.routeName,
+        arguments: PageScreenArguments(
+          categoryId: categoryModel!.id!,
+          categoryName: categoryModel!.name!,
+          imageUrl: categoryModel!.imageUrl!,
+        ),
+      ),
       child: TransparentCardContainer(
         child: Stack(
           children: [

@@ -74,7 +74,7 @@ class GridPages extends StatelessWidget {
                     )
                   : pages.isEmpty
                       ? VerticalNoItem(
-                          height: 50.h,
+                          height: height ?? 50.h,
                           radius: 60,
                           imageAsset: 'images/shop.png',
                           errorMessage: textError,

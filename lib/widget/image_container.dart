@@ -20,7 +20,6 @@ class ImageContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(5.0),
       ),
       child: BackgroundImage(
-        fit: BoxFit.contain,
         imageUrl: imageUrl,
       ),
     );

@@ -30,17 +30,19 @@ class ListOfCategories extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              child != null ? child! : Container() ,
+              child != null ? child! : Container(),
               Expanded(
                 child: ListView(
                   scrollDirection: direction!,
                   shrinkWrap: shrinkWrap!,
                   children: categories
-                      .map((CategoryModel category) => CategoryContainer(
-                    radius: 40,
-                            categoryModel: category,
-                            weight: 180,
-                          ))
+                      .map(
+                        (CategoryModel category) => CategoryContainer(
+                          radius: 40,
+                          categoryModel: category,
+                          weight: 180,
+                        ),
+                      )
                       .toList(),
                 ),
               ),

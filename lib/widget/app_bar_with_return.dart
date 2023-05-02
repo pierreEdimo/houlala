@@ -57,7 +57,7 @@ class AppBarWithReturn extends StatelessWidget with PreferredSizeWidget {
                         icon: const FaIcon(FontAwesomeIcons.angleLeft),
                         onPressed: () => Navigator.of(context).pop(),
                       ),
-                      verticalSpacing,
+                      const SizedBox(width: 10.0),
                       Flexible(
                         child: Text(
                           title!,

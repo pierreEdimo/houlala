@@ -15,7 +15,7 @@ class PersonalDataScreen extends StatelessWidget {
   const PersonalDataScreen({Key? key}) : super(key: key);
 
   /// Navigate vers l'Edit
-  navigateToEdit(UserInformation connectedUser, BuildContext context){
+  navigateToEdit(UserInformation connectedUser, BuildContext context) {
     EditScreenArguments args = EditScreenArguments(
         email: connectedUser.email!,
         country: connectedUser.country,
@@ -28,8 +28,7 @@ class PersonalDataScreen extends StatelessWidget {
         houseNumber: connectedUser.houseNumber,
         type: "email");
 
-    Navigator.of(context)
-        .pushNamed("/edit", arguments: args);
+    Navigator.of(context).pushNamed("/edit", arguments: args);
   }
 
   @override
@@ -38,6 +37,7 @@ class PersonalDataScreen extends StatelessWidget {
       appBar: AppBarWithReturn(
         title: "Mes Donnees personnelles",
         elevation: 1,
+        color: Colors.transparent,
       ),
       body: SingleChildScrollView(
         child: StandardCustomContainer(

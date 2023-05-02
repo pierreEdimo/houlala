@@ -54,6 +54,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       appBar: AppBarWithReturn(
         elevation: 1,
         title: "Nouveau mot de passe",
+        color: Colors.transparent,
       ),
       body: SingleChildScrollView(
         child: SizedBox(

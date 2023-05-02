@@ -9,21 +9,18 @@ import 'package:houlala/model/offline_order.dart';
 import 'package:houlala/service/order_service.dart';
 import 'package:houlala/model/product.dart';
 import 'package:houlala/service/product_service.dart';
-import 'package:houlala/widget/background_image.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
 import 'package:houlala/widget/decrease_quantity_text.dart';
 import 'package:houlala/widget/increase_quantity_text.dart';
 import 'package:houlala/widget/markdown_container.dart';
-import 'package:houlala/widget/product_detail_app_bar.dart';
 import 'package:houlala/widget/quantity_container.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
-import 'package:houlala/widget/transformed_container.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
-import 'package:sizer/sizer.dart';
 
 import '../main.dart';
+import 'book_marker.dart';
 
 class ProductDetailContainer extends StatefulWidget {
   final String? name;
@@ -113,130 +110,117 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder(
-        future: Provider.of<ProductService>(context)
-            .fetchSingleProduct(widget.name!),
-        builder: (context, AsyncSnapshot<Product> snapshot) {
-          if (snapshot.hasData) {
-            Product foundProduct = snapshot.data!;
-            int price = quantity > 1
-                ? Provider.of<ProductService>(context).getTotalPrice()
-                : foundProduct.sellingPrice!;
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  Stack(
+    return FutureBuilder(
+      future:
+          Provider.of<ProductService>(context).fetchSingleProduct(widget.name!),
+      builder: (context, AsyncSnapshot<Product> snapshot) {
+        if (snapshot.hasData) {
+          Product foundProduct = snapshot.data!;
+          int price = quantity > 1
+              ? Provider.of<ProductService>(context).getTotalPrice()
+              : foundProduct.sellingPrice!;
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                StandardCustomContainer(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Container(
-                        color: Colors.grey.shade200,
-                        height: 65.h,
-                        child: BackgroundImage(
-                          borderRadius: 0,
-                          imageUrl: foundProduct.imageUrl!,
-                          fit: BoxFit.contain,
-                        ),
+                        height: 400,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0),
+                            image: DecorationImage(
+                              image: NetworkImage(foundProduct.imageUrl!),
+                              fit: BoxFit.cover,
+                            )),
                       ),
-                      SizedBox(
-                        height: 60.h,
-                        child: Container(
-                          alignment: Alignment.bottomLeft,
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Text(
-                            foundProduct.name!,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 28.0,
-                              fontFamily: "PoppinsBold",
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        child: ProductDetailAppBar(
-                          product: foundProduct,
-                        ),
-                      ),
-                    ],
-                  ),
-                  TransformedContainer(
-                    child: StandardCustomContainer(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                      const SizedBox(height: 20.0),
+                      Row(
                         children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "${price.toString()} XAF",
-                                style: const TextStyle(
-                                    fontSize: 18, fontFamily: 'PoppinsBold'),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Row(
-                                  children: [
-                                    InkWell(
-                                      onTap: () => decreaseQuantity(
-                                          context, foundProduct.sellingPrice!),
-                                      child: const DecreaseQuantityText(),
-                                    ),
-                                    const SizedBox(
-                                      width: 25.0,
-                                    ),
-                                    QuantityContainer(
-                                      quantity: quantity,
-                                    ),
-                                    const SizedBox(
-                                      width: 25.0,
-                                    ),
-                                    InkWell(
-                                      onTap: () => inCreaseQuantity(
-                                          context, foundProduct.sellingPrice!),
-                                      child: const InCreaseQuantityText(),
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
+                          const Text("Vendeur:"),
+                          const SizedBox(width: 10),
+                          Text(
+                            foundProduct.locationName!,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: "PoppinsBold"),
                           ),
-                          verticalSpacing,
-                          CustomElevatedButton(
-                            hasBorder: false,
-                            onPressed: () async =>
-                                addToCart(foundProduct, price),
-                            color: Colors.orangeAccent,
+                        ],
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "${price.toString()} XAF",
+                            style: const TextStyle(
+                                fontSize: 18, fontFamily: 'PoppinsBold'),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(5.0),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                const ImageIcon(
-                                  AssetImage('images/shopping.png'),
+                                InkWell(
+                                  onTap: () => decreaseQuantity(
+                                      context, foundProduct.sellingPrice!),
+                                  child: const DecreaseQuantityText(),
                                 ),
-                                horizontalSpacing,
-                                const Text("Ajouter au panier")
+                                const SizedBox(
+                                  width: 25.0,
+                                ),
+                                QuantityContainer(
+                                  quantity: quantity,
+                                ),
+                                const SizedBox(
+                                  width: 25.0,
+                                ),
+                                InkWell(
+                                  onTap: () => inCreaseQuantity(
+                                      context, foundProduct.sellingPrice!),
+                                  child: const InCreaseQuantityText(),
+                                )
                               ],
                             ),
-                          ),
-                          verticalSpacing,
-                          MarkdownContainer(
-                            data: foundProduct.description!,
                           )
                         ],
                       ),
-                    ),
-                  )
-                ],
-              ),
-            );
-          }
-
-          return const Center(
-            child: CircularProgressIndicator(),
+                      CustomElevatedButton(
+                        hasBorder: false,
+                        onPressed: () async => addToCart(foundProduct, price),
+                        color: Colors.orangeAccent,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const ImageIcon(
+                              AssetImage('images/shopping.png'),
+                            ),
+                            horizontalSpacing,
+                            const Text("Ajouter au panier")
+                          ],
+                        ),
+                      ),
+                      verticalSpacing,
+                      BookMarker(
+                        foundProduct: foundProduct,
+                      ),
+                      verticalSpacing,
+                      MarkdownContainer(
+                        data: foundProduct.description!,
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           );
-        },
-      ),
+        }
+
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
     );
   }
 }

@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: houlala_ui
+dependency_overrides:
+  houlala_ui:
+    path: ../../houlala_ui

@@ -17,6 +17,7 @@ class AboutScreen extends StatelessWidget {
       appBar: AppBarWithReturn(
         title: "A Propos",
         elevation: 1,
+        color: Colors.transparent,
       ),
       body: StandardCustomContainer(
         child: FutureBuilder(

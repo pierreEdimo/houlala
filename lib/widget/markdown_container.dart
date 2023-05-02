@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:markdown/markdown.dart' as md;
 
 class MarkdownContainer extends StatelessWidget {
   final String? data;
@@ -17,27 +18,14 @@ class MarkdownContainer extends StatelessWidget {
       physics: const ClampingScrollPhysics(),
       shrinkWrap: true,
       data: data!,
+      extensionSet: md.ExtensionSet(
+        md.ExtensionSet.gitHubFlavored.blockSyntaxes,
+        [md.EmojiSyntax(), ...md.ExtensionSet.gitHubFlavored.inlineSyntaxes],
+      ),
       onTapLink: (text, uri, title) {
         Uri url = Uri.parse(uri!);
         launchUrl(url);
       },
-      styleSheet: MarkdownStyleSheet(
-          h1: const TextStyle(
-              fontWeight: FontWeight.bold, fontFamily: 'PoppinsBold'),
-          h2: const TextStyle(
-            fontFamily: 'PoppinsBold',
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-          h6: const TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.red,
-          ),
-          p: const TextStyle(
-            fontSize: 18.0,
-            letterSpacing: 0.1,
-          )),
     );
   }
 }
