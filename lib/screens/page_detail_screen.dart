@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:houlala/model/location.dart';
+import 'package:houlala/widget/app_bar_with_return.dart';
 import 'package:houlala/widget/page_detail_container.dart';
 
 class PageDetailScreen extends StatelessWidget {
@@ -9,10 +11,15 @@ class PageDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final id = ModalRoute.of(context)!.settings.arguments as int;
+    final page = ModalRoute.of(context)!.settings.arguments as LocationModel;
     return Scaffold(
+      appBar: AppBarWithReturn(
+        elevation: 1,
+        color: Colors.transparent,
+        title: "${page.name}",
+      ),
       body: PageDetailContainer(
-        uri: '${dotenv.env['LOCATION_URL']}/$id',
+        uri: '${dotenv.env['LOCATION_URL']}/${page.id}',
       ),
     );
   }

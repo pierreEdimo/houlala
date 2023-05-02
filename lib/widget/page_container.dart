@@ -23,7 +23,7 @@ class PageContainer extends StatelessWidget {
       case Axis.horizontal:
         return InkWell(
           onTap: () => Navigator.of(context)
-              .pushNamed(PageDetailScreen.screenName, arguments: page!.id!),
+              .pushNamed(PageDetailScreen.screenName, arguments: page!),
           child: SizedBox(
             width: 160,
             child: Card(
