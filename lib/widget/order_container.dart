@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/order.dart';
-import 'package:houlala/widget/bordered_card.dart';
+import 'package:houlala/widget/custom_card.dart';
 import 'package:houlala/widget/card_bottom.dart';
 import 'package:houlala/widget/card_title.dart';
 import 'package:houlala/widget/list_items.dart';
@@ -22,7 +22,7 @@ class OrderContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (status) {
       case 'confirmation':
-        return BorderedCard(
+        return CustomCard(
           child: Column(
             children: [
               CardTitle(
@@ -45,7 +45,7 @@ class OrderContainer extends StatelessWidget {
           ),
         );
       default:
-        return BorderedCard(
+        return CustomCard(
           child: Column(
             children: [
               CardTitle(

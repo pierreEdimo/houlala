@@ -1,6 +1,6 @@
 class PageScreenArguments {
   final String? categoryName;
-  final String? categoryId;
+  final int? categoryId;
   final String? imageUrl;
 
   PageScreenArguments({

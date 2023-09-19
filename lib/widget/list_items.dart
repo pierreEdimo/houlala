@@ -4,7 +4,7 @@ import 'package:houlala/widget/cart_item_container.dart';
 
 class ListOfItems extends StatelessWidget {
   final List<CartItem>? items;
-  final String? orderId;
+  final int? orderId;
   final bool? confirmed;
   final String? status;
   final String? locationId;

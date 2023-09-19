@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/model/page_screen_arguments.dart';
 import 'package:houlala/screens/category_detail_screen.dart';
+import 'package:houlala/widget/elevation_container.dart';
 import 'package:houlala/widget/transparent_card_container.dart';
 
 import '../model/product_category.dart';
@@ -34,15 +35,18 @@ class CategoryContainer extends StatelessWidget {
             SizedBox(
               width: weight!,
               child: Center(
-                child: Container(
-                  decoration: BoxDecoration(
+                child: ElevationContainer(
+                  child: Container(
+                    decoration: BoxDecoration(
                       image: DecorationImage(
                         image: NetworkImage(
                           categoryModel!.imageUrl!,
                         ),
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: BorderRadius.circular(5.0)),
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
                 ),
               ),
             ),

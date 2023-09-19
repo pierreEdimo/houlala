@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:houlala/model/product_detail_args.dart';
 import 'package:houlala/widget/product_container.dart';
 
 import '../model/product.dart';
@@ -46,7 +47,7 @@ class GridList extends StatelessWidget {
             (Product product) => InkWell(
           onTap: () => Navigator.of(context).pushNamed(
             ProductDetailScreen.routeName,
-            arguments: product.name!,
+            arguments: ProductDetailArgs(name: product.name, sku: product.productSku),
           ),
           child: ProductContainer(
             product: product,

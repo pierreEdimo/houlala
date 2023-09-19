@@ -15,7 +15,7 @@ class FavoriteScreen extends StatelessWidget {
     final String? userId = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
-      appBar: AppBarWithReturn(
+      appBar: const AppBarWithReturn(
         title: "Favories",
         elevation: 1,
       ),
@@ -24,7 +24,7 @@ class FavoriteScreen extends StatelessWidget {
           child: GridOfProducts(
             height: 80.h,
             textError: "Aucuns produits enregistrees dans les Favories",
-            uri: '${dotenv.env['PRODUCT_URL']}/favorites?userId=$userId',
+            uri: '${dotenv.env['PRODUCT_URL']}/favorites/$userId',
             crossAxisCount: 1,
             widthRatio: 0.8,
             heightRatio: 0.5,

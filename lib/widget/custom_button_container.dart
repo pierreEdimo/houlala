@@ -17,7 +17,7 @@ class CustomButtonContainer extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 5.0),
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.white,
+        color: Colors.transparent,
       ),
       child: Center(
         child: IconButton(

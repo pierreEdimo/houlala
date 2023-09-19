@@ -8,7 +8,7 @@ import 'fruits_lettuces_container.dart';
 
 class CategoryDetailContainer extends StatefulWidget {
   final String? categoryName;
-  final String? categoryId;
+  final int? categoryId;
   final String? imageUrl;
 
   const CategoryDetailContainer(
@@ -25,22 +25,22 @@ class _CategoryDetailContainerState extends State<CategoryDetailContainer> {
   Widget build(BuildContext context) {
     switch (widget.categoryName) {
       case 'fruits & legumes':
-        return Scaffold(
+        return const Scaffold(
           appBar: AppBarWithReturn(
             title: "fruits & legumes",
             color: Colors.transparent,
             elevation: 1,
           ),
-          body: const FruitsLettucesContainer(),
+          body: FruitsLettucesContainer(),
         );
       case 'boutique':
-        return Scaffold(
+        return const Scaffold(
           appBar: AppBarWithReturn(
             title: "boutique",
             color: Colors.transparent,
             elevation: 1,
           ),
-          body: const ShopContainer(
+          body: ShopContainer(
             child: StoreBodyContainer(
               height: 0.7,
             ),

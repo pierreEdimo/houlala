@@ -1,4 +1,4 @@
-import 'add_item.dart';
+import 'package:houlala/model/cart_item.dart';
 
 class AddOrder {
   AddOrder({
@@ -9,17 +9,17 @@ class AddOrder {
 
   final String? userId;
   final String? locationId;
-  final List<AddItem>? cartItems;
+  final List<CartItem>? cartItems;
 
   factory AddOrder.fromJson(Map<String, dynamic> json) => AddOrder(
     userId: json["userId"],
-    locationId: json["locationId"],
-    cartItems: List<AddItem>.from(json["cartItems"].map((x) => AddItem.fromJson(x))),
+    locationId: json["locationUniqueId"],
+    cartItems: List<CartItem>.from(json["cartItems"].map((x) => CartItem.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "userId": userId,
-    "locationId": locationId,
+    "locationUniqueId": locationId,
     "cartItems": List<dynamic>.from(cartItems!.map((x) => x.toJson())),
   };
 }

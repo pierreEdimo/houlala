@@ -3,14 +3,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/widget/custom_button_container.dart';
 
-class AppBarWithReturn extends StatelessWidget with PreferredSizeWidget {
+class AppBarWithReturn extends StatelessWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
   final String? title;
   final Color? color;
   final double? elevation;
 
-  AppBarWithReturn({
+  const AppBarWithReturn({
     this.title,
     this.elevation,
     this.color,

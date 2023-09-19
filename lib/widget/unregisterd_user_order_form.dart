@@ -7,7 +7,7 @@ import '../model/offline_order.dart';
 import '../model/user_information.dart';
 import '../service/order_service.dart';
 import 'border_card_title.dart';
-import 'bordered_card.dart';
+import 'custom_card.dart';
 import 'custom_elevated_button.dart';
 import 'input_email.dart';
 import 'input_name.dart';
@@ -108,7 +108,7 @@ class _UnregisteredUserBorderFormState
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                BorderedCard(
+                CustomCard(
                   child: Column(
                     children: [
                       const BorderedCardTitle(
@@ -156,7 +156,7 @@ class _UnregisteredUserBorderFormState
                     ],
                   ),
                 ),
-                BorderedCard(
+                CustomCard(
                   child: Column(
                     children: [
                       const BorderedCardTitle(
@@ -216,7 +216,7 @@ class _UnregisteredUserBorderFormState
                     ],
                   ),
                 ),
-                BorderedCard(
+                CustomCard(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

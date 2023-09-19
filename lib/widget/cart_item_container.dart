@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/main.dart';
 import 'package:houlala/model/cart_item.dart';
+import 'package:houlala/model/product_detail_args.dart';
 import 'package:houlala/service/order_service.dart';
 import 'package:houlala/widget/decrease_quantity_text.dart';
 import 'package:houlala/widget/image_container.dart';
@@ -16,7 +17,7 @@ import 'cart_item_delete_button.dart';
 class CartItemContainer extends StatelessWidget {
   final CartItem? cartItem;
   final bool? confirmed;
-  final String? orderId;
+  final int? orderId;
   final String? status;
   final String? locationId;
 
@@ -61,8 +62,13 @@ class CartItemContainer extends StatelessWidget {
       case 'confirmation':
         return InkWell(
           onTap: () {
-            Navigator.of(context).pushNamed(ProductDetailScreen.routeName,
-                arguments: cartItem!.name);
+            Navigator.of(context).pushNamed(
+              ProductDetailScreen.routeName,
+              arguments: ProductDetailArgs(
+                name: cartItem!.name,
+                sku: cartItem!.productSku,
+              ),
+            );
           },
           child: TransparentCardContainer(
             child: Row(
@@ -103,7 +109,8 @@ class CartItemContainer extends StatelessWidget {
           onTap: () {
             Navigator.of(context).pushNamed(
               ProductDetailScreen.routeName,
-              arguments: cartItem!.name,
+              arguments: ProductDetailArgs(
+                name: cartItem!.name, sku: cartItem!.productSku),
             );
           },
           child: TransparentCardContainer(
@@ -125,53 +132,53 @@ class CartItemContainer extends StatelessWidget {
                       verticalSpacing,
                       !confirmed!
                           ? Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '${cartItem!.price!.toString()}FCFA',
-                                  style: const TextStyle(fontSize: 18.0),
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        GestureDetector(
-                                          onTap: () async =>
-                                              decreaseQuantity(context),
-                                          child: cartItem!.quantity! <= 1
-                                              ? CartItemDeleteButton(
-                                                  orderId: orderId,
-                                                  item: cartItem!,
-                                                  locationId: locationId,
-                                                )
-                                              : const DecreaseQuantityText(),
-                                        ),
-                                        horizontalSizedBox,
-                                        QuantityContainer(
-                                          quantity: cartItem!.quantity!,
-                                        ),
-                                        horizontalSizedBox,
-                                        GestureDetector(
-                                          onTap: () async =>
-                                              increaseQuantity(context),
-                                          child: const InCreaseQuantityText(),
-                                        )
-                                      ],
-                                    ),
-                                    CartItemDeleteButton(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '${cartItem!.price!.toString()}FCFA',
+                            style: const TextStyle(fontSize: 18.0),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                MainAxisAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () async =>
+                                        decreaseQuantity(context),
+                                    child: cartItem!.quantity! <= 1
+                                        ? CartItemDeleteButton(
                                       orderId: orderId,
                                       item: cartItem!,
                                       locationId: locationId,
                                     )
-                                  ],
-                                )
-                              ],
-                            )
+                                        : const DecreaseQuantityText(),
+                                  ),
+                                  horizontalSizedBox,
+                                  QuantityContainer(
+                                    quantity: cartItem!.quantity!,
+                                  ),
+                                  horizontalSizedBox,
+                                  GestureDetector(
+                                    onTap: () async =>
+                                        increaseQuantity(context),
+                                    child: const InCreaseQuantityText(),
+                                  )
+                                ],
+                              ),
+                              CartItemDeleteButton(
+                                orderId: orderId,
+                                item: cartItem!,
+                                locationId: locationId,
+                              )
+                            ],
+                          )
+                        ],
+                      )
                           : Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

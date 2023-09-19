@@ -3,7 +3,7 @@ import 'package:houlala/model/location.dart';
 import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/markdown_container.dart';
 import 'package:houlala/widget/page_contact_information.dart';
-
+import 'dart:convert';
 import '../helper/constants.dart';
 
 class PageInfoContainer extends StatelessWidget {
@@ -21,7 +21,9 @@ class PageInfoContainer extends StatelessWidget {
             style: TextStyle(fontSize: 20.0, fontFamily: "PoppinsBold"),
           ),
           gridList: MarkdownContainer(
-            data: page!.description!,
+            data: utf8.decode(
+              page!.description!.runes.toList(),
+            ),
           ),
         ),
         verticalSpacing,

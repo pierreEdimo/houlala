@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:houlala/widget/display_dialog.dart';
-import 'package:launch_review/launch_review.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void openContact(String scheme, String path) async {
@@ -26,7 +25,7 @@ Future<void> openInWebViewOrVC(String uri) async {
 
 openStore(BuildContext context) {
   try {
-    LaunchReview.launch();
+    print("launch review");
   } on MissingPluginException {
     showErrorDialog(context, "Erreur",
         "Nous n'arrivons pas a nous connecter sur  Whatsapp, verifiez si vous avez installer l'application et reesayez plutard");

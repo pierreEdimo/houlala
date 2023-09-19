@@ -28,7 +28,6 @@ class PageContactInformation extends StatelessWidget {
             children: [
               const Text(
                 "E-mail:",
-                style: TextStyle(fontSize: 18.0),
               ),
               const SizedBox(
                 width: 5.0,
@@ -39,7 +38,8 @@ class PageContactInformation extends StatelessWidget {
                   child: Text(
                     page!.email!,
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 18),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -51,7 +51,6 @@ class PageContactInformation extends StatelessWidget {
             children: [
               const Text(
                 "Telephone:",
-                style: TextStyle(fontSize: 18.0),
               ),
               const SizedBox(
                 width: 5.0,
@@ -62,7 +61,8 @@ class PageContactInformation extends StatelessWidget {
                   child: Text(
                     page!.telephoneNumber!,
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 18.0),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -71,38 +71,16 @@ class PageContactInformation extends StatelessWidget {
           verticalSpacing,
           Text(
             "Domaine: ${page!.category!.name!}",
-            style: const TextStyle(
-              fontSize: 18.0,
-            ),
           ),
           verticalSpacing,
-          Text(
-            "Site: ${page!.country!.name!} ",
-            style: const TextStyle(
-              fontSize: 18.0,
-            ),
-          ),
+          Text("Site: ${page!.country!.name!} "),
+          verticalSpacing,
+          Text("Prenom: ${page!.creator!.firstName!}"),
+          verticalSpacing,
+          Text("Nom: ${page!.creator!.lastName!}"),
           verticalSpacing,
           Text(
-            "Prenom: ${page!.creator!.firstName!}",
-            style: const TextStyle(
-              fontSize: 18.0,
-            ),
-          ),
-          verticalSpacing,
-          Text(
-            "Nom: ${page!.creator!.lastName!}",
-            style: const TextStyle(
-              fontSize: 18.0,
-            ),
-          ),
-          verticalSpacing,
-          Text(
-            "Adresse: ${page!.address!.streetName!} ${page!.address!.city!}, ${page!.country!.name!} ",
-            style: const TextStyle(
-              fontSize: 18.0,
-            ),
-          )
+              "Adresse: ${page!.address!.streetName!} ${page!.address!.city!}, ${page!.country!.name!} ")
         ],
       ),
     );

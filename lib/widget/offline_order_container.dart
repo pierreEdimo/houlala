@@ -1,6 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:houlala/model/offline_order.dart';
-import 'package:houlala/widget/bordered_card.dart';
+import 'package:houlala/widget/custom_card.dart';
 import 'package:houlala/widget/card_bottom.dart';
 import 'package:houlala/widget/card_title.dart';
 import 'package:houlala/widget/list_items.dart';
@@ -17,7 +18,7 @@ class OfflineOrderContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BorderedCard(
+    return CustomCard(
       child: Column(
         children: [
           CardTitle(
@@ -30,7 +31,7 @@ class OfflineOrderContainer extends StatelessWidget {
             status: status,
             confirmed: false,
             items: order!.cartItems!,
-            orderId: "",
+            orderId: 0,
             locationId: order!.locationId!,
           ),
           CardBottom(

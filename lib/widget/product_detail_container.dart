@@ -18,14 +18,15 @@ import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
+import 'dart:convert';
 
 import '../main.dart';
 import 'book_marker.dart';
 
 class ProductDetailContainer extends StatefulWidget {
-  final String? name;
+  final String? sku;
 
-  const ProductDetailContainer({Key? key, this.name}) : super(key: key);
+  const ProductDetailContainer({Key? key, this.sku}) : super(key: key);
 
   @override
   State<ProductDetailContainer> createState() => _ProductDetailContainerState();
@@ -39,25 +40,26 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
     String? userId = await storage.read(key: "userId");
 
     if (userId != null) {
-      AddItem newItem = AddItem(
-          price: price,
-          productSku: foundProduct.productSku,
-          quantity: quantity,
-          initialPrice: foundProduct.sellingPrice);
-
-      List<AddItem> items = <AddItem>[];
-
+      CartItem newItem = CartItem(
+        price: price,
+        productSku: foundProduct.productSku,
+        quantity: quantity,
+        imageUrl: foundProduct.imageUrl,
+        name: foundProduct.name,
+        initialPrice: foundProduct.sellingPrice,
+      );
+      List<CartItem> items = <CartItem>[];
       items.add(newItem);
 
       AddOrder newOrder = AddOrder(
-          userId: userId,
-          locationId: foundProduct.locationId,
-          cartItems: items);
+        userId: userId,
+        locationId: foundProduct.locationId,
+        cartItems: items,
+      );
 
       Response response =
           await Provider.of<OrderService>(context, listen: false)
               .addOrder(newOrder);
-
       if (response.statusCode == HttpStatus.created) {
         showSnack(const Text("Article a ete ajoute au Panier"), context);
       }
@@ -112,7 +114,7 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future:
-          Provider.of<ProductService>(context).fetchSingleProduct(widget.name!),
+          Provider.of<ProductService>(context).fetchSingleProduct(widget.sku!),
       builder: (context, AsyncSnapshot<Product> snapshot) {
         if (snapshot.hasData) {
           Product foundProduct = snapshot.data!;
@@ -207,7 +209,9 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
                       ),
                       verticalSpacing,
                       MarkdownContainer(
-                        data: foundProduct.description!,
+                        data: utf8.decode(
+                          foundProduct.description!.runes.toList(),
+                        ),
                       )
                     ],
                   ),

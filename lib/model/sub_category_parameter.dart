@@ -1,6 +1,6 @@
 class SubCategoryParameter {
   final String? label;
-  final String? id;
+  final int? id;
   final String? thumbNail;
 
   SubCategoryParameter({

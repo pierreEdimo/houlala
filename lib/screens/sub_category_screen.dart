@@ -29,7 +29,7 @@ class SubCategoryScreen extends StatelessWidget {
                 textError: "Aucuns produits appelle n'a ete trouve\n"
                     "svp verifiez plutard",
                 uri:
-                    '${dotenv.env['PRODUCT_URL']}/type/${subCategoryParameter.id}?limit=0',
+                    '${dotenv.env['PRODUCT_URL']}/sub-categories/${subCategoryParameter.id}/size/0',
                 crossAxisCount: 2,
                 widthRatio: 1,
                 heightRatio: 1.5,

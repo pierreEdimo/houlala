@@ -12,7 +12,7 @@ import 'custom_box_container.dart';
 class PageDetailContainer extends StatelessWidget {
   final String? uri;
 
-  const PageDetailContainer({Key? key, this.uri}) : super(key: key);
+  const   PageDetailContainer({Key? key, this.uri}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class PageDetailContainer extends StatelessWidget {
               PageProductContainer(
                 textError: "${page.name} n'a pas encore insere de produits",
                 uri:
-                    '${dotenv.env['PRODUCT_URL']}/location/${page.uniqueIdentifier}?limit=0',
+                    '${dotenv.env['PRODUCT_URL']}/locations/${page.uniqueIdentifier}/size/0',
               )
             ];
 

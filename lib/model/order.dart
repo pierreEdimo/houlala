@@ -3,7 +3,7 @@ import 'package:houlala/model/simplefied_location.dart';
 import 'cart_item.dart';
 
 class Order {
-  final String? id;
+  final int? id;
   final String? status;
   final bool? confirmed;
   final String? paymentMode;
@@ -28,7 +28,7 @@ class Order {
   });
 
   factory Order.fromJson(Map<String, dynamic> json) => Order(
-        id: json['_id'],
+        id: json['id'],
         status: json['status'],
         confirmed: json['confirmed'],
         paymentMode: json['payMentMode'],

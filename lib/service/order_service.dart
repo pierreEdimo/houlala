@@ -21,6 +21,7 @@ class OrderService extends ChangeNotifier {
     String jsEncode;
     jsEncode = jsonEncode(newOrder);
     var url = Uri.parse('${dotenv.env['ORDER_URL']}');
+    print(jsEncode);
     Response response = await post(
       url,
       headers: headers,
@@ -64,10 +65,10 @@ class OrderService extends ChangeNotifier {
 
     if (!confirmed!) {
       if (uri == null) {
-        url = Uri.parse('${dotenv.env['ORDER_URL']}/carts?userId=$userId');
+        url = Uri.parse('${dotenv.env['ORDER_URL']}/carts/$userId');
       }
     } else {
-      url = Uri.parse('${dotenv.env['ORDER_URL']}/confirmed?userId=$userId');
+      url = Uri.parse('${dotenv.env['ORDER_URL']}/confirmed/users/$userId');
     }
 
     Response response = await get(url);
@@ -84,7 +85,7 @@ class OrderService extends ChangeNotifier {
   }
 
   Future<void> updateQuantity(
-      String? situation, String? productSku, String? orderId) async {
+      String? situation, String? productSku, int? orderId) async {
     Map<String, String> headers = {'Content-Type': 'application/json'};
 
     var url = Uri();
@@ -108,7 +109,7 @@ class OrderService extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> deleteFromOrder(String? productSku, String? orderId) async {
+  Future<void> deleteFromOrder(String? productSku, int? orderId) async {
     Map<String, String> headers = {'Content-Type': 'application/json'};
 
     var url = Uri.parse(

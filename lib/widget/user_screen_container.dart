@@ -35,15 +35,6 @@ class UserScreenContainer extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const StandardCustomContainer(
-                        child: Text(
-                          "Mon Compte",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              fontFamily: 'PoppinsBold'),
-                        ),
-                      ),
                       Container(
                         color: const Color(0xfefefefe),
                         child: Column(
@@ -126,15 +117,6 @@ class UserScreenContainer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const StandardCustomContainer(
-                  child: Text(
-                    "Mon Compte",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                        fontFamily: 'PoppinsBold'),
-                  ),
-                ),
                 Container(
                   color: const Color(0xfefefefe),
                   child: Column(
@@ -274,7 +256,7 @@ class ContactButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () async => openContact('mailto', 'pierredimo@live.com'),
+      onTap: () async => openContact('mailto', 'service@houlala.store'),
       child: const CustomListTile(
         imageUrl: "images/contact-mail.png",
         title: "Contactez nous",

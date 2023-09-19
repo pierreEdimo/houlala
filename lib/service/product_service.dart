@@ -25,11 +25,11 @@ class ProductService extends ChangeNotifier {
     }
   }
 
-  Future<Product> fetchSingleProduct(String name) async {
+  Future<Product> fetchSingleProduct(String sku) async {
     String? userId = await storage.read(key: "userId");
 
     var url =
-        Uri.parse('${dotenv.env['PRODUCT_URL']}/name/$name?userId=$userId');
+        Uri.parse('${dotenv.env['PRODUCT_URL']}/$sku/users/$userId');
 
     Response response = await get(url);
 
@@ -52,13 +52,13 @@ class ProductService extends ChangeNotifier {
     }
   }
 
-  Future<void> bookMarkProduct(String id) async {
+  Future<void> bookMarkProduct(int id) async {
     Map<String, String> headers = {'Content-Type': 'application/json'};
 
     String? userId = await storage.read(key: "userId");
 
     var url = Uri.parse(
-        "${dotenv.env['PRODUCT_URL']}/favorites/$id?userId=$userId");
+        "${dotenv.env['PRODUCT_URL']}/favorites/$id/users/$userId");
     await post(
       url,
       headers: headers,

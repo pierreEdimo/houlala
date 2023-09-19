@@ -3,15 +3,18 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/main.dart';
-import 'package:houlala/model/add_item.dart';
 import 'package:houlala/model/add_order.dart';
+import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/model/product.dart';
 import 'package:houlala/service/order_service.dart';
 import 'package:houlala/service/product_service.dart';
 import 'package:houlala/widget/background_image.dart';
+import 'package:houlala/widget/custom_card.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
+import 'package:houlala/widget/elevation_container.dart';
 import 'package:houlala/widget/product_title.dart';
 import 'package:houlala/widget/show_nack.dart';
+import 'package:houlala/widget/transparent_card.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
@@ -30,12 +33,14 @@ class ProductContainer extends StatelessWidget {
     String? userId = await storage.read(key: "userId");
 
     if (userId != null) {
-      List<AddItem>? cartItems = <AddItem>[];
+      List<CartItem>? cartItems = <CartItem>[];
 
-      AddItem item = AddItem(
+      CartItem item = CartItem(
           productSku: product!.productSku!,
           price: price,
           quantity: quantity,
+          name: product!.name,
+          imageUrl: product!.imageUrl,
           initialPrice: product!.sellingPrice!);
 
       cartItems.add(item);
@@ -63,9 +68,8 @@ class ProductContainer extends StatelessWidget {
         : product!.sellingPrice!;
     switch (displayType) {
       case 'favories':
-        return Card(
-          color: Colors.transparent,
-          elevation: 0,
+        return CustomCard(
+          padding: EdgeInsets.zero,
           child: Row(
             children: [
               Expanded(
@@ -100,18 +104,13 @@ class ProductContainer extends StatelessWidget {
           ),
         );
       default:
-        return Card(
-          elevation: 0,
-          color: Colors.transparent,
+        return TransparentCard(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 flex: 1,
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(5.0)),
+                child: ElevationContainer(
                   child: BackgroundImage(
                     imageUrl: product!.imageUrl!,
                   ),

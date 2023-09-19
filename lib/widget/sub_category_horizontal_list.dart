@@ -26,20 +26,21 @@ class SubCategoryHorizontalList extends StatelessWidget {
           return ListView(
             scrollDirection: Axis.horizontal,
             children: categories
-                .map((category) => GestureDetector(
-                      onTap: () => Navigator.of(context).pushNamed(
-                        '/sub_category',
-                        arguments: SubCategoryParameter(
+                .map(
+                  (category) => GestureDetector(
+                    onTap: () => Navigator.of(context).pushNamed(
+                      '/sub_category',
+                      arguments: SubCategoryParameter(
                           id: category.id,
                           label: category.label,
-                          thumbNail: category.thumbNailUrl
-                        ),
-                      ),
-                      child: SubCategoryContainer(
-                        name: category.label,
-                        thumbNail: category.thumbNailUrl,
-                      ),
-                    ))
+                          thumbNail: category.imageUrl),
+                    ),
+                    child: SubCategoryContainer(
+                      name: category.label,
+                      thumbNail: category.imageUrl,
+                    ),
+                  ),
+                )
                 .toList(),
           );
         }

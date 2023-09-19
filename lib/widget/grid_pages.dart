@@ -84,11 +84,13 @@ class GridPages extends StatelessWidget {
                           shrinkWrap: true,
                           physics: const ClampingScrollPhysics(),
                           children: pages
-                              .map((LocationModel page) => PageContainer(
-                                    page: page,
-                                    width: width,
-                                    scrollDirection: direction,
-                                  ))
+                              .map(
+                                (LocationModel page) => PageContainer(
+                                  page: page,
+                                  width: width,
+                                  scrollDirection: direction,
+                                ),
+                              )
                               .toList(),
                         )
             ],

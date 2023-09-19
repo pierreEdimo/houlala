@@ -1,5 +1,5 @@
 class Product {
-  final String? id;
+  final int? id;
   final String? name;
   final String? description;
   final int? weight;
@@ -25,13 +25,13 @@ class Product {
       this.productSku});
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-        id: json['_id'],
+        id: json['id'],
         name: json['name'],
         description: json['description'],
         weight: json['weight'],
         sellingPrice: json['sellingPrice'],
         imageUrl: json['imageUrl'],
-        locationId: json['locationId'],
+        locationId: json['locationUniqueId'],
         bookMarked: json['bookMarked'],
         productSku: json['productSku'],
         locationName: json['locationName'],

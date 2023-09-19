@@ -6,6 +6,7 @@ import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/grid_of_products.dart';
 import 'package:houlala/widget/markdown_container.dart';
 import 'package:sizer/sizer.dart';
+import 'dart:convert';
 
 class PageHomeContainer extends StatelessWidget {
   final LocationModel? pageModel;
@@ -27,7 +28,9 @@ class PageHomeContainer extends StatelessWidget {
             ),
           ),
           gridList: MarkdownContainer(
-            data: pageModel!.shortDescription!,
+            data: utf8.decode(
+              pageModel!.shortDescription!.runes.toList(),
+            ),
           ),
         ),
         const SizedBox(
@@ -43,14 +46,15 @@ class PageHomeContainer extends StatelessWidget {
               child: const Text(
                 "Recemment ajoutes",
                 style: TextStyle(
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "PoppinsBold"),
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "PoppinsBold",
+                ),
               ),
             ),
             crossAxisCount: 2,
             uri:
-                '${dotenv.env['PRODUCT_URL']}/random/location/${pageModel!.uniqueIdentifier!}?size=6',
+                '${dotenv.env['PRODUCT_URL']}/random/locations/${pageModel!.uniqueIdentifier!}/size/6',
             heightRatio: 1.5,
             widthRatio: 1,
           ),

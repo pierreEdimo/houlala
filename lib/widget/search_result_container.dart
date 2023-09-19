@@ -27,7 +27,7 @@ class SearchResultContainer extends StatelessWidget {
           height: 50.h,
           textError: "Aucuns produits appelle $searchword n'a ete trouve\n"
               "svp verifiez plutard",
-          uri: '${dotenv.env['PRODUCT_URL']}/search?searchWord=$searchword',
+          uri: '${dotenv.env['PRODUCT_URL']}/search?word=$searchword',
           crossAxisCount: 2,
           widthRatio: 1,
           heightRatio: 1.5,
@@ -35,7 +35,7 @@ class SearchResultContainer extends StatelessWidget {
       ),
       StandardCustomContainer(
         child: VerticalListOfCategories(
-          uri: '${dotenv.env['CATEGORY_URL']}/search?searchword=$searchword',
+          uri: '${dotenv.env['CATEGORY_URL']}/search?searchWord=$searchword',
           shrinkwrap: true,
           height: 50.h,
           error: "Aucunes categories appeles $searchword n'a ete trouvee\n"

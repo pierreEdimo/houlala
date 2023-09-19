@@ -1,5 +1,5 @@
 class CategoryModel {
-  final String? id;
+  final int? id;
   final String? name;
   final String? imageUrl;
 
@@ -10,7 +10,7 @@ class CategoryModel {
   });
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
-        id: json['_id'] as String,
+        id: json['id'] as int,
         name: json['name'] as String,
         imageUrl: json['imageUrl'] as String,
       );

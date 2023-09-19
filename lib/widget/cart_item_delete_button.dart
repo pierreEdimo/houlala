@@ -7,7 +7,7 @@ import '../model/cart_item.dart';
 
 class CartItemDeleteButton extends StatelessWidget {
   final CartItem? item;
-  final String? orderId;
+  final int? orderId;
   final String? locationId;
 
   const CartItemDeleteButton({

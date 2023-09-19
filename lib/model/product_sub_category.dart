@@ -1,18 +1,18 @@
 class ProductSubCategory {
   final String? label;
-  final String? id;
-  final String? thumbNailUrl;
+  final int? id;
+  final String? imageUrl;
 
   ProductSubCategory({
     this.label,
     this.id,
-    this.thumbNailUrl,
+    this.imageUrl,
   });
 
   factory ProductSubCategory.fromJson(Map<String, dynamic> json) =>
       ProductSubCategory(
         label: json["label"],
-        id: json["_id"],
-        thumbNailUrl: json["thumbNailUrl"],
+        id: json["id"],
+        imageUrl: json["imageUrl"],
       );
 }

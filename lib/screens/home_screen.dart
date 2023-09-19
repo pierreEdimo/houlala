@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                           urlValue: "/all_categories",
                         ),
                       ),
-                      uri: '${dotenv.env['CATEGORY_URL']}/random?size=10',
+                      uri: '${dotenv.env['CATEGORY_URL']}/random/8',
                       direction: Axis.horizontal,
                       shrinkWrap: true,
                     ),
@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     uri:
-                        '${dotenv.env['PRODUCT_URL']}/random/category/6443faff8c04e0c6cc8a4e43?size=8',
+                        '${dotenv.env['PRODUCT_URL']}/random/categories/1/size/8',
                     crossAxisCount: 2,
                     widthRatio: 1,
                     heightRatio: 1.5,

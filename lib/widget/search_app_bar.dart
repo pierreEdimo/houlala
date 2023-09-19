@@ -5,7 +5,7 @@ import 'package:houlala/service/word_service.dart';
 import 'package:houlala/widget/custom_button_container.dart';
 import 'package:provider/provider.dart';
 
-class SearchAppBar extends StatelessWidget with PreferredSizeWidget {
+class SearchAppBar extends StatelessWidget implements PreferredSizeWidget {
   final TextEditingController? controller;
   @override
   final Size preferredSize;
