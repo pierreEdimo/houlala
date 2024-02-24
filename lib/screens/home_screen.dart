@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:houlala/helper/category_name.dart';
+import 'package:houlala/shared_widgets/home_category_box.dart';
+import 'package:houlala/shared_widgets/home_product_box.dart';
 import 'package:houlala/widget/container_wirth_connectivity_checker.dart';
 import 'package:houlala/widget/grid_pages.dart';
-import 'package:houlala/widget/standard_custom_app_bar.dart';
 import 'package:houlala/widget/custom_box_container.dart';
-import 'package:houlala/widget/flexible_row.dart';
-import 'package:houlala/widget/grid_of_products.dart';
-import 'package:houlala/widget/list_of_categories.dart';
 import 'package:sizer/sizer.dart';
 import '../helper/constants.dart';
+import '../widget/custom_button_container.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,8 +17,19 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: 'houlala',
+      appBar: AppBar(
+        leading: const CircleAvatar(
+          backgroundColor: Colors.transparent,
+          radius: 35,
+          backgroundImage: AssetImage('images/houlala1.png'),
+        ),
+        title: const Text("Houlala"),
+        actions: [
+          CustomButtonContainer(
+            icon: const FaIcon(FontAwesomeIcons.magnifyingGlass),
+            onPressed: () => Navigator.of(context).pushNamed("/search"),
+          )
+        ],
       ),
       body: ContainerWithConnectivityChecker(
         child: SingleChildScrollView(
@@ -26,57 +38,22 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                CustomBoxContainer(
-                  child: SizedBox(
-                    height: 250,
-                    child: ListOfCategories(
-                      child: Container(
-                        margin: const EdgeInsets.only(bottom: 5.0),
-                        child: const FlexibleRow(
-                          title: "Categories",
-                          urlValue: "/all_categories",
-                        ),
-                      ),
-                      uri: '${dotenv.env['CATEGORY_URL']}/random/8',
-                      direction: Axis.horizontal,
-                      shrinkWrap: true,
-                    ),
-                  ),
+                const HomeCategoryBox(),
+                standardSizedBox,
+                const HomeProductByCategoryBox(
+                  categoryName: CategoryName.FRUITS_AND_LETTUCES,
+                  titleBox: 'Decouvrez nos fruits et legumes',
                 ),
                 standardSizedBox,
                 CustomBoxContainer(
-                  child: GridOfProducts(
-                    height: 180,
-                    textError: "Aucuns produits",
-                    child: Container(
-                      margin: const EdgeInsets.only(bottom: 5.0),
-                      child: const FlexibleRow(
-                        title: 'fruits & legumes',
-                        urlValue: "/all_fruits",
-                      ),
-                    ),
-                    uri:
-                        '${dotenv.env['PRODUCT_URL']}/random/categories/1/size/8',
-                    crossAxisCount: 2,
-                    widthRatio: 1,
-                    heightRatio: 1.5,
-                  ),
-                ),
-                standardSizedBox,
-                CustomBoxContainer(
+                  title: "Decouvrez quelques boutiques disponibles",
+                  urlValue: "all_pages",
                   child: SizedBox(
                     height: 220,
                     child: GridPages(
                       height: 25.h,
                       width: 90.w,
                       textError: "Aucunes Pages",
-                      child: Container(
-                        margin: const EdgeInsets.only(bottom: 5.0),
-                        child: const FlexibleRow(
-                          title: 'Magasins',
-                          urlValue: "/all_pages",
-                        ),
-                      ),
                       uri: '${dotenv.env['LOCATION_URL']}/store?limit=10',
                       direction: Axis.horizontal,
                     ),

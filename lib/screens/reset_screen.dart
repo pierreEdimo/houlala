@@ -51,7 +51,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWithReturn(
+      appBar: const AppBarWithReturn(
         elevation: 1,
         title: "Nouveau mot de passe",
         color: Colors.transparent,

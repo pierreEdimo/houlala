@@ -1,5 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:houlala/helper/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FlexibleRow extends StatelessWidget {
   final String? title;
@@ -16,7 +18,11 @@ class FlexibleRow extends StatelessWidget {
         Flexible(
           child: Text(
             title!,
-            style: standardStyle,
+            style: GoogleFonts.poppins(
+              textStyle: const TextStyle(
+                fontWeight: FontWeight.bold
+              )
+            ),
           ),
         ),
         InkWell(

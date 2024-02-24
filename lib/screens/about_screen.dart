@@ -14,7 +14,7 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWithReturn(
+      appBar: const AppBarWithReturn(
         title: "A Propos",
         elevation: 1,
         color: Colors.transparent,

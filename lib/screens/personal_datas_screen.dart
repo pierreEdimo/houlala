@@ -34,7 +34,7 @@ class PersonalDataScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWithReturn(
+      appBar: const AppBarWithReturn(
         title: "Mes Donnees personnelles",
         elevation: 1,
         color: Colors.transparent,
@@ -99,9 +99,9 @@ class PersonalDataScreen extends StatelessWidget {
                     ),
                     CustomElevatedButton(
                       onPressed: () => navigateToEdit(connectedUser, context),
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Icon(Icons.edit_outlined),
                           Text(
                             "Modifier Mon Email",

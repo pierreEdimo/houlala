@@ -8,13 +8,13 @@ class AllFruits extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return  const Scaffold(
       appBar: AppBarWithReturn(
         title: "fruits & legumes",
         elevation: 1,
         color: Colors.transparent,
       ),
-      body: const FruitsLettucesContainer(),
+      body: FruitsLettucesContainer(),
     );
   }
 }

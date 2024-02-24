@@ -8,7 +8,7 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: CustomAppBar(
         title: "Notifications",
       ),
@@ -16,7 +16,7 @@ class NotificationScreen extends StatelessWidget {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               CustomAvatar(
                 radius: 50,
                 localAsset: "images/sound-off.png",

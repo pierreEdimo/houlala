@@ -88,9 +88,9 @@ class PersonnalDataContainer extends StatelessWidget {
         verticalSpacing,
         CustomElevatedButton(
           onPressed: () => navigateToEdit(context, "personal"),
-          child: Row(
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Icon(Icons.edit_outlined),
               Text(
                 "Modifier Mes informations",
@@ -185,9 +185,9 @@ class PersonnalDataContainer extends StatelessWidget {
         verticalSpacing,
         CustomElevatedButton(
           onPressed: () => navigateToEdit(context, "address"),
-          child: Row(
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Icon(Icons.edit_outlined),
               Text(
                 "Modifier Mon Addresse",

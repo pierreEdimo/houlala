@@ -10,7 +10,7 @@ class AllProductCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWithReturn(
+      appBar: const AppBarWithReturn(
         title: 'Categories',
         elevation: 1,
       ),

@@ -29,22 +29,15 @@ class Layout extends ConsumerWidget {
           SizedBox(
             width: width * 1,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 80.0),
+              padding: const EdgeInsets.only(bottom: 60.0),
               child: children!.elementAt(currentIndex),
             ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 75,
+              height: 60,
               width: width * 1,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(25),
-                  topRight: Radius.circular(25)
-                )
-              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: bottomItems!

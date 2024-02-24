@@ -26,9 +26,9 @@ class ContainerWithConnectivityChecker extends StatelessWidget {
           case ConnectivityResult.mobile:
             return child!;
           case ConnectivityResult.none:
-            return Center(child: Column(
+            return const Center(child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 ImageIcon(
                   AssetImage("images/wifi-x.png"),
                   size: 140,

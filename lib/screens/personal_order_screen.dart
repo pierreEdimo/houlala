@@ -14,7 +14,7 @@ class PersonalOrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWithReturn(
+      appBar: const AppBarWithReturn(
         title: "Mes Commandes",
         elevation: 1,
         color: Colors.transparent,

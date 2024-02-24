@@ -9,11 +9,11 @@ class UserScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: StandardAppBar(
         title: "houlala",
       ),
-      body: const ContainerWithConnectivityChecker(
+      body: ContainerWithConnectivityChecker(
         child: UserScreenContainer(),
       ),
     );

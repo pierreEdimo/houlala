@@ -8,7 +8,6 @@ double customFontSize = 18;
 
 TextStyle standardStyle = const TextStyle(
   fontWeight: FontWeight.bold,
-  fontFamily: 'PoppinsBold',
   fontSize: 16.0,
 );
 
@@ -24,7 +23,6 @@ SizedBox verticalSpacing = const SizedBox(height: 10.0);
 
 TextStyle titleStyle = const TextStyle(
   fontWeight: FontWeight.bold,
-  fontFamily: 'PoppinsBold',
   fontSize: 18,
 );
 

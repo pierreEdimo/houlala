@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
-
-import '../helper/constants.dart';
 import '../screens/about_screen.dart';
 import '../screens/all_fruits_and_lettuces_screen.dart';
 import '../screens/all_pages_screen.dart';
@@ -55,18 +54,16 @@ class MyApp extends StatelessWidget {
               title: 'houlala',
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                  appBarTheme: AppBarTheme(
-                    backgroundColor: lightgrey,
-                    titleTextStyle: const TextStyle(
-                      fontFamily: 'PoppinsBold',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                  primarySwatch: Colors.grey,
-                  fontFamily: 'Poppins',
-                  scaffoldBackgroundColor: const Color(0xffffffff)),
+                textTheme: GoogleFonts.poppinsTextTheme(),
+                appBarTheme: AppBarTheme(
+                    elevation: 3,
+                    color: Colors.white,
+                    titleTextStyle: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                            fontSize: 22.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black))),
+              ),
               initialRoute: '/',
               routes: {
                 '/': (context) => const MainNavigation(),
@@ -74,11 +71,11 @@ class MyApp extends StatelessWidget {
                 '/all_categories': (context) => const AllProductCategories(),
                 '/all_pages': (context) => const AllPageScreen(),
                 ProductDetailScreen.routeName: (context) =>
-                const ProductDetailScreen(),
+                    const ProductDetailScreen(),
                 CategoryDetailScreen.routeName: (context) =>
-                const CategoryDetailScreen(),
+                    const CategoryDetailScreen(),
                 PageDetailScreen.screenName: (context) =>
-                const PageDetailScreen(),
+                    const PageDetailScreen(),
                 '/search': (context) => const SearchScreen(),
                 FavoriteScreen.routeName: (context) => const FavoriteScreen(),
                 '/options': (context) => const OptionScreen(),
@@ -88,7 +85,7 @@ class MyApp extends StatelessWidget {
                 '/my_orders': (context) => const PersonalOrderScreen(),
                 '/my_personal': (context) => const PersonalDataScreen(),
                 '/discovery_category_detail': (context) =>
-                const DiscoveryCategoryDetailScreen(),
+                    const DiscoveryCategoryDetailScreen(),
                 '/sub_category': (context) => const SubCategoryScreen(),
                 '/edit': (context) => const EditScreen(),
                 '/reset': (context) => const ResetPasswordScreen(),

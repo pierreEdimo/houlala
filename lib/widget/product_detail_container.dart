@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/model/add_item.dart';
 import 'package:houlala/model/add_order.dart';
 import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/model/offline_order.dart';

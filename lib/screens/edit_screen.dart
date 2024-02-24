@@ -129,7 +129,7 @@ class _EditScreenState extends State<EditScreen> {
     switch (editScreenArguments.type!) {
       case 'email':
         return Scaffold(
-          appBar: AppBarWithReturn(
+          appBar: const AppBarWithReturn(
             title: "Modifier",
             elevation: 1,
           ),
@@ -168,7 +168,7 @@ class _EditScreenState extends State<EditScreen> {
         );
       case 'address':
         return Scaffold(
-          appBar: AppBarWithReturn(
+          appBar: const AppBarWithReturn(
             title: "Modifier",
             elevation: 1,
           ),
@@ -238,7 +238,7 @@ class _EditScreenState extends State<EditScreen> {
       case 'personal':
       default:
         return Scaffold(
-          appBar: AppBarWithReturn(
+          appBar: const AppBarWithReturn(
             title: "Modifier",
             elevation: 1,
           ),

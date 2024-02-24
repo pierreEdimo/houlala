@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:houlala/model/page_screen_arguments.dart';
 import 'package:houlala/screens/category_detail_screen.dart';
 import 'package:houlala/widget/elevation_container.dart';
 import 'package:houlala/widget/transparent_card_container.dart';
 
 import '../model/product_category.dart';
+
+
 
 class CategoryContainer extends StatelessWidget {
   final CategoryModel? categoryModel;
@@ -70,11 +73,12 @@ class CategoryContainer extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Color(0xFFFFFFFF),
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'PoppinsBold',
-                  fontSize: 20.0,
+                style: GoogleFonts.poppins(
+                  textStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 20.0
+                  )
                 ),
               ),
             ),

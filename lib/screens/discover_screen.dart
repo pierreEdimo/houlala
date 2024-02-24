@@ -8,11 +8,11 @@ class DiscoverScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       appBar: CustomAppBar(
         title: "Decouvrez",
       ),
-      body: const ContainerWithConnectivityChecker(
+      body: ContainerWithConnectivityChecker(
         child: DiscoverContainer(),
       ),
     );

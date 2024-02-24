@@ -8,7 +8,7 @@ class StandardAppBar extends StatelessWidget implements PreferredSizeWidget {
   final CustomButtonContainer? button;
   final String? title;
 
-  StandardAppBar({
+  const StandardAppBar({
     this.title,
     this.button,
     Key? key,

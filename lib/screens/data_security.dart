@@ -13,7 +13,7 @@ class DataSecurityScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWithReturn(
+      appBar: const AppBarWithReturn(
         title: "Politiques de confidentialites",
         elevation: 1,
         color: Colors.transparent,

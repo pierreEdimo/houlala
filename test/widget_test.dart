@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:houlala/main.dart';
 import 'package:houlala/widget/my_app.dart';
 
 void main() {

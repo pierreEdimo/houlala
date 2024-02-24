@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/model/page_screen_arguments.dart';
-import 'package:houlala/widget/category_detail_container.dart';
+
+import '../widget/custom_button_container.dart';
 
 class CategoryDetailScreen extends StatelessWidget {
   static const routeName = "/categoryDetail";
@@ -13,10 +15,16 @@ class CategoryDetailScreen extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as PageScreenArguments;
 
     return Scaffold(
-      body: CategoryDetailContainer(
-        categoryName: args.categoryName,
-        categoryId: args.categoryId,
-        imageUrl: args.imageUrl,
+      appBar: AppBar(
+        leading: CustomButtonContainer(
+          icon: const FaIcon(FontAwesomeIcons.angleLeft),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        automaticallyImplyLeading: false,
+        title: Text(args.categoryName!),
+      ),
+      body: Center(
+        child: Text(args.categoryName!),
       ),
     );
   }
