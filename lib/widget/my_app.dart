@@ -69,12 +69,12 @@ class MyApp extends StatelessWidget {
                 '/': (context) => const MainNavigation(),
                 '/all_fruits': (context) => const AllFruits(),
                 '/all_categories': (context) => const AllProductCategories(),
-                '/all_pages': (context) => const AllPageScreen(),
+                '/all_locations': (context) => const AllPageScreen(),
                 ProductDetailScreen.routeName: (context) =>
                     const ProductDetailScreen(),
                 CategoryDetailScreen.routeName: (context) =>
                     const CategoryDetailScreen(),
-                PageDetailScreen.screenName: (context) =>
+                PageDetailScreen.routeName: (context) =>
                     const PageDetailScreen(),
                 '/search': (context) => const SearchScreen(),
                 FavoriteScreen.routeName: (context) => const FavoriteScreen(),

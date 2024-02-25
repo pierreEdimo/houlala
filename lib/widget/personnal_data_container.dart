@@ -118,17 +118,17 @@ class PersonnalDataContainer extends StatelessWidget {
                 Container(
                   width: 100.w,
                   margin: const EdgeInsets.only(bottom: 10.0),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(width: 1, color: Colors.grey.shade300),
+                    ),
+                  ),
                   child: const Text(
                     "Adresse de livraison",
                     style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         fontFamily: "PoppinsBold"),
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(width: 1, color: Colors.grey.shade300),
-                    ),
                   ),
                 ),
                 Column(

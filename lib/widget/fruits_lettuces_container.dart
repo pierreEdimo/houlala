@@ -36,14 +36,6 @@ class FruitsLettucesContainer extends StatelessWidget {
                 ),
                 verticalSpacing,
                 GridOfProducts(
-                  child: const Text(
-                    "Recemment ajoutees",
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontFamily: "PoppinsBold",
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                   height: 30.h,
                   textError: "Aucuns produits appelle n'a ete trouve\n"
                       "svp verifiez plutard",
@@ -52,6 +44,14 @@ class FruitsLettucesContainer extends StatelessWidget {
                   crossAxisCount: 2,
                   widthRatio: 1,
                   heightRatio: 1.5,
+                  child: const Text(
+                    "Recemment ajoutees",
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontFamily: "PoppinsBold",
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 )
               ],
             ),

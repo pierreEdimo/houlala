@@ -19,7 +19,7 @@ class HomeCategoryBox extends ConsumerWidget {
       loading: categoryController.pCategoryLoading(),
       error: categoryController.pCategoryError(),
       errorMessage: categoryController.getPCategoryErrorMessage(),
-      loadingHeight: 250,
+      loadingHeight: 300,
       child: CustomBoxContainer(
         title: 'Decouvrez nos produits par categorie',
         urlValue: 'all_categories',

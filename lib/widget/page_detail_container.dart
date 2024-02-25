@@ -38,19 +38,17 @@ class PageDetailContainer extends StatelessWidget {
             ];
 
             return SingleChildScrollView(
-              child: CustomBoxContainer(
-                child: CustomInternNavigation(
-                  menuItems: const [
-                    "Accueil",
-                    "Informations",
-                    "Produits",
-                  ],
-                  widgetOptions: _widgetOptions,
-                  elevationValue: 0,
-                  verticalPadding: 23.0,
-                  horizontalPadding: 0.0,
-                  height: 0.1,
-                ),
+              child: CustomInternNavigation(
+                menuItems: const [
+                  "Accueil",
+                  "Informations",
+                  "Produits",
+                ],
+                widgetOptions: _widgetOptions,
+                elevationValue: 0,
+                verticalPadding: 23.0,
+                horizontalPadding: 0.0,
+                height: 0.1,
               ),
             );
           }

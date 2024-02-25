@@ -35,7 +35,7 @@ class Layout extends ConsumerWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: Container(
+            child: SizedBox(
               height: 60,
               width: width * 1,
               child: Row(

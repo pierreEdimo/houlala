@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:houlala/model/page_screen_arguments.dart';
 import 'package:houlala/screens/category_detail_screen.dart';

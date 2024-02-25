@@ -6,7 +6,6 @@ import 'package:houlala/main.dart';
 import 'package:houlala/models/product/product_model.dart';
 import 'package:houlala/repositories/product/product_repository.interface.dart';
 import 'package:http/http.dart';
-import 'package:http/src/response.dart';
 
 class ProductRepository implements ProductRepositoryInterface {
   @override
