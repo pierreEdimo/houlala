@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:heroicons/heroicons.dart';
 import 'package:houlala/screens/cart_item_screen.dart';
 import 'package:houlala/screens/home_screen.dart';
 import 'package:houlala/screens/notification_screen.dart';
@@ -14,23 +15,23 @@ class MainNavigation extends StatelessWidget {
     return const Layout(
       bottomItems: [
         BottomItem(
-          icon: ImageIcon(AssetImage("images/house.png")),
-          selectedIcon: ImageIcon(AssetImage("images/house_fill.png")),
+          icon: HeroIcon(HeroIcons.homeModern),
+          selectedIcon: HeroIcon(HeroIcons.homeModern, style: HeroIconStyle.solid),
           size: 25,
         ),
         BottomItem(
-          icon: ImageIcon(AssetImage("images/cart.png")),
-          selectedIcon: ImageIcon(AssetImage("images/cart_fill.png")),
+          icon: HeroIcon(HeroIcons.shoppingCart),
+          selectedIcon: HeroIcon(HeroIcons.shoppingCart, style: HeroIconStyle.solid),
           size: 25,
         ),
         BottomItem(
-          icon: ImageIcon(AssetImage("images/notification.png")),
-          selectedIcon: ImageIcon(AssetImage("images/bell_fill.png")),
+          icon: HeroIcon(HeroIcons.bell),
+          selectedIcon: HeroIcon(HeroIcons.bell, style: HeroIconStyle.solid),
           size: 25,
         ),
         BottomItem(
-          icon: ImageIcon(AssetImage("images/user.png")),
-          selectedIcon: ImageIcon(AssetImage("images/user_fill.png")),
+          icon: HeroIcon(HeroIcons.user),
+          selectedIcon: HeroIcon(HeroIcons.user, style: HeroIconStyle.solid),
           size: 25,
         )
       ],
