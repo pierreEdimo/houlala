@@ -22,7 +22,7 @@ class HomeCategoryBox extends ConsumerWidget {
       loadingHeight: 300,
       child: CustomBoxContainer(
         title: 'Decouvrez nos produits par categorie',
-        urlValue: 'all_categories',
+        urlValue: '/all_categories',
         child: SizedBox(
           height: 180,
           child: ListView(

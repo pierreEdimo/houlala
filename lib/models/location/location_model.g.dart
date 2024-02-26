@@ -30,6 +30,8 @@ _$LocationModelImpl _$$LocationModelImplFromJson(Map<String, dynamic> json) =>
       address: json['address'] == null
           ? null
           : LocationAddress.fromJson(json['address'] as Map<String, dynamic>),
+      productTotalCount: json['productTotalCount'] as int?,
+      orderSoldCount: json['orderSoldCount'] as int?,
       shortDescription: json['shortDescription'] as String?,
     );
 
@@ -48,6 +50,8 @@ Map<String, dynamic> _$$LocationModelImplToJson(_$LocationModelImpl instance) =>
       'creator': instance.creator,
       'country': instance.country,
       'address': instance.address,
+      'productTotalCount': instance.productTotalCount,
+      'orderSoldCount': instance.orderSoldCount,
       'shortDescription': instance.shortDescription,
     };
 

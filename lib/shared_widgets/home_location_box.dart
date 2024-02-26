@@ -20,7 +20,7 @@ class HomeLocationBox extends ConsumerWidget {
       loadingHeight: 300,
       child: CustomBoxContainer(
         title: 'Decouvrez quelques boutiques disponibles',
-        urlValue: 'all_locations',
+        urlValue: '/all_locations',
         child: SizedBox(
           height: 250,
           child: GridView.count(

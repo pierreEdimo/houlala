@@ -1,5 +1,8 @@
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:houlala/models/location/location_model.dart';
 import 'package:houlala/screens/page_detail_screen.dart';
 
@@ -40,9 +43,11 @@ class HorizontalLocationContainer extends StatelessWidget {
                         locationModel!.name!,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
+                        style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold
+                          )
                         ),
                       ),
                       Text(

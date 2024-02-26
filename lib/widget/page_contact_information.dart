@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/model/location.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/launch_url.dart';
 import '../helper/constants.dart';
+import '../models/location/location_model.dart';
 
 class PageContactInformation extends StatelessWidget {
   final LocationModel? page;
@@ -12,15 +13,14 @@ class PageContactInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomColumnContainer(
-      child: const Text(
+      title: Text(
         "Contacts",
-        style: TextStyle(
-          fontSize: 22.0,
-          fontFamily: 'PoppinsBold',
-          fontWeight: FontWeight.bold,
+        style: GoogleFonts.poppins(
+          textStyle:
+              const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
         ),
       ),
-      gridList: Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(

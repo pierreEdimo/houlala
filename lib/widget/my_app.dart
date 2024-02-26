@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:houlala/screens/page_result_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import '../screens/about_screen.dart';
@@ -89,6 +90,7 @@ class MyApp extends StatelessWidget {
                 '/sub_category': (context) => const SubCategoryScreen(),
                 '/edit': (context) => const EditScreen(),
                 '/reset': (context) => const ResetPasswordScreen(),
+                PageResultScreen.routeName: (context) => const PageResultScreen()
               },
             );
           },

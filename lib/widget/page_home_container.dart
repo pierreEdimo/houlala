@@ -1,64 +1,70 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:houlala/model/location.dart';
-import 'package:houlala/widget/custom_column_container.dart';
-import 'package:houlala/widget/grid_of_products.dart';
-import 'package:houlala/widget/markdown_container.dart';
-import 'package:sizer/sizer.dart';
 import 'dart:convert';
 
-class PageHomeContainer extends StatelessWidget {
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:houlala/controllers/product_controller.dart';
+import 'package:houlala/helper/constants.dart';
+import 'package:houlala/models/product/product_model.dart';
+import 'package:houlala/shared_widgets/product_container.dart';
+import 'package:houlala/widget/custom_column_container.dart';
+import 'package:houlala/widget/markdown_container.dart';
+import '../models/location/location_model.dart';
+
+class PageHomeContainer extends ConsumerWidget {
   final LocationModel? pageModel;
 
   const PageHomeContainer({Key? key, this.pageModel}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ProductController productController = ProductController(ref);
+    List<ProductModel> productList = productController
+        .getProductssListsByLocationWithLimit(pageModel!.name!, 4);
+
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomColumnContainer(
-          child: const Text(
-            "A Propos",
-            style: TextStyle(
-              fontSize: 22.0,
-              fontWeight: FontWeight.bold,
-              fontFamily: "PoppinsBold",
+          title:  Text(
+            'A propos',
+            style: GoogleFonts.poppins(
+              textStyle: const TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold
+              )
             ),
           ),
-          gridList: MarkdownContainer(
-            data: utf8.decode(
-              pageModel!.shortDescription!.runes.toList(),
-            ),
+          child: MarkdownContainer(
+            data: utf8.decode(pageModel!.shortDescription!.runes.toList()),
           ),
         ),
-        const SizedBox(
-          height: 20.0,
-        ),
-        SizedBox(
-          child: GridOfProducts(
-            height: 25.h,
-            textError: "${pageModel!.name} n'a pas encore insere de produits"
-                "svp veuillez verifier plutard",
-            child: Container(
-              margin: const EdgeInsets.only(bottom: 5.0),
-              child: const Text(
-                "Recemment ajoutes",
-                style: TextStyle(
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "PoppinsBold",
-                ),
-              ),
+        standardSizedBox,
+        CustomColumnContainer(
+          title: Text(
+            'Quelques produits par ${pageModel!.name!}',
+            style: GoogleFonts.poppins(
+              textStyle: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18.0
+              )
             ),
+          ),
+          child: GridView.count(
             crossAxisCount: 2,
-            uri:
-                '${dotenv.env['PRODUCT_URL']}/random/locations/${pageModel!.uniqueIdentifier!}/size/6',
-            heightRatio: 1.5,
-            widthRatio: 1,
+            shrinkWrap: true,
+            physics: const ClampingScrollPhysics(),
+            padding: EdgeInsets.zero,
+            childAspectRatio: 1 / 1.2,
+            children: productList
+                .map(
+                  (product) => ProductContainer(
+                    productModel: product,
+                  ),
+                )
+                .toList(),
           ),
-        ),
+        )
       ],
     );
   }

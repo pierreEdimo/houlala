@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:houlala/controllers/product_controller.dart';
+import 'package:houlala/helper/category_name.dart';
+import 'package:houlala/models/page_screen_args/page_screen_arguments.dart';
 import 'package:houlala/models/product/product_model.dart';
+import 'package:houlala/screens/category_detail_screen.dart';
 import 'package:houlala/shared_widgets/custom_body_container.dart';
 import 'package:houlala/shared_widgets/product_container.dart';
 import 'package:houlala/widget/custom_box_container.dart';
@@ -31,7 +34,9 @@ class HomeProductByCategoryBox extends ConsumerWidget {
       loadingHeight: MediaQuery.of(context).size.height * 0.50,
       child: CustomBoxContainer(
         title: titleBox,
-        urlValue: 'all_fruits',
+        urlValue: CategoryDetailScreen.routeName,
+        arguments: const PageScreenArguments(
+            categoryName: CategoryName.FRUITS_AND_LETTUCES, categoryId: 1),
         child: GridView.count(
           crossAxisCount: 2,
           shrinkWrap: true,

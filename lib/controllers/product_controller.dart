@@ -18,6 +18,31 @@ class ProductController {
         .toList();
   }
 
+  List<ProductModel> getProductListsByLocation(String locationName) {
+    return ref
+        .watch(productStateNotifierProvider)
+        .productList
+        .where((element) =>
+            element.locationName!
+                .toLowerCase()
+                .compareTo(locationName.toLowerCase()) ==
+            0)
+        .toList();
+  }
+
+  List<ProductModel> getProductssListsByLocationWithLimit(
+      String locationName, int limit) {
+    return getProductListsByLocation(locationName).take(limit).toList();
+  }
+
+  List<ProductModel> getFilteredProductByLocation(
+      String locationName, String keyWord) {
+    return getProductListsByLocation(locationName)
+        .where((element) =>
+            element.name!.toLowerCase().contains(keyWord.toLowerCase()))
+        .toList();
+  }
+
   List<ProductModel> getProductListsByCategoryName(String name) {
     return ref
         .watch(productStateNotifierProvider)

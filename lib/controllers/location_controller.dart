@@ -26,4 +26,8 @@ class LocationController {
   bool get hasError {
     return ref.watch(locationStateNotifierProvider).error;
   }
+
+  LocationModel getSelectedLocationModel(int id){
+    return locationList.firstWhere((element) => element.id == id);
+  }
 }

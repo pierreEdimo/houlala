@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomInternNavigation extends StatefulWidget {
   final List<String>? menuItems;
@@ -35,61 +36,54 @@ class _CustomInternNavigationState extends State<CustomInternNavigation> {
             elevation: widget.elevationValue!,
             color: const Color(0xffffffff),
             child: SizedBox(
-              height: 70,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: widget.horizontalPadding!,
-                  vertical: 8.0,
-                ),
-                child: Container(
-                  alignment: Alignment.centerLeft,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: widget.menuItems!.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      String menu = widget.menuItems![index];
-                      _isSelected = _currentIndex == index;
+              height: 60,
+              child: Container(
+                alignment: Alignment.centerLeft,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.zero,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: widget.menuItems!.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    String menu = widget.menuItems![index];
+                    _isSelected = _currentIndex == index;
 
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _currentIndex = index;
-                          });
-                        },
-                        child: Card(
-                          elevation: 0,
-                          color: const Color.fromRGBO(0, 0, 0, 0),
-                          child: Container(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 5.0),
-                            decoration: BoxDecoration(
-                              border: Border(
-                                bottom: _isSelected
-                                    ? const BorderSide(
-                                        color: Colors.orangeAccent, width: 2.0)
-                                    : const BorderSide(
-                                        color: Colors.transparent,
-                                      ),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                menu,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: _isSelected
-                                      ? Colors.orangeAccent
-                                      : Colors.black,
-                                ),
-                              ),
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _currentIndex = index;
+                        });
+                      },
+                      child: Container(
+                        width: 120,
+                        padding:
+                            const EdgeInsets.symmetric(horizontal: 5.0),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: _isSelected
+                                ? const BorderSide(
+                                    color: Colors.orangeAccent, width: 2.0)
+                                : const BorderSide(
+                                    color: Colors.transparent,
+                                  ),
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            menu,
+                            style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: _isSelected
+                                    ? Colors.orangeAccent
+                                    : Colors.black,
+                              )
                             ),
                           ),
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),

@@ -1,27 +1,66 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/widget/grid_of_products.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:houlala/controllers/product_controller.dart';
+import 'package:houlala/models/page_result_args/page_result_args.dart';
+import 'package:houlala/models/product/product_model.dart';
+import 'package:houlala/screens/page_result_screen.dart';
+import '../helper/constants.dart';
+import '../shared_widgets/product_container.dart';
 
-class PageProductContainer extends StatelessWidget {
-  final String? uri;
-  final String? textError;
+class PageProductContainer extends ConsumerWidget {
+  final String? locationName;
 
-  const PageProductContainer({
-    Key? key,
-    this.uri,
-    this.textError,
-  }) : super(key: key);
+  const PageProductContainer({super.key, this.locationName});
 
   @override
-  Widget build(BuildContext context) {
-    return GridOfProducts(
-      height: 35.h,
-      textError: textError,
-      uri: uri!,
-      heightRatio: 1.5,
-      widthRatio: 1,
-      crossAxisCount: 2,
-      origin: "Location",
+  Widget build(BuildContext context, WidgetRef ref) {
+    ProductController productController = ProductController(ref);
+    List<ProductModel> productList =
+        productController.getProductListsByLocation(locationName!);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Column(
+        children: [
+          TextFormField(
+            textInputAction: TextInputAction.search,
+            onFieldSubmitted: (value) => Navigator.of(context).pushNamed(
+              PageResultScreen.routeName,
+              arguments:
+                  PageResultArgs(locationName: locationName, keyWord: value),
+            ),
+            decoration: InputDecoration(
+                hintText: "Rechercher",
+                fillColor: lightgrey,
+                contentPadding: const EdgeInsets.symmetric(vertical: 15.0),
+                filled: true,
+                hintStyle: const TextStyle(
+                  color: Color(0xff000000),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                  borderSide:
+                      const BorderSide(width: 0, style: BorderStyle.none),
+                ),
+                prefixIcon: const Icon(
+                  Icons.search,
+                  color: Color(0xff000000),
+                )),
+          ),
+          const SizedBox(height: 20.0),
+          GridView.count(
+            crossAxisCount: 2,
+            shrinkWrap: true,
+            physics: const ClampingScrollPhysics(),
+            childAspectRatio: 1 / 1.2,
+            children: productList
+                .map((product) => ProductContainer(
+                      productModel: product,
+                    ))
+                .toList(),
+          )
+        ],
+      ),
     );
   }
 }

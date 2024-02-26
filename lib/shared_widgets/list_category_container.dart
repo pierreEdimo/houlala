@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/model/page_screen_arguments.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:houlala/screens/category_detail_screen.dart';
 
+import '../models/page_screen_args/page_screen_arguments.dart';
 import '../models/product_category/category_model.dart';
 
 class ListCategoryContainer extends StatelessWidget {
@@ -16,7 +17,6 @@ class ListCategoryContainer extends StatelessWidget {
         CategoryDetailScreen.routeName,
         arguments: PageScreenArguments(
           categoryId: categoryModel!.id,
-          imageUrl: categoryModel!.imageUrl,
           categoryName: categoryModel!.name!
         )
       ),
@@ -48,8 +48,11 @@ class ListCategoryContainer extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.right,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold
+                  style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15.0
+                    )
                   ),
                 ),
               )

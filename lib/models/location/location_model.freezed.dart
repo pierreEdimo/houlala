@@ -33,6 +33,8 @@ mixin _$LocationModel {
   Owner? get creator => throw _privateConstructorUsedError;
   CountryModel? get country => throw _privateConstructorUsedError;
   LocationAddress? get address => throw _privateConstructorUsedError;
+  int? get productTotalCount => throw _privateConstructorUsedError;
+  int? get orderSoldCount => throw _privateConstructorUsedError;
   String? get shortDescription => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -61,6 +63,8 @@ abstract class $LocationModelCopyWith<$Res> {
       Owner? creator,
       CountryModel? country,
       LocationAddress? address,
+      int? productTotalCount,
+      int? orderSoldCount,
       String? shortDescription});
 
   $StoreCategoryModelCopyWith<$Res>? get category;
@@ -95,6 +99,8 @@ class _$LocationModelCopyWithImpl<$Res, $Val extends LocationModel>
     Object? creator = freezed,
     Object? country = freezed,
     Object? address = freezed,
+    Object? productTotalCount = freezed,
+    Object? orderSoldCount = freezed,
     Object? shortDescription = freezed,
   }) {
     return _then(_value.copyWith(
@@ -150,6 +156,14 @@ class _$LocationModelCopyWithImpl<$Res, $Val extends LocationModel>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as LocationAddress?,
+      productTotalCount: freezed == productTotalCount
+          ? _value.productTotalCount
+          : productTotalCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      orderSoldCount: freezed == orderSoldCount
+          ? _value.orderSoldCount
+          : orderSoldCount // ignore: cast_nullable_to_non_nullable
+              as int?,
       shortDescription: freezed == shortDescription
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
@@ -228,6 +242,8 @@ abstract class _$$LocationModelImplCopyWith<$Res>
       Owner? creator,
       CountryModel? country,
       LocationAddress? address,
+      int? productTotalCount,
+      int? orderSoldCount,
       String? shortDescription});
 
   @override
@@ -264,6 +280,8 @@ class __$$LocationModelImplCopyWithImpl<$Res>
     Object? creator = freezed,
     Object? country = freezed,
     Object? address = freezed,
+    Object? productTotalCount = freezed,
+    Object? orderSoldCount = freezed,
     Object? shortDescription = freezed,
   }) {
     return _then(_$LocationModelImpl(
@@ -319,6 +337,14 @@ class __$$LocationModelImplCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as LocationAddress?,
+      productTotalCount: freezed == productTotalCount
+          ? _value.productTotalCount
+          : productTotalCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      orderSoldCount: freezed == orderSoldCount
+          ? _value.orderSoldCount
+          : orderSoldCount // ignore: cast_nullable_to_non_nullable
+              as int?,
       shortDescription: freezed == shortDescription
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
@@ -344,6 +370,8 @@ class _$LocationModelImpl implements _LocationModel {
       this.creator,
       this.country,
       this.address,
+      this.productTotalCount,
+      this.orderSoldCount,
       this.shortDescription});
 
   factory _$LocationModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -376,11 +404,15 @@ class _$LocationModelImpl implements _LocationModel {
   @override
   final LocationAddress? address;
   @override
+  final int? productTotalCount;
+  @override
+  final int? orderSoldCount;
+  @override
   final String? shortDescription;
 
   @override
   String toString() {
-    return 'LocationModel(id: $id, name: $name, telephoneNumber: $telephoneNumber, email: $email, website: $website, uniqueIdentifier: $uniqueIdentifier, store: $store, description: $description, imageUrl: $imageUrl, category: $category, creator: $creator, country: $country, address: $address, shortDescription: $shortDescription)';
+    return 'LocationModel(id: $id, name: $name, telephoneNumber: $telephoneNumber, email: $email, website: $website, uniqueIdentifier: $uniqueIdentifier, store: $store, description: $description, imageUrl: $imageUrl, category: $category, creator: $creator, country: $country, address: $address, productTotalCount: $productTotalCount, orderSoldCount: $orderSoldCount, shortDescription: $shortDescription)';
   }
 
   @override
@@ -406,6 +438,10 @@ class _$LocationModelImpl implements _LocationModel {
             (identical(other.creator, creator) || other.creator == creator) &&
             (identical(other.country, country) || other.country == country) &&
             (identical(other.address, address) || other.address == address) &&
+            (identical(other.productTotalCount, productTotalCount) ||
+                other.productTotalCount == productTotalCount) &&
+            (identical(other.orderSoldCount, orderSoldCount) ||
+                other.orderSoldCount == orderSoldCount) &&
             (identical(other.shortDescription, shortDescription) ||
                 other.shortDescription == shortDescription));
   }
@@ -427,6 +463,8 @@ class _$LocationModelImpl implements _LocationModel {
       creator,
       country,
       address,
+      productTotalCount,
+      orderSoldCount,
       shortDescription);
 
   @JsonKey(ignore: true)
@@ -458,6 +496,8 @@ abstract class _LocationModel implements LocationModel {
       final Owner? creator,
       final CountryModel? country,
       final LocationAddress? address,
+      final int? productTotalCount,
+      final int? orderSoldCount,
       final String? shortDescription}) = _$LocationModelImpl;
 
   factory _LocationModel.fromJson(Map<String, dynamic> json) =
@@ -489,6 +529,10 @@ abstract class _LocationModel implements LocationModel {
   CountryModel? get country;
   @override
   LocationAddress? get address;
+  @override
+  int? get productTotalCount;
+  @override
+  int? get orderSoldCount;
   @override
   String? get shortDescription;
   @override

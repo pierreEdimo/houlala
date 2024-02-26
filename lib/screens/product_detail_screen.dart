@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:houlala/controllers/product_controller.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/models/product/product_model.dart';
@@ -59,7 +59,6 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
         builder: (context, value, child) {
           if (value != true) {
             return CustomBodyContainer(
-              loading: false,
               error: productController.hasError,
               errorMessage: productController.errorMessage,
               child: SingleChildScrollView(
@@ -70,8 +69,9 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                     children: [
                       Text(
                         selectedProduct!.name!,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18.0),
+                        style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18.0)),
                       ),
                       Container(
                         height: 400,
@@ -90,7 +90,12 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                             TextSpan(
                               text: selectedProduct.locationName,
                               style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
+                                  GoogleFonts.poppins(
+                                    textStyle: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18.0
+                                    )
+                                  ),
                             )
                           ])),
                       const SizedBox(height: 8.0),
@@ -100,8 +105,10 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                         children: [
                           Text(
                             "${selectedProduct.sellingPrice} XAF",
-                            style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                            style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18.0),
+                            ),
                           ),
                           Row(
                             children: [

@@ -22,6 +22,8 @@ class LocationModel with _$LocationModel {
       Owner? creator,
       CountryModel? country,
       LocationAddress? address,
+      int? productTotalCount,
+      int? orderSoldCount,
       String? shortDescription}) = _LocationModel;
 
   factory LocationModel.fromJson(Map<String, dynamic> json) =>

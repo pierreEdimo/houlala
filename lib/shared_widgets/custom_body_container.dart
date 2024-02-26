@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 class CustomBodyContainer extends StatelessWidget {
   final Widget? child;
@@ -12,7 +13,7 @@ class CustomBodyContainer extends StatelessWidget {
     this.child,
     this.error,
     this.errorMessage,
-    this.loading,
+    @Default(false) this.loading,
     this.loadingHeight
   });
 

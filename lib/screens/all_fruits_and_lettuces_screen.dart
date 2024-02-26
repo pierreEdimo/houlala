@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/widget/fruits_lettuces_container.dart';
-
 import '../widget/app_bar_with_return.dart';
 
 class AllFruits extends StatelessWidget {
@@ -8,13 +6,15 @@ class AllFruits extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Scaffold(
+    return   Scaffold(
       appBar: AppBarWithReturn(
         title: "fruits & legumes",
         elevation: 1,
         color: Colors.transparent,
       ),
-      body: FruitsLettucesContainer(),
+      body: const Center(
+        child: Text("Fruits & Legumes"),
+      ),
     );
   }
 }

@@ -29,4 +29,9 @@ class PCategoryController {
         .take(limit)
         .toList();
   }
+
+  List<CategoryModel> get categories {
+    return ref.watch(pCategoryStateNotifierProvider)
+        .categoryList;
+  }
 }

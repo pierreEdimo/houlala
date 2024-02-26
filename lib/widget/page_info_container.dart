@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/model/location.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/markdown_container.dart';
 import 'package:houlala/widget/page_contact_information.dart';
 import 'dart:convert';
 import '../helper/constants.dart';
+import '../models/location/location_model.dart';
 
 class PageInfoContainer extends StatelessWidget {
   final LocationModel? page;
@@ -16,11 +17,14 @@ class PageInfoContainer extends StatelessWidget {
     return Column(
       children: [
         CustomColumnContainer(
-          child: const Text(
-            "A Propos",
-            style: TextStyle(fontSize: 20.0, fontFamily: "PoppinsBold"),
+          title: Text(
+            "A propos",
+            style: GoogleFonts.poppins(
+              textStyle:
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
+            ),
           ),
-          gridList: MarkdownContainer(
+          child: MarkdownContainer(
             data: utf8.decode(
               page!.description!.runes.toList(),
             ),

@@ -29,7 +29,6 @@ class CategoryContainer extends StatelessWidget {
         arguments: PageScreenArguments(
           categoryId: categoryModel!.id!,
           categoryName: categoryModel!.name!,
-          imageUrl: categoryModel!.imageUrl!,
         ),
       ),
       child: TransparentCardContainer(
