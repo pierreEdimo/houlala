@@ -33,6 +33,7 @@ mixin _$ProductModel {
   int? get availableQuantity => throw _privateConstructorUsedError;
   String? get locationName => throw _privateConstructorUsedError;
   String? get categoryName => throw _privateConstructorUsedError;
+  String? get subCategoryName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,7 +60,8 @@ abstract class $ProductModelCopyWith<$Res> {
       String? productSku,
       int? availableQuantity,
       String? locationName,
-      String? categoryName});
+      String? categoryName,
+      String? subCategoryName});
 }
 
 /// @nodoc
@@ -88,6 +90,7 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
     Object? availableQuantity = freezed,
     Object? locationName = freezed,
     Object? categoryName = freezed,
+    Object? subCategoryName = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -142,6 +145,10 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
               as String?,
+      subCategoryName: freezed == subCategoryName
+          ? _value.subCategoryName
+          : subCategoryName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -167,7 +174,8 @@ abstract class _$$ProductModelImplCopyWith<$Res>
       String? productSku,
       int? availableQuantity,
       String? locationName,
-      String? categoryName});
+      String? categoryName,
+      String? subCategoryName});
 }
 
 /// @nodoc
@@ -194,6 +202,7 @@ class __$$ProductModelImplCopyWithImpl<$Res>
     Object? availableQuantity = freezed,
     Object? locationName = freezed,
     Object? categoryName = freezed,
+    Object? subCategoryName = freezed,
   }) {
     return _then(_$ProductModelImpl(
       id: freezed == id
@@ -248,6 +257,10 @@ class __$$ProductModelImplCopyWithImpl<$Res>
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
               as String?,
+      subCategoryName: freezed == subCategoryName
+          ? _value.subCategoryName
+          : subCategoryName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -268,7 +281,8 @@ class _$ProductModelImpl implements _ProductModel {
       this.productSku,
       this.availableQuantity = 1,
       this.locationName,
-      this.categoryName});
+      this.categoryName,
+      this.subCategoryName});
 
   factory _$ProductModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductModelImplFromJson(json);
@@ -301,10 +315,12 @@ class _$ProductModelImpl implements _ProductModel {
   final String? locationName;
   @override
   final String? categoryName;
+  @override
+  final String? subCategoryName;
 
   @override
   String toString() {
-    return 'ProductModel(id: $id, name: $name, description: $description, weight: $weight, sellingPrice: $sellingPrice, imageUrl: $imageUrl, quantity: $quantity, locationId: $locationId, bookMarked: $bookMarked, productSku: $productSku, availableQuantity: $availableQuantity, locationName: $locationName, categoryName: $categoryName)';
+    return 'ProductModel(id: $id, name: $name, description: $description, weight: $weight, sellingPrice: $sellingPrice, imageUrl: $imageUrl, quantity: $quantity, locationId: $locationId, bookMarked: $bookMarked, productSku: $productSku, availableQuantity: $availableQuantity, locationName: $locationName, categoryName: $categoryName, subCategoryName: $subCategoryName)';
   }
 
   @override
@@ -334,7 +350,9 @@ class _$ProductModelImpl implements _ProductModel {
             (identical(other.locationName, locationName) ||
                 other.locationName == locationName) &&
             (identical(other.categoryName, categoryName) ||
-                other.categoryName == categoryName));
+                other.categoryName == categoryName) &&
+            (identical(other.subCategoryName, subCategoryName) ||
+                other.subCategoryName == subCategoryName));
   }
 
   @JsonKey(ignore: true)
@@ -353,7 +371,8 @@ class _$ProductModelImpl implements _ProductModel {
       productSku,
       availableQuantity,
       locationName,
-      categoryName);
+      categoryName,
+      subCategoryName);
 
   @JsonKey(ignore: true)
   @override
@@ -383,7 +402,8 @@ abstract class _ProductModel implements ProductModel {
       final String? productSku,
       final int? availableQuantity,
       final String? locationName,
-      final String? categoryName}) = _$ProductModelImpl;
+      final String? categoryName,
+      final String? subCategoryName}) = _$ProductModelImpl;
 
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
       _$ProductModelImpl.fromJson;
@@ -414,6 +434,8 @@ abstract class _ProductModel implements ProductModel {
   String? get locationName;
   @override
   String? get categoryName;
+  @override
+  String? get subCategoryName;
   @override
   @JsonKey(ignore: true)
   _$$ProductModelImplCopyWith<_$ProductModelImpl> get copyWith =>

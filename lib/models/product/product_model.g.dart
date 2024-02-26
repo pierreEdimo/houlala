@@ -21,6 +21,7 @@ _$ProductModelImpl _$$ProductModelImplFromJson(Map<String, dynamic> json) =>
       availableQuantity: json['availableQuantity'] as int? ?? 1,
       locationName: json['locationName'] as String?,
       categoryName: json['categoryName'] as String?,
+      subCategoryName: json['subCategoryName'] as String?,
     );
 
 Map<String, dynamic> _$$ProductModelImplToJson(_$ProductModelImpl instance) =>
@@ -38,4 +39,5 @@ Map<String, dynamic> _$$ProductModelImplToJson(_$ProductModelImpl instance) =>
       'availableQuantity': instance.availableQuantity,
       'locationName': instance.locationName,
       'categoryName': instance.categoryName,
+      'subCategoryName': instance.subCategoryName,
     };

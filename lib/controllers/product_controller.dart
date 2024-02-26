@@ -11,17 +11,13 @@ class ProductController {
   ProductController(this.ref);
 
   List<ProductModel> getProductListsByLocationId(String locationId) {
-    return ref
-        .watch(productStateNotifierProvider)
-        .productList
+    return productList
         .where((element) => identical(element.locationId, locationId))
         .toList();
   }
 
   List<ProductModel> getProductListsByLocation(String locationName) {
-    return ref
-        .watch(productStateNotifierProvider)
-        .productList
+    return productList
         .where((element) =>
             element.locationName!
                 .toLowerCase()
@@ -44,11 +40,20 @@ class ProductController {
   }
 
   List<ProductModel> getProductListsByCategoryName(String name) {
-    return ref
-        .watch(productStateNotifierProvider)
-        .productList
+    return productList
         .where((element) =>
             element.categoryName!.toLowerCase().compareTo(name.toLowerCase()) ==
+            0)
+        .toList();
+  }
+
+  List<ProductModel> getProductListsByCategoryNameAndSubCategoryName(
+      String name, String subCategoryName) {
+    return getProductListsByCategoryName(name)
+        .where((element) =>
+            element.subCategoryName!
+                .toLowerCase()
+                .compareTo(subCategoryName.toLowerCase()) ==
             0)
         .toList();
   }
@@ -60,6 +65,10 @@ class ProductController {
 
   ProductModel? get selectedProduct {
     return ref.watch(productStateNotifierProvider).selectedProduct;
+  }
+
+  List<ProductModel> get productList {
+    return ref.watch(productStateNotifierProvider).productList;
   }
 
   bool get hasError {

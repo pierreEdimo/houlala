@@ -19,7 +19,8 @@ class ProductModel with _$ProductModel{
     String? productSku,
     @Default(1) int? availableQuantity,
     String? locationName,
-    String? categoryName
+    String? categoryName,
+    String? subCategoryName,
 }) = _ProductModel;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => _$ProductModelFromJson(json);
