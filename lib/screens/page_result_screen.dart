@@ -28,7 +28,7 @@ class PageResultScreen extends ConsumerWidget {
           icon: const FaIcon(FontAwesomeIcons.angleLeft),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text('${args.locationName} (${productList.length})'),
+        title: Text('${args.locationName}'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),

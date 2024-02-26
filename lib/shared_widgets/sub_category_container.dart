@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:houlala/controllers/product_controller.dart';
+import 'package:houlala/model/sub_category_parameter.dart';
 import 'package:houlala/models/product/product_model.dart';
 import 'package:houlala/models/sub_category/sub_category_model.dart';
 import 'package:houlala/shared_widgets/product_container.dart';
@@ -81,7 +82,13 @@ class SubCategoryContainer extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () => Navigator.of(context).pushNamed(
+                            '/sub_category',
+                            arguments: SubCategoryParameter(
+                                label: subCategoryModel!.label!,
+                                id: subCategoryModel!.id!,
+                                thumbNail: subCategoryModel!.imageUrl),
+                          ),
                           child: const Text(
                             'Voire tout',
                           ),

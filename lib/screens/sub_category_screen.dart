@@ -4,7 +4,6 @@ import 'package:houlala/model/sub_category_parameter.dart';
 import 'package:houlala/widget/grid_of_products.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:sizer/sizer.dart';
-
 import '../widget/app_bar_with_return.dart';
 
 class SubCategoryScreen extends StatelessWidget {
