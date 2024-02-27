@@ -87,6 +87,7 @@ class SubCategoryContainer extends ConsumerWidget {
                             arguments: SubCategoryParameter(
                                 label: subCategoryModel!.label!,
                                 id: subCategoryModel!.id!,
+                                categoryName: subCategoryModel!.categoryName,
                                 thumbNail: subCategoryModel!.imageUrl),
                           ),
                           child: const Text(

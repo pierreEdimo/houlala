@@ -33,4 +33,8 @@ class SubCategoryController {
             0)
         .toList();
   }
+
+  SubCategoryModel getSelectedSubCategory(int subCategoryId) {
+    return subCategoryList.firstWhere((element) => element.id == subCategoryId);
+  }
 }

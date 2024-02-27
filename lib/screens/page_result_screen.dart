@@ -30,18 +30,31 @@ class PageResultScreen extends ConsumerWidget {
         ),
         title: Text('${args.locationName}'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: GridView.count(
-          crossAxisCount: 2,
-          childAspectRatio: 1 / 1.2,
-          children: productList
-              .map(
-                (product) => ProductContainer(
-                  productModel: product,
-                ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10.0,
+            vertical: 15.0,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text('${productList.length} produit(s) retrouves'),
+              const SizedBox(height: 10.0),
+              GridView.count(
+                shrinkWrap: true,
+                crossAxisCount: 2,
+                childAspectRatio: 1 / 1.2,
+                children: productList
+                    .map(
+                      (product) => ProductContainer(
+                        productModel: product,
+                      ),
+                    )
+                    .toList(),
               )
-              .toList(),
+            ],
+          ),
         ),
       ),
     );
