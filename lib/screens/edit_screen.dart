@@ -24,56 +24,56 @@ class EditScreen extends StatefulWidget {
 
 class _EditScreenState extends State<EditScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController? _emailController = TextEditingController();
-  final TextEditingController? _passwordController = TextEditingController();
-  final TextEditingController? _numberController = TextEditingController();
-  final TextEditingController? _nameController = TextEditingController();
-  final TextEditingController? _userNameController = TextEditingController();
-  final TextEditingController? _streetController = TextEditingController();
-  final TextEditingController? _houseNbrController = TextEditingController();
-  final TextEditingController? _countryController =
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _numberController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _streetController = TextEditingController();
+  final TextEditingController _houseNbrController = TextEditingController();
+  final TextEditingController _countryController =
       TextEditingController(text: 'Cameroun');
-  final TextEditingController? _cityController =
+  final TextEditingController _cityController =
       TextEditingController(text: 'Yaounde');
-  final TextEditingController? _poBoxController = TextEditingController();
-  final TextEditingController? _firstNameController = TextEditingController();
+  final TextEditingController _poBoxController = TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
 
   @override
   void dispose() {
-    _emailController!.dispose();
-    _passwordController!.dispose();
-    _numberController!.dispose();
-    _nameController!.dispose();
-    _userNameController!.dispose();
-    _streetController!.dispose();
-    _cityController!.dispose();
-    _countryController!.dispose();
-    _poBoxController!.dispose();
-    _houseNbrController!.dispose();
-    _firstNameController!.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _numberController.dispose();
+    _nameController.dispose();
+    _userNameController.dispose();
+    _streetController.dispose();
+    _cityController.dispose();
+    _countryController.dispose();
+    _poBoxController.dispose();
+    _houseNbrController.dispose();
+    _firstNameController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final EditScreenArguments? editScreenArguments =
+    final EditScreenArguments editScreenArguments =
         ModalRoute.of(context)!.settings.arguments as EditScreenArguments;
 
-    _emailController!.text = editScreenArguments!.email!;
-    _userNameController!.text = editScreenArguments.userName!;
-    _nameController!.text = editScreenArguments.name!;
-    _numberController!.text = editScreenArguments.telephoneNumber!;
-    _houseNbrController!.text = editScreenArguments.houseNumber!;
-    _poBoxController!.text = editScreenArguments.poBox!;
-    _houseNbrController!.text = editScreenArguments.houseNumber!;
-    _streetController!.text = editScreenArguments.streetName!;
-    _cityController!.text = editScreenArguments.city!;
-    _countryController!.text = editScreenArguments.country!;
-    _firstNameController!.text = editScreenArguments.firstName!;
+    _emailController.text = editScreenArguments.email!;
+    _userNameController.text = editScreenArguments.userName!;
+    _nameController.text = editScreenArguments.name!;
+    _numberController.text = editScreenArguments.telephoneNumber!;
+    _houseNbrController.text = editScreenArguments.houseNumber!;
+    _poBoxController.text = editScreenArguments.poBox!;
+    _houseNbrController.text = editScreenArguments.houseNumber!;
+    _streetController.text = editScreenArguments.streetName!;
+    _cityController.text = editScreenArguments.city!;
+    _countryController.text = editScreenArguments.country!;
+    _firstNameController.text = editScreenArguments.firstName!;
 
     /// modifie l'E-mail de l'utilisateur
     editEmail() async {
-      EditEmail model = EditEmail(email: _emailController!.text);
+      EditEmail model = EditEmail(email: _emailController.text);
 
       Response response = await Provider.of<AuthService>(context, listen: false)
           .editEmail(model);
@@ -88,11 +88,11 @@ class _EditScreenState extends State<EditScreen> {
     /// modifie l'adresse de l'utilisateur
     editAddress() async {
       Address address = Address(
-        country: _countryController!.text,
-        city: _cityController!.text,
-        poBox: _poBoxController!.text,
-        streetName: _streetController!.text,
-        houseNumber: _houseNbrController!.text,
+        country: _countryController.text,
+        city: _cityController.text,
+        poBox: _poBoxController.text,
+        streetName: _streetController.text,
+        houseNumber: _houseNbrController.text,
       );
 
       Response? response =
@@ -109,10 +109,10 @@ class _EditScreenState extends State<EditScreen> {
     /// modifie les informations personnelles
     editProfile() async {
       PersonalData data = PersonalData(
-        name: _nameController!.text,
-        userName: _userNameController!.text,
-        phoneNumber: _numberController!.text,
-        firstName: _firstNameController!.text,
+        name: _nameController.text,
+        userName: _userNameController.text,
+        phoneNumber: _numberController.text,
+        firstName: _firstNameController.text,
       );
 
       Response? response =

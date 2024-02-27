@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/controllers/product_controller.dart';
 import 'package:houlala/models/page_result_args/page_result_args.dart';
 import 'package:houlala/models/product/product_model.dart';
-import 'package:houlala/shared_widgets/product_container.dart';
+import 'package:houlala/shared_widgets/product_column.dart';
 import '../widget/custom_button_container.dart';
 
 class PageResultScreen extends ConsumerWidget {
@@ -36,24 +36,9 @@ class PageResultScreen extends ConsumerWidget {
             horizontal: 10.0,
             vertical: 15.0,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text('${productList.length} produit(s) retrouves'),
-              const SizedBox(height: 10.0),
-              GridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 2,
-                childAspectRatio: 1 / 1.2,
-                children: productList
-                    .map(
-                      (product) => ProductContainer(
-                        productModel: product,
-                      ),
-                    )
-                    .toList(),
-              )
-            ],
+          child: ProductColumn(
+            title: Text('${productList.length} produit(s) retrouves'),
+            productList: productList,
           ),
         ),
       ),

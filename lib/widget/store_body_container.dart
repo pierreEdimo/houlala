@@ -35,6 +35,11 @@ class StoreBodyContainer extends StatelessWidget {
         ),
         verticalSpacing,
         GridPages(
+          uri: '${dotenv.env['LOCATION_URL']}/store?limit=10',
+          textError:
+              "Nous n'avons encore aucuns Partenaires, svp reessayez plutard.",
+          height: height,
+          direction: Axis.vertical,
           child: const Text(
             "Quelques Magasins",
             style: TextStyle(
@@ -42,11 +47,6 @@ class StoreBodyContainer extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.bold),
           ),
-          uri: '${dotenv.env['LOCATION_URL']}/store?limit=10',
-          textError:
-              "Nous n'avons encore aucuns Partenaires, svp reessayez plutard.",
-          height: height,
-          direction: Axis.vertical,
         )
       ],
     );

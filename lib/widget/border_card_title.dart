@@ -15,13 +15,13 @@ class BorderedCardTitle extends StatelessWidget {
     return Container(
       width: 100.w,
       margin: const EdgeInsets.only(bottom: 10.0),
+      decoration: BoxDecoration(
+          border: Border(
+              bottom: BorderSide(width: 1, color: Colors.grey.shade300))),
       child: Text(
         title!,
         style: titleStyle,
       ),
-      decoration: BoxDecoration(
-          border: Border(
-              bottom: BorderSide(width: 1, color: Colors.grey.shade300))),
     );
   }
 }

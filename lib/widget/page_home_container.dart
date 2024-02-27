@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:houlala/controllers/product_controller.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/models/product/product_model.dart';
-import 'package:houlala/shared_widgets/product_container.dart';
+import 'package:houlala/shared_widgets/grid_product.dart';
 import 'package:houlala/widget/custom_column_container.dart';
 import 'package:houlala/widget/markdown_container.dart';
 import '../models/location/location_model.dart';
@@ -50,19 +49,10 @@ class PageHomeContainer extends ConsumerWidget {
               )
             ),
           ),
-          child: GridView.count(
-            crossAxisCount: 2,
+          child: GridOfProducts(
             shrinkWrap: true,
+            productList: productList,
             physics: const ClampingScrollPhysics(),
-            padding: EdgeInsets.zero,
-            childAspectRatio: 1 / 1.2,
-            children: productList
-                .map(
-                  (product) => ProductContainer(
-                    productModel: product,
-                  ),
-                )
-                .toList(),
           ),
         )
       ],

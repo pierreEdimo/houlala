@@ -22,13 +22,13 @@ class SignInContainer extends StatefulWidget {
 
 class _SignInContainerState extends State<SignInContainer> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController? _emailController = TextEditingController();
-  final TextEditingController? _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void dispose() {
-    _emailController!.dispose();
-    _passwordController!.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -36,7 +36,7 @@ class _SignInContainerState extends State<SignInContainer> {
   login() async {
     if (_formKey.currentState!.validate()) {
       Login login = Login(
-          email: _emailController!.text, password: _passwordController!.text);
+          email: _emailController.text, password: _passwordController.text);
 
       Response response =
           await Provider.of<AuthService>(context, listen: false).logIn(login);
@@ -71,7 +71,7 @@ class _SignInContainerState extends State<SignInContainer> {
               ),
               standardSizedBox,
               PasswordInput(
-                controller: _passwordController!,
+                controller: _passwordController,
               ),
               const SizedBox(
                 height: 40.0,

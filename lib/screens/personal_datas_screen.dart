@@ -72,18 +72,18 @@ class PersonalDataScreen extends StatelessWidget {
                             Container(
                               width: 100.w,
                               margin: const EdgeInsets.only(bottom: 10.0),
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                      width: 1, color: Colors.grey.shade300),
+                                ),
+                              ),
                               child: const Text(
                                 "Adresse Email",
                                 style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: "PoppinsBold"),
-                              ),
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                      width: 1, color: Colors.grey.shade300),
-                                ),
                               ),
                             ),
                             Text(
@@ -114,7 +114,7 @@ class PersonalDataScreen extends StatelessWidget {
                       ),
                     ),
                     verticalSpacing,
-                    PersonnalDataContainer(
+                    PersonalDataContainer(
                       connectedUser: connectedUser,
                     ),
                   ],

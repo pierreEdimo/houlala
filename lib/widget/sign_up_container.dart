@@ -24,33 +24,33 @@ class SignUpContainer extends StatefulWidget {
 
 class _SignUpContainerState extends State<SignUpContainer> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController? _emailController = TextEditingController();
-  final TextEditingController? _passwordController = TextEditingController();
-  final TextEditingController? _numberController = TextEditingController();
-  final TextEditingController? _nameController = TextEditingController();
-  final TextEditingController? _userNameController = TextEditingController();
-  final TextEditingController? _streetController = TextEditingController();
-  final TextEditingController? _houseNbrController = TextEditingController();
-  final TextEditingController? _countryController =
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _numberController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _streetController = TextEditingController();
+  final TextEditingController _houseNbrController = TextEditingController();
+  final TextEditingController _countryController =
       TextEditingController(text: 'Cameroun');
-  final TextEditingController? _cityController =
+  final TextEditingController _cityController =
       TextEditingController(text: 'Yaounde');
-  final TextEditingController? _poBoxController = TextEditingController();
-  final TextEditingController? _firstNameController = TextEditingController();
+  final TextEditingController _poBoxController = TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
 
   @override
   void dispose() {
-    _emailController!.dispose();
-    _passwordController!.dispose();
-    _numberController!.dispose();
-    _nameController!.dispose();
-    _userNameController!.dispose();
-    _streetController!.dispose();
-    _cityController!.dispose();
-    _countryController!.dispose();
-    _poBoxController!.dispose();
-    _houseNbrController!.dispose();
-    _firstNameController!.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _numberController.dispose();
+    _nameController.dispose();
+    _userNameController.dispose();
+    _streetController.dispose();
+    _cityController.dispose();
+    _countryController.dispose();
+    _poBoxController.dispose();
+    _houseNbrController.dispose();
+    _firstNameController.dispose();
     super.dispose();
   }
 
@@ -58,17 +58,17 @@ class _SignUpContainerState extends State<SignUpContainer> {
   logup() async {
     if (_formKey.currentState!.validate()) {
       Register register = Register(
-          email: _emailController!.text,
-          userName: _userNameController!.text,
-          name: _nameController!.text,
-          telephoneNumber: _numberController!.text,
-          password: _passwordController!.text,
-          poBox: _poBoxController!.text,
-          city: _cityController!.text,
-          country: _countryController!.text,
-          streetName: _streetController!.text,
-          houseNumber: _houseNbrController!.text,
-          firstName: _firstNameController!.text);
+          email: _emailController.text,
+          userName: _userNameController.text,
+          name: _nameController.text,
+          telephoneNumber: _numberController.text,
+          password: _passwordController.text,
+          poBox: _poBoxController.text,
+          city: _cityController.text,
+          country: _countryController.text,
+          streetName: _streetController.text,
+          houseNumber: _houseNbrController.text,
+          firstName: _firstNameController.text);
 
       Response response = await Provider.of<AuthService>(context, listen: false)
           .register(register);
@@ -105,7 +105,7 @@ class _SignUpContainerState extends State<SignUpContainer> {
               height: 20.0,
             ),
             PasswordInput(
-              controller: _passwordController!,
+              controller: _passwordController,
             ),
             standardSizedBox,
             Row(

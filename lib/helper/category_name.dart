@@ -1,3 +1,3 @@
 class CategoryName{
-  static const String FRUITS_AND_LETTUCES="fruits & legumes";
+  static const String fruitsAndLettuces="fruits & legumes";
 }

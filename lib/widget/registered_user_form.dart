@@ -1,19 +1,13 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:houlala/model/user_information.dart';
 import 'package:houlala/widget/personnal_data_container.dart';
-import 'package:houlala/widget/show_nack.dart';
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
-
 import '../helper/constants.dart';
 import '../model/send_email.dart';
 import '../service/email_service.dart';
-import '../service/order_service.dart';
 import 'custom_elevated_button.dart';
-
 import '../model/order.dart';
 import 'order_container.dart';
 
@@ -31,20 +25,6 @@ class RegisteredUserForm extends StatelessWidget {
 
   /// Confirme la Commande de l'utilisateur
   confirmCommand(BuildContext context) async {
-    UserInformation info = UserInformation(
-      id: connectedUser!.id!,
-      email: email,
-      name: connectedUser!.name!,
-      country: connectedUser!.country!,
-      city: connectedUser!.city!,
-      streetName: connectedUser!.streetName!,
-      poBox: connectedUser!.poBox!,
-      telephoneNumber: connectedUser!.telephoneNumber!,
-      userName: connectedUser!.userName!,
-      houseNumber: connectedUser!.houseNumber!,
-      firstName: connectedUser!.firstName!,
-    );
-
     for (var order in orders!) {
       SimplifiedOrder orderEmail = SimplifiedOrder(
           status: order.status,
@@ -64,17 +44,6 @@ class RegisteredUserForm extends StatelessWidget {
       await Provider.of<EmailService>(context, listen: false)
           .sendEmail("order", newEmail);
     }
-
-    Response response = await Provider.of<OrderService>(context, listen: false)
-        .confirmCommand(info);
-
-    if (response.statusCode == HttpStatus.noContent) {
-      showSnack(
-        const Text("Votre Commande a ete envoye avec succes"),
-        context,
-      );
-      Navigator.of(context).pop();
-    }
   }
 
   @override
@@ -87,7 +56,7 @@ class RegisteredUserForm extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              PersonnalDataContainer(
+              PersonalDataContainer(
                 connectedUser: connectedUser,
               ),
               Card(
@@ -105,6 +74,10 @@ class RegisteredUserForm extends StatelessWidget {
                       Container(
                         width: 100.w,
                         margin: const EdgeInsets.only(bottom: 10.0),
+                        decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    width: 1, color: Colors.grey.shade300))),
                         child: const Text(
                           "Mode de Paiement",
                           style: TextStyle(
@@ -112,10 +85,6 @@ class RegisteredUserForm extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               fontFamily: "PoppinsBold"),
                         ),
-                        decoration: BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    width: 1, color: Colors.grey.shade300))),
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,

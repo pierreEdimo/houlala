@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:houlala/controllers/product_controller.dart';
-import 'package:houlala/model/sub_category_parameter.dart';
 import 'package:houlala/models/product/product_model.dart';
 import 'package:houlala/models/sub_category/sub_category_model.dart';
-import 'package:houlala/shared_widgets/product_container.dart';
+import 'package:houlala/shared_widgets/product_column.dart';
+import '../models/sub_category_parameter/sub_category_parameter.dart';
 
 class SubCategoryContainer extends ConsumerWidget {
   final SubCategoryModel? subCategoryModel;
@@ -35,47 +35,35 @@ class SubCategoryContainer extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 25,
-                    backgroundImage: NetworkImage(
-                      subCategoryModel!.imageUrl!,
+              ProductColumn(
+                title:  Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 25,
+                      backgroundImage: NetworkImage(
+                        subCategoryModel!.imageUrl!,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 10.0),
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          subCategoryModel!.label!,
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
+                    const SizedBox(width: 10.0),
+                    Flexible(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            subCategoryModel!.label!,
+                            style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
                           ),
-                        ),
-                        Text('${productList.length} resultat(s)')
-                      ],
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(height: 10.0),
-              GridView.count(
-                crossAxisCount: 2,
-                shrinkWrap: true,
-                physics: const ClampingScrollPhysics(),
-                childAspectRatio: 1 / 1.2,
-                children: productList
-                    .take(4)
-                    .map(
-                      (product) => ProductContainer(
-                        productModel: product,
+                          Text('${productList.length} resultat(s)')
+                        ],
                       ),
                     )
-                    .toList(),
+                  ],
+                ),
+                productList: productList.take(4).toList(),
               ),
               productList.isNotEmpty
                   ? Column(
@@ -88,7 +76,7 @@ class SubCategoryContainer extends ConsumerWidget {
                                 label: subCategoryModel!.label!,
                                 id: subCategoryModel!.id!,
                                 categoryName: subCategoryModel!.categoryName,
-                                thumbNail: subCategoryModel!.imageUrl),
+                            ),
                           ),
                           child: const Text(
                             'Voire tout',

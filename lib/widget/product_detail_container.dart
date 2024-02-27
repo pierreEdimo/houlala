@@ -13,7 +13,6 @@ import 'package:houlala/widget/decrease_quantity_text.dart';
 import 'package:houlala/widget/increase_quantity_text.dart';
 import 'package:houlala/widget/markdown_container.dart';
 import 'package:houlala/widget/quantity_container.dart';
-import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
@@ -60,7 +59,6 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
           await Provider.of<OrderService>(context, listen: false)
               .addOrder(newOrder);
       if (response.statusCode == HttpStatus.created) {
-        showSnack(const Text("Article a ete ajoute au Panier"), context);
       }
     } else {
       CartItem item = CartItem(
@@ -82,8 +80,6 @@ class _ProductDetailContainerState extends State<ProductDetailContainer> {
         totalQuantity: quantity,
         totalPrice: price,
       );
-
-      showSnack(const Text("Article a ete ajoute au Panier"), context);
 
       Provider.of<OrderService>(context, listen: false).addOfflineOrder(order);
     }

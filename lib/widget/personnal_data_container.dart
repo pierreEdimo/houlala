@@ -6,10 +6,10 @@ import 'package:sizer/sizer.dart';
 
 import '../helper/constants.dart';
 
-class PersonnalDataContainer extends StatelessWidget {
+class PersonalDataContainer extends StatelessWidget {
   final UserInformation? connectedUser;
 
-  const PersonnalDataContainer({
+  const PersonalDataContainer({
     Key? key,
     this.connectedUser,
   }) : super(key: key);
@@ -50,14 +50,14 @@ class PersonnalDataContainer extends StatelessWidget {
                 Container(
                   width: 100.w,
                   margin: const EdgeInsets.only(bottom: 10.0),
-                  child: Text(
-                    "Informations Personnelles",
-                    style: titleStyle,
-                  ),
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(width: 1, color: Colors.grey.shade300),
                     ),
+                  ),
+                  child: Text(
+                    "Informations Personnelles",
+                    style: titleStyle,
                   ),
                 ),
                 Column(

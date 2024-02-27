@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
                 HomeCategoryBox(),
                 standardSizedBox,
                 HomeProductByCategoryBox(
-                  categoryName: CategoryName.FRUITS_AND_LETTUCES,
+                  categoryName: CategoryName.fruitsAndLettuces,
                   titleBox: 'Decouvrez nos fruits et legumes',
                 ),
                 standardSizedBox,

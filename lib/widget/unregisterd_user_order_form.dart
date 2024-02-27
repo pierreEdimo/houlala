@@ -30,29 +30,29 @@ class UnregisteredUserBorderForm extends StatefulWidget {
 class _UnregisteredUserBorderFormState
     extends State<UnregisteredUserBorderForm> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController? _emailController = TextEditingController();
-  final TextEditingController? _nameController = TextEditingController();
-  final TextEditingController? _streetController = TextEditingController();
-  final TextEditingController? _phoneNumber = TextEditingController();
-  final TextEditingController? _houseNumberController = TextEditingController();
-  final TextEditingController? _cityController =
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _streetController = TextEditingController();
+  final TextEditingController _phoneNumber = TextEditingController();
+  final TextEditingController _houseNumberController = TextEditingController();
+  final TextEditingController _cityController =
       TextEditingController(text: 'Yaounde');
-  final TextEditingController? _countryController =
+  final TextEditingController _countryController =
       TextEditingController(text: 'Cameroun');
-  final TextEditingController? _poBoxController = TextEditingController();
-  final TextEditingController? _firstNameController = TextEditingController();
+  final TextEditingController _poBoxController = TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
 
   @override
   void dispose() {
-    _emailController!.dispose();
-    _phoneNumber!.dispose();
-    _nameController!.dispose();
-    _streetController!.dispose();
-    _cityController!.dispose();
-    _countryController!.dispose();
-    _poBoxController!.dispose();
-    _houseNumberController!.dispose();
-    _firstNameController!.dispose();
+    _emailController.dispose();
+    _phoneNumber.dispose();
+    _nameController.dispose();
+    _streetController.dispose();
+    _cityController.dispose();
+    _countryController.dispose();
+    _poBoxController.dispose();
+    _houseNumberController.dispose();
+    _firstNameController.dispose();
     super.dispose();
   }
 
@@ -60,15 +60,15 @@ class _UnregisteredUserBorderFormState
   validateForm() async {
     if (_formKey.currentState!.validate()) {
       UserInformation info = UserInformation(
-        email: _emailController!.text,
-        name: _nameController!.text,
-        telephoneNumber: _phoneNumber!.text,
-        streetName: _streetController!.text,
-        houseNumber: _houseNumberController!.text,
-        city: _cityController!.text,
-        country: _countryController!.text,
-        poBox: _poBoxController!.text,
-        firstName: _firstNameController!.text,
+        email: _emailController.text,
+        name: _nameController.text,
+        telephoneNumber: _phoneNumber.text,
+        streetName: _streetController.text,
+        houseNumber: _houseNumberController.text,
+        city: _cityController.text,
+        country: _countryController.text,
+        poBox: _poBoxController.text,
+        firstName: _firstNameController.text,
       );
 
       try {

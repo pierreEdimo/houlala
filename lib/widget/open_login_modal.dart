@@ -8,7 +8,7 @@ import 'package:sizer/sizer.dart';
 enum AuthMode { signIn, signUp }
 
 openModal(BuildContext context) {
-  AuthMode _authMode = AuthMode.signIn;
+  AuthMode authMode = AuthMode.signIn;
 
   showModalBottomSheet<void>(
     context: context,
@@ -39,35 +39,35 @@ openModal(BuildContext context) {
                           image: AssetImage('images/houlala.png'),
                           fit: BoxFit.contain)),
                 ),
-                _authMode == AuthMode.signIn
+                authMode == AuthMode.signIn
                     ? const SignInContainer()
                     : const SignUpContainer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Row(
                     children: [
-                      Text(_authMode == AuthMode.signIn
+                      Text(authMode == AuthMode.signIn
                           ? "vous etes nouveau?"
                           : "vous avez un compte?"),
                       horizontalSpacing,
                       InkWell(
                         onTap: () {
-                          if (_authMode == AuthMode.signIn) {
+                          if (authMode == AuthMode.signIn) {
                             setState(
                               () {
-                                _authMode = AuthMode.signUp;
+                                authMode = AuthMode.signUp;
                               },
                             );
                           } else {
                             setState(
                               () {
-                                _authMode = AuthMode.signIn;
+                                authMode = AuthMode.signIn;
                               },
                             );
                           }
                         },
                         child: Text(
-                          _authMode == AuthMode.signIn
+                          authMode == AuthMode.signIn
                               ? "s'enregister"
                               : "se connecter",
                           style: const TextStyle(fontWeight: FontWeight.bold),

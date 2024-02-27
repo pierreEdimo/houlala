@@ -36,7 +36,7 @@ class HomeProductByCategoryBox extends ConsumerWidget {
         title: titleBox,
         urlValue: CategoryDetailScreen.routeName,
         arguments: const PageScreenArguments(
-            categoryName: CategoryName.FRUITS_AND_LETTUCES, categoryId: 1),
+            categoryName: CategoryName.fruitsAndLettuces, categoryId: 1),
         child: GridView.count(
           crossAxisCount: 2,
           shrinkWrap: true,

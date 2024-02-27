@@ -4,7 +4,6 @@ import 'package:houlala/screens/page_result_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import '../screens/about_screen.dart';
-import '../screens/all_fruits_and_lettuces_screen.dart';
 import '../screens/all_pages_screen.dart';
 import '../screens/all_product_categories_screen.dart';
 import '../screens/category_detail_screen.dart';
@@ -68,7 +67,6 @@ class MyApp extends StatelessWidget {
               initialRoute: '/',
               routes: {
                 '/': (context) => const MainNavigation(),
-                '/all_fruits': (context) => const AllFruits(),
                 '/all_categories': (context) => const AllProductCategories(),
                 '/all_locations': (context) => const AllPageScreen(),
                 ProductDetailScreen.routeName: (context) =>

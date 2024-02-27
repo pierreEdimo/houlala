@@ -21,7 +21,7 @@ class SearchResultContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _widgetOptions = [
+    final List<Widget> widgetOptions = [
       StandardCustomContainer(
         child: GridOfProducts(
           height: 50.h,
@@ -54,7 +54,7 @@ class SearchResultContainer extends StatelessWidget {
     ];
     return CustomInternNavigation(
       menuItems: _menuItems,
-      widgetOptions: _widgetOptions,
+      widgetOptions: widgetOptions,
       elevationValue: 0,
       verticalPadding: 23.0,
       horizontalPadding: 15.0,

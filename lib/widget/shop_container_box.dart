@@ -13,6 +13,8 @@ class ShopContainerBox extends StatelessWidget {
     return SizedBox(
       height: 130,
       child: GridPages(
+        direction: Axis.horizontal,
+        uri: shopUrl!,
         child: Container(
           margin: const EdgeInsets.only(bottom: 5.0),
           child: Text(
@@ -20,8 +22,6 @@ class ShopContainerBox extends StatelessWidget {
             style: standardStyle,
           ),
         ),
-        direction: Axis.horizontal,
-        uri: shopUrl!,
       ),
     );
   }

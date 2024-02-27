@@ -1,15 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/controllers/product_controller.dart';
 import 'package:houlala/controllers/sub_category_controller.dart';
-import 'package:houlala/model/sub_category_parameter.dart';
 import 'package:houlala/models/product/product_model.dart';
 import 'package:houlala/models/sub_category/sub_category_model.dart';
 import 'package:houlala/shared_widgets/custom_body_container.dart';
-import 'package:houlala/shared_widgets/product_container.dart';
+import 'package:houlala/shared_widgets/product_column.dart';
 import 'package:houlala/widget/custom_button_container.dart';
+
+import '../models/sub_category_parameter/sub_category_parameter.dart';
 
 class SubCategoryScreen extends ConsumerWidget {
   const SubCategoryScreen({Key? key}) : super(key: key);
@@ -44,27 +44,11 @@ class SubCategoryScreen extends ConsumerWidget {
               horizontal: 10.0,
               vertical: 15.0,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  '${productList.length} resultats dans la categorie ${selectedSubCategory.label}',
-                ),
-                const SizedBox(height: 10.0),
-                GridView.count(
-                  crossAxisCount: 2,
-                  shrinkWrap: true,
-                  physics: const ClampingScrollPhysics(),
-                  childAspectRatio: 1 / 1.2,
-                  children: productList
-                      .map(
-                        (product) => ProductContainer(
-                          productModel: product,
-                        ),
-                      )
-                      .toList(),
-                )
-              ],
+            child: ProductColumn(
+              title: Text(
+                '${productList.length} resultats dans la categorie ${selectedSubCategory.label}',
+              ),
+              productList: productList,
             ),
           ),
         ),

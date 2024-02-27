@@ -12,7 +12,7 @@ class FavoriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String? userId = ModalRoute.of(context)!.settings.arguments as String;
+    final String userId = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
       appBar: const AppBarWithReturn(

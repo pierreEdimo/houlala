@@ -46,7 +46,7 @@ class _CategoryDetailBodyState extends State<CategoryDetailBody> {
   @override
   Widget build(BuildContext context) {
     switch (widget.categoryName) {
-      case CategoryName.FRUITS_AND_LETTUCES:
+      case CategoryName.fruitsAndLettuces:
         return FruitsLettucesBody(categoryName: widget.categoryName);
       default:
         return const Center(
