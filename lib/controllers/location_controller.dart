@@ -27,7 +27,14 @@ class LocationController {
     return ref.watch(locationStateNotifierProvider).error;
   }
 
-  LocationModel getSelectedLocationModel(int id){
+  LocationModel getSelectedLocationModel(int id) {
     return locationList.firstWhere((element) => element.id == id);
+  }
+
+  List<LocationModel> getFilteredLocations(String keyword) {
+    return locationList
+        .where((element) =>
+            element.name!.toLowerCase().contains(keyword.toLowerCase()))
+        .toList();
   }
 }

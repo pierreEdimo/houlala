@@ -17,8 +17,9 @@ class HorizontalLocationContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => Navigator.of(context).pushNamed(PageDetailScreen.routeName, arguments: locationModel!.id!),
-      child: Card(
+      child: Material(
         color: Colors.grey.shade50,
+        borderRadius: BorderRadius.circular(8.0),
         elevation: 3,
         child: Center(
           child: Padding(

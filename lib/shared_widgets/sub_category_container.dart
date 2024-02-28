@@ -69,6 +69,7 @@ class SubCategoryContainer extends ConsumerWidget {
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
+                        const SizedBox(height: 10.0),
                         TextButton(
                           onPressed: () => Navigator.of(context).pushNamed(
                             '/sub_category',

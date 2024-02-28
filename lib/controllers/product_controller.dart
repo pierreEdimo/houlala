@@ -39,6 +39,13 @@ class ProductController {
         .toList();
   }
 
+  List<ProductModel> getFilteredProductByName(String searchWord) {
+    return productList
+        .where((element) =>
+            element.name!.toLowerCase().contains(searchWord.toLowerCase()))
+        .toList();
+  }
+
   List<ProductModel> getProductListsByCategoryName(String name) {
     return productList
         .where((element) =>

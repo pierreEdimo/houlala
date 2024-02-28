@@ -4,34 +4,38 @@ import '../models/product_category/category_model.dart';
 import '../providers/category_provider.dart';
 
 class PCategoryController {
-  WidgetRef ref; 
+  WidgetRef ref;
 
   PCategoryController(this.ref);
 
-  bool pCategoryLoading(){
-    return ref.watch(pCategoryStateNotifierProvider)
-        .loading;
+  bool pCategoryLoading() {
+    return ref.watch(pCategoryStateNotifierProvider).loading;
   }
 
-  bool pCategoryError(){
-    return ref.watch(pCategoryStateNotifierProvider)
-        .error;
+  bool pCategoryError() {
+    return ref.watch(pCategoryStateNotifierProvider).error;
   }
 
-  String getPCategoryErrorMessage(){
-    return ref.watch(pCategoryStateNotifierProvider)
-        .errorMessage;
+  String getPCategoryErrorMessage() {
+    return ref.watch(pCategoryStateNotifierProvider).errorMessage;
   }
-  
-  List<CategoryModel> getCategoryListWithLimit(int limit){
-    return ref.watch(pCategoryStateNotifierProvider)
+
+  List<CategoryModel> getCategoryListWithLimit(int limit) {
+    return ref
+        .watch(pCategoryStateNotifierProvider)
         .categoryList
         .take(limit)
         .toList();
   }
 
   List<CategoryModel> get categories {
-    return ref.watch(pCategoryStateNotifierProvider)
-        .categoryList;
+    return ref.watch(pCategoryStateNotifierProvider).categoryList;
+  }
+
+  List<CategoryModel> getCategoryListByName(String keyWord) {
+    return categories
+        .where((element) =>
+            element.name!.toLowerCase().contains(keyWord.toLowerCase()))
+        .toList();
   }
 }
