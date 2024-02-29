@@ -5,7 +5,6 @@ import 'package:houlala/main.dart';
 import 'package:houlala/model/product.dart';
 import 'package:houlala/service/product_service.dart';
 import 'package:houlala/widget/custom_elevated_button.dart';
-import 'package:houlala/widget/open_login_modal.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:provider/provider.dart';
 
@@ -50,7 +49,7 @@ class _BookMarkerState extends State<BookMarker> {
         });
       }
     } else {
-      openModal(context);
+      Navigator.of(context).pushNamed('/login');
     }
   }
 

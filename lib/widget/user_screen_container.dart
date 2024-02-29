@@ -4,7 +4,6 @@ import 'package:houlala/screens/favorite_screen.dart';
 import 'package:houlala/service/auth_service.dart';
 import 'package:houlala/widget/custom_list_tile.dart';
 import 'package:houlala/widget/launch_url.dart';
-import 'package:houlala/widget/open_login_modal.dart';
 import 'package:houlala/widget/show_nack.dart';
 import 'package:houlala/widget/standard_custom_container.dart';
 import 'package:provider/provider.dart';
@@ -122,21 +121,21 @@ class UserScreenContainer extends StatelessWidget {
                   child: Column(
                     children: [
                       InkWell(
-                        onTap: () => openModal(context),
+                        onTap: () => Navigator.of(context).pushNamed('/login'),
                         child: const CustomListTile(
                           imageUrl: "images/heart.png",
                           title: "Mes Favories",
                         ),
                       ),
                       InkWell(
-                        onTap: () => openModal(context),
+                        onTap: () => Navigator.of(context).pushNamed('/login'),
                         child: const CustomListTile(
                           imageUrl: "images/shopping-bag.png",
                           title: "Mes Commandes",
                         ),
                       ),
                       InkWell(
-                        onTap: () => openModal(context),
+                        onTap: () => Navigator.of(context).pushNamed('/login'),
                         child: const CustomListTile(
                           imageUrl: "images/user.png",
                           title: "Mes Donnees personnelles",
@@ -156,7 +155,7 @@ class UserScreenContainer extends StatelessWidget {
                       const Security(),
                       const OpenReview(),
                       InkWell(
-                        onTap: () => openModal(context),
+                        onTap: () => Navigator.of(context).pushNamed('/login'),
                         child: const CustomListTile(
                           imageUrl: "images/sign-in.png",
                           title: "Se connecter/s'enregistrer",

@@ -22,7 +22,7 @@ class PasswordInput extends StatelessWidget {
             horizontal: 10.0,
             vertical: 15.0,
           ),
-          labelText: "Mot De Passe",
+          labelText: "Mot de passe",
           border: OutlineInputBorder()),
       validator: (value) {
         value = controller!.text;

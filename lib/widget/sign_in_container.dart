@@ -55,51 +55,49 @@ class _SignInContainerState extends State<SignInContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(
-                height: 30.0,
-              ),
-              EmailInput(
-                controller: _emailController,
-              ),
-              standardSizedBox,
-              PasswordInput(
-                controller: _passwordController,
-              ),
-              const SizedBox(
-                height: 40.0,
-              ),
-              InkWell(
-                onTap: () => Navigator.of(context).popAndPushNamed("/reset"),
-                child: const Text(
-                  "Mot de Passe oublie? / Probleme de connexion?",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(
+              height: 30.0,
+            ),
+            EmailInput(
+              controller: _emailController,
+            ),
+            standardSizedBox,
+            PasswordInput(
+              controller: _passwordController,
+            ),
+            const SizedBox(
+              height: 40.0,
+            ),
+            InkWell(
+              onTap: () => Navigator.of(context).pushNamed("/reset"),
+              child: const Text(
+                "Mot de Passe oublie? / Probleme de connexion?",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(
-                height: 40.0,
+            ),
+            const SizedBox(
+              height: 40.0,
+            ),
+            CustomElevatedButton(
+              onPressed: () async => login(),
+              hasBorder: false,
+              color: Colors.orangeAccent,
+              child: Text(
+                "Se Connecter",
+                style: standardStyle,
               ),
-              CustomElevatedButton(
-                onPressed: () async => login(),
-                hasBorder: false,
-                color: Colors.orangeAccent,
-                child: Text(
-                  "Se Connecter",
-                  style: standardStyle,
-                ),
-              ),
-              standardSizedBox
-            ],
-          ),
+            ),
+            standardSizedBox
+          ],
         ),
       ),
     );
