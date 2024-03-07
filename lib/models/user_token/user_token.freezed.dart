@@ -23,6 +23,7 @@ mixin _$UserToken {
   String? get userName => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get token => throw _privateConstructorUsedError;
+  String? get userId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $UserTokenCopyWith<$Res> {
   factory $UserTokenCopyWith(UserToken value, $Res Function(UserToken) then) =
       _$UserTokenCopyWithImpl<$Res, UserToken>;
   @useResult
-  $Res call({String? userName, String? email, String? token});
+  $Res call({String? userName, String? email, String? token, String? userId});
 }
 
 /// @nodoc
@@ -54,6 +55,7 @@ class _$UserTokenCopyWithImpl<$Res, $Val extends UserToken>
     Object? userName = freezed,
     Object? email = freezed,
     Object? token = freezed,
+    Object? userId = freezed,
   }) {
     return _then(_value.copyWith(
       userName: freezed == userName
@@ -68,6 +70,10 @@ class _$UserTokenCopyWithImpl<$Res, $Val extends UserToken>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -80,7 +86,7 @@ abstract class _$$UserTokenImplCopyWith<$Res>
       __$$UserTokenImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? userName, String? email, String? token});
+  $Res call({String? userName, String? email, String? token, String? userId});
 }
 
 /// @nodoc
@@ -97,6 +103,7 @@ class __$$UserTokenImplCopyWithImpl<$Res>
     Object? userName = freezed,
     Object? email = freezed,
     Object? token = freezed,
+    Object? userId = freezed,
   }) {
     return _then(_$UserTokenImpl(
       userName: freezed == userName
@@ -111,6 +118,10 @@ class __$$UserTokenImplCopyWithImpl<$Res>
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -118,7 +129,7 @@ class __$$UserTokenImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserTokenImpl implements _UserToken {
-  const _$UserTokenImpl({this.userName, this.email, this.token});
+  const _$UserTokenImpl({this.userName, this.email, this.token, this.userId});
 
   factory _$UserTokenImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserTokenImplFromJson(json);
@@ -129,10 +140,12 @@ class _$UserTokenImpl implements _UserToken {
   final String? email;
   @override
   final String? token;
+  @override
+  final String? userId;
 
   @override
   String toString() {
-    return 'UserToken(userName: $userName, email: $email, token: $token)';
+    return 'UserToken(userName: $userName, email: $email, token: $token, userId: $userId)';
   }
 
   @override
@@ -143,12 +156,13 @@ class _$UserTokenImpl implements _UserToken {
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userName, email, token);
+  int get hashCode => Object.hash(runtimeType, userName, email, token, userId);
 
   @JsonKey(ignore: true)
   @override
@@ -168,7 +182,8 @@ abstract class _UserToken implements UserToken {
   const factory _UserToken(
       {final String? userName,
       final String? email,
-      final String? token}) = _$UserTokenImpl;
+      final String? token,
+      final String? userId}) = _$UserTokenImpl;
 
   factory _UserToken.fromJson(Map<String, dynamic> json) =
       _$UserTokenImpl.fromJson;
@@ -179,6 +194,8 @@ abstract class _UserToken implements UserToken {
   String? get email;
   @override
   String? get token;
+  @override
+  String? get userId;
   @override
   @JsonKey(ignore: true)
   _$$UserTokenImplCopyWith<_$UserTokenImpl> get copyWith =>

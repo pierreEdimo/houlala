@@ -16,7 +16,6 @@ class ReportTile extends StatelessWidget {
           child: CustomListTile(
             imageUrl: "",
             title: "reporter",
-            icon: Text(""),
           ),
         ),
       ),

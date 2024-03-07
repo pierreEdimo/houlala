@@ -71,6 +71,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     if(_formKey.currentState!.validate()){
                       authController.login(
                           emailController.text, passwordController.text);
+                      authController.reloadUser();
                       Navigator.of(context).pushReplacementNamed('/');
                     }
                   },

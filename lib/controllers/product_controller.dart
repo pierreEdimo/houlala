@@ -16,6 +16,10 @@ class ProductController {
         .toList();
   }
 
+  List<ProductModel> get bookMarkedProductList {
+    return ref.watch(productStateNotifierProvider).bookmarkedList;
+  }
+
   List<ProductModel> getProductListsByLocation(String locationName) {
     return productList
         .where((element) =>
@@ -99,6 +103,9 @@ class ProductController {
   }
 
   void bookMarkProduct(int id) {
-    ref.read(productStateNotifierProvider.notifier).bookMarkProduct(id);
+    ref.read(productStateNotifierProvider.notifier).bookMarkProduct(id).then(
+        (_) => ref
+            .read(productStateNotifierProvider.notifier)
+            .loadBookMarkedProducts());
   }
 }

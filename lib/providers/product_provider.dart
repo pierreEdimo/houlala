@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:houlala/helper/user_token.helper.dart';
 import 'package:houlala/models/product/product_model.dart';
+import 'package:houlala/models/user_token/user_token.dart';
 import 'package:houlala/repositories/product/product_repository.dart';
 import 'package:houlala/state/product/product_model.state.dart';
 import 'package:http/http.dart';
@@ -18,6 +20,7 @@ class ProductStateNotifier extends StateNotifier<ProductModelState> {
 
   ProductStateNotifier(this.productRepository) : super(ProductModelState()) {
     loadProducts();
+    loadBookMarkedProducts();
   }
 
   Future<void> loadProducts() async {
@@ -30,6 +33,23 @@ class ProductStateNotifier extends StateNotifier<ProductModelState> {
           error: true,
           errorMessage:
               "impossible d'avoir acces aux produits. svp reessayez plutard");
+    }
+  }
+
+  Future<void> loadBookMarkedProducts() async {
+    UserToken? userToken = await UserTokenHelper.getUserToken();
+    if(userToken != null){
+      try {
+        state = state.copyWith(loading: true);
+        List<ProductModel> productList =
+        await productRepository.fetchBookMarkedProducts();
+        state = state.copyWith(bookmarkedList: productList, loading: false);
+      } catch (e) {
+        state = state.copyWith(
+            error: true,
+            errorMessage:
+            "impossible d'avoir acces aux produits favories. svp reessayez plutard");
+      }
     }
   }
 

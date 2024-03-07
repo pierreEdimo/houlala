@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/helper/constants.dart';
+import 'package:heroicons/heroicons.dart';
 
 class CustomListTile extends StatelessWidget {
   final String? imageUrl;
   final String? title;
-  final Widget? icon;
   final Color? color;
+  final HeroIcon? leadingIcon;
 
   const CustomListTile({
     Key? key,
     this.imageUrl,
     this.title,
-    this.icon,
     this.color,
+    this.leadingIcon,
   }) : super(key: key);
 
   @override
@@ -24,12 +24,20 @@ class CustomListTile extends StatelessWidget {
         children: [
           Row(
             children: [
-              ImageIcon(
-                AssetImage(imageUrl!),
-                size: 27,
-                color: color ?? const Color(0xff000000),
-              ),
-              horizontalSpacing,
+              leadingIcon != null ? Container(
+                margin: const EdgeInsets.only(right: 10.0),
+                child: leadingIcon,
+              ) : Container(),
+              imageUrl != null
+                  ? Container(
+                      margin: const EdgeInsets.only(right: 10.0),
+                      child: ImageIcon(
+                        AssetImage(imageUrl!),
+                        size: 22,
+                        color: color ?? const Color(0xff000000),
+                      ),
+                    )
+                  : Container(),
               Text(
                 title!,
                 style: const TextStyle(
@@ -38,7 +46,6 @@ class CustomListTile extends StatelessWidget {
               )
             ],
           ),
-          icon == null ? Container() : icon!
         ],
       ),
     );

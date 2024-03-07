@@ -9,6 +9,7 @@ class UserToken with _$UserToken {
     String? userName,
     String? email,
     String? token,
+    String? userId,
   }) = _UserToken;
 
   factory UserToken.fromJson(Map<String, dynamic> json) => _$UserTokenFromJson(json);

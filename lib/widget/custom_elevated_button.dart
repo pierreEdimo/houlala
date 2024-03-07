@@ -16,7 +16,7 @@ class CustomElevatedButton extends StatelessWidget {
 
   getColor() {
     if (hasBorder == null || !hasBorder! == false) {
-      return Colors.grey.shade300;
+      return Colors.grey.shade500;
     }
     return Colors.transparent;
   }

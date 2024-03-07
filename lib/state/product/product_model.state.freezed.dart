@@ -21,6 +21,7 @@ mixin _$ProductModelState {
   String get errorMessage => throw _privateConstructorUsedError;
   bool get error => throw _privateConstructorUsedError;
   ProductModel? get selectedProduct => throw _privateConstructorUsedError;
+  List<ProductModel> get bookmarkedList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductModelStateCopyWith<ProductModelState> get copyWith =>
@@ -38,7 +39,8 @@ abstract class $ProductModelStateCopyWith<$Res> {
       bool loading,
       String errorMessage,
       bool error,
-      ProductModel? selectedProduct});
+      ProductModel? selectedProduct,
+      List<ProductModel> bookmarkedList});
 
   $ProductModelCopyWith<$Res>? get selectedProduct;
 }
@@ -61,6 +63,7 @@ class _$ProductModelStateCopyWithImpl<$Res, $Val extends ProductModelState>
     Object? errorMessage = null,
     Object? error = null,
     Object? selectedProduct = freezed,
+    Object? bookmarkedList = null,
   }) {
     return _then(_value.copyWith(
       productList: null == productList
@@ -83,6 +86,10 @@ class _$ProductModelStateCopyWithImpl<$Res, $Val extends ProductModelState>
           ? _value.selectedProduct
           : selectedProduct // ignore: cast_nullable_to_non_nullable
               as ProductModel?,
+      bookmarkedList: null == bookmarkedList
+          ? _value.bookmarkedList
+          : bookmarkedList // ignore: cast_nullable_to_non_nullable
+              as List<ProductModel>,
     ) as $Val);
   }
 
@@ -112,7 +119,8 @@ abstract class _$$ProductModelStateImplCopyWith<$Res>
       bool loading,
       String errorMessage,
       bool error,
-      ProductModel? selectedProduct});
+      ProductModel? selectedProduct,
+      List<ProductModel> bookmarkedList});
 
   @override
   $ProductModelCopyWith<$Res>? get selectedProduct;
@@ -134,6 +142,7 @@ class __$$ProductModelStateImplCopyWithImpl<$Res>
     Object? errorMessage = null,
     Object? error = null,
     Object? selectedProduct = freezed,
+    Object? bookmarkedList = null,
   }) {
     return _then(_$ProductModelStateImpl(
       productList: null == productList
@@ -156,6 +165,10 @@ class __$$ProductModelStateImplCopyWithImpl<$Res>
           ? _value.selectedProduct
           : selectedProduct // ignore: cast_nullable_to_non_nullable
               as ProductModel?,
+      bookmarkedList: null == bookmarkedList
+          ? _value._bookmarkedList
+          : bookmarkedList // ignore: cast_nullable_to_non_nullable
+              as List<ProductModel>,
     ));
   }
 }
@@ -168,8 +181,10 @@ class _$ProductModelStateImpl implements _ProductModelState {
       this.loading = false,
       this.errorMessage = '',
       this.error = false,
-      this.selectedProduct = null})
-      : _productList = productList;
+      this.selectedProduct = null,
+      final List<ProductModel> bookmarkedList = const []})
+      : _productList = productList,
+        _bookmarkedList = bookmarkedList;
 
   final List<ProductModel> _productList;
   @override
@@ -192,10 +207,18 @@ class _$ProductModelStateImpl implements _ProductModelState {
   @override
   @JsonKey()
   final ProductModel? selectedProduct;
+  final List<ProductModel> _bookmarkedList;
+  @override
+  @JsonKey()
+  List<ProductModel> get bookmarkedList {
+    if (_bookmarkedList is EqualUnmodifiableListView) return _bookmarkedList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_bookmarkedList);
+  }
 
   @override
   String toString() {
-    return 'ProductModelState(productList: $productList, loading: $loading, errorMessage: $errorMessage, error: $error, selectedProduct: $selectedProduct)';
+    return 'ProductModelState(productList: $productList, loading: $loading, errorMessage: $errorMessage, error: $error, selectedProduct: $selectedProduct, bookmarkedList: $bookmarkedList)';
   }
 
   @override
@@ -210,7 +233,9 @@ class _$ProductModelStateImpl implements _ProductModelState {
                 other.errorMessage == errorMessage) &&
             (identical(other.error, error) || other.error == error) &&
             (identical(other.selectedProduct, selectedProduct) ||
-                other.selectedProduct == selectedProduct));
+                other.selectedProduct == selectedProduct) &&
+            const DeepCollectionEquality()
+                .equals(other._bookmarkedList, _bookmarkedList));
   }
 
   @override
@@ -220,7 +245,8 @@ class _$ProductModelStateImpl implements _ProductModelState {
       loading,
       errorMessage,
       error,
-      selectedProduct);
+      selectedProduct,
+      const DeepCollectionEquality().hash(_bookmarkedList));
 
   @JsonKey(ignore: true)
   @override
@@ -236,7 +262,8 @@ abstract class _ProductModelState implements ProductModelState {
       final bool loading,
       final String errorMessage,
       final bool error,
-      final ProductModel? selectedProduct}) = _$ProductModelStateImpl;
+      final ProductModel? selectedProduct,
+      final List<ProductModel> bookmarkedList}) = _$ProductModelStateImpl;
 
   @override
   List<ProductModel> get productList;
@@ -248,6 +275,8 @@ abstract class _ProductModelState implements ProductModelState {
   bool get error;
   @override
   ProductModel? get selectedProduct;
+  @override
+  List<ProductModel> get bookmarkedList;
   @override
   @JsonKey(ignore: true)
   _$$ProductModelStateImplCopyWith<_$ProductModelStateImpl> get copyWith =>

@@ -11,6 +11,7 @@ class ProductModelState with _$ProductModelState{
     @Default(false) bool loading,
     @Default('') String errorMessage,
     @Default(false) bool error,
-    @Default(null) ProductModel? selectedProduct
+    @Default(null) ProductModel? selectedProduct,
+    @Default([]) List<ProductModel> bookmarkedList,
 }) = _ProductModelState;
 }

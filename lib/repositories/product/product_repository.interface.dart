@@ -3,6 +3,7 @@ import 'package:http/http.dart';
 
 abstract class ProductRepositoryInterface{
   Future<List<ProductModel>> fetchProducts();
+  Future<List<ProductModel>> fetchBookMarkedProducts();
   Future<Response> bookMarkProduct(int id);
   Future<ProductModel> fetchSingleProduct(String sku);
 }

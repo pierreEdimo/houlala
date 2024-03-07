@@ -150,7 +150,7 @@ class __$$UserModelStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserModelStateImpl implements _UserModelState {
-  const _$UserModelStateImpl(
+  _$UserModelStateImpl(
       {this.connectedUser = null,
       this.loading = false,
       this.error = false,
@@ -200,7 +200,7 @@ class _$UserModelStateImpl implements _UserModelState {
 }
 
 abstract class _UserModelState implements UserModelState {
-  const factory _UserModelState(
+  factory _UserModelState(
       {final UserModel? connectedUser,
       final bool loading,
       final bool error,

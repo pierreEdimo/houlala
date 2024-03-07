@@ -21,7 +21,6 @@ class OrderService extends ChangeNotifier {
     String jsEncode;
     jsEncode = jsonEncode(newOrder);
     var url = Uri.parse('${dotenv.env['ORDER_URL']}');
-    print(jsEncode);
     Response response = await post(
       url,
       headers: headers,

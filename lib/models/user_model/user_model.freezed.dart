@@ -21,7 +21,6 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserModel {
   String? get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
@@ -45,7 +44,6 @@ abstract class $UserModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
-      String? name,
       String? city,
       String? email,
       String? phoneNumber,
@@ -71,7 +69,6 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @override
   $Res call({
     Object? id = freezed,
-    Object? name = freezed,
     Object? city = freezed,
     Object? email = freezed,
     Object? phoneNumber = freezed,
@@ -86,10 +83,6 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       city: freezed == city
           ? _value.city
@@ -141,7 +134,6 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? id,
-      String? name,
       String? city,
       String? email,
       String? phoneNumber,
@@ -165,7 +157,6 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? name = freezed,
     Object? city = freezed,
     Object? email = freezed,
     Object? phoneNumber = freezed,
@@ -180,10 +171,6 @@ class __$$UserModelImplCopyWithImpl<$Res>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       city: freezed == city
           ? _value.city
@@ -230,7 +217,6 @@ class __$$UserModelImplCopyWithImpl<$Res>
 class _$UserModelImpl implements _UserModel {
   const _$UserModelImpl(
       {this.id,
-      this.name,
       this.city,
       this.email,
       this.phoneNumber,
@@ -246,8 +232,6 @@ class _$UserModelImpl implements _UserModel {
 
   @override
   final String? id;
-  @override
-  final String? name;
   @override
   final String? city;
   @override
@@ -269,7 +253,7 @@ class _$UserModelImpl implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, name: $name, city: $city, email: $email, phoneNumber: $phoneNumber, streetName: $streetName, poBox: $poBox, houseNumber: $houseNumber, userName: $userName, firstName: $firstName, lastName: $lastName)';
+    return 'UserModel(id: $id, city: $city, email: $email, phoneNumber: $phoneNumber, streetName: $streetName, poBox: $poBox, houseNumber: $houseNumber, userName: $userName, firstName: $firstName, lastName: $lastName)';
   }
 
   @override
@@ -278,7 +262,6 @@ class _$UserModelImpl implements _UserModel {
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
             (identical(other.city, city) || other.city == city) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phoneNumber, phoneNumber) ||
@@ -298,19 +281,8 @@ class _$UserModelImpl implements _UserModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      city,
-      email,
-      phoneNumber,
-      streetName,
-      poBox,
-      houseNumber,
-      userName,
-      firstName,
-      lastName);
+  int get hashCode => Object.hash(runtimeType, id, city, email, phoneNumber,
+      streetName, poBox, houseNumber, userName, firstName, lastName);
 
   @JsonKey(ignore: true)
   @override
@@ -329,7 +301,6 @@ class _$UserModelImpl implements _UserModel {
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
       {final String? id,
-      final String? name,
       final String? city,
       final String? email,
       final String? phoneNumber,
@@ -345,8 +316,6 @@ abstract class _UserModel implements UserModel {
 
   @override
   String? get id;
-  @override
-  String? get name;
   @override
   String? get city;
   @override
