@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/widget/app_bar_with_return.dart';
-import 'package:houlala/widget/standard_custom_container.dart';
-import 'package:houlala/widget/web_view_container.dart';
+import 'package:houlala/shared_widgets/standard_custom_container.dart';
+import 'package:houlala/shared_widgets/web_view_container.dart';
 
 class DataSecurityScreen extends StatelessWidget {
   const DataSecurityScreen({Key? key}) : super(key: key);
@@ -13,11 +12,7 @@ class DataSecurityScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWithReturn(
-        title: "Politiques de confidentialites",
-        elevation: 1,
-        color: Colors.transparent,
-      ),
+      appBar: AppBar(),
       body: StandardCustomContainer(
         child: FutureBuilder(
           future: _loadAssset(context),

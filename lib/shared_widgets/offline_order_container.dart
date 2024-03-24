@@ -1,10 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:houlala/model/offline_order.dart';
-import 'package:houlala/widget/custom_card.dart';
-import 'package:houlala/widget/card_bottom.dart';
-import 'package:houlala/widget/card_title.dart';
-import 'package:houlala/widget/list_items.dart';
+
+import 'card_bottom.dart';
+import 'card_title.dart';
+import 'custom_card.dart';
+import 'list_items.dart';
 
 class OfflineOrderContainer extends StatelessWidget {
   final OfflineOrder? order;

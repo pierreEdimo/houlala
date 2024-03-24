@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:houlala/widget/custom_button_container.dart';
-import 'package:houlala/widget/product_title.dart';
-import 'package:houlala/widget/standard_custom_container.dart';
+import 'package:houlala/shared_widgets/product_title.dart';
+import 'package:houlala/shared_widgets/standard_custom_container.dart';
+
+import 'custom_button_container.dart';
 
 class ModalBar extends StatelessWidget {
   final double? height;

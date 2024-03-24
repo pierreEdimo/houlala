@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/model/cart_item.dart';
-import 'package:houlala/widget/cart_item_container.dart';
+import 'package:houlala/shared_widgets/cart_item_container.dart';
 
 class ListOfItems extends StatelessWidget {
   final List<CartItem>? items;

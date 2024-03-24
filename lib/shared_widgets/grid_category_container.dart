@@ -44,7 +44,7 @@ class GridCategoryContainer extends StatelessWidget {
                 categoryModel!.name!,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.jetBrainsMono(
                     textStyle: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 18.0)),
               ),

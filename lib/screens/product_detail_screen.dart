@@ -8,13 +8,14 @@ import 'package:houlala/controllers/product_controller.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/models/product/product_model.dart';
 import 'package:houlala/shared_widgets/custom_body_container.dart';
-import 'package:houlala/widget/custom_elevated_button.dart';
-import 'package:houlala/widget/decrease_quantity_text.dart';
-import 'package:houlala/widget/increase_quantity_text.dart';
-import 'package:houlala/widget/markdown_container.dart';
-import 'package:houlala/widget/quantity_container.dart';
-import '../widget/custom_button_container.dart';
+import 'package:houlala/shared_widgets/custom_elevated_button.dart';
+import 'package:houlala/shared_widgets/increase_quantity_text.dart';
+import 'package:houlala/shared_widgets/markdown_container.dart';
+import '../shared_widgets/custom_button_container.dart';
 import 'package:heroicons/heroicons.dart';
+
+import '../shared_widgets/decrease_quantity_text.dart';
+import '../shared_widgets/quantity_container.dart';
 
 class ProductDetailScreen extends ConsumerStatefulWidget {
   static const routeName = '/product_detail';
@@ -69,7 +70,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                     children: [
                       Text(
                         selectedProduct!.name!,
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.jetBrainsMono(
                             textStyle: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18.0)),
                       ),
@@ -90,7 +91,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                             TextSpan(
                               text: selectedProduct.locationName,
                               style:
-                                  GoogleFonts.poppins(
+                                  GoogleFonts.jetBrainsMono(
                                     textStyle: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18.0
@@ -105,7 +106,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                         children: [
                           Text(
                             "${selectedProduct.sellingPrice} XAF",
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.jetBrainsMono(
                               textStyle: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18.0),
                             ),

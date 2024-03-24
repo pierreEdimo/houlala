@@ -44,7 +44,7 @@ class VerticaLocationContainer extends ConsumerWidget {
                           locationModel!.name!,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.jetBrainsMono(
                               textStyle: const TextStyle(
                                   fontSize: 18.0, fontWeight: FontWeight.bold)),
                         ),

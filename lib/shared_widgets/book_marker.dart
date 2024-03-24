@@ -4,9 +4,10 @@ import 'package:houlala/helper/constants.dart';
 import 'package:houlala/main.dart';
 import 'package:houlala/model/product.dart';
 import 'package:houlala/service/product_service.dart';
-import 'package:houlala/widget/custom_elevated_button.dart';
-import 'package:houlala/widget/show_nack.dart';
 import 'package:provider/provider.dart';
+
+import 'custom_elevated_button.dart';
+import 'show_nack.dart';
 
 class BookMarker extends StatefulWidget {
   final Product? foundProduct;

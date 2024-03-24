@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/model/offline_order.dart';
 import 'package:houlala/model/order.dart';
-import 'package:houlala/widget/checkout_button.dart';
-import 'package:houlala/widget/standard_custom_container.dart';
+import 'package:houlala/shared_widgets/standard_custom_container.dart';
+
+import 'checkout_button.dart';
 
 class CartItemBottom extends StatelessWidget {
   final List<Order>? items;

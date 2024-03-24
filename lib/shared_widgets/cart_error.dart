@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/widget/custom_avatar.dart';
-import 'package:houlala/widget/standard_custom_container.dart';
+import 'package:houlala/shared_widgets/standard_custom_container.dart';
+
+import 'custom_avatar.dart';
 
 class CartError extends StatelessWidget {
   const CartError({Key? key}) : super(key: key);

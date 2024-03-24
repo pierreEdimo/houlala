@@ -35,7 +35,7 @@ class ProductRepository implements ProductRepositoryInterface {
   Future<ProductModel> fetchSingleProduct(String sku) async {
     UserToken? userToken = await UserTokenHelper.getUserToken()!;
     Response response = await get(Uri.parse(
-        '${dotenv.env['PRODUCT_URL']}/$sku/users/${userToken!.userId}'));
+        '${dotenv.env['PRODUCT_URL']}/$sku/users/${userToken?.userId}'));
     if (response.statusCode == 200) {
       return ProductModel.fromJson(jsonDecode(response.body));
     } else {

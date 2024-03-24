@@ -7,10 +7,10 @@ import 'package:houlala/helper/constants.dart';
 import 'package:houlala/models/user_model/user_model.dart';
 import 'package:houlala/screens/favorite_screen.dart';
 import 'package:houlala/shared_widgets/custom_body_container.dart';
-import 'package:houlala/widget/container_wirth_connectivity_checker.dart';
-import 'package:houlala/widget/launch_url.dart';
+import 'package:houlala/shared_widgets/container_wirth_connectivity_checker.dart';
+import 'package:houlala/shared_widgets/launch_url.dart';
 
-import '../widget/custom_list_tile.dart';
+import '../shared_widgets/custom_list_tile.dart';
 
 class UserScreen extends StatelessWidget {
   const UserScreen({Key? key}) : super(key: key);

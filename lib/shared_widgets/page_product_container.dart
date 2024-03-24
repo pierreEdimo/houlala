@@ -5,7 +5,7 @@ import 'package:houlala/models/page_result_args/page_result_args.dart';
 import 'package:houlala/models/product/product_model.dart';
 import 'package:houlala/screens/page_result_screen.dart';
 import '../helper/constants.dart';
-import '../shared_widgets/product_container.dart';
+import 'product_container.dart';
 
 class PageProductContainer extends ConsumerWidget {
   final String? locationName;

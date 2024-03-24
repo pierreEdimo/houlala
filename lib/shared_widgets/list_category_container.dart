@@ -48,7 +48,7 @@ class ListCategoryContainer extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.right,
-                  style: GoogleFonts.poppins(
+                  style: GoogleFonts.jetBrainsMono(
                     textStyle: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15.0

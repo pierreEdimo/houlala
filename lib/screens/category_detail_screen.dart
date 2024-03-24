@@ -4,7 +4,7 @@ import 'package:houlala/helper/category_name.dart';
 import 'package:houlala/shared_widgets/fruits_lettuces_body.dart';
 import 'package:houlala/shared_widgets/store_body.dart';
 import '../models/page_screen_args/page_screen_arguments.dart';
-import '../widget/custom_button_container.dart';
+import '../shared_widgets/custom_button_container.dart';
 
 class CategoryDetailScreen extends StatelessWidget {
   static const routeName = "/categoryDetail";

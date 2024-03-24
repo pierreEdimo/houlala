@@ -11,8 +11,8 @@ import 'package:houlala/service/word_service.dart';
 import 'package:houlala/shared_widgets/search_category_body.dart';
 import 'package:houlala/shared_widgets/search_location_body.dart';
 import 'package:houlala/shared_widgets/search_product_body.dart';
-import 'package:houlala/widget/custom_button_container.dart';
-import 'package:houlala/widget/custom_intern_navigation.dart';
+import 'package:houlala/shared_widgets/custom_button_container.dart';
+import 'package:houlala/shared_widgets/custom_intern_navigation.dart';
 import 'package:provider/provider.dart' as provider;
 
 class SearchScreen extends StatefulWidget {

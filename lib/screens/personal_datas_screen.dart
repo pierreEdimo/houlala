@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/service/auth_service.dart';
-import 'package:houlala/widget/app_bar_with_return.dart';
-import 'package:houlala/widget/custom_elevated_button.dart';
-import 'package:houlala/widget/personnal_data_container.dart';
-import 'package:houlala/widget/standard_custom_container.dart';
+import 'package:houlala/shared_widgets/custom_elevated_button.dart';
+import 'package:houlala/shared_widgets/personnal_data_container.dart';
+import 'package:houlala/shared_widgets/standard_custom_container.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
@@ -34,11 +33,7 @@ class PersonalDataScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWithReturn(
-        title: "Mes Donnees personnelles",
-        elevation: 1,
-        color: Colors.transparent,
-      ),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: StandardCustomContainer(
             child: FutureBuilder(

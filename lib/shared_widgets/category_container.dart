@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:houlala/model/page_screen_arguments.dart';
 import 'package:houlala/screens/category_detail_screen.dart';
-import 'package:houlala/widget/elevation_container.dart';
-import 'package:houlala/widget/transparent_card_container.dart';
 
 import '../model/product_category.dart';
+import 'elevation_container.dart';
+import 'transparent_card_container.dart';
 
 
 

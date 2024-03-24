@@ -4,9 +4,9 @@ import 'package:houlala/helper/category_name.dart';
 import 'package:houlala/shared_widgets/home_category_box.dart';
 import 'package:houlala/shared_widgets/home_location_box.dart';
 import 'package:houlala/shared_widgets/home_product_box.dart';
-import 'package:houlala/widget/container_wirth_connectivity_checker.dart';
+import 'package:houlala/shared_widgets/container_wirth_connectivity_checker.dart';
 import '../helper/constants.dart';
-import '../widget/custom_button_container.dart';
+import '../shared_widgets/custom_button_container.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

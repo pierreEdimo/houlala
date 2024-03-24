@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/widget/custom_avatar.dart';
+import 'package:houlala/shared_widgets/custom_avatar.dart';
 
 class VerticalNoItem extends StatelessWidget {
   final String? imageAsset;

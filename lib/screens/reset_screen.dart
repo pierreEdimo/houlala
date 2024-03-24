@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
 import 'package:houlala/model/login.dart';
 import 'package:houlala/service/auth_service.dart';
-import 'package:houlala/widget/app_bar_with_return.dart';
-import 'package:houlala/widget/display_dialog.dart';
-import 'package:houlala/widget/show_nack.dart';
+import 'package:houlala/shared_widgets/display_dialog.dart';
+import 'package:houlala/shared_widgets/show_nack.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
-import '../widget/custom_elevated_button.dart';
-import '../widget/input_email.dart';
-import '../widget/input_password.dart';
+import '../shared_widgets/custom_elevated_button.dart';
+import '../shared_widgets/input_email.dart';
+import '../shared_widgets/input_password.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({Key? key}) : super(key: key);
@@ -51,11 +50,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWithReturn(
-        elevation: 1,
-        title: "Nouveau mot de passe",
-        color: Colors.transparent,
-      ),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: SizedBox(
           height: MediaQuery.of(context).size.height - 180,

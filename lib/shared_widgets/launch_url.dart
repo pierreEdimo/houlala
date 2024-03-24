@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:houlala/widget/display_dialog.dart';
+import 'package:houlala/shared_widgets/display_dialog.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void openContact(String scheme, String path) async {

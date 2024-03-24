@@ -52,7 +52,7 @@ class SubCategoryContainer extends ConsumerWidget {
                         children: [
                           Text(
                             subCategoryModel!.label!,
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.jetBrainsMono(
                               textStyle: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),

@@ -3,11 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:houlala/shared_widgets/custom_body_container.dart';
-import 'package:houlala/widget/custom_button_container.dart';
-import 'package:houlala/widget/custom_intern_navigation.dart';
-import 'package:houlala/widget/page_home_container.dart';
-import 'package:houlala/widget/page_info_container.dart';
-import 'package:houlala/widget/page_product_container.dart';
+import 'package:houlala/shared_widgets/custom_button_container.dart';
+import 'package:houlala/shared_widgets/custom_intern_navigation.dart';
+import 'package:houlala/shared_widgets/page_home_container.dart';
+import 'package:houlala/shared_widgets/page_info_container.dart';
+import 'package:houlala/shared_widgets/page_product_container.dart';
 import '../controllers/location_controller.dart';
 import '../helper/constants.dart';
 import '../models/location/location_model.dart';
@@ -89,7 +89,7 @@ class _PadeDetailScreenState extends ConsumerState<PageDetailScreen> {
                                 children: [
                                   Text(
                                     selectedLocation.name!,
-                                    style: GoogleFonts.poppins(
+                                    style: GoogleFonts.jetBrainsMono(
                                       textStyle: const TextStyle(
                                         fontSize: 18.0,
                                         fontWeight: FontWeight.bold
@@ -97,7 +97,7 @@ class _PadeDetailScreenState extends ConsumerState<PageDetailScreen> {
                                     ),
                                   ),
                                   Text('${selectedLocation.productTotalCount} produits disponibles'),
-                                  Text('${selectedLocation.orderSoldCount} commandes reussies')
+                                  Text('${selectedLocation.orderSoldCount} commandes delivrees')
                                 ],
                               )
                             ],

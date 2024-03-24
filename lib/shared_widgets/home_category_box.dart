@@ -5,7 +5,7 @@ import 'package:houlala/controllers/pcategory_controller.dart';
 import 'package:houlala/models/product_category/category_model.dart';
 import 'package:houlala/shared_widgets/custom_body_container.dart';
 import 'package:houlala/shared_widgets/list_category_container.dart';
-import '../widget/custom_box_container.dart';
+import 'custom_box_container.dart';
 
 class HomeCategoryBox extends ConsumerWidget {
   const HomeCategoryBox({super.key});

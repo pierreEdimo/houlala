@@ -4,15 +4,15 @@ import 'package:houlala/main.dart';
 import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/model/product_detail_args.dart';
 import 'package:houlala/service/order_service.dart';
-import 'package:houlala/widget/decrease_quantity_text.dart';
-import 'package:houlala/widget/image_container.dart';
-import 'package:houlala/widget/increase_quantity_text.dart';
-import 'package:houlala/widget/product_title.dart';
-import 'package:houlala/widget/quantity_container.dart';
-import 'package:houlala/widget/transparent_card_container.dart';
+import 'package:houlala/shared_widgets/image_container.dart';
+import 'package:houlala/shared_widgets/increase_quantity_text.dart';
+import 'package:houlala/shared_widgets/product_title.dart';
+import 'package:houlala/shared_widgets/transparent_card_container.dart';
 import 'package:provider/provider.dart';
 import '../screens/product_detail_screen.dart';
 import 'cart_item_delete_button.dart';
+import 'decrease_quantity_text.dart';
+import 'quantity_container.dart';
 
 class CartItemContainer extends StatelessWidget {
   final CartItem? cartItem;

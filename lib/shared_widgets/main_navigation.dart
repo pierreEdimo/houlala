@@ -4,8 +4,9 @@ import 'package:houlala/screens/cart_item_screen.dart';
 import 'package:houlala/screens/home_screen.dart';
 import 'package:houlala/screens/notification_screen.dart';
 import 'package:houlala/screens/user_screen.dart';
-import 'package:houlala/widget/bottom_item.dart';
-import 'package:houlala/widget/layout.dart';
+import 'package:houlala/shared_widgets/layout.dart';
+
+import 'bottom_item.dart';
 
 class MainNavigation extends StatelessWidget {
   const MainNavigation({Key? key}) : super(key: key);

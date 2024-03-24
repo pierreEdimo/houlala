@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/widget/app_bar_with_return.dart';
-import 'package:houlala/widget/standard_custom_container.dart';
+import 'package:houlala/shared_widgets/standard_custom_container.dart';
 
-import '../widget/web_view_container.dart';
+import '../shared_widgets/web_view_container.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({Key? key}) : super(key: key);
@@ -14,11 +13,7 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWithReturn(
-        title: "A Propos",
-        elevation: 1,
-        color: Colors.transparent,
-      ),
+      appBar: AppBar(),
       body: StandardCustomContainer(
         child: FutureBuilder(
           future: _loadAssset(context),

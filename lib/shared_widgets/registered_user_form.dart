@@ -1,14 +1,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:houlala/model/user_information.dart';
-import 'package:houlala/widget/personnal_data_container.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import '../helper/constants.dart';
 import '../model/send_email.dart';
 import '../service/email_service.dart';
-import 'custom_elevated_button.dart';
 import '../model/order.dart';
+import 'custom_elevated_button.dart';
 import 'order_container.dart';
 
 class RegisteredUserForm extends StatelessWidget {
@@ -56,9 +55,6 @@ class RegisteredUserForm extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              PersonalDataContainer(
-                connectedUser: connectedUser,
-              ),
               Card(
                 color: Colors.transparent,
                 elevation: 0,

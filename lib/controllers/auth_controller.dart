@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:houlala/helper/user_token.helper.dart';
 import 'package:houlala/models/login/login_model.dart';
 import 'package:houlala/models/user_model/user_model.dart';
-import 'package:houlala/models/user_token/user_token.dart';
 import 'package:houlala/providers/auth_provider.dart';
 
 class AuthController {

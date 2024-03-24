@@ -7,7 +7,7 @@ import 'package:houlala/models/product/product_model.dart';
 import 'package:houlala/screens/category_detail_screen.dart';
 import 'package:houlala/shared_widgets/custom_body_container.dart';
 import 'package:houlala/shared_widgets/product_container.dart';
-import 'package:houlala/widget/custom_box_container.dart';
+import 'package:houlala/shared_widgets/custom_box_container.dart';
 
 class HomeProductByCategoryBox extends ConsumerWidget {
   final String? categoryName;

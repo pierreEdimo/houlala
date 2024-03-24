@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/model/edit_screen_arguments.dart';
 import 'package:houlala/model/user_information.dart';
-import 'package:houlala/widget/custom_elevated_button.dart';
+import 'package:houlala/shared_widgets/custom_elevated_button.dart';
 import 'package:sizer/sizer.dart';
 
 import '../helper/constants.dart';

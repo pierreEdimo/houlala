@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:houlala/widget/background_image.dart';
+import 'package:houlala/shared_widgets/background_image.dart';
 import 'package:sizer/sizer.dart';
 
 class ImageContainer extends StatelessWidget {

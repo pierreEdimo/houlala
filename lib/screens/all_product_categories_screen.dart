@@ -6,7 +6,7 @@ import 'package:houlala/models/product_category/category_model.dart';
 import 'package:houlala/shared_widgets/custom_body_container.dart';
 import 'package:houlala/shared_widgets/grid_category_container.dart';
 
-import '../widget/custom_button_container.dart';
+import '../shared_widgets/custom_button_container.dart';
 
 class AllProductCategories extends ConsumerWidget {
   const AllProductCategories({Key? key}) : super(key: key);

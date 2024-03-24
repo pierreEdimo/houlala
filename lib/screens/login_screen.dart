@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/controllers/auth_controller.dart';
-import 'package:houlala/widget/custom_button_container.dart';
-import 'package:houlala/widget/input_email.dart';
-import 'package:houlala/widget/input_password.dart';
+import 'package:houlala/shared_widgets/custom_button_container.dart';
+import 'package:houlala/shared_widgets/input_email.dart';
+import 'package:houlala/shared_widgets/input_password.dart';
 import '../helper/constants.dart';
-import '../widget/custom_elevated_button.dart';
+import '../shared_widgets/custom_elevated_button.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});

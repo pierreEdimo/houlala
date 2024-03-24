@@ -3,15 +3,15 @@ import 'package:houlala/helper/constants.dart';
 import 'package:houlala/main.dart';
 import 'package:houlala/model/user_information.dart';
 import 'package:houlala/service/auth_service.dart';
-import 'package:houlala/widget/checkout_bar.dart';
-import 'package:houlala/widget/custom_elevated_button.dart';
-import 'package:houlala/widget/registered_user_form.dart';
-import 'package:houlala/widget/unregisterd_user_order_form.dart';
+import 'package:houlala/shared_widgets/registered_user_form.dart';
+import 'package:houlala/shared_widgets/unregisterd_user_order_form.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../model/offline_order.dart';
 import '../model/order.dart';
+import 'checkout_bar.dart';
+import 'custom_elevated_button.dart';
 
 class CheckoutButton extends StatelessWidget {
   final List<Order>? orders;

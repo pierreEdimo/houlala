@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:houlala/widget/custom_button_container.dart';
-import 'package:houlala/widget/standard_custom_container.dart';
-import 'package:houlala/widget/web_view_container.dart';
+import 'package:houlala/shared_widgets/custom_button_container.dart';
+import 'package:houlala/shared_widgets/standard_custom_container.dart';
+import 'package:houlala/shared_widgets/web_view_container.dart';
 
 class ConditionScreen extends StatelessWidget {
    const ConditionScreen({Key? key}) : super(key: key);

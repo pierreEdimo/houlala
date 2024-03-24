@@ -6,6 +6,7 @@ import '../model/add_unregistered_user_order.dart';
 import '../model/offline_order.dart';
 import '../model/user_information.dart';
 import '../service/order_service.dart';
+
 import 'border_card_title.dart';
 import 'custom_card.dart';
 import 'custom_elevated_button.dart';

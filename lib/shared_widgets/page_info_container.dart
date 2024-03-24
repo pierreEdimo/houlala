@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:houlala/widget/custom_column_container.dart';
-import 'package:houlala/widget/markdown_container.dart';
-import 'package:houlala/widget/page_contact_information.dart';
+import 'package:houlala/shared_widgets/custom_column_container.dart';
+import 'package:houlala/shared_widgets/markdown_container.dart';
+import 'package:houlala/shared_widgets/page_contact_information.dart';
 import 'dart:convert';
 import '../helper/constants.dart';
 import '../models/location/location_model.dart';

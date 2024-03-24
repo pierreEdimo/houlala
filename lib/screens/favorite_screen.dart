@@ -5,7 +5,7 @@ import 'package:houlala/controllers/product_controller.dart';
 import 'package:houlala/models/product/product_model.dart';
 import 'package:houlala/shared_widgets/custom_body_container.dart';
 import 'package:houlala/shared_widgets/favorite_product_container.dart';
-import 'package:houlala/widget/custom_button_container.dart';
+import 'package:houlala/shared_widgets/custom_button_container.dart';
 
 class FavoriteScreen extends ConsumerWidget {
   static const routeName = '/favorites';

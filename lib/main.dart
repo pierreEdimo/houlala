@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/model/offline_order.dart';
-import 'package:houlala/widget/my_app.dart';
+import 'package:houlala/shared_widgets/my_app.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 

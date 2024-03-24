@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:houlala/models/product/product_model.dart';
 import 'package:houlala/shared_widgets/product_container.dart';
 
-import '../widget/custom_elevated_button.dart';
+import 'custom_elevated_button.dart';
 
 class FavoriteProductContainer extends StatelessWidget {
   final ProductModel? productModel;

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/service/order_service.dart';
-import 'package:houlala/widget/app_bar_with_return.dart';
-import 'package:houlala/widget/no_items.dart';
-import 'package:houlala/widget/order_container.dart';
+import 'package:houlala/shared_widgets/no_items.dart';
+import 'package:houlala/shared_widgets/order_container.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
@@ -14,11 +13,7 @@ class PersonalOrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWithReturn(
-        title: "Mes Commandes",
-        elevation: 1,
-        color: Colors.transparent,
-      ),
+      appBar: AppBar(),
       body: FutureBuilder(
         future:
             Provider.of<OrderService>(context).fetchCartItems(confirmed: true),

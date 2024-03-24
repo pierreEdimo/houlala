@@ -7,7 +7,7 @@ import 'package:houlala/models/product/product_model.dart';
 import 'package:houlala/models/sub_category/sub_category_model.dart';
 import 'package:houlala/shared_widgets/custom_body_container.dart';
 import 'package:houlala/shared_widgets/product_column.dart';
-import 'package:houlala/widget/custom_button_container.dart';
+import 'package:houlala/shared_widgets/custom_button_container.dart';
 
 import '../models/sub_category_parameter/sub_category_parameter.dart';
 

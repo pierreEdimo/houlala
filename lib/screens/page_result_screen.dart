@@ -5,7 +5,7 @@ import 'package:houlala/controllers/product_controller.dart';
 import 'package:houlala/models/page_result_args/page_result_args.dart';
 import 'package:houlala/models/product/product_model.dart';
 import 'package:houlala/shared_widgets/product_column.dart';
-import '../widget/custom_button_container.dart';
+import '../shared_widgets/custom_button_container.dart';
 
 class PageResultScreen extends ConsumerWidget {
   static String routeName = '/pagesearchResultScreen';
