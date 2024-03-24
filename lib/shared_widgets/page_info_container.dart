@@ -19,7 +19,7 @@ class PageInfoContainer extends StatelessWidget {
         CustomColumnContainer(
           title: Text(
             "A propos",
-            style: GoogleFonts.poppins(
+            style: GoogleFonts.jetBrainsMono(
               textStyle:
                   const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
             ),

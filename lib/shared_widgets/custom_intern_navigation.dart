@@ -71,7 +71,7 @@ class _CustomInternNavigationState extends State<CustomInternNavigation> {
                         child: Center(
                           child: Text(
                             menu,
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.jetBrainsMono(
                               textStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: _isSelected

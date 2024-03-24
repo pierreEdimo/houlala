@@ -27,7 +27,7 @@ class PageHomeContainer extends ConsumerWidget {
         CustomColumnContainer(
           title:  Text(
             'A propos',
-            style: GoogleFonts.poppins(
+            style: GoogleFonts.jetBrainsMono(
               textStyle: const TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold
@@ -42,7 +42,7 @@ class PageHomeContainer extends ConsumerWidget {
         CustomColumnContainer(
           title: Text(
             'Quelques produits par ${pageModel!.name!}',
-            style: GoogleFonts.poppins(
+            style: GoogleFonts.jetBrainsMono(
               textStyle: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18.0

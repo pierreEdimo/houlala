@@ -56,11 +56,11 @@ class MyApp extends StatelessWidget {
               title: 'houlala',
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
-                textTheme: GoogleFonts.poppinsTextTheme(),
+                textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
                 appBarTheme: AppBarTheme(
                     elevation: 3,
                     color: Colors.white,
-                    titleTextStyle: GoogleFonts.poppins(
+                    titleTextStyle: GoogleFonts.jetBrainsMono(
                         textStyle: const TextStyle(
                             fontSize: 22.0,
                             fontWeight: FontWeight.bold,

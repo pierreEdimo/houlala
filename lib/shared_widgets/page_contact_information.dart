@@ -15,7 +15,7 @@ class PageContactInformation extends StatelessWidget {
     return CustomColumnContainer(
       title: Text(
         "Contacts",
-        style: GoogleFonts.poppins(
+        style: GoogleFonts.jetBrainsMono(
           textStyle:
               const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
         ),

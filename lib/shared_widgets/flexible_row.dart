@@ -16,7 +16,7 @@ class FlexibleRow extends StatelessWidget {
         Flexible(
           child: Text(
             title!,
-            style: GoogleFonts.poppins(
+            style: GoogleFonts.jetBrainsMono(
               textStyle: const TextStyle(
                 fontWeight: FontWeight.bold
               )

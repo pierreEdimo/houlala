@@ -25,7 +25,7 @@ class CustomBoxContainer extends StatelessWidget {
               margin: const EdgeInsets.only(bottom: 9.5),
               child: Text(
                 title!,
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.jetBrainsMono(
                     textStyle: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 18.0)),
               ),
