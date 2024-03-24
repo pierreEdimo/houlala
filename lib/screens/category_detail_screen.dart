@@ -18,6 +18,7 @@ class CategoryDetailScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 3,
         leading: CustomButtonContainer(
           icon: const FaIcon(FontAwesomeIcons.angleLeft),
           onPressed: () => Navigator.of(context).pop(),

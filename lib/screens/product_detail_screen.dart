@@ -49,6 +49,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 3,
         automaticallyImplyLeading: false,
         leading: CustomButtonContainer(
           icon: const FaIcon(FontAwesomeIcons.angleLeft),

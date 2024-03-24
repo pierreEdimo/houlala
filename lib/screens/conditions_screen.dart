@@ -15,6 +15,7 @@ class ConditionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 3,
         automaticallyImplyLeading: false,
         leading: CustomButtonContainer(
           icon: const FaIcon(FontAwesomeIcons.angleLeft),

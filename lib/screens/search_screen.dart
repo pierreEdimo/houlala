@@ -7,31 +7,30 @@ import 'package:houlala/controllers/product_controller.dart';
 import 'package:houlala/models/location/location_model.dart';
 import 'package:houlala/models/product/product_model.dart';
 import 'package:houlala/models/product_category/category_model.dart';
-import 'package:houlala/service/word_service.dart';
+import 'package:houlala/providers/word_provider.dart';
 import 'package:houlala/shared_widgets/search_category_body.dart';
 import 'package:houlala/shared_widgets/search_location_body.dart';
 import 'package:houlala/shared_widgets/search_product_body.dart';
 import 'package:houlala/shared_widgets/custom_button_container.dart';
 import 'package:houlala/shared_widgets/custom_intern_navigation.dart';
-import 'package:provider/provider.dart' as provider;
 
-class SearchScreen extends StatefulWidget {
+class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
 
   @override
-  State<SearchScreen> createState() => _SearchScreenState();
+  ConsumerState<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _SearchScreenState extends ConsumerState<SearchScreen> {
   final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final String? searchWord =
-        provider.Provider.of<WordService>(context).getSearchWord();
+    final String? searchWord = ref.watch(wordStateNotifierProvider);
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 3,
         automaticallyImplyLeading: false,
         leading: CustomButtonContainer(
           icon: const FaIcon(FontAwesomeIcons.angleLeft),
@@ -41,8 +40,7 @@ class _SearchScreenState extends State<SearchScreen> {
           controller: controller,
           textInputAction: TextInputAction.search,
           onFieldSubmitted: (value) {
-            provider.Provider.of<WordService>(context, listen: false)
-                .setSearchWord(controller.text);
+            ref.read(wordStateNotifierProvider.notifier).setWord(value);
           },
           decoration: InputDecoration(
             hintText: "Rechercher",
@@ -57,8 +55,8 @@ class _SearchScreenState extends State<SearchScreen> {
             suffixIcon: IconButton(
               onPressed: () {
                 controller.clear();
-                provider.Provider.of<WordService>(context, listen: false)
-                    .setSearchWord(controller.text);
+                ref.read(wordStateNotifierProvider.notifier)
+                .setWord(controller.text);
               },
               icon: const Icon(Icons.close),
             ),

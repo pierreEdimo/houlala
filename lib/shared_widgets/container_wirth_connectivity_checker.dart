@@ -1,10 +1,10 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/service/connectivity_service.dart';
-import 'package:provider/provider.dart';
+import 'package:houlala/providers/connectivity_provider.dart';
 
-class ContainerWithConnectivityChecker extends StatelessWidget {
+class ContainerWithConnectivityChecker extends ConsumerWidget {
   final Widget? child;
 
   const ContainerWithConnectivityChecker({
@@ -13,13 +13,9 @@ class ContainerWithConnectivityChecker extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: Provider.of<ConnectivityService>(context).checkConnectivity(),
-      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-        ConnectivityResult? result = snapshot.data;
-
-        switch (result) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ConnectivityResult? result = ref.watch(connectivityProvider);
+    switch (result) {
           case ConnectivityResult.bluetooth:
           case ConnectivityResult.wifi:
           case ConnectivityResult.ethernet:
@@ -41,7 +37,5 @@ class ContainerWithConnectivityChecker extends StatelessWidget {
           default:
             return Container();
         }
-      },
-    );
   }
 }

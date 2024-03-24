@@ -15,7 +15,7 @@ class SearchProductBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
       child: ProductColumn(
-        title: Text('${productList!.length} produits trouves'),
+        title: Text('${productList!.length} produit(s) trouve(s)'),
         productList: productList,
       ),
     );

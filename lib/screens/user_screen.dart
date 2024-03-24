@@ -19,6 +19,7 @@ class UserScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 3,
         leading: const CircleAvatar(
           backgroundColor: Colors.transparent,
           radius: 35,

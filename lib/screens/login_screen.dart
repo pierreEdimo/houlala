@@ -26,6 +26,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 3,
         automaticallyImplyLeading: false,
         leading: CustomButtonContainer(
           icon: const FaIcon(FontAwesomeIcons.angleLeft),

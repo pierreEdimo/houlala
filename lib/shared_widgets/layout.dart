@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:houlala/service/current_index.dart';
+import 'package:houlala/providers/current_index.dart';
 
 import 'bottom_item.dart';
 
