@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:houlala/screens/login_screen.dart';
 import 'package:houlala/screens/page_result_screen.dart';
 import 'package:houlala/screens/register_screen.dart';
+import 'package:houlala/service/word_service.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import '../screens/about_screen.dart';
@@ -22,14 +23,7 @@ import '../screens/product_detail_screen.dart';
 import '../screens/reset_screen.dart';
 import '../screens/search_screen.dart';
 import '../screens/sub_category_screen.dart';
-import '../service/auth_service.dart';
-import '../service/category_service.dart';
 import '../service/connectivity_service.dart';
-import '../service/email_service.dart';
-import '../service/order_service.dart';
-import '../service/page_service.dart';
-import '../service/product_service.dart';
-import '../service/word_service.dart';
 import 'main_navigation.dart';
 
 class MyApp extends StatelessWidget {
@@ -40,14 +34,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => CategoryService()),
-        ChangeNotifierProvider(create: (context) => ProductService()),
-        ChangeNotifierProvider(create: (context) => LocationService()),
-        ChangeNotifierProvider(create: (context) => WordService()),
-        ChangeNotifierProvider(create: (context) => AuthService()),
         ChangeNotifierProvider(create: (context) => ConnectivityService()),
-        ChangeNotifierProvider(create: (context) => OrderService()),
-        ChangeNotifierProvider(create: (context) => EmailService()),
+        ChangeNotifierProvider(create: (context) => WordService())
       ],
       builder: (context, child) {
         return Sizer(

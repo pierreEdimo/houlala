@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/model/login.dart';
-import 'package:houlala/service/auth_service.dart';
-import 'package:houlala/shared_widgets/display_dialog.dart';
-import 'package:houlala/shared_widgets/show_nack.dart';
-import 'package:http/http.dart';
-import 'package:provider/provider.dart';
-
 import '../shared_widgets/custom_elevated_button.dart';
 import '../shared_widgets/input_email.dart';
 import '../shared_widgets/input_password.dart';
@@ -24,28 +17,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   /// Reenitialise le Mot de passe de l'utilisateur
-  reset(BuildContext context) async {
-    if (_formkey.currentState!.validate()) {
-      Login login = Login(
-          email: _emailController.text, password: _passwordController.text);
-
-      Response response = await Provider.of<AuthService>(context, listen: false)
-          .resetPassword(login);
-
-      if (response.statusCode != 200) {
-        showErrorDialog(
-            context,
-            "Erreur",
-            "Erreur lors de la requete. svp"
-                "reesayez plutard. Si le probleme persiste, contactez notre service client.");
-      } else {
-        Navigator.of(context).pop();
-
-        showSnack(const Text("Votre message a ete reenitialise avec succes"),
-            context);
-      }
-    }
-  }
+  reset(BuildContext context) async {}
 
   @override
   Widget build(BuildContext context) {

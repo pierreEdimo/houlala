@@ -1,11 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:houlala/model/user_information.dart';
-import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import '../helper/constants.dart';
-import '../model/send_email.dart';
-import '../service/email_service.dart';
 import '../model/order.dart';
 import 'custom_elevated_button.dart';
 import 'order_container.dart';
@@ -23,27 +20,7 @@ class RegisteredUserForm extends StatelessWidget {
   }) : super(key: key);
 
   /// Confirme la Commande de l'utilisateur
-  confirmCommand(BuildContext context) async {
-    for (var order in orders!) {
-      SimplifiedOrder orderEmail = SimplifiedOrder(
-          status: order.status,
-          cartItems: order.cartItems,
-          payMentMode: order.paymentMode,
-          totalQuantity: order.totalQuantity,
-          totalPrice: order.totalPrice);
-
-      var newEmail = SendEmail(
-        subject:
-            "Nouvelle commande venant de ${connectedUser!.name}, ${connectedUser!.firstName}",
-        to: order.location!.email!,
-        userInformation: connectedUser,
-        order: orderEmail,
-      );
-
-      await Provider.of<EmailService>(context, listen: false)
-          .sendEmail("order", newEmail);
-    }
-  }
+  confirmCommand(BuildContext context) async {}
 
   @override
   Widget build(BuildContext context) {

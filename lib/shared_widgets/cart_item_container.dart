@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:houlala/helper/constants.dart';
-import 'package:houlala/main.dart';
 import 'package:houlala/model/cart_item.dart';
 import 'package:houlala/model/product_detail_args.dart';
-import 'package:houlala/service/order_service.dart';
 import 'package:houlala/shared_widgets/image_container.dart';
 import 'package:houlala/shared_widgets/increase_quantity_text.dart';
 import 'package:houlala/shared_widgets/product_title.dart';
 import 'package:houlala/shared_widgets/transparent_card_container.dart';
-import 'package:provider/provider.dart';
 import '../screens/product_detail_screen.dart';
 import 'cart_item_delete_button.dart';
 import 'decrease_quantity_text.dart';
@@ -31,30 +28,10 @@ class CartItemContainer extends StatelessWidget {
       : super(key: key);
 
   /// Reduis la quantite de produits du panier
-  decreaseQuantity(BuildContext context) async {
-    String? userId = await storage.read(key: "userId");
-
-    if (userId != null) {
-      Provider.of<OrderService>(context, listen: false)
-          .updateQuantity('decrease', cartItem!.productSku!, orderId);
-    } else {
-      Provider.of<OrderService>(context, listen: false)
-          .decreaseItemQuantity(locationId!, cartItem!.productSku!);
-    }
-  }
+  decreaseQuantity(BuildContext context) async {}
 
   /// augmente la quantite de produits du panier
-  increaseQuantity(BuildContext context) async {
-    String? userId = await storage.read(key: "userId");
-
-    if (userId != null) {
-      Provider.of<OrderService>(context, listen: false)
-          .updateQuantity('increase', cartItem!.productSku!, orderId);
-    } else {
-      Provider.of<OrderService>(context, listen: false)
-          .increaseItemQuantity(locationId!, cartItem!.productSku!);
-    }
-  }
+  increaseQuantity(BuildContext context) async { }
 
   @override
   Widget build(BuildContext context) {

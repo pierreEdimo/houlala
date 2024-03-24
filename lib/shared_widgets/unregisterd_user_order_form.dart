@@ -1,11 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../helper/constants.dart';
-import '../model/add_unregistered_user_order.dart';
 import '../model/offline_order.dart';
 import '../model/user_information.dart';
-import '../service/order_service.dart';
 
 import 'border_card_title.dart';
 import 'custom_card.dart';
@@ -73,18 +70,6 @@ class _UnregisteredUserBorderFormState
       );
 
       try {
-        for (var order in widget.offlineOrders!) {
-          UnregisteredUserOrder newOrder = UnregisteredUserOrder(
-              locationId: order.locationId,
-              userInformation: info,
-              cartItems: order.cartItems);
-
-          await Provider.of<OrderService>(context, listen: false)
-              .confirmUnregisteredUserOrder(newOrder);
-        }
-
-        Provider.of<OrderService>(context, listen: false)
-            .deleteAfterOrder(widget.offlineOrders!);
         Navigator.of(context).pop();
       } catch (e) {
         if (kDebugMode) {
