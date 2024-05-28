@@ -7,12 +7,12 @@ class CustomCard extends StatelessWidget {
   final Border? border;
 
   const CustomCard({
-    Key? key,
+    super.key,
     this.child,
     this.padding,
     this.elevation,
     this.border,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

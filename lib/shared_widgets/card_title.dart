@@ -4,7 +4,7 @@ import 'package:houlala/helper/constants.dart';
 class CardTitle extends StatelessWidget {
   final String? name;
 
-  const CardTitle({Key? key, this.name}) : super(key: key);
+  const CardTitle({super.key, this.name});
 
   @override
   Widget build(BuildContext context) {

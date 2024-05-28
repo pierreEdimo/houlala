@@ -5,7 +5,7 @@ part 'product_model.g.dart';
 
 @freezed
 class ProductModel with _$ProductModel{
-  const factory ProductModel({
+   factory ProductModel({
     int? id, 
     String? name, 
     String? description, 
@@ -13,7 +13,7 @@ class ProductModel with _$ProductModel{
     int? sellingPrice, 
     String? imageUrl, 
     @Default(1) int? quantity,
-    String? locationId,
+    String? locationUniqueId,
     bool? bookMarked,
     String? productSku,
     @Default(1) int? availableQuantity,

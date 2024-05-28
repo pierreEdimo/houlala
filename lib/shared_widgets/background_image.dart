@@ -6,11 +6,11 @@ class BackgroundImage extends StatelessWidget {
   final double? borderRadius;
 
   const BackgroundImage({
-    Key? key,
+    super.key,
     this.imageUrl,
     this.width,
     this.borderRadius,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

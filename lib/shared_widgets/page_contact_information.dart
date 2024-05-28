@@ -8,7 +8,7 @@ import '../models/location/location_model.dart';
 class PageContactInformation extends StatelessWidget {
   final LocationModel? page;
 
-  const PageContactInformation({Key? key, this.page}) : super(key: key);
+  const PageContactInformation({super.key, this.page});
 
   @override
   Widget build(BuildContext context) {

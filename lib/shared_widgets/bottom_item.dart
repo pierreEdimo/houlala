@@ -8,13 +8,13 @@ class BottomItem extends StatelessWidget {
   final bool? selected;
 
   const BottomItem({
-    Key? key,
+    super.key,
     this.icon,
     this.color,
     this.size,
     this.selected,
     this.selectedIcon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

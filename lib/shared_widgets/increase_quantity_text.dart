@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class InCreaseQuantityText extends StatelessWidget {
-  const InCreaseQuantityText({Key? key}) : super(key: key);
+  const InCreaseQuantityText({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -14,7 +14,7 @@ import '../models/location/location_model.dart';
 class PageHomeContainer extends ConsumerWidget {
   final LocationModel? pageModel;
 
-  const PageHomeContainer({Key? key, this.pageModel}) : super(key: key);
+  const PageHomeContainer({super.key, this.pageModel});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

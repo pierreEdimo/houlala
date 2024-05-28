@@ -6,10 +6,10 @@ class ProductTitle extends StatelessWidget {
   final int? maxLines;
 
   const ProductTitle({
-    Key? key,
+    super.key,
     this.title,
     this.maxLines,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

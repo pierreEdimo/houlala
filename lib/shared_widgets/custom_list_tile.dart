@@ -8,12 +8,12 @@ class CustomListTile extends StatelessWidget {
   final HeroIcon? leadingIcon;
 
   const CustomListTile({
-    Key? key,
+    super.key,
     this.imageUrl,
     this.title,
     this.color,
     this.leadingIcon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

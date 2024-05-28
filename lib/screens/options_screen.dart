@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:houlala/shared_widgets/custom_button_container.dart';
 
 class OptionScreen extends StatelessWidget {
-  const OptionScreen({Key? key}) : super(key: key);
+  const OptionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

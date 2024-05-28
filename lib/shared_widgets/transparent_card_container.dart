@@ -4,9 +4,9 @@ class TransparentCardContainer extends StatelessWidget {
   final Widget? child;
 
   const TransparentCardContainer({
-    Key? key,
+    super.key,
     this.child,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -9,7 +9,7 @@ import '../shared_widgets/custom_button_container.dart';
 class CategoryDetailScreen extends StatelessWidget {
   static const routeName = "/categoryDetail";
 
-  const CategoryDetailScreen({Key? key}) : super(key: key);
+  const CategoryDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

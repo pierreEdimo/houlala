@@ -6,10 +6,10 @@ class CustomButtonContainer extends StatelessWidget {
   final VoidCallback? onPressed;
 
   const CustomButtonContainer({
-    Key? key,
+    super.key,
     this.icon,
     this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

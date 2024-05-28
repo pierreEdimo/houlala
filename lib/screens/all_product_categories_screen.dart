@@ -9,7 +9,7 @@ import 'package:houlala/shared_widgets/grid_category_container.dart';
 import '../shared_widgets/custom_button_container.dart';
 
 class AllProductCategories extends ConsumerWidget {
-  const AllProductCategories({Key? key}) : super(key: key);
+  const AllProductCategories({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

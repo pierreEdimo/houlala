@@ -8,11 +8,11 @@ class PageContactRow extends StatelessWidget {
   final String? thumbNail;
 
   const PageContactRow({
-    Key? key,
+    super.key,
     this.icon,
     this.child,
     this.thumbNail,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

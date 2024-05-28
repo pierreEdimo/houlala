@@ -5,7 +5,7 @@ class FlexibleRow extends StatelessWidget {
   final String? title;
   final String? urlValue;
 
-  const FlexibleRow({Key? key, this.title, this.urlValue}) : super(key: key);
+  const FlexibleRow({super.key, this.title, this.urlValue});
 
   @override
   Widget build(BuildContext context) {

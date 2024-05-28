@@ -5,9 +5,9 @@ class BlurContainer extends StatelessWidget {
   final double? height;
 
   const BlurContainer({
-    Key? key,
+    super.key,
     this.height,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

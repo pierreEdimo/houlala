@@ -6,9 +6,9 @@ class BorderedCardTitle extends StatelessWidget {
   final String? title;
 
   const BorderedCardTitle({
-    Key? key,
+    super.key,
     this.title,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

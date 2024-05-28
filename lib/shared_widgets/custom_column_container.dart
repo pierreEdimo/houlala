@@ -4,8 +4,7 @@ class CustomColumnContainer extends StatelessWidget {
   final Widget? title;
   final Widget? child;
 
-  const CustomColumnContainer({Key? key, this.title, this.child})
-      : super(key: key);
+  const CustomColumnContainer({super.key, this.title, this.child});
 
   @override
   Widget build(BuildContext context) {

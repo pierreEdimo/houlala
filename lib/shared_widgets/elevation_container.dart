@@ -6,11 +6,11 @@ class ElevationContainer extends StatelessWidget {
   final double? elevation;
 
   const ElevationContainer({
-    Key? key,
+    super.key,
     this.child,
     this.borderRadius,
     this.elevation,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -7,12 +7,12 @@ class CustomElevatedButton extends StatelessWidget {
   final bool? hasBorder;
 
   const CustomElevatedButton({
-    Key? key,
+    super.key,
     this.child,
     this.onPressed,
     this.color,
     this.hasBorder,
-  }) : super(key: key);
+  });
 
   getColor() {
     if (hasBorder == null || !hasBorder! == false) {

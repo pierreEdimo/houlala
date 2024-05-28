@@ -10,7 +10,7 @@ import '../models/location/location_model.dart';
 class PageInfoContainer extends StatelessWidget {
   final LocationModel? page;
 
-  const PageInfoContainer({Key? key, this.page}) : super(key: key);
+  const PageInfoContainer({super.key, this.page});
 
   @override
   Widget build(BuildContext context) {

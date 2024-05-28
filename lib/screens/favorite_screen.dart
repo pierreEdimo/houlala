@@ -10,7 +10,7 @@ import 'package:houlala/shared_widgets/custom_button_container.dart';
 class FavoriteScreen extends ConsumerWidget {
   static const routeName = '/favorites';
 
-  const FavoriteScreen({Key? key}) : super(key: key);
+  const FavoriteScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

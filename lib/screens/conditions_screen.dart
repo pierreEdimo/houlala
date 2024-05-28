@@ -5,7 +5,7 @@ import 'package:houlala/shared_widgets/standard_custom_container.dart';
 import 'package:houlala/shared_widgets/web_view_container.dart';
 
 class ConditionScreen extends StatelessWidget {
-   const ConditionScreen({Key? key}) : super(key: key);
+   const ConditionScreen({super.key});
 
    Future<String> _loadAssset(BuildContext context) async {
      return await DefaultAssetBundle.of(context).loadString('texts/conditions.html');

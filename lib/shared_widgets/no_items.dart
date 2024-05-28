@@ -9,12 +9,12 @@ class VerticalNoItem extends StatelessWidget {
   final double? radius;
 
   const VerticalNoItem({
-    Key? key,
+    super.key,
     this.imageAsset,
     this.errorMessage,
     this.height,
     this.radius,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

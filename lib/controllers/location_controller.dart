@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:houlala/models/location/location_model.dart';
+import 'package:houlala/models/order/order_model.dart';
 import 'package:houlala/providers/location_provider.dart';
 
 class LocationController {
@@ -29,6 +30,18 @@ class LocationController {
 
   LocationModel getSelectedLocationModel(int id) {
     return locationList.firstWhere((element) => element.id == id);
+  }
+
+  SimpleLocation getSelectedLocationByUI(String uniqueIdentifier) {
+    LocationModel locationModel = locationList
+        .firstWhere((element) => element.uniqueIdentifier == uniqueIdentifier);
+
+    return SimpleLocation(
+        id: locationModel.id,
+        name: locationModel.name,
+        imageUrl: locationModel.imageUrl,
+        email: locationModel.email,
+        uniqueIdentifier: locationModel.uniqueIdentifier);
   }
 
   List<LocationModel> getFilteredLocations(String keyword) {

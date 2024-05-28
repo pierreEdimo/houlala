@@ -7,9 +7,9 @@ class PasswordInput extends StatelessWidget {
       RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!?@#\$&*~]).{6,}$');
 
   PasswordInput({
-    Key? key,
+    super.key,
     this.controller,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

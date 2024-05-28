@@ -4,7 +4,7 @@ import 'package:houlala/shared_widgets/custom_button_container.dart';
 
 
 class PersonalOrderScreen extends StatelessWidget {
-  const PersonalOrderScreen({Key? key}) : super(key: key);
+  const PersonalOrderScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

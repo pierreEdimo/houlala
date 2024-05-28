@@ -6,7 +6,7 @@ import 'package:houlala/shared_widgets/standard_custom_container.dart';
 import '../shared_widgets/web_view_container.dart';
 
 class AboutScreen extends StatelessWidget {
-  const AboutScreen({Key? key}) : super(key: key);
+  const AboutScreen({super.key});
 
   Future<String> _loadAssset(BuildContext context) async {
     return await DefaultAssetBundle.of(context).loadString('texts/about.html');

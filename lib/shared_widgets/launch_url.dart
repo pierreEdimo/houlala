@@ -24,9 +24,7 @@ Future<void> openInWebViewOrVC(String uri) async {
 }
 
 openStore(BuildContext context) {
-  try {
-    print("launch review");
-  } on MissingPluginException {
+  try {} on MissingPluginException {
     showErrorDialog(context, "Erreur",
         "Nous n'arrivons pas a nous connecter sur  Whatsapp, verifiez si vous avez installer l'application et reesayez plutard");
   }

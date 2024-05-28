@@ -27,7 +27,7 @@ mixin _$ProductModel {
   int? get sellingPrice => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
   int? get quantity => throw _privateConstructorUsedError;
-  String? get locationId => throw _privateConstructorUsedError;
+  String? get locationUniqueId => throw _privateConstructorUsedError;
   bool? get bookMarked => throw _privateConstructorUsedError;
   String? get productSku => throw _privateConstructorUsedError;
   int? get availableQuantity => throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ abstract class $ProductModelCopyWith<$Res> {
       int? sellingPrice,
       String? imageUrl,
       int? quantity,
-      String? locationId,
+      String? locationUniqueId,
       bool? bookMarked,
       String? productSku,
       int? availableQuantity,
@@ -84,7 +84,7 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
     Object? sellingPrice = freezed,
     Object? imageUrl = freezed,
     Object? quantity = freezed,
-    Object? locationId = freezed,
+    Object? locationUniqueId = freezed,
     Object? bookMarked = freezed,
     Object? productSku = freezed,
     Object? availableQuantity = freezed,
@@ -121,9 +121,9 @@ class _$ProductModelCopyWithImpl<$Res, $Val extends ProductModel>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int?,
-      locationId: freezed == locationId
-          ? _value.locationId
-          : locationId // ignore: cast_nullable_to_non_nullable
+      locationUniqueId: freezed == locationUniqueId
+          ? _value.locationUniqueId
+          : locationUniqueId // ignore: cast_nullable_to_non_nullable
               as String?,
       bookMarked: freezed == bookMarked
           ? _value.bookMarked
@@ -169,7 +169,7 @@ abstract class _$$ProductModelImplCopyWith<$Res>
       int? sellingPrice,
       String? imageUrl,
       int? quantity,
-      String? locationId,
+      String? locationUniqueId,
       bool? bookMarked,
       String? productSku,
       int? availableQuantity,
@@ -196,7 +196,7 @@ class __$$ProductModelImplCopyWithImpl<$Res>
     Object? sellingPrice = freezed,
     Object? imageUrl = freezed,
     Object? quantity = freezed,
-    Object? locationId = freezed,
+    Object? locationUniqueId = freezed,
     Object? bookMarked = freezed,
     Object? productSku = freezed,
     Object? availableQuantity = freezed,
@@ -233,9 +233,9 @@ class __$$ProductModelImplCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int?,
-      locationId: freezed == locationId
-          ? _value.locationId
-          : locationId // ignore: cast_nullable_to_non_nullable
+      locationUniqueId: freezed == locationUniqueId
+          ? _value.locationUniqueId
+          : locationUniqueId // ignore: cast_nullable_to_non_nullable
               as String?,
       bookMarked: freezed == bookMarked
           ? _value.bookMarked
@@ -268,7 +268,7 @@ class __$$ProductModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ProductModelImpl implements _ProductModel {
-  const _$ProductModelImpl(
+  _$ProductModelImpl(
       {this.id,
       this.name,
       this.description,
@@ -276,7 +276,7 @@ class _$ProductModelImpl implements _ProductModel {
       this.sellingPrice,
       this.imageUrl,
       this.quantity = 1,
-      this.locationId,
+      this.locationUniqueId,
       this.bookMarked,
       this.productSku,
       this.availableQuantity = 1,
@@ -303,7 +303,7 @@ class _$ProductModelImpl implements _ProductModel {
   @JsonKey()
   final int? quantity;
   @override
-  final String? locationId;
+  final String? locationUniqueId;
   @override
   final bool? bookMarked;
   @override
@@ -320,7 +320,7 @@ class _$ProductModelImpl implements _ProductModel {
 
   @override
   String toString() {
-    return 'ProductModel(id: $id, name: $name, description: $description, weight: $weight, sellingPrice: $sellingPrice, imageUrl: $imageUrl, quantity: $quantity, locationId: $locationId, bookMarked: $bookMarked, productSku: $productSku, availableQuantity: $availableQuantity, locationName: $locationName, categoryName: $categoryName, subCategoryName: $subCategoryName)';
+    return 'ProductModel(id: $id, name: $name, description: $description, weight: $weight, sellingPrice: $sellingPrice, imageUrl: $imageUrl, quantity: $quantity, locationUniqueId: $locationUniqueId, bookMarked: $bookMarked, productSku: $productSku, availableQuantity: $availableQuantity, locationName: $locationName, categoryName: $categoryName, subCategoryName: $subCategoryName)';
   }
 
   @override
@@ -339,8 +339,8 @@ class _$ProductModelImpl implements _ProductModel {
                 other.imageUrl == imageUrl) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
-            (identical(other.locationId, locationId) ||
-                other.locationId == locationId) &&
+            (identical(other.locationUniqueId, locationUniqueId) ||
+                other.locationUniqueId == locationUniqueId) &&
             (identical(other.bookMarked, bookMarked) ||
                 other.bookMarked == bookMarked) &&
             (identical(other.productSku, productSku) ||
@@ -366,7 +366,7 @@ class _$ProductModelImpl implements _ProductModel {
       sellingPrice,
       imageUrl,
       quantity,
-      locationId,
+      locationUniqueId,
       bookMarked,
       productSku,
       availableQuantity,
@@ -389,7 +389,7 @@ class _$ProductModelImpl implements _ProductModel {
 }
 
 abstract class _ProductModel implements ProductModel {
-  const factory _ProductModel(
+  factory _ProductModel(
       {final int? id,
       final String? name,
       final String? description,
@@ -397,7 +397,7 @@ abstract class _ProductModel implements ProductModel {
       final int? sellingPrice,
       final String? imageUrl,
       final int? quantity,
-      final String? locationId,
+      final String? locationUniqueId,
       final bool? bookMarked,
       final String? productSku,
       final int? availableQuantity,
@@ -423,7 +423,7 @@ abstract class _ProductModel implements ProductModel {
   @override
   int? get quantity;
   @override
-  String? get locationId;
+  String? get locationUniqueId;
   @override
   bool? get bookMarked;
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:houlala/helper/user_token.helper.dart';
 import 'package:houlala/models/login/login_model.dart';
+import 'package:houlala/models/register/register_model.dart';
 import 'package:houlala/models/user_model/user_model.dart';
 import 'package:houlala/models/user_token/user_token.dart';
 import 'package:houlala/repositories/auth/auth_repository.dart';
@@ -36,20 +37,35 @@ class AuthRepositoryStateNotifier extends StateNotifier<UserModelState> {
     }
   }
 
+  Future<void> register(RegisterModel registerModel) async {
+    try {
+      UserToken token = await authRepository.registerUser(registerModel);
+      UserTokenHelper.saveToken(token);
+      state = state.copyWith(loading: true);
+      UserModel connectedUser = await authRepository.fetchConnectUser(token);
+      state = state.copyWith(connectedUser: connectedUser, loading: false);
+    } catch (e) {
+      state = state.copyWith(
+          error: true,
+          errorMessage: 'impossible de vous inscrire sur Houla la.'
+              'veuillez reessayer plutard. Si le probleme persiste,');
+    }
+  }
+
   Future<void> loadConnectedUser() async {
     UserToken? userToken = await UserTokenHelper.getUserToken();
-    if(userToken != null){
+    if (userToken != null) {
       try {
         state = state.copyWith(loading: true);
         UserModel connectedUser =
-        await authRepository.fetchConnectUser(userToken);
+            await authRepository.fetchConnectUser(userToken);
         state = state.copyWith(loading: false, connectedUser: connectedUser);
       } catch (e) {
         state = state.copyWith(
             error: true,
             errorMessage:
-            ("Vous n'avez pas ete retrouve dans notre dans notre base de donne, veillez ressayer plutard"
-                "si le probleme persiste, contactez notre service client."));
+                ("Vous n'avez pas ete retrouve dans notre dans notre base de donne, veillez ressayer plutard"
+                    "si le probleme persiste, contactez notre service client."));
       }
     }
   }

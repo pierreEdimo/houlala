@@ -4,9 +4,9 @@ class QuantityContainer extends StatelessWidget {
   final int? quantity;
 
   const QuantityContainer({
-    Key? key,
+    super.key,
     this.quantity,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

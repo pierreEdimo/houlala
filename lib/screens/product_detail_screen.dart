@@ -4,9 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:houlala/controllers/auth_controller.dart';
+import 'package:houlala/controllers/location_controller.dart';
+import 'package:houlala/controllers/order_controller.dart';
 import 'package:houlala/controllers/product_controller.dart';
 import 'package:houlala/helper/constants.dart';
+import 'package:houlala/models/cart_item/cart_item.dart';
+import 'package:houlala/models/create_order/create_order.dart';
+import 'package:houlala/models/order/order_model.dart';
 import 'package:houlala/models/product/product_model.dart';
+import 'package:houlala/models/user_model/user_model.dart';
 import 'package:houlala/shared_widgets/custom_body_container.dart';
 import 'package:houlala/shared_widgets/custom_elevated_button.dart';
 import 'package:houlala/shared_widgets/increase_quantity_text.dart';
@@ -37,7 +44,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   }
 
   void _updateLoading() {
-    Future.delayed(const Duration(seconds: 1), () async {
+    Future.delayed(const Duration(seconds: 2), () async {
       isLoading$.value = false;
     });
   }
@@ -45,7 +52,11 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
   @override
   Widget build(BuildContext context) {
     ProductController productController = ProductController(ref);
+    AuthController authController = AuthController(ref);
+    OrderController orderController = OrderController(ref);
+    LocationController locationController = LocationController(ref);
     ProductModel? selectedProduct = productController.selectedProduct;
+    UserModel? connectedUser = authController.connectedUser;
 
     return Scaffold(
       appBar: AppBar(
@@ -91,13 +102,10 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                               children: <TextSpan>[
                             TextSpan(
                               text: selectedProduct.locationName,
-                              style:
-                                  GoogleFonts.jetBrainsMono(
-                                    textStyle: const TextStyle(
+                              style: GoogleFonts.jetBrainsMono(
+                                  textStyle: const TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 18.0
-                                    )
-                                  ),
+                                      fontSize: 18.0)),
                             )
                           ])),
                       const SizedBox(height: 8.0),
@@ -137,7 +145,27 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                       const SizedBox(height: 8.0),
                       CustomElevatedButton(
                         hasBorder: false,
-                        onPressed: () {},
+                        onPressed: () async {
+                          CartItem item = CartItem(
+                              product: selectedProduct.name,
+                              productSku: selectedProduct.productSku,
+                              quantity: selectedProduct.availableQuantity,
+                              price: selectedProduct.sellingPrice! *
+                                  selectedProduct.availableQuantity!,
+                              imageUrl: selectedProduct.imageUrl,
+                              initialPrice: selectedProduct.sellingPrice);
+
+                          CreateOrder order = CreateOrder(
+                              items: [item],
+                              user: connectedUser,
+                              paymentMethodId: 1,
+                              locationUniqueId:
+                                  selectedProduct.locationUniqueId);
+                          SimpleLocation location = locationController
+                              .getSelectedLocationByUI(order.locationUniqueId!);
+                          orderController.addProductToCart(order,
+                              location: location);
+                        },
                         color: Colors.orangeAccent,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,

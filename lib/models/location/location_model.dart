@@ -3,7 +3,6 @@ import 'package:houlala/models/country/country_model.dart';
 import 'package:houlala/models/store_category/store_category_model.dart';
 
 part 'location_model.freezed.dart';
-
 part 'location_model.g.dart';
 
 @freezed

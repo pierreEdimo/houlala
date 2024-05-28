@@ -6,9 +6,9 @@ class ImageContainer extends StatelessWidget {
   final String? imageUrl;
 
   const ImageContainer({
-    Key? key,
+    super.key,
     this.imageUrl,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

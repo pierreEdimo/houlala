@@ -5,7 +5,7 @@ import 'custom_list_tile.dart';
 
 
 class ReportTile extends StatelessWidget {
-  const ReportTile({Key? key}) : super(key: key);
+  const ReportTile({super.key});
 
   @override
   Widget build(BuildContext context) {

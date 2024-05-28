@@ -10,10 +10,10 @@ class ModalBar extends StatelessWidget {
   final String? title;
 
   const ModalBar({
-    Key? key,
+    super.key,
     this.height,
     this.title,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

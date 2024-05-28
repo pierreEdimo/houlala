@@ -4,9 +4,9 @@ class EmailInput extends StatelessWidget {
   final TextEditingController? controller;
 
   const EmailInput({
-    Key? key,
+    super.key,
     this.controller,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

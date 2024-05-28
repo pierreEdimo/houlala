@@ -9,7 +9,7 @@ import 'package:houlala/shared_widgets/layout.dart';
 import 'bottom_item.dart';
 
 class MainNavigation extends StatelessWidget {
-  const MainNavigation({Key? key}) : super(key: key);
+  const MainNavigation({super.key});
 
   @override
   Widget build(BuildContext context) {

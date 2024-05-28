@@ -12,7 +12,7 @@ import 'package:houlala/shared_widgets/custom_button_container.dart';
 import '../models/sub_category_parameter/sub_category_parameter.dart';
 
 class SubCategoryScreen extends ConsumerWidget {
-  const SubCategoryScreen({Key? key}) : super(key: key);
+  const SubCategoryScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

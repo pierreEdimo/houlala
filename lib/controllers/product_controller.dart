@@ -12,7 +12,7 @@ class ProductController {
 
   List<ProductModel> getProductListsByLocationId(String locationId) {
     return productList
-        .where((element) => identical(element.locationId, locationId))
+        .where((element) => identical(element.locationUniqueId, locationId))
         .toList();
   }
 

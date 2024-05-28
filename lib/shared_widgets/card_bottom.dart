@@ -6,10 +6,10 @@ class CardBottom extends StatelessWidget {
   final int? quantity;
 
   const CardBottom({
-    Key? key,
+    super.key,
     this.price,
     this.quantity,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

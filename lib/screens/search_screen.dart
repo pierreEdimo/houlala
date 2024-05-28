@@ -15,7 +15,7 @@ import 'package:houlala/shared_widgets/custom_button_container.dart';
 import 'package:houlala/shared_widgets/custom_intern_navigation.dart';
 
 class SearchScreen extends ConsumerStatefulWidget {
-  const SearchScreen({Key? key}) : super(key: key);
+  const SearchScreen({super.key});
 
   @override
   ConsumerState<SearchScreen> createState() => _SearchScreenState();

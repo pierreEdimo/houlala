@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DecreaseQuantityText extends StatelessWidget {
-  const DecreaseQuantityText({Key? key}) : super(key: key);
+  const DecreaseQuantityText({super.key});
 
   @override
   Widget build(BuildContext context) {

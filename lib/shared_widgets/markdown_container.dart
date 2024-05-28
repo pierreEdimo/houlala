@@ -7,9 +7,9 @@ class MarkdownContainer extends StatelessWidget {
   final String? data;
 
   const MarkdownContainer({
-    Key? key,
+    super.key,
     this.data,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

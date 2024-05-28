@@ -6,11 +6,11 @@ class InputNumber extends StatelessWidget {
   final String? hintText;
 
   const InputNumber({
-    Key? key,
+    super.key,
     this.controller,
     this.errorMessage,
     this.hintText,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

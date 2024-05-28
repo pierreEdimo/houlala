@@ -6,11 +6,11 @@ class CustomAvatar extends StatelessWidget {
   final String? localAsset;
 
   const CustomAvatar({
-    Key? key,
+    super.key,
     this.radius,
     this.thumbnailUrl,
     this.localAsset,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

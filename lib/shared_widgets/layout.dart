@@ -12,12 +12,12 @@ class Layout extends ConsumerWidget {
   final Color? unSelectedColor;
 
   const Layout({
-    Key? key,
+    super.key,
     this.children,
     this.bottomItems,
     this.selectedColor,
     this.unSelectedColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

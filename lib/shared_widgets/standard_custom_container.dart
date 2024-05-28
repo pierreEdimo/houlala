@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class StandardCustomContainer extends StatelessWidget {
   final Widget? child;
 
-  const StandardCustomContainer({Key? key, this.child}) : super(key: key);
+  const StandardCustomContainer({super.key, this.child});
 
   @override
   Widget build(BuildContext context) {

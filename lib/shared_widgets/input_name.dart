@@ -7,12 +7,12 @@ class NameInput extends StatelessWidget {
   final bool? enabled;
 
   const NameInput({
-    Key? key,
+    super.key,
     this.controller,
     this.errorMessage,
     this.hintText,
     this.enabled,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

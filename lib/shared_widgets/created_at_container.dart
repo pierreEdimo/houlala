@@ -6,10 +6,10 @@ class CreatedAtContainer extends StatelessWidget {
   final double? fontSize;
 
   const CreatedAtContainer({
-    Key? key,
+    super.key,
     this.createdAt,
     this.fontSize,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

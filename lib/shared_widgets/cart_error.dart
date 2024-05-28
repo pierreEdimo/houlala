@@ -5,7 +5,7 @@ import 'package:houlala/shared_widgets/standard_custom_container.dart';
 import 'custom_avatar.dart';
 
 class CartError extends StatelessWidget {
-  const CartError({Key? key}) : super(key: key);
+  const CartError({super.key});
 
   @override
   Widget build(BuildContext context) {

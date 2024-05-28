@@ -11,7 +11,7 @@ class ConnectivityNotifier extends StateNotifier<ConnectivityResult?> {
   }
 
   Future<void> checkConnectivity() async {
-    ConnectivityResult result = await Connectivity().checkConnectivity();
-    state = result;
+    List<ConnectivityResult> result = await Connectivity().checkConnectivity();
+    state = result.first;
   }
 }

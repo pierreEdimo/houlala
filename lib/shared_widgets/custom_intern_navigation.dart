@@ -10,14 +10,13 @@ class CustomInternNavigation extends StatefulWidget {
   final double? height;
 
   const CustomInternNavigation(
-      {Key? key,
+      {super.key,
       this.menuItems,
       this.widgetOptions,
       this.elevationValue,
       this.verticalPadding,
       this.horizontalPadding,
-      this.height})
-      : super(key: key);
+      this.height});
 
   @override
   State<CustomInternNavigation> createState() => _CustomInternNavigationState();

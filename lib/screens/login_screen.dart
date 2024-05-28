@@ -48,15 +48,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     height: 180,
                   ),
                 ),
-                const SizedBox(height: 20.0),
-                EmailInput(
-                  controller: emailController,
-                ),
-                const SizedBox(height: 10.0),
-                PasswordInput(
-                  controller: passwordController,
-                ),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: 20),
+                EmailInput(controller: emailController),
+                const SizedBox(height: 10),
+                PasswordInput(controller: passwordController),
+                const SizedBox(height: 20),
                 InkWell(
                   onTap: () => Navigator.of(context).popAndPushNamed("/reset"),
                   child: const Text(
@@ -66,10 +62,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: 20),
                 CustomElevatedButton(
                   onPressed: () {
-                    if(_formKey.currentState!.validate()){
+                    if (_formKey.currentState!.validate()) {
                       authController.login(
                           emailController.text, passwordController.text);
                       authController.reloadUser();
@@ -82,6 +78,19 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     "Se Connecter",
                     style: standardStyle,
                   ),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    const Text('Vous etes nouveau?'),
+                    TextButton(
+                      onPressed: () => Navigator.of(context)
+                          .pushReplacementNamed("/register"),
+                      child: const Text(
+                        'S\'inscrire',
+                      ),
+                    )
+                  ],
                 )
               ],
             ),

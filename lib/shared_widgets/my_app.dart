@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:houlala/screens/checkout_screen.dart';
 import 'package:houlala/screens/login_screen.dart';
 import 'package:houlala/screens/page_result_screen.dart';
 import 'package:houlala/screens/register_screen.dart';
+import 'package:houlala/screens/successful_order_screen.dart';
 import 'package:sizer/sizer.dart';
 import '../screens/about_screen.dart';
 import '../screens/all_product_categories_screen.dart';
@@ -21,8 +23,10 @@ import '../screens/search_screen.dart';
 import '../screens/sub_category_screen.dart';
 import 'main_navigation.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -30,6 +34,7 @@ class MyApp extends StatelessWidget {
     return Sizer(
       builder: (context, orientation, deviceType) {
         return MaterialApp(
+          navigatorKey: navigatorKey,
           title: 'houlala',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
@@ -51,8 +56,7 @@ class MyApp extends StatelessWidget {
                 const ProductDetailScreen(),
             CategoryDetailScreen.routeName: (context) =>
                 const CategoryDetailScreen(),
-            PageDetailScreen.routeName: (context) =>
-                const PageDetailScreen(),
+            PageDetailScreen.routeName: (context) => const PageDetailScreen(),
             '/search': (context) => const SearchScreen(),
             FavoriteScreen.routeName: (context) => const FavoriteScreen(),
             '/options': (context) => const OptionScreen(),
@@ -64,10 +68,11 @@ class MyApp extends StatelessWidget {
             '/sub_category': (context) => const SubCategoryScreen(),
             '/edit': (context) => const EditScreen(),
             '/reset': (context) => const ResetPasswordScreen(),
-            PageResultScreen.routeName: (context) =>
-                const PageResultScreen(),
+            PageResultScreen.routeName: (context) => const PageResultScreen(),
             '/login': (context) => const LoginScreen(),
-            '/register': (context) => const RegisterScreen()
+            '/register': (context) => const RegisterScreen(),
+            '/checkout': (context) => const CheckoutScreen(),
+            '/successful': (context) => const SuccessOrderScreen(),
           },
         );
       },
